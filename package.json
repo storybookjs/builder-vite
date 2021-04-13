@@ -1,0 +1,22 @@
+{
+    "name": "storybook-builder-vite-parent",
+    "version": "1.0.0",
+    "description": "### Installation",
+    "main": "index.js",
+    "author": "",
+    "license": "MIT",
+    "scripts": {
+        "lint": "prettier --check ."
+    },
+    "workspaces": [
+        "packages/example-react",
+        "packages/storybook-builder-vite"
+    ],
+    "prettier": {
+        "singleQuote": true
+    },
+    "devDependencies": {
+        "@storybook/core-common": "^6.3.0-alpha.5",
+        "prettier": "^2.2.1"
+    }
+}

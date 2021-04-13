@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title><!-- [TITLE HERE] --></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script>
+            window.LOGLEVEL = '[LOGLEVEL HERE]';
+            window.FRAMEWORK_OPTIONS = '[FRAMEWORK_OPTIONS HERE]';
+
+            // We do this so that "module && module.hot" etc. in Storybook source code
+            // doesn't fail (it will simply be disabled)
+            window.module = undefined;
+        </script>
+        <!-- [HEAD HTML SNIPPET HERE] -->
+        <style>
+            #root[hidden],
+            #docs-root[hidden] {
+                display: none !important;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- [BODY HTML SNIPPET HERE] -->
+        <div id="root"></div>
+        <div id="docs-root"></div>
+
+        <script
+            type="module"
+            src="/virtual:/@storybook/builder-vite/vite-app.js"
+        ></script>
+    </body>
+</html>
