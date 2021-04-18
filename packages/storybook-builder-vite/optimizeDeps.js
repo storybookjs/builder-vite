@@ -8,6 +8,7 @@ module.exports.optimizeDeps = {
         'lodash/isFunction',
         'lodash/isString',
         'lodash/isPlainObject',
+        'lodash/mapKeys',
         'lodash/pickBy',
         'lodash/uniq',
         'lodash/cloneDeep',
@@ -29,6 +30,7 @@ module.exports.optimizeDeps = {
         'ansi-to-html',
         'telejson',
         '@storybook/csf',
+        '@storybook/core/client',
         'regenerator-runtime/runtime.js',
         'memoizerific',
         'ts-dedent',
@@ -42,6 +44,24 @@ module.exports.optimizeDeps = {
         'acorn-jsx',
         'acorn-walk',
         'qs',
+        'overlayscrollbars',
+        'prettier/parser-babel',
+        'prettier/parser-flow',
+        'prettier/parser-typescript',
+        'loader-utils',
+        'estraverse',
+        'refractor/core',
+        'refractor/lang/bash.js',
+        'refractor/lang/css.js',
+        'refractor/lang/graphql.js',
+        'refractor/lang/jsx.js',
+        'refractor/lang/js-extras.js',
+        'refractor/lang/json.js',
+        'refractor/lang/markup.js',
+        'refractor/lang/markdown.js',
+        'refractor/lang/yaml.js',
+        'refractor/lang/tsx.js',
+        'refractor/lang/typescript.js'
     ].filter((m) => {
         try {
             require.resolve(m);
@@ -49,5 +69,5 @@ module.exports.optimizeDeps = {
         } catch (err) {
             return false;
         }
-    }),
+    })
 };

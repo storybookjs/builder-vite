@@ -2,6 +2,7 @@ const path = require('path');
 const { optimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { codeGeneratorPlugin } = require('./code-generator-plugin.js');
+const { mockCoreJs } = require('./mock-core-js.js');
 const reactPlugin = require('@vitejs/plugin-react-refresh');
 
 module.exports.createViteServer = async function createViteServer(
@@ -10,7 +11,7 @@ module.exports.createViteServer = async function createViteServer(
 ) {
     const { port, framework } = options;
 
-    const plugins = [codeGeneratorPlugin(options)];
+    const plugins = [codeGeneratorPlugin(options), mockCoreJs()];
     if (framework === 'vue') {
         const vuePlugin = await import('@vitejs/plugin-vue').then((plugin) =>
             plugin.default()

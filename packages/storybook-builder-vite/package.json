@@ -3,11 +3,11 @@
     "version": "0.0.1",
     "description": "An experimental plugin to run and build Storybooks with Vite",
     "main": "index.js",
-    "scripts": {
-    },
+    "scripts": {},
     "author": "Eirik Sletteberg",
     "license": "MIT",
     "dependencies": {
+        "core-js": "^3.10.1",
         "glob-promise": "^4.1.0"
     },
     "peerDependencies": {

@@ -11,6 +11,7 @@
     "license": "MIT",
     "devDependencies": {
         "@storybook/react": "^6.3.0-alpha.5",
+        "@storybook/addon-essentials": "^6.3.0-alpha.5",
         "storybook-builder-vite": "0.0.1",
         "vite": "^2.1.5"
     }
