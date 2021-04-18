@@ -1,6 +1,8 @@
 const path = require('path');
 const { optimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
+const storybookCompilerPlugin = require('@storybook/addon-docs/dist/cjs/mdx/mdx-compiler-plugin.js');
+const mdx = require('vite-plugin-mdx').default;
 const { codeGeneratorPlugin } = require('./code-generator-plugin.js');
 const { mockCoreJs } = require('./mock-core-js.js');
 const reactPlugin = require('@vitejs/plugin-react-refresh');
@@ -11,7 +13,13 @@ module.exports.createViteServer = async function createViteServer(
 ) {
     const { port, framework } = options;
 
-    const plugins = [codeGeneratorPlugin(options), mockCoreJs()];
+    const plugins = [
+        codeGeneratorPlugin(options),
+        mockCoreJs(),
+        mdx({
+            compilers: [storybookCompilerPlugin()]
+        }),
+    ];
     if (framework === 'vue') {
         const vuePlugin = await import('@vitejs/plugin-vue').then((plugin) =>
             plugin.default()

@@ -10,6 +10,8 @@ module.exports.optimizeDeps = {
         'lodash/isPlainObject',
         'lodash/mapKeys',
         'lodash/pickBy',
+        'lodash/throttle',
+        'react-fast-compare',
         'lodash/uniq',
         'lodash/cloneDeep',
         'prop-types',
@@ -61,7 +63,9 @@ module.exports.optimizeDeps = {
         'refractor/lang/markdown.js',
         'refractor/lang/yaml.js',
         'refractor/lang/tsx.js',
-        'refractor/lang/typescript.js'
+        'refractor/lang/typescript.js',
+        'color-convert',
+        'warning'
     ].filter((m) => {
         try {
             require.resolve(m);

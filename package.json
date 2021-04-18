@@ -1,6 +1,6 @@
 {
     "name": "storybook-builder-vite-parent",
-    "version": "1.0.0",
+    "version": "0.0.3",
     "description": "### Installation",
     "main": "index.js",
     "author": "",
@@ -16,7 +16,6 @@
         "singleQuote": true
     },
     "devDependencies": {
-        "@storybook/core-common": "^6.3.0-alpha.5",
         "prettier": "^2.2.1"
     }
 }
