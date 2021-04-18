@@ -2,8 +2,8 @@ module.exports.transformIframeHtml = async function transformIframeHtml(
     html,
     { title, framework, presets }
 ) {
-    const headHtmlSnippet = await presets.apply('previewHeadTemplate');
-    const bodyHtmlSnippet = await presets.apply('previewBodyTemplate');
+    const headHtmlSnippet = await presets.apply('previewHead');
+    const bodyHtmlSnippet = await presets.apply('previewBody');
     const logLevel = await presets.apply('logLevel', undefined);
     const frameworkOptions = await presets.apply(`${framework}Options`, {});
     return html
