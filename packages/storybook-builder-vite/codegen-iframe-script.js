@@ -26,7 +26,7 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
                 glob(path.isAbsolute(g) ? g : path.join(configDir, g))
             )
         )
-    ).reduce((carry, stories) => carry.concat(stories));
+    ).reduce((carry, stories) => carry.concat(stories), []);
 
     const absoluteFilesToImport = (files, name) =>
         files
