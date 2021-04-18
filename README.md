@@ -11,4 +11,4 @@ npm install storybook-builder-vite --save-dev
 ### Usage
 
 In your `main.js` configuration file,
-set `builder: "storybook-builder-vite"`.
+set `core: { builder: "storybook-builder-vite" }`.
