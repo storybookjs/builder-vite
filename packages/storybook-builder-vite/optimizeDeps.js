@@ -65,7 +65,8 @@ module.exports.optimizeDeps = {
         'refractor/lang/tsx.js',
         'refractor/lang/typescript.js',
         'color-convert',
-        'warning'
+        'warning',
+        'axe-core'
     ].filter((m) => {
         try {
             require.resolve(m);

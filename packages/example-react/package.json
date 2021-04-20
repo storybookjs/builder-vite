@@ -14,6 +14,7 @@
     },
     "devDependencies": {
         "@storybook/react": "^6.3.0-alpha.10",
+        "@storybook/addon-a11y": "^6.3.0-alpha.10",
         "@storybook/addon-essentials": "^6.3.0-alpha.10",
         "storybook-builder-vite": "0.0.3",
         "vite": "^2.1.5"
