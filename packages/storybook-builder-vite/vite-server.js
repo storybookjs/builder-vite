@@ -5,7 +5,6 @@ const storybookCompilerPlugin = require('@storybook/addon-docs/dist/cjs/mdx/mdx-
 const mdx = require('vite-plugin-mdx').default;
 const { codeGeneratorPlugin } = require('./code-generator-plugin.js');
 const { mockCoreJs } = require('./mock-core-js.js');
-const reactPlugin = require('@vitejs/plugin-react-refresh');
 
 module.exports.createViteServer = async function createViteServer(
     options,
@@ -21,14 +20,9 @@ module.exports.createViteServer = async function createViteServer(
         }),
     ];
     if (framework === 'vue') {
-        const vuePlugin = await import('@vitejs/plugin-vue').then((plugin) =>
-            plugin.default()
-        );
-        plugins.push(vuePlugin);
+        plugins.push(require('@vitejs/plugin-vue'));
     } else if (framework === 'react') {
-        // Somewhat ironically, HMR works without this plugin, but is broken with the plugin enabled.
-        // const reactPlugin = await import('@vitejs/plugin-react-refresh').then(plugin => plugin.default());
-        plugins.push(reactPlugin);
+        plugins.push(require('@vitejs/plugin-react-refresh'));
     }
 
     const server = await createServer({

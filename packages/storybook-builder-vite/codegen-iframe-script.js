@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob-promise');
 const { loadPreviewOrConfigFile } = require('@storybook/core-common');
 
-// This is somewhat of a hack; the problam is that previewEntries resolves to
+// This is somewhat of a hack; the problem is that previewEntries resolves to
 // the CommonJS imports, probably because require.resolve in Node.js land leads
 // to that. For Vite, we need the ESM modules.
 function replaceCJStoESMPath(entryPath) {
@@ -90,14 +90,16 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
       });
     })
     
+    /* TODO: not quite sure what to do with this, to fix HMR
     if (import.meta.hot) {
         import.meta.hot.accept();    
     }
+    */
     
     configure(() => ${importArray(
         'story',
         storyEntries.length
-    )}.filter(el => el.default), { hot: import.meta.hot }, false);
+    )}.filter(el => el.default), { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
     `.trim();
     return code;
 };
