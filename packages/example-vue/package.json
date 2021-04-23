@@ -1,0 +1,22 @@
+{
+    "name": "example-vue",
+    "private": true,
+    "version": "0.0.3",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+    },
+    "author": "",
+    "license": "MIT",
+    "depencies": {
+        "vue": "^3.0.5"
+    },
+    "devDependencies": {
+        "@storybook/vue3": "^6.3.0-alpha.10",
+        "@storybook/addon-a11y": "^6.3.0-alpha.10",
+        "@storybook/addon-essentials": "^6.3.0-alpha.10",
+        "storybook-builder-vite": "0.0.3",
+        "vite": "^2.1.5",
+        "@vitejs/plugin-vue": "^1.2.1"
+    }
+}

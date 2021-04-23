@@ -10,6 +10,7 @@
     },
     "workspaces": [
         "packages/example-react",
+        "packages/example-vue",
         "packages/storybook-builder-vite"
     ],
     "prettier": {

@@ -12,13 +12,13 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
             compilers: [storybookCompilerPlugin()]
         }),
     ];
-    if (framework === 'vue') {
-        plugins.push(require('@vitejs/plugin-vue'));
+    if (framework === 'vue' || framework === 'vue3') {
+        plugins.push(require('@vitejs/plugin-vue')());
     }
 
     if (type === 'development') {
         if (framework === 'react') {
-            plugins.push(require('@vitejs/plugin-react-refresh'));
+            plugins.push(require('@vitejs/plugin-react-refresh')());
         }
     }
 
