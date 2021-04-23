@@ -8,7 +8,7 @@
     "license": "MIT",
     "dependencies": {
         "@mdx-js/mdx": "^1.6.22",
-        "@storybook/addon-docs": "^6.3.0-alpha.10",
+        "@storybook/addon-docs": "^6.3.0-alpha.14",
         "glob-promise": "^4.1.0",
         "vite-plugin-mdx": "^3.5.1"
     },
