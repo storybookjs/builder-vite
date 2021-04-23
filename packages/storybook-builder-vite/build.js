@@ -1,9 +1,6 @@
 const path = require('path');
+const {pluginConfig} = require("./vite-config");
 const { build: viteBuild } = require('vite');
-const mdx = require('vite-plugin-mdx').default;
-const storybookCompilerPlugin = require('@storybook/addon-docs/dist/cjs/mdx/mdx-compiler-plugin.js');
-const {mockCoreJs} = require("./mock-core-js");
-const { codeGeneratorPlugin } = require('./code-generator-plugin');
 
 module.exports.build = async function build(options) {
     const config = {
@@ -29,13 +26,7 @@ module.exports.build = async function build(options) {
                 vue: 'vue/dist/vue.esm-bundler.js',
             },
         },
-        plugins: [
-            codeGeneratorPlugin(options),
-            mockCoreJs(),
-            mdx({
-                compilers: [storybookCompilerPlugin()]
-            }),
-        ],
+        plugins: pluginConfig(options, 'build'),
     };
 
     await viteBuild(config);
