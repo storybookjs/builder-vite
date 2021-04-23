@@ -1,7 +1,7 @@
 const path = require('path');
 const { optimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
-const {pluginConfig} = require("./vite-config");
+const { pluginConfig } = require('./vite-config');
 
 module.exports.createViteServer = async function createViteServer(
     options,
@@ -22,13 +22,18 @@ module.exports.createViteServer = async function createViteServer(
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
-                '@storybook/addon-svelte-csf': '@storybook/addon-svelte-csf/dist/preset/index.js',
+                '@storybook/addon-svelte-csf':
+                    '@storybook/addon-svelte-csf/dist/preset/index.js',
             },
         },
         plugins: pluginConfig(options, 'development'),
         optimizeDeps,
     };
 
-    const finalConfig = await presets.apply('viteFinal', defaultConfig, options);
+    const finalConfig = await presets.apply(
+        'viteFinal',
+        defaultConfig,
+        options
+    );
     return createServer(finalConfig);
 };

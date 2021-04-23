@@ -1,6 +1,6 @@
 const path = require('path');
 const glob = require('glob-promise');
-const {normalizePath} = require("vite");
+const { normalizePath } = require('vite');
 const { loadPreviewOrConfigFile } = require('@storybook/core-common');
 
 // This is somewhat of a hack; the problem is that previewEntries resolves to
@@ -33,7 +33,9 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
         files
             .map(
                 (el, i) =>
-                    `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs${normalizePath(el)}'`
+                    `import ${
+                        name ? `* as ${name}_${i} from ` : ''
+                    }'/@fs${normalizePath(el)}'`
             )
             .join('\n');
 

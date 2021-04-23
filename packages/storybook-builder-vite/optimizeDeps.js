@@ -66,7 +66,7 @@ module.exports.optimizeDeps = {
         'refractor/lang/typescript.js',
         'color-convert',
         'warning',
-        'axe-core'
+        'axe-core',
     ].filter((m) => {
         try {
             require.resolve(m);
@@ -74,5 +74,5 @@ module.exports.optimizeDeps = {
         } catch (err) {
             return false;
         }
-    })
+    }),
 };

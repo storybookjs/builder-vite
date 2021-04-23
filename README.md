@@ -23,7 +23,6 @@ npm install # or yarn
 npx sb@next init --builder storybook-builder-vite && npm run storybook
 ```
 
-
 ## Contributing
 
 Contributions are welcome!

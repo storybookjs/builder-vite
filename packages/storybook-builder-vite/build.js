@@ -1,5 +1,5 @@
 const path = require('path');
-const {pluginConfig} = require("./vite-config");
+const { pluginConfig } = require('./vite-config');
 const { build: viteBuild } = require('vite');
 
 module.exports.build = async function build(options) {
@@ -29,6 +29,10 @@ module.exports.build = async function build(options) {
         plugins: pluginConfig(options, 'build'),
     };
 
-    const finalConfig = await options.presets.apply('viteFinal', config, options);
+    const finalConfig = await options.presets.apply(
+        'viteFinal',
+        config,
+        options
+    );
     await viteBuild(finalConfig);
 };

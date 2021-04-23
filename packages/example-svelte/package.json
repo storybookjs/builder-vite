@@ -4,12 +4,10 @@
     "version": "0.0.4",
     "description": "",
     "main": "index.js",
-    "scripts": {
-    },
+    "scripts": {},
     "author": "",
     "license": "MIT",
-    "depencies": {
-    },
+    "depencies": {},
     "devDependencies": {
         "@storybook/addon-actions": "^6.3.0-alpha.14",
         "@storybook/addon-essentials": "^6.3.0-alpha.14",

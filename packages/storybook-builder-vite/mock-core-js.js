@@ -13,5 +13,5 @@ module.exports.mockCoreJs = function mockCoreJs() {
             }
             return undefined;
         },
-    }
-}
+    };
+};

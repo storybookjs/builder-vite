@@ -1,18 +1,18 @@
 module.exports = {
-    "stories": [
-        "../stories/**/*.stories.mdx",
-        "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    stories: [
+        '../stories/**/*.stories.mdx',
+        '../stories/**/*.stories.@(js|jsx|ts|tsx)',
     ],
-    "addons": [
+    addons: [
         // "@storybook/addon-a11y", // still breaks
-        "@storybook/addon-links",
-        "@storybook/addon-essentials"
+        '@storybook/addon-links',
+        '@storybook/addon-essentials',
     ],
-    "core": {
-        "builder": "storybook-builder-vite"
+    core: {
+        builder: 'storybook-builder-vite',
     },
-    "viteFinal": async function webpackFinal(config, { configType }) {
+    viteFinal: async function webpackFinal(config, { configType }) {
         // customize the Vite config here
         return config;
     },
-}
+};
