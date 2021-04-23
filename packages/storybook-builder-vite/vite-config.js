@@ -15,7 +15,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
     if (framework === 'vue' || framework === 'vue3') {
         plugins.push(require('@vitejs/plugin-vue')());
     }
-    if (framework === 'svelte' || true) {
+    if (framework === 'svelte') {
         plugins.push(require('@sveltejs/vite-plugin-svelte')());
     }
 
