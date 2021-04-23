@@ -7,9 +7,9 @@ module.exports.createViteServer = async function createViteServer(
     options,
     devServer
 ) {
-    const { port, framework } = options;
+    const { port, presets } = options;
 
-    const server = await createServer({
+    const defaultConfig = {
         configFile: false,
         root: path.resolve(__dirname, 'input'),
         server: {
@@ -27,7 +27,8 @@ module.exports.createViteServer = async function createViteServer(
         },
         plugins: pluginConfig(options, 'development'),
         optimizeDeps,
-    });
+    };
 
-    return server;
+    const finalConfig = await presets.apply('viteFinal', defaultConfig, options);
+    return createServer(finalConfig);
 };

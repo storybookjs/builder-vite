@@ -29,5 +29,6 @@ module.exports.build = async function build(options) {
         plugins: pluginConfig(options, 'build'),
     };
 
-    await viteBuild(config);
+    const finalConfig = await options.presets.apply('viteFinal', config, options);
+    await viteBuild(finalConfig);
 };
