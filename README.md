@@ -4,6 +4,13 @@ NB! This code is still very experimental! Have a look at the GitHub issues
 for known bugs. If you find any new bugs, feel free to create an issue
 or send a pull request!
 
+## More maintainers needed!
+
+The Vite builder cannot build itself.
+Are you willing to contribute?
+
+https://github.com/eirslett/storybook-builder-vite/issues/11
+
 ### Installation
 
 ```bash
