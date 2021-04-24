@@ -1,7 +1,7 @@
 {
     "name": "example-vue",
     "private": true,
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "",
     "main": "index.js",
     "scripts": {},
@@ -14,7 +14,7 @@
         "@storybook/vue3": "^6.3.0-alpha.14",
         "@storybook/addon-a11y": "^6.3.0-alpha.14",
         "@storybook/addon-essentials": "^6.3.0-alpha.14",
-        "storybook-builder-vite": "0.0.4",
+        "storybook-builder-vite": "0.0.5",
         "vite": "^2.1.5",
         "@vitejs/plugin-vue": "^1.2.1"
     }

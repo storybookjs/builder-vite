@@ -1,7 +1,7 @@
 {
     "name": "example-svelte",
     "private": true,
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "",
     "main": "index.js",
     "scripts": {},
@@ -14,7 +14,7 @@
         "@storybook/addon-links": "^6.3.0-alpha.14",
         "@storybook/addon-svelte-csf": "^1.0.0",
         "@storybook/svelte": "^6.3.0-alpha.14",
-        "storybook-builder-vite": "0.0.4",
+        "storybook-builder-vite": "0.0.5",
         "vite": "^2.1.5"
     }
 }
