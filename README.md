@@ -15,6 +15,34 @@ npm install storybook-builder-vite --save-dev
 In your `main.js` configuration file,
 set `core: { builder: "storybook-builder-vite" }`.
 
+### Customize Vite config
+
+The builder will _not_ read your `vite.config.js` file by default.
+
+In `.storybook/main.js` (or whatever your Storybook config file is named)
+you can override the Vite config:
+
+```javascript
+module.exports = {
+    async viteFinal(config, { configType }) {
+        // customize the Vite config here
+        config.resolve.alias.foo = 'bar';
+        
+        // return the customized config
+        return config;
+    },
+    // ... other options here
+}
+```
+
+The `viteFinal` function will give you `config` which is
+the builder's own Vite config. You can tweak this as you want,
+for example to set up aliases, add new plugins etc.
+
+The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
+
+The function should return the updated Vite configuration.
+
 ### Getting started with React, Vite and Storybook (on a new project)
 
 ```
