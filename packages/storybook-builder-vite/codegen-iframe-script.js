@@ -35,7 +35,7 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
                 (el, i) =>
                     `import ${
                         name ? `* as ${name}_${i} from ` : ''
-                    }'/@fs${normalizePath(el)}'`
+                    }'/@fs/${normalizePath(el)}'`
             )
             .join('\n');
 
