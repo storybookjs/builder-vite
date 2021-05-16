@@ -45,9 +45,7 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
             .map((_, i) => `${name}_${i}`)
             .join(',')}]`;
 
-    const code = `
-    import 'vite/dynamic-import-polyfill';
-  
+    const code = `  
     /* ${previewEntries
         .map((entry) => `// preview entry\nimport '${entry}';`)
         .join('\n')} */
