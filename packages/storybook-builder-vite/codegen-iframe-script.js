@@ -13,11 +13,16 @@ function replaceCJStoESMPath(entryPath) {
 module.exports.generateIframeScriptCode = async function generateIframeScriptCode(
     options
 ) {
-    const { presets, configDir, framework } = options;
+    const { presets, configDir, framework, frameworkPath } = options;
 
     const previewEntries = (
         await presets.apply('previewEntries', [], options)
     ).map(replaceCJStoESMPath);
+
+    // Ensure that the client API is initialized by the framework before any other iframe code
+    // is loaded. That way our client-apis can assume the existence of the API+store
+    const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
+
     const configEntries = [loadPreviewOrConfigFile({ configDir })]
         .concat(await presets.apply('config', [], options))
         .filter(Boolean);
@@ -45,7 +50,8 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
             .map((_, i) => `${name}_${i}`)
             .join(',')}]`;
 
-    const code = `  
+    const code = `
+    import { configure } from '${frameworkImportPath}';
     /* ${previewEntries
         .map((entry) => `// preview entry\nimport '${entry}';`)
         .join('\n')} */
@@ -53,7 +59,6 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
     import { addDecorator, addParameters, addLoader, addArgTypesEnhancer } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
-    import { configure } from '@storybook/${framework}';
     ${absoluteFilesToImport(storyEntries, 'story')}
       
     const configs = ${importArray('config', configEntries.length)}
