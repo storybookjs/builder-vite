@@ -6,6 +6,12 @@
     "scripts": {},
     "author": "Eirik Sletteberg",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eirslett/storybook-builder-vite.git",
+        "directory": "package/storybook-builder-vite"
+    },
+    "homepage": "https://github.com/eirslett/storybook-builder-vite/#readme",
     "dependencies": {
         "@mdx-js/mdx": "^1.6.22",
         "@storybook/addon-docs": "^6.3.0-alpha.14",
