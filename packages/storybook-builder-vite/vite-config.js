@@ -17,6 +17,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
     }
     if (framework === 'svelte') {
         plugins.push(require('@sveltejs/vite-plugin-svelte')());
+        plugins.push(require('./svelte/csf-plugin'));
     }
 
     if (type === 'development') {
