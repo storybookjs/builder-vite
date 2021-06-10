@@ -24,7 +24,7 @@ module.exports = {
                     ([id]) =>
                         `export const ${id} = __storiesMetaData.stories[${JSON.stringify(
                             id
-                        )}]`
+                        )}];`
                 )
                 .join('\n');
 
@@ -40,7 +40,7 @@ module.exports = {
                     all
                 )});`,
                 'export default __storiesMetaData.meta;',
-                `${storyDef};`
+                storyDef,
             ].join('\n');
             return {
                 code: output,
