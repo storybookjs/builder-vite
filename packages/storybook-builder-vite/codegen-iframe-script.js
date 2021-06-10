@@ -49,8 +49,8 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
     /* ${previewEntries
         .map((entry) => `// preview entry\nimport '${entry}';`)
         .join('\n')} */
-  
-    import { addDecorator, addParameters, addLoader, addArgTypesEnhancer } from '@storybook/client-api';
+
+    import { addDecorator, addParameters, addLoader, addArgTypesEnhancer, addArgsEnhancer } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     import { configure } from '@storybook/${framework}';
@@ -76,6 +76,9 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
           }
           case 'argTypesEnhancers': {
             return value.forEach((enhancer) => addArgTypesEnhancer(enhancer));
+          }
+          case 'argsEnhancers': {
+            return value.forEach((enhancer) => addArgsEnhancer(enhancer))
           }
           case 'globals':
           case 'globalTypes': {
