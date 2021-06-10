@@ -41,6 +41,21 @@ module.exports.start = async function start({
 
     router.use(await iframeMiddleware(options, server));
     router.use(server.middlewares);
+
+    function bail(e) {
+        try {
+            server.close();
+        } catch (err) {
+            console.warn('unable to close vite server');
+        }
+
+        throw e;
+    }
+
+    return {
+        bail,
+        totalTime: process.hrtime(startTime),
+    };
 };
 
 module.exports.build = async function build({ options }) {
