@@ -22,8 +22,6 @@ module.exports.createViteServer = async function createViteServer(
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
-                '@storybook/addon-svelte-csf':
-                    '@storybook/addon-svelte-csf/dist/preset/index.js',
             },
         },
         plugins: pluginConfig(options, 'development'),
