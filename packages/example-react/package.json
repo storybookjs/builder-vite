@@ -7,14 +7,14 @@
     "scripts": {},
     "author": "",
     "license": "MIT",
-    "depencies": {
+    "dependencies": {
         "react": "16.14.0",
         "react-dom": "16.14.0"
     },
     "devDependencies": {
-        "@storybook/addon-a11y": "^6.3.0-beta.16",
-        "@storybook/addon-essentials": "^6.3.0-beta.16",
-        "@storybook/react": "^6.3.0-beta.16",
+        "@storybook/addon-a11y": "^6.3.0-rc.3",
+        "@storybook/addon-essentials": "^6.3.0-rc.3",
+        "@storybook/react": "^6.3.0-rc.3",
         "storybook-builder-vite": "0.0.7",
         "vite": "^2.3.2"
     }
