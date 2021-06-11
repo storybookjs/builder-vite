@@ -31,8 +31,12 @@ module.exports.optimizeDeps = {
         'react-dom',
         'ansi-to-html',
         'telejson',
+        '@storybook/addon-docs',
         '@storybook/csf',
         '@storybook/core/client',
+        '@storybook/client-api',
+        '@storybook/client-logger',
+        '@storybook/react',
         'regenerator-runtime/runtime.js',
         'memoizerific',
         'ts-dedent',
@@ -67,6 +71,7 @@ module.exports.optimizeDeps = {
         'color-convert',
         'warning',
         'axe-core',
+        'isobject',
     ].filter((m) => {
         try {
             require.resolve(m);
