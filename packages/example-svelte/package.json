@@ -4,7 +4,10 @@
     "version": "0.0.7",
     "description": "",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "storybook": "start-storybook",
+        "build-storybook": "build-storybook"
+    },
     "author": "",
     "license": "MIT",
     "devDependencies": {
