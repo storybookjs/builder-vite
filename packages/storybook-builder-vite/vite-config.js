@@ -1,5 +1,5 @@
 const mdx = require('vite-plugin-mdx').default;
-const storybookCompilerPlugin = require('@storybook/addon-docs/dist/cjs/mdx/mdx-compiler-plugin.js');
+const { createCompiler: storybookCompilerPlugin } = require('@storybook/csf-tools/mdx');
 const { mockCoreJs } = require('./mock-core-js');
 const { codeGeneratorPlugin } = require('./code-generator-plugin');
 
