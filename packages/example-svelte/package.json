@@ -7,7 +7,6 @@
     "scripts": {},
     "author": "",
     "license": "MIT",
-    "dependencies": {},
     "devDependencies": {
         "@storybook/addon-actions": "^6.3.0-rc.3",
         "@storybook/addon-essentials": "^6.3.0-rc.3",

@@ -11,11 +11,11 @@
         "vue": "^3.0.5"
     },
     "devDependencies": {
-        "@storybook/vue3": "^6.3.0-rc.3",
         "@storybook/addon-a11y": "^6.3.0-rc.3",
         "@storybook/addon-essentials": "^6.3.0-rc.3",
+        "@storybook/vue3": "^6.3.0-rc.3",
+        "@vitejs/plugin-vue": "^1.2.1",
         "storybook-builder-vite": "0.0.7",
-        "vite": "^2.3.2",
-        "@vitejs/plugin-vue": "^1.2.1"
+        "vite": "^2.3.2"
     }
 }

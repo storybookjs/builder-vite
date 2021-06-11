@@ -17,6 +17,12 @@ https://github.com/eirslett/storybook-builder-vite/issues/11
 npm install storybook-builder-vite --save-dev
 ```
 
+or
+
+```bash
+yarn add --dev storybook-builder-vite
+```
+
 ### Usage
 
 In your `main.js` configuration file,
@@ -34,12 +40,12 @@ module.exports = {
     async viteFinal(config, { configType }) {
         // customize the Vite config here
         config.resolve.alias.foo = 'bar';
-        
+
         // return the customized config
         return config;
     },
     // ... other options here
-}
+};
 ```
 
 The `viteFinal` function will give you `config` which is
@@ -67,6 +73,6 @@ Contributions are welcome!
 The code is a monorepo with the core `storybook-builder-vite` package,
 and examples (like `packages/example-react`) to test the builder implementation with.
 
-You need npm 7 or newer, because the project is organized as npm workspaces.
+Similar to the main storybook monorepo, you need yarn , because the project is organized as yarn workspaces.
 This lets you write new code in the core builder package, and instantly use them from
 the example packages.
