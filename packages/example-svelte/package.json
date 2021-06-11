@@ -1,7 +1,7 @@
 {
     "name": "example-svelte",
     "private": true,
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "",
     "main": "index.js",
     "scripts": {},
@@ -9,12 +9,12 @@
     "license": "MIT",
     "depencies": {},
     "devDependencies": {
-        "@storybook/addon-actions": "^6.3.0-alpha.14",
-        "@storybook/addon-essentials": "^6.3.0-alpha.14",
-        "@storybook/addon-links": "^6.3.0-alpha.14",
+        "@storybook/addon-actions": "^6.3.0-beta.16",
+        "@storybook/addon-essentials": "^6.3.0-beta.16",
+        "@storybook/addon-links": "^6.3.0-beta.16",
         "@storybook/addon-svelte-csf": "^1.0.0",
-        "@storybook/svelte": "^6.3.0-alpha.14",
-        "storybook-builder-vite": "0.0.6",
-        "vite": "^2.1.5"
+        "@storybook/svelte": "^6.3.0-beta.16",
+        "storybook-builder-vite": "0.0.7",
+        "vite": "^2.3.2"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "storybook-builder-vite",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "An experimental plugin to run and build Storybooks with Vite",
     "main": "index.js",
     "scripts": {},
@@ -14,12 +14,12 @@
     "homepage": "https://github.com/eirslett/storybook-builder-vite/#readme",
     "dependencies": {
         "@mdx-js/mdx": "^1.6.22",
-        "@storybook/addon-docs": "^6.3.0-alpha.14",
+        "@storybook/addon-docs": "^6.3.0-beta.16",
         "glob-promise": "^4.1.0",
         "vite-plugin-mdx": "^3.5.1"
     },
     "peerDependencies": {
-        "vite": "^2.1.5"
+        "vite": "^2.3.2"
     },
     "optionalDependencies": {
         "@sveltejs/vite-plugin-svelte": "^1.0.0-next.7",
