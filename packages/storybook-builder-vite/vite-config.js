@@ -16,7 +16,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         plugins.push(require('@vitejs/plugin-vue')());
     }
     if (framework === 'svelte') {
-        plugins.push(require('@sveltejs/vite-plugin-svelte')());
+        plugins.push(require('@sveltejs/vite-plugin-svelte').svelte());
         plugins.push(require('./svelte/csf-plugin'));
     }
 
