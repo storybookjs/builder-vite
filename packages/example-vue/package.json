@@ -18,7 +18,7 @@
         "@storybook/addon-essentials": "^6.3.0-rc.4",
         "@storybook/vue3": "^6.3.0-rc.4",
         "@vitejs/plugin-vue": "^1.2.1",
-        "storybook-builder-vite": "0.0.7",
+        "storybook-builder-vite": "0.0.8",
         "vite": "^2.3.2"
     }
 }
