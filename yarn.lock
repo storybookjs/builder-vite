@@ -6770,7 +6770,7 @@ __metadata:
     "@storybook/react": ^6.3.0-rc.4
     react: 16.14.0
     react-dom: 16.14.0
-    storybook-builder-vite: 0.0.8
+    storybook-builder-vite: 0.0.9
     vite: ^2.3.2
   languageName: unknown
   linkType: soft
@@ -6784,7 +6784,7 @@ __metadata:
     "@storybook/addon-links": ^6.3.0-rc.4
     "@storybook/addon-svelte-csf": ^1.0.0
     "@storybook/svelte": ^6.3.0-rc.4
-    storybook-builder-vite: 0.0.8
+    storybook-builder-vite: 0.0.9
     svelte: ^3.38.2
     vite: ^2.3.2
   languageName: unknown
@@ -6798,7 +6798,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.3.0-rc.4
     "@storybook/vue3": ^6.3.0-rc.4
     "@vitejs/plugin-vue": ^1.2.1
-    storybook-builder-vite: 0.0.8
+    storybook-builder-vite: 0.0.9
     vite: ^2.3.2
     vue: ^3.0.5
   languageName: unknown
@@ -12907,7 +12907,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"storybook-builder-vite@0.0.8, storybook-builder-vite@workspace:packages/storybook-builder-vite":
+"storybook-builder-vite@0.0.9, storybook-builder-vite@workspace:packages/storybook-builder-vite":
   version: 0.0.0-use.local
   resolution: "storybook-builder-vite@workspace:packages/storybook-builder-vite"
   dependencies:
