@@ -5,20 +5,10 @@ const { build: viteBuild } = require('vite');
 module.exports.build = async function build(options) {
     const config = {
         configFile: false,
-        // We create a kind of "custom" source root inside this project (yes, inside the node_modules folder)
-        // so that "iframe.html" resolves to a correct path. (Otherwise, Vite will fail.)
-        root: path.resolve(__dirname, 'input'),
+        root: path.resolve(options.configDir, '..'),
         build: {
             outDir: options.outputDir,
-            rollupOptions: {
-                input: {
-                    'iframe.html': path.resolve(
-                        __dirname,
-                        'input',
-                        'iframe.html'
-                    ),
-                },
-            },
+            emptyOutDir: false, // do not clean before running Vite build - Storybook has already added assets in there!
             sourcemap: true,
         },
         resolve: {

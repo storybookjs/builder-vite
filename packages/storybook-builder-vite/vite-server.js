@@ -8,16 +8,20 @@ module.exports.createViteServer = async function createViteServer(
     devServer
 ) {
     const { port, presets } = options;
+    const root = path.resolve(options.configDir, '..');
 
     const defaultConfig = {
         configFile: false,
-        root: path.resolve(__dirname, 'input'),
+        root,
         server: {
             middlewareMode: true,
             hmr: {
                 port,
                 server: devServer,
             },
+            fsServe: {
+                strict: true
+            }
         },
         resolve: {
             alias: {
