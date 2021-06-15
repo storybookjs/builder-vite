@@ -56,6 +56,12 @@ The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
 
 The function should return the updated Vite configuration.
 
+## Note about working directory
+
+The builder will by default enable Vite's [server.fsServe.strict](https://vitejs.dev/config/#server-fsserve-strict)
+option, for increased security. The default `server.fsServe.root` is set to the parent directory of the
+storybook configuration directory. This can be overridden by configuring fsServe in viteFinal.
+
 ### Getting started with React, Vite and Storybook (on a new project)
 
 ```
