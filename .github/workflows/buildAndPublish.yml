@@ -8,7 +8,6 @@ defaults:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,17 +16,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - name: npm / registry setup ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: https://registry.npmjs.org/
+
     - name: install, build, and test
       run: |
         yarn install
         yarn run build --if-present
       env:
         CI: true
+
     - name: Publish if version is new
       continue-on-error: true
       run: npm publish
