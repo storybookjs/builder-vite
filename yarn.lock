@@ -12972,6 +12972,7 @@ fsevents@^1.2.7:
     es-module-lexer: ^0.6.0
     glob-promise: ^4.1.0
     vite-plugin-mdx: ^3.5.1
+    vue-docgen-api: ^4.40.0
   peerDependencies:
     vite: ^2.3.2
   languageName: unknown
@@ -14186,7 +14187,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"vue-docgen-api@npm:^4.38.0":
+"vue-docgen-api@npm:^4.38.0, vue-docgen-api@npm:^4.40.0":
   version: 4.40.0
   resolution: "vue-docgen-api@npm:4.40.0"
   dependencies:

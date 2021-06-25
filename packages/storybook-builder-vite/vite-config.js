@@ -20,6 +20,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         try {
             const vuePlugin = require('@vitejs/plugin-vue');
             plugins.push(vuePlugin());
+            plugins.push(require('./plugins/vue-docgen')());
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
                 throw new Error(

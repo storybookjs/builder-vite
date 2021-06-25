@@ -14,6 +14,7 @@ module.exports.createViteServer = async function createViteServer(
         configFile: false,
         root,
         server: {
+            force: true,
             middlewareMode: true,
             hmr: {
                 port,

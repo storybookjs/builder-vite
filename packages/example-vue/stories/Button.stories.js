@@ -3,13 +3,13 @@ import MyButton from './Button.vue';
 export default {
     title: 'Example/Button',
     component: MyButton,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-        size: {
-            control: { type: 'select', options: ['small', 'medium', 'large'] },
-        },
-        onClick: {},
-    },
+    // argTypes: {
+    //     backgroundColor: { control: 'color' },
+    //     size: {
+    //         control: { type: 'select', options: ['small', 'medium', 'large'] },
+    //     },
+    //     onClick: {},
+    // },
 };
 
 const Template = (args) => ({
