@@ -12,23 +12,40 @@ export default {
     name: 'my-button',
 
     props: {
+
+        /**
+         * The label of the button
+         */
         label: {
             type: String,
             required: true,
         },
+
+        /**
+         * Whether the button is primary
+         */
         primary: {
             type: Boolean,
             default: false,
         },
+
+        /**
+         * The size of the button
+         */
         size: {
             type: String,
             validator: function (value) {
                 return ['small', 'medium', 'large'].indexOf(value) !== -1;
             },
         },
+
+        /**
+         * The background colour of the button
+         */
         backgroundColor: {
             type: String,
         },
+        
     },
 
     emits: ['click'],

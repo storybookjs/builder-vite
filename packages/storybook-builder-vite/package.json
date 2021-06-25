@@ -24,5 +24,8 @@
     },
     "peerDependencies": {
         "vite": "^2.3.2"
+    },
+    "devDependencies": {
+        "vue-docgen-api": "^4.40.0"
     }
 }
