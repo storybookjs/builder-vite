@@ -13,11 +13,36 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         }),
     ];
     if (framework === 'vue' || framework === 'vue3') {
-        plugins.push(require('@vitejs/plugin-vue')());
+        try {
+            const vuePlugin = require('@vitejs/plugin-vue')
+            plugins.push(vuePlugin());
+        } catch (err) {
+            if (err.code !== 'MODULE_NOT_FOUND') {
+                throw new Error('storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue or @storybook/vue3.  Please install it and start storybook again.');
+            }
+            throw err;
+        }
     }
     if (framework === 'svelte') {
-        plugins.push(require('@sveltejs/vite-plugin-svelte').svelte());
-        plugins.push(require('./svelte/csf-plugin'));
+        try {
+            const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte
+            plugins.push(sveltePlugin());
+        } catch (err) {
+            if (err.code !== 'MODULE_NOT_FOUND') {
+                throw new Error('storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/svelte.  Please install it and start storybook again.');
+            }
+            throw err;
+        }
+
+        try {
+            const csfPlugin = require('./svelte/csf-plugin');
+            plugins.push(csfPlugin);
+        } catch (err) {
+            if (err.code !== 'MODULE_NOT_FOUND') {
+                throw new Error('storybook-builder-vite requires @storybook/addon-svelte-csf to be installed when using @storybook/svelte.  Please install it and start storybook again.');
+            }
+            throw err;
+        }
     }
 
     if (type === 'development') {
