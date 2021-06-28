@@ -20,8 +20,8 @@ module.exports.createViteServer = async function createViteServer(
                 server: devServer,
             },
             fsServe: {
-                strict: true
-            }
+                strict: true,
+            },
         },
         resolve: {
             alias: {

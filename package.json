@@ -6,7 +6,8 @@
     "author": "",
     "license": "MIT",
     "scripts": {
-        "lint": "prettier --check ."
+        "lint": "prettier --check .",
+        "format": "prettier --write ."
     },
     "workspaces": [
         "packages/example-react",
