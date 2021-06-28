@@ -1,7 +1,7 @@
 {
     "name": "example-react",
     "private": true,
-    "version": "0.0.7",
+    "version": "0.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -19,7 +19,7 @@
         "@storybook/addon-docs": "^6.3.0-rc.4",
         "@storybook/addon-essentials": "^6.3.0-rc.4",
         "@storybook/react": "^6.3.0-rc.4",
-        "storybook-builder-vite": "0.0.9",
+        "storybook-builder-vite": "0.0.10",
         "vite": "^2.3.2"
     }
 }
