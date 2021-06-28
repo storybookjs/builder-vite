@@ -26,7 +26,7 @@ jobs:
     - name: install, build, and test
       run: |
         yarn install
-        yarn run build --if-present
+        yarn workspaces foreach -p run build-storybook
       env:
         CI: true
 
