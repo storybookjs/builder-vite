@@ -47,7 +47,10 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
 
     if (type === 'development') {
         if (framework === 'react') {
-            plugins.push(require('@vitejs/plugin-react-refresh')());
+            plugins.push(require('@vitejs/plugin-react-refresh')({
+                // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
+                exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+            }));
         }
     }
 
