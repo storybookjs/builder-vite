@@ -5,6 +5,7 @@ const { generateIframeScriptCode } = require('./codegen-iframe-script');
 
 module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
     const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
+    let iframeId
     return {
         name: 'storybook-vite-code-generator-plugin',
         enforce: 'pre',
@@ -26,29 +27,30 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
             // does not support virtual files as entry points.
             if (command === 'build') {
                 config.build.rollupOptions = {
-                    input: {
-                        'iframe.html': 'iframe.html'
-                    }
+                    input: 'iframe.html'
                 };
             }
+        },
+        configResolved(config) {
+          iframeId = `${config.root}/iframe.html`
         },
         resolveId(source) {
             if (source === virtualFileId) {
                 return virtualFileId;
             } else if (source === 'iframe.html') {
-                return 'iframe.html';
+                return iframeId;
             }
         },
         async load(id) {
             if (id === virtualFileId) {
                 return generateIframeScriptCode(options);
             }
-            if (id === 'iframe.html') {
+            if (id === iframeId) {
                 return fs.readFileSync(path.resolve(__dirname, 'input', 'iframe.html'), 'utf-8');
             }
         },
         async transformIndexHtml(html, ctx) {
-            if (!ctx.path.endsWith('/iframe.html')) {
+            if (ctx.path === '/iframe.html') {
                 return;
             }
             return transformIframeHtml(html, options);
