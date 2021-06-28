@@ -33,7 +33,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
 
       - name: Build examples
         run: yarn workspaces foreach -p run build-storybook
