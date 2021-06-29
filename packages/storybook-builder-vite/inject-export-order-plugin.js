@@ -1,8 +1,8 @@
 const { parse } = require('es-module-lexer');
 
-module.exports.namedExportOrderPlugin = function namedExportOrderPlugin(options) {
+module.exports.injectExportOrderPlugin = function injectExportOrderPlugin(options) {
   return {
-    name: 'storybook-vite-named-export-order-plugin',
+    name: 'storybook-vite-inject-export-order-plugin',
     // This should only run after the typescript has been transpiled
     enforce: 'post',
     async transform(code, id) {

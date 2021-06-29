@@ -4,7 +4,7 @@ const {
 } = require('@storybook/csf-tools/mdx');
 const { mockCoreJs } = require('./mock-core-js');
 const { codeGeneratorPlugin } = require('./code-generator-plugin');
-const { namedExportOrderPlugin } = require('./named-export-order-plugin');
+const { injectExportOrderPlugin } = require('./inject-export-order-plugin');
 
 module.exports.pluginConfig = function pluginConfig(options, type) {
     const { framework } = options;
@@ -14,7 +14,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         mdx({
             compilers: [storybookCompilerPlugin()],
         }),
-        namedExportOrderPlugin(options),
+        injectExportOrderPlugin(options),
     ];
     if (framework === 'vue' || framework === 'vue3') {
         try {
