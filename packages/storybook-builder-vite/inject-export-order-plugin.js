@@ -20,7 +20,7 @@ module.exports.injectExportOrderPlugin = function injectExportOrderPlugin(option
       const [, exports] = parse(code);
       if (exports.includes('__namedExportsOrder')) {
         // user has defined named exports already
-        return null;
+        return;
       }
 
       const orderedExports = exports.filter(e => e !== 'default');
