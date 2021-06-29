@@ -35,8 +35,7 @@ module.exports = {
 
             const namedExportsOrder = Object.entries(stories)
               .filter(([, def]) => !def.template)
-              .map(([id]) => id)
-              .join("', '");
+              .map(([id]) => id);
 
             const output = [
                 codeWithoutDefaultExport,
@@ -45,7 +44,7 @@ module.exports = {
                     all
                 )});`,
                 'export default __storiesMetaData.meta;',
-                `export const __namedExportsOrder = ['${namedExportsOrder}'];`,
+                `export const __namedExportsOrder = ${JSON.stringify(namedExportsOrder)};`,
                 storyDef,
             ].join('\n');
             return {

@@ -14,7 +14,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         mdx({
             compilers: [storybookCompilerPlugin()],
         }),
-        injectExportOrderPlugin(options),
+        injectExportOrderPlugin,
     ];
     if (framework === 'vue' || framework === 'vue3') {
         try {
