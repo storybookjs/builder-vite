@@ -20,7 +20,7 @@
         "@storybook/addon-svelte-csf": "^1.1.0",
         "@storybook/svelte": "^6.3.3",
         "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
-        "storybook-builder-vite": "0.0.11",
+        "storybook-builder-vite": "0.0.12",
         "vite": "^2.4.1"
     }
 }

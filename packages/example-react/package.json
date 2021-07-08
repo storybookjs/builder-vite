@@ -19,7 +19,7 @@
         "@storybook/addon-docs": "^6.3.3",
         "@storybook/addon-essentials": "^6.3.3",
         "@storybook/react": "^6.3.3",
-        "storybook-builder-vite": "0.0.11",
+        "storybook-builder-vite": "0.0.12",
         "vite": "^2.4.1"
     }
 }
