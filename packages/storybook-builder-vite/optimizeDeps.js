@@ -37,6 +37,7 @@ module.exports.optimizeDeps = {
         '@storybook/client-api',
         '@storybook/client-logger',
         '@storybook/react',
+        '@storybook/vue3',
         'regenerator-runtime/runtime.js',
         'memoizerific',
         'ts-dedent',
@@ -72,6 +73,7 @@ module.exports.optimizeDeps = {
         'warning',
         'axe-core',
         'isobject',
+        'vue'
     ].filter((m) => {
         try {
             require.resolve(m);
