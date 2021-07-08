@@ -53,7 +53,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
             }
         },
         async transformIndexHtml(html, ctx) {
-            if (ctx.path === '/iframe.html') {
+            if (ctx.path !== '/iframe.html') {
                 return;
             }
             return transformIframeHtml(html, options);
