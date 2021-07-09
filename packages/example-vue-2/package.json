@@ -1,5 +1,5 @@
 {
-    "name": "example-vue",
+    "name": "example-vue-2",
     "private": true,
     "version": "0.0.0",
     "description": "",
@@ -11,7 +11,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "vue": "^3.1.4"
+        "vue": "^2.6.14"
     },
     "installConfig": {
         "hoistingLimits": "workspaces"
@@ -19,9 +19,12 @@
     "devDependencies": {
         "@storybook/addon-a11y": "^6.3.3",
         "@storybook/addon-essentials": "^6.3.3",
-        "@storybook/vue3": "^6.3.3",
+        "@storybook/vue": "^6.3.3",
         "@vitejs/plugin-vue": "^1.2.4",
-        "storybook-builder-vite": "0.0.12",
-        "vite": "^2.4.1"
+        "storybook-builder-vite": "file:.yalc/storybook-builder-vite",
+        "vite": "^2.4.1",
+        "vite-plugin-vue2": "^1.7.2",
+        "vue-loader": "^15.9.7",
+        "vue-template-compiler": "^2.6.14"
     }
 }

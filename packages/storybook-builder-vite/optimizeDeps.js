@@ -55,6 +55,8 @@ module.exports.optimizeDeps = {
         'prettier/parser-babel',
         'prettier/parser-flow',
         'prettier/parser-typescript',
+        'prettier/standalone',
+        'prettier/parser-html',
         'loader-utils',
         'estraverse',
         'refractor/core',

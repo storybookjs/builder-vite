@@ -16,7 +16,21 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         }),
         injectExportOrderPlugin,
     ];
-    if (framework === 'vue' || framework === 'vue3') {
+    if (framework === 'vue') {
+        try {
+            const { createVuePlugin } = require('vite-plugin-vue2');
+            plugins.push(createVuePlugin());
+        } catch (err) {
+            console.log(err);
+            if (err.code !== 'MODULE_NOT_FOUND') {
+                throw new Error(
+                    'storybook-builder-vite requires vite-plugin-vue2 to be installed when using @storybook/vue.  Please install it and start storybook again.'
+                );
+            }
+            throw err;
+        }
+    }
+    if (framework === 'vue3') {
         try {
             const vuePlugin = require('@vitejs/plugin-vue');
             plugins.push(vuePlugin());
@@ -24,7 +38,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
                 throw new Error(
-                    'storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue or @storybook/vue3.  Please install it and start storybook again.'
+                    'storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue3.  Please install it and start storybook again.'
                 );
             }
             throw err;
