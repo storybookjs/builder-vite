@@ -2,10 +2,6 @@ node_modules
 storybook-static
 .idea
 
-# yalc stuff
-.yalc
-yalc.lock
-
 # Yarn stuff
 /**/.yarn/*
 !/**/.yarn/releases

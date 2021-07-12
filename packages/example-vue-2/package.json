@@ -13,14 +13,10 @@
     "dependencies": {
         "vue": "^2.6.14"
     },
-    "installConfig": {
-        "hoistingLimits": "workspaces"
-    },
     "devDependencies": {
         "@storybook/addon-a11y": "^6.3.3",
         "@storybook/addon-essentials": "^6.3.3",
         "@storybook/vue": "^6.3.3",
-        "@vitejs/plugin-vue": "^1.2.4",
         "storybook-builder-vite": "0.0.13",
         "vite": "^2.4.1",
         "vite-plugin-vue2": "^1.7.2",

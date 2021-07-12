@@ -13,9 +13,6 @@
     "dependencies": {
         "vue": "^3.1.4"
     },
-    "installConfig": {
-        "hoistingLimits": "workspaces"
-    },
     "devDependencies": {
         "@storybook/addon-a11y": "^6.3.3",
         "@storybook/addon-essentials": "^6.3.3",

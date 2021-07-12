@@ -8107,7 +8107,7 @@ __metadata:
     "@storybook/react": ^6.3.3
     react: 17.0.2
     react-dom: 17.0.2
-    storybook-builder-vite: 0.0.12
+    storybook-builder-vite: 0.0.13
     vite: ^2.4.1
   languageName: unknown
   linkType: soft
@@ -8122,7 +8122,7 @@ __metadata:
     "@storybook/addon-svelte-csf": ^1.1.0
     "@storybook/svelte": ^6.3.3
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.11
-    storybook-builder-vite: 0.0.12
+    storybook-builder-vite: 0.0.13
     svelte: ^3.38.3
     vite: ^2.4.1
   languageName: unknown
@@ -8135,8 +8135,7 @@ __metadata:
     "@storybook/addon-a11y": ^6.3.3
     "@storybook/addon-essentials": ^6.3.3
     "@storybook/vue": ^6.3.3
-    "@vitejs/plugin-vue": ^1.2.4
-    storybook-builder-vite: "file:.yalc/storybook-builder-vite"
+    storybook-builder-vite: 0.0.13
     vite: ^2.4.1
     vite-plugin-vue2: ^1.7.2
     vue: ^2.6.14
@@ -8153,7 +8152,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.3.3
     "@storybook/vue3": ^6.3.3
     "@vitejs/plugin-vue": ^1.2.4
-    storybook-builder-vite: 0.0.12
+    storybook-builder-vite: 0.0.13
     vite: ^2.4.1
     vue: ^3.1.4
   languageName: unknown
@@ -14394,39 +14393,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"storybook-builder-vite@file:.yalc/storybook-builder-vite::locator=example-vue-2%40workspace%3Apackages%2Fexample-vue-2":
-  version: 0.0.13+09db7746
-  resolution: "storybook-builder-vite@file:.yalc/storybook-builder-vite#.yalc/storybook-builder-vite::hash=8cd44f&locator=example-vue-2%40workspace%3Apackages%2Fexample-vue-2"
-  dependencies:
-    "@mdx-js/mdx": ^1.6.22
-    "@storybook/csf-tools": ^6.3.3
-    "@vitejs/plugin-react-refresh": ^1.3.5
-    es-module-lexer: ^0.7.1
-    glob-promise: ^4.2.0
-    vite-plugin-mdx: ^3.5.6
-  peerDependencies:
-    vite: ^2.4.1
-  checksum: 496d4e737754b6e5fc2908bb3c68c09a34b27c2e98fe7a450f466d4e664c588cf57b692b8d1b12ba2403f591f182cdc041f6c50c28a8a3480314484d61bb8d33
-  languageName: node
-  linkType: hard
-
-"storybook-builder-vite@npm:0.0.12":
-  version: 0.0.12
-  resolution: "storybook-builder-vite@npm:0.0.12"
-  dependencies:
-    "@mdx-js/mdx": ^1.6.22
-    "@storybook/csf-tools": ^6.3.3
-    "@vitejs/plugin-react-refresh": ^1.3.5
-    es-module-lexer: ^0.7.1
-    glob-promise: ^4.2.0
-    vite-plugin-mdx: ^3.5.6
-  peerDependencies:
-    vite: ^2.4.1
-  checksum: 69c8d49c96eacc706304329765fccf191c547a037a41d18b79920e7926ff258041a15f8bd5b65a5402789acbecd98435301c362bc43625448128e788897ee530
-  languageName: node
-  linkType: hard
-
-"storybook-builder-vite@workspace:packages/storybook-builder-vite":
+"storybook-builder-vite@0.0.13, storybook-builder-vite@workspace:packages/storybook-builder-vite":
   version: 0.0.0-use.local
   resolution: "storybook-builder-vite@workspace:packages/storybook-builder-vite"
   dependencies:

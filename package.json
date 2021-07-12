@@ -9,7 +9,6 @@
         "lint": "prettier --check .",
         "format": "prettier --write ."
     },
-    "nmHoistingLimits": "dependencies",
     "workspaces": [
         "packages/example-react",
         "packages/example-svelte",
