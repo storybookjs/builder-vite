@@ -17,7 +17,7 @@
         "@storybook/addon-a11y": "^6.3.3",
         "@storybook/addon-essentials": "^6.3.3",
         "@storybook/vue": "^6.3.3",
-        "storybook-builder-vite": "0.0.13",
+        "storybook-builder-vite": "0.0.12",
         "vite": "^2.4.1",
         "vite-plugin-vue2": "^1.7.2",
         "vue-loader": "^15.9.7",
