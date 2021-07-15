@@ -28,6 +28,9 @@ yarn add --dev storybook-builder-vite
 In your `main.js` configuration file,
 set `core: { builder: "storybook-builder-vite" }`.
 
+> For autoreload of stories to work, they need to have `.stories.tsx` file suffix.
+> See also [#53](https://github.com/eirslett/storybook-builder-vite/pull/53)
+
 ### Customize Vite config
 
 The builder will _not_ read your `vite.config.js` file by default.
