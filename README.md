@@ -59,6 +59,26 @@ The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
 
 The function should return the updated Vite configuration.
 
+### Svelte Customization
+
+When using this builder with Svelte, your `.storybook/main.js` (or equivalent)
+can contain a `svelteOptions` object to pass custom options to
+[`vite-plugin-svelte`](https://github.com/sveltejs/vite-plugin-svelte/tree/main/packages/vite-plugin-svelte):
+
+```javascript
+const preprocess = require('svelte-preprocess');
+
+module.exports = {
+    svelteOptions: {
+        preprocess: preprocess({
+            typescript: true,
+            postcss: true,
+            sourceMap: true
+        }),
+    },
+};
+````
+
 ## Note about working directory
 
 The builder will by default enable Vite's [server.fsServe.strict](https://vitejs.dev/config/#server-fsserve-strict)

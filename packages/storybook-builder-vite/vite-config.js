@@ -7,7 +7,7 @@ const { codeGeneratorPlugin } = require('./code-generator-plugin');
 const { injectExportOrderPlugin } = require('./inject-export-order-plugin');
 
 module.exports.pluginConfig = function pluginConfig(options, type) {
-    const { framework } = options;
+    const { framework, svelteOptions } = options;
     const plugins = [
         codeGeneratorPlugin(options),
         mockCoreJs(),
@@ -33,7 +33,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
     if (framework === 'svelte') {
         try {
             const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte;
-            plugins.push(sveltePlugin());
+            plugins.push(sveltePlugin(svelteOptions));
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
                 throw new Error(
