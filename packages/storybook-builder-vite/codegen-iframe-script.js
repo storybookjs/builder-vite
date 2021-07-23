@@ -59,7 +59,7 @@ module.exports.generateIframeScriptCode =
         .map((entry) => `// preview entry\nimport '${entry}';`)
         .join('\n')} */
 
-    import { addDecorator, addParameters, addLoader, addArgTypesEnhancer, addArgsEnhancer } from '@storybook/client-api';
+    import { addDecorator, addParameters, addLoader, addArgTypesEnhancer, addArgsEnhancer, setGlobalRender } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     ${absoluteFilesToImport(storyEntries, 'story')}
@@ -97,6 +97,8 @@ module.exports.generateIframeScriptCode =
           case 'decorateStory':
           case 'renderToDOM': {
             return null; // This key is not handled directly in v6 mode.
+          case 'render': {
+            return setGlobalRender(value);
           }
           default: {
             // eslint-disable-next-line prefer-template
