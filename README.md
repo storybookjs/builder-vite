@@ -1,5 +1,8 @@
 # Storybook builder for Vite
 
+Requirements:
+- Vite 2.4 or newer
+
 NB! This code is still very experimental! Have a look at the GitHub issues
 for known bugs. If you find any new bugs, feel free to create an issue
 or send a pull request!
@@ -30,6 +33,8 @@ set `core: { builder: "storybook-builder-vite" }`.
 
 > For autoreload of stories to work, they need to have `.stories.tsx` file suffix.
 > See also [#53](https://github.com/eirslett/storybook-builder-vite/pull/53)
+
+The builder supports both development mode in Storybook, and building a static production version.
 
 ### Customize Vite config
 
@@ -81,7 +86,7 @@ module.exports = {
 
 ## Note about working directory
 
-The builder will by default enable Vite's [server.fsServe.strict](https://vitejs.dev/config/#server-fsserve-strict)
+The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/config/#server-fs-strict)
 option, for increased security. The default project `root` is set to the parent directory of the
 storybook configuration directory. This can be overridden in viteFinal.
 
