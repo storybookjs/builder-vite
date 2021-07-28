@@ -6,7 +6,7 @@
 
 <script>
 import './button.css';
-import { reactive, computed } from 'vue';
+import { reactive, computed } from 'vue3';
 
 export default {
     name: 'my-button',

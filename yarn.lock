@@ -8107,7 +8107,7 @@ __metadata:
     "@storybook/react": ^6.3.3
     react: 17.0.2
     react-dom: 17.0.2
-    storybook-builder-vite: 0.0.13
+    storybook-builder-vite: 0.0.12
     vite: ^2.4.1
   languageName: unknown
   linkType: soft
@@ -8122,7 +8122,7 @@ __metadata:
     "@storybook/addon-svelte-csf": ^1.1.0
     "@storybook/svelte": ^6.3.3
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.11
-    storybook-builder-vite: 0.0.13
+    storybook-builder-vite: 0.0.12
     svelte: ^3.38.3
     vite: ^2.4.1
   languageName: unknown
@@ -8135,7 +8135,7 @@ __metadata:
     "@storybook/addon-a11y": ^6.3.3
     "@storybook/addon-essentials": ^6.3.3
     "@storybook/vue": ^6.3.3
-    storybook-builder-vite: 0.0.13
+    storybook-builder-vite: 0.0.12
     vite: ^2.4.1
     vite-plugin-vue2: ^1.7.2
     vue: ^2.6.14
@@ -8152,9 +8152,9 @@ __metadata:
     "@storybook/addon-essentials": ^6.3.3
     "@storybook/vue3": ^6.3.3
     "@vitejs/plugin-vue": ^1.2.4
-    storybook-builder-vite: 0.0.13
+    storybook-builder-vite: 0.0.12
     vite: ^2.4.1
-    vue: ^3.1.4
+    vue3: "npm:vue@3.1.4"
   languageName: unknown
   linkType: soft
 
@@ -14393,7 +14393,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"storybook-builder-vite@0.0.13, storybook-builder-vite@workspace:packages/storybook-builder-vite":
+"storybook-builder-vite@0.0.12, storybook-builder-vite@workspace:packages/storybook-builder-vite":
   version: 0.0.0-use.local
   resolution: "storybook-builder-vite@workspace:packages/storybook-builder-vite"
   dependencies:
@@ -15778,14 +15778,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"vue@npm:^2.6.14":
-  version: 2.6.14
-  resolution: "vue@npm:2.6.14"
-  checksum: 542787dc830efc5cb8285a8046bba5a81e6f952e70e4e1a308cc8d51c68f152fd02da5edbd47b6a14908437d76fdee048aa3f64341d4777fb37ce231e2d845df
-  languageName: node
-  linkType: hard
-
-"vue@npm:^3.1.4":
+"vue3@npm:vue@3.1.4":
   version: 3.1.4
   resolution: "vue@npm:3.1.4"
   dependencies:
@@ -15793,6 +15786,13 @@ fsevents@^1.2.7:
     "@vue/runtime-dom": 3.1.4
     "@vue/shared": 3.1.4
   checksum: 5b256d788c12cbd74ba3ca7a83456696cbacc2b7ef02e54a9f587c7bf5c42d7892e8d896aac96554056263c87f21e956a9636696bbd0843b05a92bc040fe3ffa
+  languageName: node
+  linkType: hard
+
+"vue@npm:^2.6.14":
+  version: 2.6.14
+  resolution: "vue@npm:2.6.14"
+  checksum: 542787dc830efc5cb8285a8046bba5a81e6f952e70e4e1a308cc8d51c68f152fd02da5edbd47b6a14908437d76fdee048aa3f64341d4777fb37ce231e2d845df
   languageName: node
   linkType: hard
 

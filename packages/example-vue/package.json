@@ -11,7 +11,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "vue": "^3.1.4"
+        "vue3": "npm:vue@3.1.4"
     },
     "devDependencies": {
         "@storybook/addon-a11y": "^6.3.3",
