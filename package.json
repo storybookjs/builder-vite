@@ -9,12 +9,6 @@
         "lint": "prettier --check .",
         "format": "prettier --write ."
     },
-    "workspaces": [
-        "packages/example-react",
-        "packages/example-svelte",
-        "packages/example-vue",
-        "packages/storybook-builder-vite"
-    ],
     "prettier": {
         "singleQuote": true
     },
