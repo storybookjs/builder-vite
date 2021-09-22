@@ -66,6 +66,7 @@ module.exports.optimizeDeps = {
         'refractor/lang/typescript.js',
         'refractor/lang/yaml.js',
         'regenerator-runtime/runtime.js',
+        'slash',
         'stable',
         'store2',
         'telejson',
