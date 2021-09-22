@@ -38,6 +38,7 @@ module.exports.optimizeDeps = {
         'lodash/mapValues',
         'lodash/pick',
         'lodash/pickBy',
+        'lodash/startCase',
         'lodash/throttle',
         'lodash/uniq',
         'markdown-to-jsx',
