@@ -12,7 +12,6 @@ export default {
     name: 'my-button',
 
     props: {
-
         /**
          * The label of the button
          */
@@ -45,7 +44,6 @@ export default {
         backgroundColor: {
             type: String,
         },
-        
     },
 
     emits: ['click'],

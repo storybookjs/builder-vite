@@ -1,8 +1,6 @@
-const {
-    parse
-} = require('vue-docgen-api');
+const { parse } = require('vue-docgen-api');
 
-module.exports = function() {
+module.exports = function () {
     return {
         name: 'vue-docgen',
 
@@ -13,6 +11,6 @@ module.exports = function() {
 
                 return `${src};_sfc_main.__docgenInfo = ${metaSource}`;
             }
-        }
+        },
     };
-}
+};

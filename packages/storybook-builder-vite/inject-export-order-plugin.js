@@ -15,8 +15,10 @@ module.exports.injectExportOrderPlugin = {
             return;
         }
 
-        const orderedExports = exports.filter(e => e !== 'default');
+        const orderedExports = exports.filter((e) => e !== 'default');
 
-        return `${code};\nexport const __namedExportsOrder = ${JSON.stringify(orderedExports)};`;
+        return `${code};\nexport const __namedExportsOrder = ${JSON.stringify(
+            orderedExports
+        )};`;
     },
 };
