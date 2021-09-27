@@ -37,7 +37,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
                 throw new Error(
-                    'storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/svelte.  Please install it and start storybook again.'
+                    'storybook-builder-vite requires @sveltejs/vite-plugin-svelte to be installed when using @storybook/svelte.  Please install it and start storybook again.'
                 );
             }
             throw err;
@@ -56,15 +56,13 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         }
     }
 
-    if (type === 'development') {
-        if (framework === 'react') {
-            plugins.push(
-                require('@vitejs/plugin-react-refresh')({
-                    // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-                    exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
-                })
-            );
-        }
+    if (framework === 'react') {
+        plugins.push(
+            require('@vitejs/plugin-react')({
+                // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
+                exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+            })
+        );
     }
 
     return plugins;

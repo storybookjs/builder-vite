@@ -1,7 +1,7 @@
 # Storybook builder for Vite
 
 Requirements:
-- Vite 2.4 or newer
+- Vite 2.5 or newer
 
 NB! This code is still very experimental! Have a look at the GitHub issues
 for known bugs. If you find any new bugs, feel free to create an issue
