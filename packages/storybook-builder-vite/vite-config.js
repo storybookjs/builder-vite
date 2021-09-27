@@ -37,7 +37,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
                 throw new Error(
-                    'storybook-builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/svelte.  Please install it and start storybook again.'
+                    'storybook-builder-vite requires @sveltejs/vite-plugin-svelte to be installed when using @storybook/svelte.  Please install it and start storybook again.'
                 );
             }
             throw err;
