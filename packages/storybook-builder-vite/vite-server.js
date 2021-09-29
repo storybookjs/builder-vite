@@ -1,4 +1,5 @@
 const path = require('path');
+const {stringifyProcessEnvs} = require('./envs');
 const { optimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { pluginConfig } = require('./vite-config');
@@ -9,6 +10,8 @@ module.exports.createViteServer = async function createViteServer(
 ) {
     const { port, presets } = options;
     const root = path.resolve(options.configDir, '..');
+    const envsRaw = await presets.apply('env');
+    const envs = stringifyProcessEnvs(envsRaw);
 
     const defaultConfig = {
         configFile: false,
@@ -24,6 +27,7 @@ module.exports.createViteServer = async function createViteServer(
                 strict: true,
             },
         },
+        define: envs,
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
@@ -40,3 +44,6 @@ module.exports.createViteServer = async function createViteServer(
     );
     return createServer(finalConfig);
 };
+
+
+

@@ -1,8 +1,13 @@
 const path = require('path');
+const { stringifyProcessEnvs } = require('./envs');
 const { pluginConfig } = require('./vite-config');
 const { build: viteBuild } = require('vite');
 
 module.exports.build = async function build(options) {
+    const { presets } = options;
+    const envsRaw = await presets.apply('env');
+    const envs = stringifyProcessEnvs(envsRaw);
+
     const config = {
         configFile: false,
         root: path.resolve(options.configDir, '..'),
@@ -11,6 +16,7 @@ module.exports.build = async function build(options) {
             emptyOutDir: false, // do not clean before running Vite build - Storybook has already added assets in there!
             sourcemap: true,
         },
+        define: envs,
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
@@ -19,7 +25,7 @@ module.exports.build = async function build(options) {
         plugins: pluginConfig(options, 'build'),
     };
 
-    const finalConfig = await options.presets.apply(
+    const finalConfig = await presets.apply(
         'viteFinal',
         config,
         options
