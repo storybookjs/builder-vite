@@ -5,9 +5,9 @@
 
 
 <div>
-  <h1>import.meta.env:</h1>
+  <h1>impor . meta . env:</h1>
   <div>{env}</div>
-  <h1>import.meta.env.STORYBOOK:</h1>
+  <h1>import . meta . env . STORYBOOK:</h1>
   <div>{storybook}</div>
 </div>
 
