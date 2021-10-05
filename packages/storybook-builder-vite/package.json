@@ -17,6 +17,7 @@
         "@storybook/csf-tools": "^6.3.3",
         "@vitejs/plugin-react": "^1.0.1",
         "es-module-lexer": "^0.7.1",
+        "glob": "^7.2.0",
         "glob-promise": "^4.2.0",
         "vite-plugin-mdx": "^3.5.6"
     },
