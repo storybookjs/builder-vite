@@ -13107,7 +13107,7 @@ fsevents@^1.2.7:
     vite-plugin-mdx: ^3.5.6
     vue-docgen-api: ^4.40.0
   peerDependencies:
-    vite: 2.5.10
+    vite: ">=2.5.0"
   languageName: unknown
   linkType: soft
 
