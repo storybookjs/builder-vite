@@ -4,7 +4,7 @@ const { pluginConfig } = require('./vite-config');
 const { build: viteBuild } = require('vite');
 
 module.exports.build = async function build(options) {
-    const { presets } = options;
+    const { presets, framework } = options;
     const envsRaw = await presets.apply('env');
     const envs = stringifyProcessEnvs(envsRaw);
 
@@ -19,7 +19,7 @@ module.exports.build = async function build(options) {
         define: envs,
         resolve: {
             alias: {
-                vue: 'vue/dist/vue.esm-bundler.js',
+                vue: framework === 'vue' ? 'vue/dist/vue.esm.js' : 'vue/dist/vue.esm-bundler.js',
             },
         },
         plugins: pluginConfig(options, 'build'),

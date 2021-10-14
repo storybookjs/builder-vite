@@ -8,7 +8,7 @@ module.exports.createViteServer = async function createViteServer(
     options,
     devServer
 ) {
-    const { port, presets } = options;
+    const { port, presets, framework } = options;
     const root = path.resolve(options.configDir, '..');
     const envsRaw = await presets.apply('env');
     const envs = stringifyProcessEnvs(envsRaw);
@@ -30,7 +30,7 @@ module.exports.createViteServer = async function createViteServer(
         define: envs,
         resolve: {
             alias: {
-                vue: 'vue/dist/vue.esm-bundler.js',
+                vue: framework === 'vue' ? 'vue/dist/vue.esm.js' : 'vue/dist/vue.esm-bundler.js',
             },
         },
         plugins: pluginConfig(options, 'development'),
