@@ -21,7 +21,7 @@
         "@storybook/addons": "^6.3.6",
         "@storybook/vue": "^6.3.6",
         "@vitejs/plugin-vue": "^1.2.4",
-        "storybook-builder-vite": "https://gitpkg.now.sh/Vnthf/storybook-builder-vite/packages/storybook-builder-vite?main",
+        "storybook-builder-vite": "0.1.1",
         "vite": "^2.4.1",
         "vite-plugin-vue2": "^1.8.2",
         "vue-loader": "^15.9.8",
