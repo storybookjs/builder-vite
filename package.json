@@ -12,7 +12,8 @@
     "workspaces": [
         "packages/example-react",
         "packages/example-svelte",
-        "packages/example-vue",
+        "packages/example-vue-3",
+        "packages/example-vue-2",
         "packages/storybook-builder-vite"
     ],
     "prettier": {

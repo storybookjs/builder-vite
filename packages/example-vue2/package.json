@@ -1,0 +1,30 @@
+{
+    "name": "example-vue",
+    "private": true,
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "storybook": "start-storybook",
+        "build-storybook": "build-storybook"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "vue": "^2.6.14"
+    },
+    "devDependencies": {
+        "@storybook/addon-a11y": "^6.3.3",
+        "@storybook/addon-essentials": "^6.3.6",
+        "@storybook/addon-links": "^6.3.6",
+        "@storybook/addon-postcss": "^2.0.0",
+        "@storybook/addons": "^6.3.6",
+        "@storybook/vue": "^6.3.6",
+        "@vitejs/plugin-vue": "^1.2.4",
+        "storybook-builder-vite": "https://gitpkg.now.sh/Vnthf/storybook-builder-vite/packages/storybook-builder-vite?main",
+        "vite": "^2.4.1",
+        "vite-plugin-vue2": "^1.8.2",
+        "vue-loader": "^15.9.8",
+        "vue-template-compiler": "^2.6.14"
+    }
+}
