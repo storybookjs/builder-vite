@@ -6614,10 +6614,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-module-lexer@npm:^0.7.1":
-  version: 0.7.1
-  resolution: "es-module-lexer@npm:0.7.1"
-  checksum: 3bc1416512f44343c88bbfb7d1685c11a3cb9aca6090a552b04e9bd802d778ae66aa076f2d4cd5f707061d3264ac3ff2b6a45a55f0f139a966190e57ab497571
+"es-module-lexer@npm:^0.9.3":
+  version: 0.9.3
+  resolution: "es-module-lexer@npm:0.9.3"
+  checksum: e55280100e7bdd4652b14c70b6e4472cf60a841987e04af7df6bd1ce4ed4be58adca7b786096627b4b31a04c0cd0d9a0299ea4bd0100f62282ac7b06a2074af6
   languageName: node
   linkType: hard
 
@@ -13101,13 +13101,13 @@ fsevents@^1.2.7:
     "@mdx-js/mdx": ^1.6.22
     "@storybook/csf-tools": ^6.3.3
     "@vitejs/plugin-react": ^1.0.1
-    es-module-lexer: ^0.7.1
+    es-module-lexer: ^0.9.3
     glob: ^7.2.0
     glob-promise: ^4.2.0
     vite-plugin-mdx: ^3.5.6
     vue-docgen-api: ^4.40.0
   peerDependencies:
-    vite: ">=2.5.0"
+    vite: ">=2.6.7"
   languageName: unknown
   linkType: soft
 
