@@ -2,6 +2,7 @@
 // if we served it directly to the browser.
 module.exports.optimizeDeps = {
     include: [
+        '@base2/pretty-print-object',
         '@emotion/core',
         '@emotion/is-prop-valid',
         '@emotion/styled',
@@ -52,6 +53,7 @@ module.exports.optimizeDeps = {
         'qs',
         'react-dom',
         'react-fast-compare',
+        'react-is',
         'react-textarea-autosize',
         'react',
         'refractor/core',
