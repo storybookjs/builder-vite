@@ -1,4 +1,5 @@
 module.exports = {
+    framework: '@storybook/vue3',
     stories: [
         '../stories/**/*.stories.mdx',
         '../stories/**/*.stories.@(js|jsx|ts|tsx)',

@@ -1,4 +1,5 @@
 module.exports = {
+    framework: "@storybook/react",
     stories: [
         '../stories/**/*.stories.mdx',
         '../stories/**/*.stories.@(js|jsx|ts|tsx)',
