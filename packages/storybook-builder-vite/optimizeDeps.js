@@ -72,6 +72,7 @@ module.exports.optimizeDeps = {
         'slash',
         'stable',
         'store2',
+        'synchronous-promise',
         'telejson',
         'ts-dedent',
         'util-deprecate',
