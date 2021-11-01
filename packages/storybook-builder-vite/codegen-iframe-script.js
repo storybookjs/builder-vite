@@ -22,9 +22,12 @@ module.exports.generateIframeScriptCode =
         // is loaded. That way our client-apis can assume the existence of the API+store
         const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
 
-        const configEntries = [loadPreviewOrConfigFile({ configDir })]
-            .concat(await presets.apply('config', [], options))
-            .filter(Boolean);
+        const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
+        const presetEntries = await presets.apply('config', [], options);
+        const configEntries = [previewOrConfigFile, ...presetEntries].filter(
+            Boolean
+        );
+
         const storyEntries = (
             await Promise.all(
                 (
