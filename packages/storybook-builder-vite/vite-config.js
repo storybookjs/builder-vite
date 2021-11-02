@@ -64,6 +64,11 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
             })
         );
     }
+    
+    if (framework === 'glimmerx') {
+        const plugin = require('vite-plugin-glimmerx/index.cjs');
+        plugins.push(plugin.default());
+    }
 
     return plugins;
 };
