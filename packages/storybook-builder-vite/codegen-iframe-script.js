@@ -24,7 +24,7 @@ module.exports.generateIframeScriptCode =
 
         const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
         const presetEntries = await presets.apply('config', [], options);
-        const configEntries = [previewOrConfigFile, ...presetEntries].filter(
+        const configEntries = [...presetEntries, previewOrConfigFile].filter(
             Boolean
         );
 
