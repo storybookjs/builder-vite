@@ -5,6 +5,7 @@ const {
 const { mockCoreJs } = require('./mock-core-js');
 const { codeGeneratorPlugin } = require('./code-generator-plugin');
 const { injectExportOrderPlugin } = require('./inject-export-order-plugin');
+const { sourceLoaderPlugin } = require('./source-loader-plugin');
 
 module.exports.pluginConfig = function pluginConfig(options, type) {
     const { framework, svelteOptions } = options;
@@ -14,6 +15,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
         mdx({
             compilers: [storybookCompilerPlugin()],
         }),
+        sourceLoaderPlugin(),
         injectExportOrderPlugin,
     ];
     if (framework === 'vue' || framework === 'vue3') {

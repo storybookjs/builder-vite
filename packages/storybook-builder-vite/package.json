@@ -15,6 +15,7 @@
     "dependencies": {
         "@mdx-js/mdx": "^1.6.22",
         "@storybook/csf-tools": "^6.3.3",
+        "@storybook/source-loader": "^6.3.12",
         "@vitejs/plugin-react": "^1.0.1",
         "es-module-lexer": "^0.9.3",
         "glob": "^7.2.0",
