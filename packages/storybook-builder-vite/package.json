@@ -1,6 +1,6 @@
 {
     "name": "storybook-builder-vite",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "An experimental plugin to run and build Storybooks with Vite",
     "main": "index.js",
     "scripts": {},
