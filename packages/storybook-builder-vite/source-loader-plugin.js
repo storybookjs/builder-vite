@@ -17,7 +17,10 @@ module.exports.sourceLoaderPlugin = function () {
                     var __LOCATIONS_MAP__ = ${JSON.stringify(addsMap)};
                 `;
 
-                return `${preamble}\n${source}`;
+                return {
+                    code: `${preamble}\n${source}`,
+                    map: { mappings: '' },
+                };
             }
         },
     };
