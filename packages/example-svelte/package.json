@@ -14,11 +14,11 @@
         "svelte": "^3.38.3"
     },
     "devDependencies": {
-        "@storybook/addon-actions": "^6.4.0-beta.19",
-        "@storybook/addon-essentials": "^6.4.0-beta.19",
-        "@storybook/addon-links": "^6.4.0-beta.19",
+        "@storybook/addon-actions": "^v6.4.0-rc.0",
+        "@storybook/addon-essentials": "^v6.4.0-rc.0",
+        "@storybook/addon-links": "^v6.4.0-rc.0",
         "@storybook/addon-svelte-csf": "^1.1.0",
-        "@storybook/svelte": "^6.4.0-beta.19",
+        "@storybook/svelte": "^v6.4.0-rc.0",
         "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
         "storybook-builder-vite": "workspace:*",
         "vite": "^2.4.1"
