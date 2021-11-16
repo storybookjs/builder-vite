@@ -2,9 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const { transformIframeHtml } = require('./transform-iframe-html');
 const { generateIframeScriptCode } = require('./codegen-iframe-script');
+const { generateModernIframeScriptCode } = require('./codegen-modern-iframe-script');
+const { generateImportFnScriptCode } = require('./codegen-importfn-script');
 
 module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
     const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
+    const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
     let iframeId;
     return {
         name: 'storybook-vite-code-generator-plugin',
@@ -14,9 +17,13 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
             // (this might be a little too aggressive?)
             server.watcher.on('change', (e) => {
                 const { moduleGraph } = server;
-                const module = moduleGraph.getModuleById(virtualFileId);
-                if (module) {
-                    server.moduleGraph.invalidateModule(module);
+                const appModule = moduleGraph.getModuleById(virtualFileId);
+                if (appModule) {
+                    server.moduleGraph.invalidateModule(appModule);
+                }
+                const storiesModule = moduleGraph.getModuleById(virtualStoriesFile);
+                if(storiesModule) {
+                    server.moduleGraph.invalidateModule(storiesModule);
                 }
             });
         },
@@ -39,12 +46,25 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
                 return virtualFileId;
             } else if (source === 'iframe.html') {
                 return iframeId;
+            } else if (source === virtualStoriesFile) {
+                return virtualStoriesFile;
             }
         },
         async load(id) {
-            if (id === virtualFileId) {
-                return generateIframeScriptCode(options);
+            if (id === virtualStoriesFile) {
+                return generateImportFnScriptCode(options);
             }
+
+            if (id === virtualFileId) {
+                if (options.features && options.features.storyStoreV7) {
+                    return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
+                } else {
+                    return generateIframeScriptCode(options);
+                }
+            }
+
+
+
             if (id === iframeId) {
                 return fs.readFileSync(
                     path.resolve(__dirname, 'input', 'iframe.html'),

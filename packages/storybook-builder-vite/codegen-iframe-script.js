@@ -13,7 +13,6 @@ function replaceCJStoESMPath(entryPath) {
 module.exports.generateIframeScriptCode =
     async function generateIframeScriptCode(options) {
         const { presets, configDir, framework, frameworkPath } = options;
-
         const previewEntries = (
             await presets.apply('previewEntries', [], options)
         ).map(replaceCJStoESMPath);
@@ -94,6 +93,10 @@ module.exports.generateIframeScriptCode =
             const v = {};
             v[key] = value;
             return addParameters(v, false);
+          }
+          case 'decorateStory':
+          case 'renderToDOM': {
+            return null; // This key is not handled directly in v6 mode.
           }
           default: {
             // eslint-disable-next-line prefer-template
