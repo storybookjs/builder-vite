@@ -3942,9 +3942,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@vitejs/plugin-react@npm:1.0.1"
+"@vitejs/plugin-react@npm:^1.0.8":
+  version: 1.0.9
+  resolution: "@vitejs/plugin-react@npm:1.0.9"
   dependencies:
     "@babel/core": ^7.15.5
     "@babel/plugin-transform-react-jsx": ^7.14.9
@@ -3954,7 +3954,7 @@ __metadata:
     "@rollup/pluginutils": ^4.1.1
     react-refresh: ^0.10.0
     resolve: ^1.20.0
-  checksum: 9cd89c2d949025b4f99f3558923c8b1e4f2b86628dae24eaa69b78bbeffc36ea308323fcbff1ed5365cbff808ff557ef29cf30b4e4d5db94ea3870e867392434
+  checksum: 659ae1477b32a68bc5a2c045f9b9a2f769c7145307856e818ad5e22629745e46289307139d7b6137e90f695da0a1459ec4a65130966da0225e2e137f2dd90361
   languageName: node
   linkType: hard
 
@@ -13429,7 +13429,7 @@ fsevents@^1.2.7:
     "@mdx-js/mdx": ^1.6.22
     "@storybook/csf-tools": ^6.3.3
     "@storybook/source-loader": ^6.3.12
-    "@vitejs/plugin-react": ^1.0.1
+    "@vitejs/plugin-react": ^1.0.8
     es-module-lexer: ^0.9.3
     glob: ^7.2.0
     glob-promise: ^4.2.0
