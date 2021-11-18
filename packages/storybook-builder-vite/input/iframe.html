@@ -5,9 +5,12 @@
         <title><!-- [TITLE HERE] --></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script>
+            window.CONFIG_TYPE = '[CONFIG_TYPE HERE]';
             window.LOGLEVEL = '[LOGLEVEL HERE]';
             window.FRAMEWORK_OPTIONS = '[FRAMEWORK_OPTIONS HERE]';
+            window.CHANNEL_OPTIONS = '[CHANNEL_OPTIONS HERE]'
             window.FEATURES = '[FEATURES HERE]';
+            window.SERVER_CHANNEL_URL = '[SERVER_CHANNEL_URL HERE]'
 
             // We do this so that "module && module.hot" etc. in Storybook source code
             // doesn't fail (it will simply be disabled)
@@ -29,6 +32,10 @@
         <script
             type="module"
             src="/virtual:/@storybook/builder-vite/vite-app.js"
+        ></script>
+        <script
+            type="module"
+            src="/virtual:/@storybook/builder-vite/storybook-stories.js"
         ></script>
     </body>
 </html>
