@@ -16,7 +16,13 @@ const { normalizePath } = require('vite');
  */
 async function toImportFn(stories) {
     const objectEntries = stories
-        .map(file => `  './${normalizePath(path.relative(process.cwd(),file))}': async () => import('/@fs/${file}')`);
+        .map(file => {
+            const np = normalizePath(path.relative(process.cwd(), file));
+            // This uses the same logic as https://github.com/storybookjs/storybook/blob/056ef92e816596e077013fc261d2d1b5ff284571/lib/core-server/src/utils/StoryIndexGenerator.ts#L105,
+            // If that changes, this will need to be adjusted
+            const normalizedPath = np[0] === '.' ? np : `./${np}`;
+            return `  '${normalizedPath}': async () => import('/@fs/${file}')`
+        });
     return `
     const importers = {
       ${objectEntries.join(',\n')}
