@@ -1,24 +1,18 @@
-const inject =
-    require('@storybook/source-loader/dist/cjs/abstract-syntax-tree/inject-decorator').default;
+const sourceLoaderTransform =
+    require('@storybook/source-loader').default;
 
 module.exports.sourceLoaderPlugin = function () {
     return {
         name: 'storybook-vite-source-loader-plugin',
         enforce: 'pre',
-        transform(src, id) {
+        async transform(src, id) {
             if (id.match(/\.stories\.[jt]sx?$/)) {
-                const { source, sourceJson, addsMap } = inject(src, id);
-                const preamble = `
-                    /* eslint-disable */
-                    // @ts-nocheck
-                    // @ts-ignore
-                    var __STORY__ = ${sourceJson};
-                    // @ts-ignore
-                    var __LOCATIONS_MAP__ = ${JSON.stringify(addsMap)};
-                `;
+                // We need to mock 'this' when calling transform from @storybook/source-loader
+                const mockClassLoader = { emitWarning: (message) => console.warn(message), resourcePath: id };
+                const code = await sourceLoaderTransform.call(mockClassLoader, src);
 
                 return {
-                    code: `${preamble}\n${source}`,
+                    code,
                     map: { mappings: '' },
                 };
             }
