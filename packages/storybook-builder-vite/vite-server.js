@@ -4,30 +4,6 @@ const { optimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { pluginConfig } = require('./vite-config');
 
-const storybookPaths = [
-    'addons',
-    'api',
-    'channels',
-    'channel-postmessage',
-    'components',
-    'core-events',
-    'router',
-    'theming',
-    'semver',
-    'client-api',
-    'client-logger',
-    'preview-web',
-    'store',
-].reduce(
-    (acc, sbPackage) => ({
-        ...acc,
-        [`@storybook/${sbPackage}`]: path.dirname(
-            require.resolve(`@storybook/${sbPackage}/package.json`)
-        ),
-    }),
-    {}
-);
-
 module.exports.createViteServer = async function createViteServer(
     options,
     devServer
@@ -55,7 +31,6 @@ module.exports.createViteServer = async function createViteServer(
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
-                ...storybookPaths
             },
         },
         plugins: pluginConfig(options, 'development'),
