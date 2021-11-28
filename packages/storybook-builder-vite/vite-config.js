@@ -58,10 +58,18 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
             require('@vitejs/plugin-react')({
                 // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
                 exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+                babel: {
+                    plugins: [[
+                        require.resolve('babel-plugin-react-docgen'),
+                        {
+                            DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES',
+                        },
+                    ]]
+                }
             })
         );
     }
-    
+
     if (framework === 'glimmerx') {
         const plugin = require('vite-plugin-glimmerx/index.cjs');
         plugins.push(plugin.default());

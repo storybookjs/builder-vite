@@ -17,6 +17,7 @@
         "@storybook/csf-tools": "^6.3.3",
         "@storybook/source-loader": "^6.3.12",
         "@vitejs/plugin-react": "^1.0.8",
+        "babel-plugin-react-docgen": "^4.2.1",
         "es-module-lexer": "^0.9.3",
         "glob": "^7.2.0",
         "glob-promise": "^4.2.0",
