@@ -19,6 +19,6 @@
         "@storybook/vue3": "^6.4.0",
         "@vitejs/plugin-vue": "^1.2.4",
         "storybook-builder-vite": "workspace:*",
-        "vite": "^2.4.1"
+        "vite": "2.7.0-beta.4"
     }
 }
