@@ -13,6 +13,7 @@
         "packages/example-react",
         "packages/example-svelte",
         "packages/example-vue",
+        "packages/example-workspaces",
         "packages/storybook-builder-vite"
     ],
     "prettier": {

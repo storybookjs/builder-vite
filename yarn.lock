@@ -7428,6 +7428,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"example-workspaces-catalog@workspace:packages/example-workspaces/packages/catalog":
+  version: 0.0.0-use.local
+  resolution: "example-workspaces-catalog@workspace:packages/example-workspaces/packages/catalog"
+  dependencies:
+    "@storybook/addon-a11y": ^6.4.0
+    "@storybook/addon-docs": ^6.4.0
+    "@storybook/addon-essentials": ^6.4.0
+    "@storybook/react": ^6.4.0
+    react: 17.0.2
+    react-dom: 17.0.2
+    storybook-builder-vite: "workspace:*"
+    vite: ^2.4.1
+  languageName: unknown
+  linkType: soft
+
+"example-workspaces@workspace:packages/example-workspaces":
+  version: 0.0.0-use.local
+  resolution: "example-workspaces@workspace:packages/example-workspaces"
+  languageName: unknown
+  linkType: soft
+
 "exec-sh@npm:^0.3.2":
   version: 0.3.6
   resolution: "exec-sh@npm:0.3.6"
