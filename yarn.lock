@@ -7394,7 +7394,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     storybook-builder-vite: "workspace:*"
-    vite: 2.7.0-beta.4
+    vite: 2.7.0
   languageName: unknown
   linkType: soft
 
@@ -7410,7 +7410,7 @@ __metadata:
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.11
     storybook-builder-vite: "workspace:*"
     svelte: ^3.38.3
-    vite: 2.7.0-beta.4
+    vite: 2.7.0
   languageName: unknown
   linkType: soft
 
@@ -7423,7 +7423,7 @@ __metadata:
     "@storybook/vue3": ^6.4.0
     "@vitejs/plugin-vue": ^1.2.4
     storybook-builder-vite: "workspace:*"
-    vite: 2.7.0-beta.4
+    vite: 2.7.0
     vue: ^3.1.4
   languageName: unknown
   linkType: soft
@@ -14844,9 +14844,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"vite@npm:2.7.0-beta.4":
-  version: 2.7.0-beta.4
-  resolution: "vite@npm:2.7.0-beta.4"
+"vite@npm:2.7.0":
+  version: 2.7.0
+  resolution: "vite@npm:2.7.0"
   dependencies:
     esbuild: ^0.13.12
     fsevents: ~2.3.2
@@ -14869,7 +14869,7 @@ fsevents@^1.2.7:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: f5a3ebeda3ac58d328936d678d283264f680befac2b092bccccbdc913be5f28cb27ad9e60c6f54ac2edd6abc973f753a7a4260690984680007a38db78a0f202d
+  checksum: 616af241a9d45adc489db2b276be62ec24b6d6c19a3ac0c16546152b3e26d4230bf0b849cc1d0cc01f4f39591050a2531580caa41e5cc793c8238a2fd0bf2757
   languageName: node
   linkType: hard
 
