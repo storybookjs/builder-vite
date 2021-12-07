@@ -16,7 +16,15 @@ const { normalizePath } = require('vite');
  */
 async function toImportFn(stories) {
     const objectEntries = stories
-        .map(file => `  './${normalizePath(path.relative(process.cwd(),file))}': async () => import('/@fs/${file}')`);
+        .map(file => {
+            let normalizedPath = normalizePath(path.relative(process.cwd(), file));
+            if (!normalizedPath.startsWith('./') && !normalizedPath.startsWith('../')) {
+                normalizedPath = './' + normalizedPath;
+            }
+
+            return `  '${normalizedPath}': async () => import('/@fs/${file}')`;
+        });
+
     return `
     const importers = {
       ${objectEntries.join(',\n')}
