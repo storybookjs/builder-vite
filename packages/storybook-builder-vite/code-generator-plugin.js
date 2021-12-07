@@ -8,7 +8,9 @@ const { generateImportFnScriptCode } = require('./codegen-importfn-script');
 module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
     const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
     const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
+    const iframePath = path.resolve(__dirname, 'input', 'iframe.html');
     let iframeId;
+
     return {
         name: 'storybook-vite-code-generator-plugin',
         enforce: 'pre',
@@ -22,7 +24,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
                     server.moduleGraph.invalidateModule(appModule);
                 }
                 const storiesModule = moduleGraph.getModuleById(virtualStoriesFile);
-                if(storiesModule) {
+                if (storiesModule) {
                     server.moduleGraph.invalidateModule(storiesModule);
                 }
             });
@@ -34,7 +36,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
             // does not support virtual files as entry points.
             if (command === 'build') {
                 config.build.rollupOptions = {
-                    input: 'iframe.html',
+                    input: iframePath,
                 };
             }
         },
@@ -44,7 +46,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
         resolveId(source) {
             if (source === virtualFileId) {
                 return virtualFileId;
-            } else if (source === 'iframe.html') {
+            } else if (source === iframePath) {
                 return iframeId;
             } else if (source === virtualStoriesFile) {
                 return virtualStoriesFile;
