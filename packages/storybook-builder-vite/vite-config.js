@@ -5,7 +5,7 @@ const { mdxPlugin } = require('./mdx-plugin');
 const { sourceLoaderPlugin } = require('./source-loader-plugin');
 
 module.exports.pluginConfig = function pluginConfig(options, type) {
-    const { framework, svelteOptions } = options;
+    const { framework, svelteOptions, vueOptions } = options;
     const plugins = [
         codeGeneratorPlugin(options),
         mockCoreJs(),
@@ -16,7 +16,7 @@ module.exports.pluginConfig = function pluginConfig(options, type) {
     if (framework === 'vue' || framework === 'vue3') {
         try {
             const vuePlugin = require('@vitejs/plugin-vue');
-            plugins.push(vuePlugin());
+            plugins.push(vuePlugin(vueOptions ?? {}));
             plugins.push(require('./plugins/vue-docgen')());
         } catch (err) {
             if (err.code !== 'MODULE_NOT_FOUND') {
