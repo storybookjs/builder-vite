@@ -1,7 +1,7 @@
 import { Button } from './Button';
 
 export default {
-    title: 'app2/Example/Button',
+    title: 'Example/Button',
     component: Button,
     argTypes: {
         backgroundColor: { control: 'color' },

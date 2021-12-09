@@ -1,7 +1,7 @@
 import {EnvironmentVariables} from './EnvironmentVariables';
 
 export default {
-  title: 'app1/Environment Variables',
+  title: 'Environment Variables',
   component: EnvironmentVariables
 };
 

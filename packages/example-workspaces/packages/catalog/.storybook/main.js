@@ -1,9 +1,6 @@
 module.exports = {
     framework: '@storybook/react',
-    stories: [
-        '../../app1/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-        '../../app2/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    ],
+    stories: ['../../app/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
     addons: [
         '@storybook/addon-a11y',
         '@storybook/addon-links',

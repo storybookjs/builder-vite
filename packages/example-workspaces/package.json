@@ -11,8 +11,7 @@
     "author": "",
     "license": "MIT",
     "workspaces": [
-        "packages/app1",
-        "packages/app2",
+        "packages/app",
         "packages/catalog"
     ]
 }

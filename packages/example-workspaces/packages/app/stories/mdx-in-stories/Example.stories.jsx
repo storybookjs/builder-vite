@@ -2,7 +2,7 @@ import page from './Example.docs.mdx';
 import { Button } from '../Button';
 
 export default {
-    title: 'app2/Example/MDX in stories',
+    title: 'Example/MDX in stories',
 
     parameters: {
         docs: {
