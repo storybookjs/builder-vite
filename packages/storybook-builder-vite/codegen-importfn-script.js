@@ -7,6 +7,18 @@ const { normalizePath } = require('vite');
  */
 
 /**
+ * Paths get passed either with no leading './' - e.g. `src/Foo.stories.js`,
+ * or with a leading `../` (etc), e.g. `../src/Foo.stories.js`.
+ * We want to deal in importPaths relative to the working dir, so we normalize
+ *
+ * @param {string} relativePath
+ * @returns {string}
+ */
+function toImportPath(relativePath) {
+    return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
+}
+
+/**
  * This function takes an array of stories and creates a mapping between the stories' relative paths
  * to the working directory and their dynamic imports. The import is done in an asynchronous function
  * to delay loading. It then creates a function, `importFn(path)`, which resolves a path to an import
@@ -15,8 +27,12 @@ const { normalizePath } = require('vite');
  * @returns {Promise<string>}
  */
 async function toImportFn(stories) {
-    const objectEntries = stories
-        .map(file => `  './${normalizePath(path.relative(process.cwd(),file))}': async () => import('/@fs/${file}')`);
+    const objectEntries = stories.map((file) => {
+        return `  '${toImportPath(
+            normalizePath(path.relative(process.cwd(), file))
+        )}': async () => import('/@fs/${file}')`;
+    });
+
     return `
     const importers = {
       ${objectEntries.join(',\n')}
