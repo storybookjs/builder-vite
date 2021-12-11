@@ -1,6 +1,6 @@
 const path = require('path');
 const {stringifyProcessEnvs} = require('./envs');
-const { optimizeDeps } = require('./optimizeDeps');
+const { getOptimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { pluginConfig } = require('./vite-config');
 
@@ -34,7 +34,7 @@ module.exports.createViteServer = async function createViteServer(
             },
         },
         plugins: pluginConfig(options, 'development'),
-        optimizeDeps,
+        optimizeDeps: await getOptimizeDeps(root, options),
     };
 
     const finalConfig = await presets.apply(
