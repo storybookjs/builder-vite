@@ -33,7 +33,7 @@ module.exports.createViteServer = async function createViteServer(
                 vue: 'vue/dist/vue.esm-bundler.js',
             },
         },
-        plugins: pluginConfig(options, 'development'),
+        plugins: await pluginConfig(options, 'development'),
         optimizeDeps: await getOptimizeDeps(root, options),
     };
 
