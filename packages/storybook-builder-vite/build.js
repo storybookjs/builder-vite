@@ -22,7 +22,7 @@ module.exports.build = async function build(options) {
                 vue: 'vue/dist/vue.esm-bundler.js',
             },
         },
-        plugins: pluginConfig(options, 'build'),
+        plugins: await pluginConfig(options, 'build'),
     };
 
     const finalConfig = await presets.apply(
