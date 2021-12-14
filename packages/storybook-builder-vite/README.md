@@ -85,6 +85,20 @@ module.exports = {
 };
 ```
 
+### Vue Customization
+
+When using this builder with VueJs, your `.storybook/main.js` (or equivalent)
+can contain a `vueOptions` object to pass custom options to
+[`@vitejs/plugin-vue`](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options):
+
+```javascript
+module.exports = {
+    vueOptions: {
+        refTransform: true,
+    },
+};
+```
+
 ## Note about working directory
 
 The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/config/#server-fs-strict)
