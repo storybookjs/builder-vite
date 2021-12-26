@@ -1,5 +1,23 @@
 const { stringifyEnvs } = require('@storybook/core-common')
 
+// Allowed env variables on the client
+const allowedEnvVariables = [
+  'STORYBOOK',
+  // Vite `import.meta.env` default variables
+  // @see https://github.com/vitejs/vite/blob/6b8d94dca2a1a8b4952e3e3fcd0aed1aedb94215/packages/vite/types/importMeta.d.ts#L68-L75
+  'BASE_URL',
+  'MODE',
+  'DEV',
+  'PROD',
+  'SSR',
+];
+
+// Env variables starts with env prefix will be exposed to your client source code via `import.meta.env`
+module.exports.allowedEnvPrefix = [
+  'VITE_',
+  'STORYBOOK_'
+];
+
 /**
 * Customized version of stringifyProcessEnvs from @storybook/core-common which
 * uses import.meta.env instead of process.env
