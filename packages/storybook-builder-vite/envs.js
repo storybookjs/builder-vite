@@ -25,9 +25,18 @@ module.exports.allowedEnvPrefix = [
  * @param {string[]|string} envPrefix
  */
 module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPrefix) {
+  const updatedRaw = {};
   const envs = Object.entries(raw).reduce(
     (acc, [key, value]) => {
-      acc[`import.meta.env.${key}`] = JSON.stringify(value);
+      // Only add allowed values OR values from array OR string started with allowed prefixes
+      if (allowedEnvVariables.indexOf(key) >= 0
+        || (
+          (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.indexOf(prefix) === 0))
+          || key.indexOf(envPrefix) === 0
+        )) {
+        acc[`import.meta.env.${key}`] = JSON.stringify(value);
+        updatedRaw[key] = value;
+      }
       return acc;
     },
     {
@@ -37,6 +46,7 @@ module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPref
   );
   // support destructuring like
   // const { foo } = import.meta.env;
-  envs['import.meta.env'] = JSON.stringify(stringifyEnvs(raw));
+  envs['import.meta.env'] = JSON.stringify(stringifyEnvs(updatedRaw));
+
   return envs;
 }
