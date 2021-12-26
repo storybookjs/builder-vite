@@ -1,5 +1,5 @@
 const path = require('path');
-const {stringifyProcessEnvs} = require('./envs');
+const { stringifyProcessEnvs, allowedEnvPrefix: envPrefix } = require('./envs');
 const { getOptimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { pluginConfig } = require('./vite-config');
@@ -27,7 +27,8 @@ module.exports.createViteServer = async function createViteServer(
                 strict: true,
             },
         },
-        define: envs,
+        envPrefix,
+        define: {},
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
