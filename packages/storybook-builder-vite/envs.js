@@ -19,10 +19,12 @@ module.exports.allowedEnvPrefix = [
 ];
 
 /**
-* Customized version of stringifyProcessEnvs from @storybook/core-common which
-* uses import.meta.env instead of process.env
-*/
-module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw) {
+ * Customized version of stringifyProcessEnvs from @storybook/core-common which
+ * uses import.meta.env instead of process.env
+ * @param {Object<string, string>} raw
+ * @param {string[]|string} envPrefix
+ */
+module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPrefix) {
   const envs = Object.entries(raw).reduce(
     (acc, [key, value]) => {
       acc[`import.meta.env.${key}`] = JSON.stringify(value);
