@@ -5,8 +5,6 @@ const { build: viteBuild } = require('vite');
 
 module.exports.build = async function build(options) {
     const { presets } = options;
-    const envsRaw = await presets.apply('env');
-    const envs = stringifyProcessEnvs(envsRaw);
 
     const config = {
         configFile: false,
@@ -31,5 +29,15 @@ module.exports.build = async function build(options) {
         config,
         options
     );
+
+    const envsRaw = await presets.apply('env');
+    // Stringify env variables after getting `envPrefix` from the final config
+    const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
+    // Update `define`
+    finalConfig.define = {
+        ...finalConfig.define,
+        ...envs,
+    }
+
     await viteBuild(finalConfig);
 };

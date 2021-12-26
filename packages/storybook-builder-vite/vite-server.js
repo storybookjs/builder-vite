@@ -10,8 +10,6 @@ module.exports.createViteServer = async function createViteServer(
 ) {
     const { port, presets } = options;
     const root = path.resolve(options.configDir, '..');
-    const envsRaw = await presets.apply('env');
-    const envs = stringifyProcessEnvs(envsRaw);
 
     const defaultConfig = {
         configFile: false,
@@ -43,6 +41,16 @@ module.exports.createViteServer = async function createViteServer(
         defaultConfig,
         options
     );
+
+    const envsRaw = await presets.apply('env');
+    // Stringify env variables after getting `envPrefix` from the final config
+    const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
+    // Update `define`
+    finalConfig.define = {
+      ...finalConfig.define,
+      ...envs,
+    }
+
     return createServer(finalConfig);
 };
 
