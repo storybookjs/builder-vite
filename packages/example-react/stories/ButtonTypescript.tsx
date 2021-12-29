@@ -1,0 +1,38 @@
+import './button.css';
+import type {Size} from './types';
+
+type Props = {
+    /** Is this the principal call to action on the page? */
+    primary: boolean;
+    /** What background color to use */
+     backgroundColor?: string;
+     /** How large should the button be? */
+     size: Size;
+     /** Button contents */
+     label: string,
+     /** Optional click handler */
+     onClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void,
+}
+
+/**
+ * Primary UI component for user interaction
+ */
+export const Button = ({ primary = false, backgroundColor, size = 'medium', label, ...props }: Props) => {
+    const mode = primary
+        ? 'storybook-button--primary'
+        : 'storybook-button--secondary';
+    return (
+        <button
+            type="button"
+            className={[
+                'storybook-button',
+                `storybook-button--${size}`,
+                mode,
+            ].join(' ')}
+            style={backgroundColor && { backgroundColor }}
+            {...props}
+        >
+            {label}
+        </button>
+    );
+};
