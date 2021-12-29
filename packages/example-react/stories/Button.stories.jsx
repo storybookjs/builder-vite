@@ -4,6 +4,7 @@ export default {
     title: 'Example/Button',
     component: Button,
     argTypes: {
+        onClick: { action: 'clicked' },
         backgroundColor: { control: 'color' },
     },
 };
