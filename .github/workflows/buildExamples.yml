@@ -49,4 +49,4 @@ jobs:
         run: yarn workspaces foreach -p run publish-chromatic
         if: ${{ github.event.pull_request.head.repo.full_name == 'eirslett/storybook-builder-vite' }}
         env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.$CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
