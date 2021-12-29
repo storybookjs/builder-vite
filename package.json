@@ -1,7 +1,7 @@
 {
     "name": "storybook-builder-vite-parent",
-    "version": "0.1.12",
-    "description": "### Installation",
+    "version": "0.1.13",
+    "description": "An experimental plugin to run and build Storybooks with Vite",
     "main": "index.js",
     "author": "",
     "license": "MIT",

@@ -1,6 +1,6 @@
 {
     "name": "storybook-builder-vite",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "description": "An experimental plugin to run and build Storybooks with Vite",
     "main": "index.js",
     "author": "Eirik Sletteberg",
