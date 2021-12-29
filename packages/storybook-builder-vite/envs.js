@@ -20,7 +20,7 @@ module.exports.allowedEnvPrefix = [
 
 /**
  * Customized version of stringifyProcessEnvs from @storybook/core-common which
- * uses import.meta.env instead of process.env
+ * uses import.meta.env instead of process.env and checks for allowed variables.
  * @param {Object<string, string>} raw
  * @param {string[]|string} envPrefix
  */
@@ -29,10 +29,10 @@ module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPref
   const envs = Object.entries(raw).reduce(
     (acc, [key, value]) => {
       // Only add allowed values OR values from array OR string started with allowed prefixes
-      if (allowedEnvVariables.indexOf(key) >= 0
+      if (allowedEnvVariables.includes(key)
         || (
-          (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.indexOf(prefix) === 0))
-          || key.indexOf(envPrefix) === 0
+          (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.startsWith(prefix)))
+          || key.startsWith(envPrefix)
         )) {
         acc[`import.meta.env.${key}`] = JSON.stringify(value);
         updatedRaw[key] = value;
