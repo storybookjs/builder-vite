@@ -5,7 +5,7 @@ type Props = {
     /** Is this the principal call to action on the page? */
     primary: boolean;
     /** What background color to use */
-     backgroundColor?: string;
+     backgroundColor?: 'red' | 'blue';
      /** How large should the button be? */
      size: Size;
      /** Button contents */
