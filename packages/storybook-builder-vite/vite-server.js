@@ -1,5 +1,5 @@
 const path = require('path');
-const {stringifyProcessEnvs} = require('./envs');
+const { stringifyProcessEnvs, allowedEnvPrefix: envPrefix } = require('./envs');
 const { getOptimizeDeps } = require('./optimizeDeps');
 const { createServer } = require('vite');
 const { pluginConfig } = require('./vite-config');
@@ -10,8 +10,6 @@ module.exports.createViteServer = async function createViteServer(
 ) {
     const { port, presets } = options;
     const root = path.resolve(options.configDir, '..');
-    const envsRaw = await presets.apply('env');
-    const envs = stringifyProcessEnvs(envsRaw);
 
     const defaultConfig = {
         configFile: false,
@@ -27,7 +25,8 @@ module.exports.createViteServer = async function createViteServer(
                 strict: true,
             },
         },
-        define: envs,
+        envPrefix,
+        define: {},
         resolve: {
             alias: {
                 vue: 'vue/dist/vue.esm-bundler.js',
@@ -42,6 +41,16 @@ module.exports.createViteServer = async function createViteServer(
         defaultConfig,
         options
     );
+
+    const envsRaw = await presets.apply('env');
+    // Stringify env variables after getting `envPrefix` from the final config
+    const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
+    // Update `define`
+    finalConfig.define = {
+      ...finalConfig.define,
+      ...envs,
+    }
+
     return createServer(finalConfig);
 };
 
