@@ -3,7 +3,23 @@ name: Build Examples
 on: [workflow_dispatch, pull_request]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint-ci
   examples:
+    needs: lint
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -28,18 +44,7 @@ jobs:
 
       - name: Build examples
         run: yarn workspaces foreach -p run build-storybook
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-          cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Lint
-        run: yarn lint-ci
+      - name: Publish examples to Chromatic
+        run: yarn workspaces foreach -p run publish-chromatic
+        if: ${{ github.event.pull_request.head.repo.full_name == 'eirslett/storybook-builder-vite' }}

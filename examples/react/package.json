@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "storybook": "start-storybook",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publish-chromatic": "chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "author": "",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "@storybook/addon-docs": "^6.4.14",
     "@storybook/addon-essentials": "^6.4.14",
     "@storybook/react": "^6.4.14",
+    "chromatic": "^6.3.3",
     "storybook-builder-vite": "workspace:*",
     "vite": "2.7.0"
   }
