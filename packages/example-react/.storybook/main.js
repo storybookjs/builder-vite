@@ -19,7 +19,4 @@ module.exports = {
         // customize the Vite config here
         return config;
     },
-    features: {
-        previewCsfV3: true,
-    },
 };
