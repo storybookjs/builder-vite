@@ -60,6 +60,14 @@ module.exports.pluginConfig = async function pluginConfig(options, type) {
             require('@vitejs/plugin-react')({
                 // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
                 exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+                babel: {
+                    plugins: [[
+                        require.resolve('@ianvs/babel-plugin-react-docgen'),
+                        {
+                            DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES',
+                        },
+                    ]]
+                }
             })
         );
     }
