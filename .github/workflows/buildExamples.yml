@@ -29,8 +29,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Chromatic needs all the commit data
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v2
@@ -50,6 +48,10 @@ jobs:
     needs: examples
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Chromatic needs all the commit data
+
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v2
         with:
