@@ -9,6 +9,8 @@ module.exports = {
   plugins: ['only-warn'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
   rules: {
+    // Set line length to 120
+    'max-len': ['error', { code: 120 }],
     // Prevent warnings when debugging
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
