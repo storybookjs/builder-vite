@@ -14,9 +14,6 @@
         "packages/example-workspaces",
         "packages/storybook-builder-vite"
     ],
-    "prettier": {
-        "singleQuote": true
-    },
     "devDependencies": {
         "prettier": "^2.3.2"
     }
