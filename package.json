@@ -18,6 +18,12 @@
     "packages/storybook-builder-vite"
   ],
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-only-warn": "^1.0.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-storybook": "^0.5.5",
     "prettier": "^2.3.2"
   }
 }
