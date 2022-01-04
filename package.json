@@ -1,20 +1,20 @@
 {
-    "name": "storybook-builder-vite-parent",
-    "version": "0.1.13",
-    "description": "An experimental plugin to run and build Storybooks with Vite",
-    "license": "MIT",
-    "scripts": {
-        "lint": "prettier --check .",
-        "format": "prettier --write ."
-    },
-    "workspaces": [
-        "packages/example-react",
-        "packages/example-svelte",
-        "packages/example-vue",
-        "packages/example-workspaces",
-        "packages/storybook-builder-vite"
-    ],
-    "devDependencies": {
-        "prettier": "^2.3.2"
-    }
+  "name": "storybook-builder-vite-parent",
+  "version": "0.1.13",
+  "description": "An experimental plugin to run and build Storybooks with Vite",
+  "license": "MIT",
+  "scripts": {
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "workspaces": [
+    "packages/example-react",
+    "packages/example-svelte",
+    "packages/example-vue",
+    "packages/example-workspaces",
+    "packages/storybook-builder-vite"
+  ],
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
 }
