@@ -41,7 +41,13 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
     import { configure } from '${frameworkImportPath}';
     /* ${previewEntries.map((entry) => `// preview entry\nimport '${entry}';`).join('\n')} */
 
-    import { addDecorator, addParameters, addLoader, addArgTypesEnhancer, addArgsEnhancer } from '@storybook/client-api';
+    import {
+      addDecorator,
+      addParameters,
+      addLoader,
+      addArgTypesEnhancer,
+      addArgsEnhancer
+    } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     ${absoluteFilesToImport(storyEntries, 'story')}
