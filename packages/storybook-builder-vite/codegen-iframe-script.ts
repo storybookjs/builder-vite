@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as glob from 'glob-promise';
+import { promise as glob } from 'glob-promise';
 import { normalizePath } from 'vite';
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 

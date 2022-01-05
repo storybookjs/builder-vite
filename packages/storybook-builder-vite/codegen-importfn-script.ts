@@ -1,4 +1,4 @@
-import * as glob from 'glob-promise';
+import { promise as glob } from 'glob-promise';
 import * as path from 'path';
 import { normalizePath } from 'vite';
 
