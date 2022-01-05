@@ -97,6 +97,7 @@ module.exports.generateIframeScriptCode =
           case 'decorateStory':
           case 'renderToDOM': {
             return null; // This key is not handled directly in v6 mode.
+          }
           case 'render': {
             return setGlobalRender(value);
           }
