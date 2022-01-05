@@ -13,10 +13,12 @@ module.exports.generateModernIframeScriptCode = async function generateModernIfr
     .filter(Boolean)
     .map((configEntry) => `/@fs/${normalizePath(configEntry)}`);
 
+  // noinspection UnnecessaryLocalVariableJS
   /**
    * This code is largely taken from https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/builder-webpack4/src/preview/virtualModuleModernEntry.js.handlebars
    * Some small tweaks were made to `getProjectAnnotations` (since `import()` needs to be resolved asynchronously)
    * and the HMR implementation has been tweaked to work with Vite.
+   * @todo Inline variable and remove `noinspection`
    */
   // language=JavaScript
   const code = `
@@ -42,7 +44,7 @@ module.exports.generateModernIframeScriptCode = async function generateModernIfr
     addons.setChannel(channel);
     
     if (SERVER_CHANNEL_URL) {
-      const serverChannel = createWebSocketChannel({ url: SERVER_CHANNEL_URL, });
+      const serverChannel = createWebSocketChannel({ url: SERVER_CHANNEL_URL });
       addons.setServerChannel(serverChannel);
       window.__STORYBOOK_SERVER_CHANNEL__ = serverChannel;
     }

@@ -37,6 +37,8 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
       .map((_, i) => `${name}_${i}`)
       .join(',')}]`;
 
+  // noinspection UnnecessaryLocalVariableJS
+  /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
     import { configure } from '${frameworkImportPath}';
