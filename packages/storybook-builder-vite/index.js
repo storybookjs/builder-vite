@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 const fs = require('fs');
 const path = require('path');
 const { transformIframeHtml } = require('./transform-iframe-html');

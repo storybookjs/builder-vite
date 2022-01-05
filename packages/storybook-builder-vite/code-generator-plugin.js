@@ -11,6 +11,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
   const iframePath = path.resolve(__dirname, 'input', 'iframe.html');
   let iframeId;
 
+  // noinspection JSUnusedGlobalSymbols
   return {
     name: 'storybook-vite-code-generator-plugin',
     enforce: 'pre',
