@@ -14,7 +14,7 @@ export function mdxPlugin() {
     const compilers = [];
 
     if (filename.includes('.stories.')) {
-      compilers.push(createCompiler());
+      compilers.push(createCompiler({}));
     }
 
     return {
