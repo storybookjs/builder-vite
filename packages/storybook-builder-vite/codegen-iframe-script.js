@@ -37,6 +37,7 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
       .map((_, i) => `${name}_${i}`)
       .join(',')}]`;
 
+  // language=JavaScript
   const code = `
     import { configure } from '${frameworkImportPath}';
     /* ${previewEntries.map((entry) => `// preview entry\nimport '${entry}';`).join('\n')} */

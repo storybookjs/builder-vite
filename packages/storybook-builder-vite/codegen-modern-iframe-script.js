@@ -18,6 +18,7 @@ module.exports.generateModernIframeScriptCode = async function generateModernIfr
    * Some small tweaks were made to `getProjectAnnotations` (since `import()` needs to be resolved asynchronously)
    * and the HMR implementation has been tweaked to work with Vite.
    */
+  // language=JavaScript
   const code = `
     import fetch from 'unfetch';
     import global from 'global';
