@@ -3,7 +3,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { transformIframeHtml } from './transform-iframe-html';
-import { createViteServer } from './vite-server.js';
+import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
 
 function iframeMiddleware(options, server) {
