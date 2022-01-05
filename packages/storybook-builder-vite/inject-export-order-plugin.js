@@ -5,7 +5,7 @@ module.exports.injectExportOrderPlugin = {
   // This should only run after the typescript has been transpiled
   enforce: 'post',
   async transform(code, id) {
-    if (!/\.stories\.(t|j)sx?$/.test(id)) {
+    if (!/\.stories\.([tj])sx?$/.test(id)) {
       return;
     }
     const [, exports] = await parse(code);

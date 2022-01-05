@@ -63,7 +63,7 @@ module.exports.pluginConfig = async function pluginConfig(options, type) {
     plugins.push(
       require('@vitejs/plugin-react')({
         // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-        exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+        exclude: [/\.stories\.([tj])sx?$/, /node_modules/],
       })
     );
   }
