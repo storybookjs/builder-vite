@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import PropTypes from 'prop-types';
 
 import { Header } from './Header';
