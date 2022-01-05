@@ -7,8 +7,8 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "lint": "eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --fix",
-    "lint-ci": "eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --max-warnings=0"
+    "lint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
+    "lint-ci": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0"
   },
   "workspaces": [
     "packages/example-react",
