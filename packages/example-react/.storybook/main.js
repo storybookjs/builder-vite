@@ -12,9 +12,6 @@ module.exports = {
     core: {
         builder: 'storybook-builder-vite',
     },
-    features: {
-      storyStoreV7: true,
-    },
     async viteFinal(config, { configType }) {
         // customize the Vite config here
         return config;
