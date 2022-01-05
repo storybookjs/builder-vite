@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --fix",
-    "lint-ci": "eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\""
+    "lint-ci": "eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --max-warnings=0"
   },
   "workspaces": [
     "packages/example-react",
