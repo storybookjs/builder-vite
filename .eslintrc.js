@@ -3,26 +3,24 @@ module.exports = {
   env: {
     node: true,
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
   },
-  plugins: ['only-warn'],
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
+  plugins: ['@typescript-eslint', 'only-warn'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
+  ],
   rules: {
     // Set line length to 120
     'max-len': ['error', { code: 120 }],
     // Prevent warnings when debugging
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    // Ignore arguments starting from an underscore `_`
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
-  overrides: [
-    // Fix: import and export, see https://github.com/AtomLinter/linter-eslint/issues/462
-    // TODO: Remove temporary fix after adding `plugin:@typescript-eslint/eslint-recommended`
-    {
-      files: 'packages/example-*/**/*.*',
-      parserOptions: {
-        sourceType: 'module',
-      },
-    },
-  ],
 };
