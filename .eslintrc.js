@@ -23,4 +23,13 @@ module.exports = {
     // Ignore arguments starting from an underscore `_`
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
+  overrides: [
+    // Fix: disable `no-unused-vars` for TypeScript files
+    {
+      files: '**/*.ts',
+      rules: {
+        'no-unused-vars': 'off',
+      },
+    },
+  ],
 };
