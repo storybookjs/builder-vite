@@ -1,7 +1,7 @@
-const path = require('path');
-const glob = require('glob-promise');
-const { normalizePath } = require('vite');
-const { loadPreviewOrConfigFile } = require('@storybook/core-common');
+import * as path from 'path';
+import * as glob from 'glob-promise';
+import { normalizePath } from 'vite';
+import { loadPreviewOrConfigFile } from '@storybook/core-common';
 
 // This is somewhat of a hack; the problem is that previewEntries resolves to
 // the CommonJS imports, probably because require.resolve in Node.js land leads
@@ -10,7 +10,7 @@ function replaceCJStoESMPath(entryPath) {
   return entryPath.replace('/cjs/', '/esm/');
 }
 
-module.exports.generateIframeScriptCode = async function generateIframeScriptCode(options) {
+export async function generateIframeScriptCode(options) {
   const { presets, configDir, framework, frameworkPath } = options;
   const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
 
@@ -109,4 +109,4 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
     )}.filter(el => el.default), { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
     `.trim();
   return code;
-};
+}

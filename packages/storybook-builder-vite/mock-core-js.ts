@@ -1,4 +1,4 @@
-module.exports.mockCoreJs = function mockCoreJs() {
+export function mockCoreJs() {
   return {
     name: 'mock-core-js',
     resolveId(id) {
@@ -14,4 +14,4 @@ module.exports.mockCoreJs = function mockCoreJs() {
       return undefined;
     },
   };
-};
+}

@@ -1,7 +1,4 @@
-module.exports.transformIframeHtml = async function transformIframeHtml(
-  html,
-  { configType, features, framework, presets, serverChannelUrl, title }
-) {
+export async function transformIframeHtml(html, { configType, features, framework, presets, serverChannelUrl, title }) {
   const headHtmlSnippet = await presets.apply('previewHead');
   const bodyHtmlSnippet = await presets.apply('previewBody');
   const logLevel = await presets.apply('logLevel', undefined);
@@ -21,4 +18,4 @@ module.exports.transformIframeHtml = async function transformIframeHtml(
     .replace(`'[SERVER_CHANNEL_URL HERE]'`, JSON.stringify(serverChannelUrl))
     .replace('<!-- [HEAD HTML SNIPPET HERE] -->', headHtmlSnippet || '')
     .replace('<!-- [BODY HTML SNIPPET HERE] -->', bodyHtmlSnippet || '');
-};
+}

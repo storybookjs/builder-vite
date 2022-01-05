@@ -1,6 +1,6 @@
-const glob = require('glob-promise');
-const path = require('path');
-const { normalizePath } = require('vite');
+import * as glob from 'glob-promise';
+import * as path from 'path';
+import { normalizePath } from 'vite';
 
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
@@ -42,7 +42,7 @@ async function toImportFn(stories) {
   `;
 }
 
-module.exports.generateImportFnScriptCode = async function generateImportFnScriptCode(options) {
+export async function generateImportFnScriptCode(options) {
   // First we need to get an array of stories and their absolute paths.
   const stories = (
     await Promise.all(
@@ -54,4 +54,4 @@ module.exports.generateImportFnScriptCode = async function generateImportFnScrip
 
   // We can then call toImportFn to create a function that can be used to load each story dynamically.
   return (await toImportFn(stories)).trim();
-};
+}

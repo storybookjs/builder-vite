@@ -1,5 +1,6 @@
-const path = require('path');
-module.exports.getOptimizeDeps = async (root, options) => {
+import * as path from 'path';
+
+export async function getOptimizeDeps(root, options) {
   const stories = await Promise.all(
     (
       await options.presets.apply('stories', [], options)
@@ -105,4 +106,4 @@ module.exports.getOptimizeDeps = async (root, options) => {
       }
     }),
   };
-};
+}

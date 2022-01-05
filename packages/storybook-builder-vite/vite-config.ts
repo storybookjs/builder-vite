@@ -1,10 +1,10 @@
-const { mockCoreJs } = require('./mock-core-js');
-const { codeGeneratorPlugin } = require('./code-generator-plugin');
-const { injectExportOrderPlugin } = require('./inject-export-order-plugin');
-const { mdxPlugin } = require('./mdx-plugin');
-const { sourceLoaderPlugin } = require('./source-loader-plugin');
+import { mockCoreJs } from './mock-core-js';
+import { codeGeneratorPlugin } from './code-generator-plugin';
+import { injectExportOrderPlugin } from './inject-export-order-plugin';
+import { mdxPlugin } from './mdx-plugin';
+import { sourceLoaderPlugin } from './source-loader-plugin';
 
-module.exports.pluginConfig = async function pluginConfig(options) {
+export async function pluginConfig(options) {
   const { framework } = options;
   const svelteOptions = await options.presets.apply('svelteOptions', {}, options);
 
@@ -74,4 +74,4 @@ module.exports.pluginConfig = async function pluginConfig(options) {
   }
 
   return plugins;
-};
+}

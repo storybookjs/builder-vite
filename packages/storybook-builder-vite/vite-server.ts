@@ -1,10 +1,10 @@
-const path = require('path');
-const { stringifyProcessEnvs, allowedEnvPrefix: envPrefix } = require('./envs');
-const { getOptimizeDeps } = require('./optimizeDeps');
-const { createServer } = require('vite');
-const { pluginConfig } = require('./vite-config');
+import * as path from 'path';
+import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
+import { getOptimizeDeps } from './optimizeDeps';
+import { createServer } from 'vite';
+import { pluginConfig } from './vite-config';
 
-module.exports.createViteServer = async function createViteServer(options, devServer) {
+export async function createViteServer(options, devServer) {
   const { port, presets } = options;
   const root = path.resolve(options.configDir, '..');
 
@@ -44,4 +44,4 @@ module.exports.createViteServer = async function createViteServer(options, devSe
   };
 
   return createServer(finalConfig);
-};
+}

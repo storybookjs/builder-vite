@@ -1,9 +1,9 @@
-const { getNameFromFilename } = require('@storybook/addon-svelte-csf/dist/cjs/parser/svelte-stories-loader');
-const { readFileSync } = require('fs');
-const { extractStories } = require('@storybook/addon-svelte-csf/dist/cjs/parser/extract-stories');
+import { getNameFromFilename } from '@storybook/addon-svelte-csf/dist/cjs/parser/svelte-stories-loader';
+import { readFileSync } from 'fs';
+import { extractStories } from '@storybook/addon-svelte-csf/dist/cjs/parser/extract-stories';
 const parser = require.resolve('@storybook/addon-svelte-csf/dist/esm/parser/collect-stories').replace(/[/\\]/g, '/');
 
-module.exports = {
+export default {
   name: 'storybook-addon-svelte-csf',
   enforce: 'post',
   transform(code, id) {

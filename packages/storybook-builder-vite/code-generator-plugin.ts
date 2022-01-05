@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { transformIframeHtml } = require('./transform-iframe-html');
-const { generateIframeScriptCode } = require('./codegen-iframe-script');
-const { generateModernIframeScriptCode } = require('./codegen-modern-iframe-script');
-const { generateImportFnScriptCode } = require('./codegen-importfn-script');
+import * as fs from 'fs';
+import * as path from 'path';
+import { transformIframeHtml } from './transform-iframe-html';
+import { generateIframeScriptCode } from './codegen-iframe-script';
+import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
+import { generateImportFnScriptCode } from './codegen-importfn-script';
 
-module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
+export function codeGeneratorPlugin(options) {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
   const iframePath = path.resolve(__dirname, 'input', 'iframe.html');
@@ -77,4 +77,4 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
       return transformIframeHtml(html, options);
     },
   };
-};
+}

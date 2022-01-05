@@ -1,6 +1,6 @@
-const { parse } = require('es-module-lexer');
+import { parse } from 'es-module-lexer';
 
-module.exports.injectExportOrderPlugin = {
+export const injectExportOrderPlugin = {
   name: 'storybook-vite-inject-export-order-plugin',
   // This should only run after the typescript has been transpiled
   enforce: 'post',

@@ -1,10 +1,7 @@
-const { loadPreviewOrConfigFile } = require('@storybook/core-common');
-const { normalizePath } = require('vite');
+import { loadPreviewOrConfigFile } from '@storybook/core-common';
+import { normalizePath } from 'vite';
 
-module.exports.generateModernIframeScriptCode = async function generateModernIframeScriptCode(
-  options,
-  { storiesFilename }
-) {
+export async function generateModernIframeScriptCode(options, { storiesFilename }) {
   const { presets, configDir } = options;
 
   const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
@@ -76,4 +73,4 @@ module.exports.generateModernIframeScriptCode = async function generateModernIfr
     }
     `.trim();
   return code;
-};
+}

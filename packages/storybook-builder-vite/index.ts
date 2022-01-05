@@ -1,10 +1,10 @@
 // noinspection JSUnusedGlobalSymbols
 
-const fs = require('fs');
-const path = require('path');
-const { transformIframeHtml } = require('./transform-iframe-html');
-const { createViteServer } = require('./vite-server.js');
-const { build: viteBuild } = require('./build');
+import * as fs from 'fs';
+import * as path from 'path';
+import { transformIframeHtml } from './transform-iframe-html';
+import { createViteServer } from './vite-server.js';
+import { build as viteBuild } from './build';
 
 function iframeMiddleware(options, server) {
   return async (req, res, next) => {
@@ -20,7 +20,7 @@ function iframeMiddleware(options, server) {
   };
 }
 
-module.exports.start = async function start({ startTime, options, router, server: devServer }) {
+export async function start({ startTime, options, router, server: devServer }) {
   const server = await createViteServer(options, devServer);
 
   // Just mock this endpoint (which is really Webpack-specific) so we don't get spammed with 404 in browser devtools
@@ -47,11 +47,11 @@ module.exports.start = async function start({ startTime, options, router, server
     bail,
     totalTime: process.hrtime(startTime),
   };
-};
+}
 
-module.exports.build = async function build({ options }) {
+export async function build({ options }) {
   return viteBuild(options);
-};
+}
 
-module.exports.corePresets = [];
-module.exports.previewPresets = [];
+export const corePresets = [];
+export const previewPresets = [];

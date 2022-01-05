@@ -1,9 +1,9 @@
-const path = require('path');
-const { stringifyProcessEnvs, allowedEnvPrefix: envPrefix } = require('./envs');
-const { pluginConfig } = require('./vite-config');
-const { build: viteBuild } = require('vite');
+import * as path from 'path';
+import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
+import { pluginConfig } from './vite-config';
+import { build as viteBuild } from 'vite';
 
-module.exports.build = async function build(options) {
+export async function build(options) {
   const { presets } = options;
 
   const config = {
@@ -36,4 +36,4 @@ module.exports.build = async function build(options) {
   };
 
   await viteBuild(finalConfig);
-};
+}

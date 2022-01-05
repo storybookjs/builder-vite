@@ -1,5 +1,5 @@
-const mdx = require('vite-plugin-mdx').default;
-const { createCompiler } = require('@storybook/csf-tools/mdx');
+import mdx from 'vite-plugin-mdx';
+import { createCompiler } from '@storybook/csf-tools/mdx';
 
 /**
  * Storybook uses two different loaders when dealing with MDX:
@@ -9,7 +9,7 @@ const { createCompiler } = require('@storybook/csf-tools/mdx');
  *
  * @see https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md#csf-stories-with-arbitrary-mdx
  */
-module.exports.mdxPlugin = function () {
+export function mdxPlugin() {
   return mdx((filename) => {
     const compilers = [];
 
@@ -21,4 +21,4 @@ module.exports.mdxPlugin = function () {
       compilers,
     };
   });
-};
+}

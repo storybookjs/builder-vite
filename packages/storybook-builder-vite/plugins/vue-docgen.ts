@@ -1,6 +1,6 @@
-const { parse } = require('vue-docgen-api');
+import { parse } from 'vue-docgen-api';
 
-module.exports = function () {
+export default function () {
   return {
     name: 'vue-docgen',
 
@@ -13,4 +13,4 @@ module.exports = function () {
       }
     },
   };
-};
+}

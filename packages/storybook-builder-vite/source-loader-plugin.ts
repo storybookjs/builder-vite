@@ -1,6 +1,6 @@
-const sourceLoaderTransform = require('@storybook/source-loader').default;
+import sourceLoaderTransform from '@storybook/source-loader';
 
-module.exports.sourceLoaderPlugin = function () {
+export function sourceLoaderPlugin() {
   return {
     name: 'storybook-vite-source-loader-plugin',
     enforce: 'pre',
@@ -18,4 +18,4 @@ module.exports.sourceLoaderPlugin = function () {
       }
     },
   };
-};
+}
