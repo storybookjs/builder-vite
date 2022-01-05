@@ -22,6 +22,8 @@ module.exports.generateModernIframeScriptCode = async function generateModernIfr
    */
   // language=JavaScript
   const code = `
+    // TODO: Check if the 'unfetch' package is used 
+    // noinspection ES6UnusedImports
     import fetch from 'unfetch';
     import global from 'global';
     
