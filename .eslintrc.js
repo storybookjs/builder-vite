@@ -16,7 +16,7 @@ module.exports = {
   ],
   rules: {
     // Set line length to 120
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 120, ignoreComments: true }],
     // Prevent warnings when debugging
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
