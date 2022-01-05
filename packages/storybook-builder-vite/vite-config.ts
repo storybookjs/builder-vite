@@ -4,7 +4,7 @@ import { injectExportOrderPlugin } from './inject-export-order-plugin';
 import { mdxPlugin } from './mdx-plugin';
 import { sourceLoaderPlugin } from './source-loader-plugin';
 
-export async function pluginConfig(options) {
+export async function pluginConfig(options, _type) {
   const { framework } = options;
   const svelteOptions = await options.presets.apply('svelteOptions', {}, options);
 

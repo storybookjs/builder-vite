@@ -18,7 +18,7 @@ export function codeGeneratorPlugin(options) {
     configureServer(server) {
       // invalidate the whole vite-app.js script on every file change.
       // (this might be a little too aggressive?)
-      server.watcher.on('change', () => {
+      server.watcher.on('change', (_e) => {
         const { moduleGraph } = server;
         const appModule = moduleGraph.getModuleById(virtualFileId);
         if (appModule) {
