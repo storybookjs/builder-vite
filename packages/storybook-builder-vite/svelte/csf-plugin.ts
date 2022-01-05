@@ -12,14 +12,14 @@ export default {
       const source = readFileSync(id).toString();
       const all = extractStories(source);
       const { stories } = all;
-      const storyDef = Object.entries(stories)
+      const storyDef = Object.entries<any>(stories)
         .filter(([, def]) => !def.template)
         .map(([id]) => `export const ${id} = __storiesMetaData.stories[${JSON.stringify(id)}];`)
         .join('\n');
 
       const codeWithoutDefaultExport = code.replace('export default ', '// export default ');
 
-      const namedExportsOrder = Object.entries(stories)
+      const namedExportsOrder = Object.entries<any>(stories)
         .filter(([, def]) => !def.template)
         .map(([id]) => id);
 
