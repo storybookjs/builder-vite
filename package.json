@@ -7,8 +7,8 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "lint": "cross-env NODE_ENV=production eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --fix",
-    "lint-ci": "cross-env NODE_ENV=production eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\""
+    "lint": "NODE_ENV=production eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\" --fix",
+    "lint-ci": "NODE_ENV=production eslint \"packages/*/**/*.{js,jsx,mjs,cjs}\""
   },
   "workspaces": [
     "packages/example-react",
@@ -18,7 +18,6 @@
     "packages/storybook-builder-vite"
   ],
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-only-warn": "^1.0.3",
