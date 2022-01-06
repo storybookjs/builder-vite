@@ -11,8 +11,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:prettier/recommended',
     'plugin:storybook/recommended',
+    'prettier',
   ],
   rules: {
     // Set line length to 120
