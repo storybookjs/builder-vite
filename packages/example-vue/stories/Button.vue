@@ -1,7 +1,7 @@
 <template>
-    <button type="button" :class="classes" @click="onClick" :style="style">
-        {{ label }}
-    </button>
+  <button type="button" :class="classes" @click="onClick" :style="style">
+    {{ label }}
+  </button>
 </template>
 
 <script>
@@ -9,61 +9,61 @@ import './button.css';
 import { reactive, computed } from 'vue';
 
 export default {
-    name: 'my-button',
+  name: 'my-button',
 
-    props: {
-        /**
-         * The label of the button
-         */
-        label: {
-            type: String,
-            required: true,
-        },
-
-        /**
-         * Whether the button is primary
-         */
-        primary: {
-            type: Boolean,
-            default: false,
-        },
-
-        /**
-         * The size of the button
-         */
-        size: {
-            type: String,
-            validator: function (value) {
-                return ['small', 'medium', 'large'].indexOf(value) !== -1;
-            },
-        },
-
-        /**
-         * The background colour of the button
-         */
-        backgroundColor: {
-            type: String,
-        },
+  props: {
+    /**
+     * The label of the button
+     */
+    label: {
+      type: String,
+      required: true,
     },
 
-    emits: ['click'],
-
-    setup(props, { emit }) {
-        props = reactive(props);
-        return {
-            classes: computed(() => ({
-                'storybook-button': true,
-                'storybook-button--primary': props.primary,
-                'storybook-button--secondary': !props.primary,
-                [`storybook-button--${props.size || 'medium'}`]: true,
-            })),
-            style: computed(() => ({
-                backgroundColor: props.backgroundColor,
-            })),
-            onClick() {
-                emit('click');
-            },
-        };
+    /**
+     * Whether the button is primary
+     */
+    primary: {
+      type: Boolean,
+      default: false,
     },
+
+    /**
+     * The size of the button
+     */
+    size: {
+      type: String,
+      validator: function (value) {
+        return ['small', 'medium', 'large'].indexOf(value) !== -1;
+      },
+    },
+
+    /**
+     * The background colour of the button
+     */
+    backgroundColor: {
+      type: String,
+    },
+  },
+
+  emits: ['click'],
+
+  setup(props, { emit }) {
+    props = reactive(props);
+    return {
+      classes: computed(() => ({
+        'storybook-button': true,
+        'storybook-button--primary': props.primary,
+        'storybook-button--secondary': !props.primary,
+        [`storybook-button--${props.size || 'medium'}`]: true,
+      })),
+      style: computed(() => ({
+        backgroundColor: props.backgroundColor,
+      })),
+      onClick() {
+        emit('click');
+      },
+    };
+  },
 };
 </script>

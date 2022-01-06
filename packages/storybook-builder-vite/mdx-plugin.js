@@ -10,15 +10,15 @@ const { createCompiler } = require('@storybook/csf-tools/mdx');
  * @see https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md#csf-stories-with-arbitrary-mdx
  */
 module.exports.mdxPlugin = function () {
-    return mdx((filename) => {
-        const compilers = [];
+  return mdx((filename) => {
+    const compilers = [];
 
-        if (filename.includes('.stories.')) {
-            compilers.push(createCompiler());
-        }
+    if (filename.includes('.stories.')) {
+      compilers.push(createCompiler());
+    }
 
-        return {
-            compilers,
-        };
-    });
+    return {
+      compilers,
+    };
+  });
 };

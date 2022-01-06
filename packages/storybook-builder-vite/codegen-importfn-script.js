@@ -15,7 +15,7 @@ const { normalizePath } = require('vite');
  * @returns {string}
  */
 function toImportPath(relativePath) {
-    return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
+  return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
 }
 
 /**
@@ -27,13 +27,11 @@ function toImportPath(relativePath) {
  * @returns {Promise<string>}
  */
 async function toImportFn(stories) {
-    const objectEntries = stories.map((file) => {
-        return `  '${toImportPath(
-            normalizePath(path.relative(process.cwd(), file))
-        )}': async () => import('/@fs/${file}')`;
-    });
+  const objectEntries = stories.map((file) => {
+    return `  '${toImportPath(normalizePath(path.relative(process.cwd(), file)))}': async () => import('/@fs/${file}')`;
+  });
 
-    return `
+  return `
     const importers = {
       ${objectEntries.join(',\n')}
     };
@@ -44,19 +42,16 @@ async function toImportFn(stories) {
   `;
 }
 
-module.exports.generateImportFnScriptCode =
-    async function generateImportFnScriptCode(options) {
-        // First we need to get an array of stories and their absolute paths.
-        const stories = (
-            await Promise.all(
-                (
-                    await options.presets.apply('stories', [], options)
-                ).map((storyEntry) =>
-                    glob(path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry))
-                )
-            )
-        ).reduce((carry, stories) => carry.concat(stories), []);
+module.exports.generateImportFnScriptCode = async function generateImportFnScriptCode(options) {
+  // First we need to get an array of stories and their absolute paths.
+  const stories = (
+    await Promise.all(
+      (
+        await options.presets.apply('stories', [], options)
+      ).map((storyEntry) => glob(path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry)))
+    )
+  ).reduce((carry, stories) => carry.concat(stories), []);
 
-        // We can then call toImportFn to create a function that can be used to load each story dynamically.
-        return (await toImportFn(stories)).trim();
-    };
+  // We can then call toImportFn to create a function that can be used to load each story dynamically.
+  return (await toImportFn(stories)).trim();
+};

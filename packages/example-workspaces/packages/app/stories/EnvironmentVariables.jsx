@@ -1,4 +1,3 @@
-
 export function EnvironmentVariables() {
   return (
     <div>
@@ -13,5 +12,5 @@ export function EnvironmentVariables() {
       <h1>import . meta . env . ENV_VAR:</h1>
       <div>{import.meta.env.ENV_VAR}</div>
     </div>
-  )
+  );
 }

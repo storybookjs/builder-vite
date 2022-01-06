@@ -1,8 +1,8 @@
-import {EnvironmentVariables} from './EnvironmentVariables';
+import { EnvironmentVariables } from './EnvironmentVariables';
 
 export default {
   title: 'Environment Variables',
-  component: EnvironmentVariables
+  component: EnvironmentVariables,
 };
 
-export const Info = () => <EnvironmentVariables/>;
+export const Info = () => <EnvironmentVariables />;

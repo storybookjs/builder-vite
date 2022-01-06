@@ -1,17 +1,17 @@
 {
-    "name": "example-workspaces",
-    "private": true,
-    "version": "0.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "storybook": "yarn workspace example-workspaces-catalog run storybook",
-        "build-storybook": "yarn workspace example-workspaces-catalog run build-storybook"
-    },
-    "author": "",
-    "license": "MIT",
-    "workspaces": [
-        "packages/app",
-        "packages/catalog"
-    ]
+  "name": "example-workspaces",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "yarn workspace example-workspaces-catalog run storybook",
+    "build-storybook": "yarn workspace example-workspaces-catalog run build-storybook"
+  },
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "packages/app",
+    "packages/catalog"
+  ]
 }

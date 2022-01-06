@@ -1,22 +1,24 @@
 const { loadPreviewOrConfigFile } = require('@storybook/core-common');
 const { normalizePath } = require('vite');
 
-module.exports.generateModernIframeScriptCode =
-    async function generateModernIframeScriptCode(options, { storiesFilename }) {
-        const { presets, configDir } = options;
+module.exports.generateModernIframeScriptCode = async function generateModernIframeScriptCode(
+  options,
+  { storiesFilename }
+) {
+  const { presets, configDir } = options;
 
-        const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
-        const presetEntries = await presets.apply('config', [], options);
-        const configEntries = [...presetEntries, previewOrConfigFile].filter(
-            Boolean
-        ).map(configEntry => `/@fs/${normalizePath(configEntry)}`);
+  const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
+  const presetEntries = await presets.apply('config', [], options);
+  const configEntries = [...presetEntries, previewOrConfigFile]
+    .filter(Boolean)
+    .map((configEntry) => `/@fs/${normalizePath(configEntry)}`);
 
-        /**
-         * This code is largely taken from https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/builder-webpack4/src/preview/virtualModuleModernEntry.js.handlebars
-         * Some small tweaks were made to `getProjectAnnotations` (since `import()` needs to be resolved asynchronously)
-         * and the HMR implementation has been tweaked to work with Vite.
-         */
-        const code = `
+  /**
+   * This code is largely taken from https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/builder-webpack4/src/preview/virtualModuleModernEntry.js.handlebars
+   * Some small tweaks were made to `getProjectAnnotations` (since `import()` needs to be resolved asynchronously)
+   * and the HMR implementation has been tweaked to work with Vite.
+   */
+  const code = `
     import fetch from 'unfetch';
     import global from 'global';
     
@@ -31,7 +33,9 @@ module.exports.generateModernIframeScriptCode =
     const { SERVER_CHANNEL_URL } = global;
     
     const getProjectAnnotations = async () =>
-      composeConfigs(await Promise.all([${configEntries.map(configEntry => `import('${configEntry}')`).join(',\n')}]));
+      composeConfigs(await Promise.all([${configEntries
+        .map((configEntry) => `import('${configEntry}')`)
+        .join(',\n')}]));
     
     const channel = createPostMessageChannel({ page: 'preview' });
     addons.setChannel(channel);
@@ -66,5 +70,5 @@ module.exports.generateModernIframeScriptCode =
       });
     }
     `.trim();
-        return code;
-    };
+  return code;
+};
