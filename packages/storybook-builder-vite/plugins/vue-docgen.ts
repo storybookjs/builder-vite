@@ -1,6 +1,6 @@
 import { parse } from 'vue-docgen-api';
 
-export default function () {
+export function vueDocgen() {
   return {
     name: 'vue-docgen',
 

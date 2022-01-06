@@ -1,3 +1,4 @@
+import { Plugin } from 'vite';
 import { mockCoreJs } from './mock-core-js';
 import { codeGeneratorPlugin } from './code-generator-plugin';
 import { injectExportOrderPlugin } from './inject-export-order-plugin';
@@ -14,12 +15,13 @@ export async function pluginConfig(options, _type) {
     sourceLoaderPlugin(),
     mdxPlugin(),
     injectExportOrderPlugin,
-  ];
+  ] as Plugin[];
   if (framework === 'vue' || framework === 'vue3') {
     try {
       const vuePlugin = require('@vitejs/plugin-vue');
       plugins.push(vuePlugin());
-      plugins.push(require('./plugins/vue-docgen')());
+      const { vueDocgen } = await import('./plugins/vue-docgen');
+      plugins.push(vueDocgen());
     } catch (err) {
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw new Error(
