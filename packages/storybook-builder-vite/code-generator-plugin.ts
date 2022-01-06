@@ -8,7 +8,7 @@ import { generateImportFnScriptCode } from './codegen-importfn-script';
 export function codeGeneratorPlugin(options) {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
-  const iframePath = path.resolve(__dirname, 'input', 'iframe.html');
+  const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId;
 
   // noinspection JSUnusedGlobalSymbols
@@ -67,7 +67,7 @@ export function codeGeneratorPlugin(options) {
       }
 
       if (id === iframeId) {
-        return fs.readFileSync(path.resolve(__dirname, 'input', 'iframe.html'), 'utf-8');
+        return fs.readFileSync(path.resolve(__dirname, '..', 'input', 'iframe.html'), 'utf-8');
       }
     },
     async transformIndexHtml(html, ctx) {

@@ -12,7 +12,7 @@ function iframeMiddleware(options, server) {
       next();
       return;
     }
-    const indexHtml = fs.readFileSync(path.resolve(__dirname, 'input', 'iframe.html'), 'utf-8');
+    const indexHtml = fs.readFileSync(path.resolve(__dirname, '..', 'input', 'iframe.html'), 'utf-8');
     const generated = await transformIframeHtml(indexHtml, options);
     const transformed = await server.transformIndexHtml('/iframe.html', generated);
     res.setHeader('Content-Type', 'text/html');
