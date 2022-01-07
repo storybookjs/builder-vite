@@ -1,12 +1,21 @@
 import * as path from 'path';
 
-export async function getOptimizeDeps(root, options) {
+import type { StoriesEntry } from '@storybook/core-common';
+import type { ExtendedOptions } from './types';
+
+export async function getOptimizeDeps(root: string, { configDir, presets }: ExtendedOptions) {
   const stories = await Promise.all(
     (
-      await options.presets.apply('stories', [], options)
-    ).map((storyEntry) =>
-      path.relative(root, path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry))
+      await presets.apply<Promise<StoriesEntry[]>>('stories')
     )
+      .map((storiesEntry) => {
+        const files = typeof storiesEntry === 'string' ? storiesEntry : storiesEntry.files;
+        if (!files) {
+          return undefined;
+        }
+        return path.relative(root, path.isAbsolute(files) ? files : path.join(configDir, files));
+      })
+      .filter((path): path is string => typeof path !== 'undefined')
   );
 
   return {

@@ -2,7 +2,7 @@ import { promise as glob } from 'glob-promise';
 import * as path from 'path';
 import { normalizePath } from 'vite';
 
-import type { Options } from '@storybook/core-common';
+import type { Options, StoriesEntry } from '@storybook/core-common';
 
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
@@ -40,13 +40,19 @@ async function toImportFn(stories: string[]) {
   `;
 }
 
-export async function generateImportFnScriptCode(options: Options) {
+export async function generateImportFnScriptCode({ configDir, presets }: Options) {
   // First we need to get an array of stories and their absolute paths.
   const stories = (
     await Promise.all(
       (
-        await options.presets.apply('stories', [], options)
-      ).map((storyEntry) => glob(path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry)))
+        await presets.apply<Promise<StoriesEntry[]>>('stories')
+      ).map((storiesEntry) => {
+        const files = typeof storiesEntry === 'string' ? storiesEntry : storiesEntry.files;
+        if (!files) {
+          return [] as string[];
+        }
+        return glob(path.isAbsolute(files) ? files : path.join(configDir, files));
+      })
     )
   ).reduce((carry, stories) => carry.concat(stories), []);
 
