@@ -12,9 +12,6 @@ import type { Options } from '@storybook/core-common';
  * Paths get passed either with no leading './' - e.g. `src/Foo.stories.js`,
  * or with a leading `../` (etc), e.g. `../src/Foo.stories.js`.
  * We want to deal in importPaths relative to the working dir, so we normalize
- *
- * @param {string} relativePath
- * @returns {string}
  */
 function toImportPath(relativePath: string) {
   return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
@@ -26,7 +23,6 @@ function toImportPath(relativePath: string) {
  * to delay loading. It then creates a function, `importFn(path)`, which resolves a path to an import
  * function and this is called by Storybook to fetch a story dynamically when needed.
  * @param stories An array of absolute story paths.
- * @returns {Promise<string>}
  */
 async function toImportFn(stories: string[]) {
   const objectEntries = stories.map((file) => {
