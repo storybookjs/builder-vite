@@ -39,6 +39,9 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
       // to serve iframe.html. The reason is that Vite's dev server (at the time of writing)
       // does not support virtual files as entry points.
       if (command === 'build') {
+        if (!config.build) {
+          config.build = {};
+        }
         config.build.rollupOptions = {
           input: iframePath,
         };
