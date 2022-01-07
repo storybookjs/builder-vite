@@ -30,7 +30,7 @@ export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPre
       if (
         allowedEnvVariables.includes(key) ||
         (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.startsWith(prefix))) ||
-        key.startsWith(envPrefix)
+        (typeof envPrefix === 'string' && key.startsWith(envPrefix))
       ) {
         acc[`import.meta.env.${key}`] = JSON.stringify(value);
         updatedRaw[key] = value;
