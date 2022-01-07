@@ -8,6 +8,9 @@ export const injectExportOrderPlugin = {
     if (!/\.stories\.([tj])sx?$/.test(id)) {
       return;
     }
+    // TODO: Maybe convert `injectExportOrderPlugin` to function that returns object,
+    //  and run `await init;` once and then call `parse()` without `await`,
+    //  instead of calling `await parse()` every time.
     const [, exports] = await parse(code);
 
     if (exports.includes('__namedExportsOrder')) {
