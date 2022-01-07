@@ -1,22 +1,12 @@
 import * as path from 'path';
+import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
 
-import type { StoriesEntry } from '@storybook/core-common';
 import type { ExtendedOptions } from './types';
 
-export async function getOptimizeDeps(root: string, { configDir, presets }: ExtendedOptions) {
-  const stories = await Promise.all(
-    (
-      await presets.apply<Promise<StoriesEntry[]>>('stories')
-    )
-      .map((storiesEntry) => {
-        const files = typeof storiesEntry === 'string' ? storiesEntry : storiesEntry.files;
-        if (!files) {
-          return undefined;
-        }
-        return path.relative(root, path.isAbsolute(files) ? files : path.join(configDir, files));
-      })
-      .filter((path): path is string => typeof path !== 'undefined')
-  );
+export async function getOptimizeDeps(root: string, options: ExtendedOptions) {
+  const absoluteStories = await listStories(options);
+  const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
 
   return {
     // We don't need to resolve the glob since vite supports globs for entries.

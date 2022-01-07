@@ -1,9 +1,7 @@
-import * as path from 'path';
-import { promise as glob } from 'glob-promise';
-import { normalizePath } from 'vite';
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
+import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
 
-import type { StoriesEntry } from '@storybook/core-common';
 import type { ExtendedOptions } from './types';
 
 // This is somewhat of a hack; the problem is that previewEntries resolves to
@@ -25,19 +23,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
 
-  const storyEntries = (
-    await Promise.all(
-      (
-        await presets.apply<Promise<StoriesEntry[]>>('stories')
-      ).map((storiesEntry) => {
-        const files = typeof storiesEntry === 'string' ? storiesEntry : storiesEntry.files;
-        if (!files) {
-          return [] as string[];
-        }
-        return glob(path.isAbsolute(files) ? files : path.join(configDir, files));
-      })
-    )
-  ).reduce((carry, stories) => carry.concat(stories), []);
+  const storyEntries = await listStories(options);
 
   const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');

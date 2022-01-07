@@ -1,8 +1,8 @@
-import { promise as glob } from 'glob-promise';
 import * as path from 'path';
 import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
 
-import type { Options, StoriesEntry } from '@storybook/core-common';
+import type { Options } from '@storybook/core-common';
 
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
@@ -40,21 +40,9 @@ async function toImportFn(stories: string[]) {
   `;
 }
 
-export async function generateImportFnScriptCode({ configDir, presets }: Options) {
+export async function generateImportFnScriptCode(options: Options) {
   // First we need to get an array of stories and their absolute paths.
-  const stories = (
-    await Promise.all(
-      (
-        await presets.apply<Promise<StoriesEntry[]>>('stories')
-      ).map((storiesEntry) => {
-        const files = typeof storiesEntry === 'string' ? storiesEntry : storiesEntry.files;
-        if (!files) {
-          return [] as string[];
-        }
-        return glob(path.isAbsolute(files) ? files : path.join(configDir, files));
-      })
-    )
-  ).reduce((carry, stories) => carry.concat(stories), []);
+  const stories = await listStories(options);
 
   // We can then call toImportFn to create a function that can be used to load each story dynamically.
   return (await toImportFn(stories)).trim();
