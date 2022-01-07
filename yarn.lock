@@ -4200,12 +4200,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^1.2.4":
-  version: 1.2.4
-  resolution: "@vitejs/plugin-vue@npm:1.2.4"
+"@vitejs/plugin-vue@npm:^1.10.2":
+  version: 1.10.2
+  resolution: "@vitejs/plugin-vue@npm:1.10.2"
   peerDependencies:
-    "@vue/compiler-sfc": ^3.0.8
-  checksum: d8855a9f93b174145d500467188ebd78e7c08d1972766acf11d807a47aa218c7d37ee084c9fdb24c29abec532c975d655da871538e7ce9607503422087029965
+    vite: ^2.5.10
+  checksum: 7cffcf10f865ba30e380a64eff5aeb69e828905833ae85a1621523d76b7de38a66549deeefecd05788919e0e31aba155d734f67fd97542a6d77046f89ae86c8c
   languageName: node
   linkType: hard
 
@@ -7808,7 +7808,7 @@ __metadata:
     "@storybook/addon-a11y": ^6.4.0
     "@storybook/addon-essentials": ^6.4.0
     "@storybook/vue3": ^6.4.0
-    "@vitejs/plugin-vue": ^1.2.4
+    "@vitejs/plugin-vue": ^1.10.2
     storybook-builder-vite: "workspace:*"
     vite: 2.7.0
     vue: ^3.1.4
