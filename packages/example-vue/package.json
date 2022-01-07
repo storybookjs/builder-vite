@@ -1,24 +1,24 @@
 {
-    "name": "example-vue",
-    "private": true,
-    "version": "0.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "storybook": "start-storybook",
-        "build-storybook": "build-storybook"
-    },
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "vue": "^3.1.4"
-    },
-    "devDependencies": {
-        "@storybook/addon-a11y": "^6.4.0",
-        "@storybook/addon-essentials": "^6.4.0",
-        "@storybook/vue3": "^6.4.0",
-        "@vitejs/plugin-vue": "^1.2.4",
-        "storybook-builder-vite": "workspace:*",
-        "vite": "2.7.0"
-    }
+  "name": "example-vue",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.1.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^6.4.0",
+    "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/vue3": "^6.4.0",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "storybook-builder-vite": "workspace:*",
+    "vite": "2.7.0"
+  }
 }

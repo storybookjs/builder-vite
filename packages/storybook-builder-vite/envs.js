@@ -1,4 +1,4 @@
-const { stringifyEnvs } = require('@storybook/core-common')
+const { stringifyEnvs } = require('@storybook/core-common');
 
 // Allowed env variables on the client
 const allowedEnvVariables = [
@@ -13,10 +13,7 @@ const allowedEnvVariables = [
 ];
 
 // Env variables starts with env prefix will be exposed to your client source code via `import.meta.env`
-module.exports.allowedEnvPrefix = [
-  'VITE_',
-  'STORYBOOK_'
-];
+module.exports.allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
 
 /**
  * Customized version of stringifyProcessEnvs from @storybook/core-common which
@@ -29,11 +26,11 @@ module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPref
   const envs = Object.entries(raw).reduce(
     (acc, [key, value]) => {
       // Only add allowed values OR values from array OR string started with allowed prefixes
-      if (allowedEnvVariables.includes(key)
-        || (
-          (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.startsWith(prefix)))
-          || key.startsWith(envPrefix)
-        )) {
+      if (
+        allowedEnvVariables.includes(key) ||
+        (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.startsWith(prefix))) ||
+        key.startsWith(envPrefix)
+      ) {
         acc[`import.meta.env.${key}`] = JSON.stringify(value);
         updatedRaw[key] = value;
       }
@@ -49,4 +46,4 @@ module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPref
   envs['import.meta.env'] = JSON.stringify(stringifyEnvs(updatedRaw));
 
   return envs;
-}
+};

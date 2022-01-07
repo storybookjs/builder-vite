@@ -2,7 +2,7 @@ import EnvironmentVariables from './EnvironmentVariables.vue';
 
 export default {
   title: 'Environment Variables',
-  component: EnvironmentVariables
+  component: EnvironmentVariables,
 };
 
 export const Info = () => ({

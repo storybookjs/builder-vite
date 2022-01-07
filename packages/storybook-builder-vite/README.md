@@ -2,7 +2,7 @@
 
 Requirements:
 
--   Vite 2.5 or newer
+- Vite 2.5 or newer
 
 NB! This code is still very experimental! Have a look at the GitHub issues
 for known bugs. If you find any new bugs, feel free to create an issue
@@ -46,14 +46,14 @@ you can override the Vite config:
 
 ```javascript
 module.exports = {
-    async viteFinal(config, { configType }) {
-        // customize the Vite config here
-        config.resolve.alias.foo = 'bar';
+  async viteFinal(config, { configType }) {
+    // customize the Vite config here
+    config.resolve.alias.foo = 'bar';
 
-        // return the customized config
-        return config;
-    },
-    // ... other options here
+    // return the customized config
+    return config;
+  },
+  // ... other options here
 };
 ```
 
@@ -75,13 +75,13 @@ can contain a `svelteOptions` object to pass custom options to
 const preprocess = require('svelte-preprocess');
 
 module.exports = {
-    svelteOptions: {
-        preprocess: preprocess({
-            typescript: true,
-            postcss: true,
-            sourceMap: true,
-        }),
-    },
+  svelteOptions: {
+    preprocess: preprocess({
+      typescript: true,
+      postcss: true,
+      sourceMap: true,
+    }),
+  },
 };
 ```
 
