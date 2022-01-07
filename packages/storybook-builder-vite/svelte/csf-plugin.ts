@@ -6,7 +6,7 @@ const parser = require.resolve('@storybook/addon-svelte-csf/dist/esm/parser/coll
 export default {
   name: 'storybook-addon-svelte-csf',
   enforce: 'post',
-  transform(code, id) {
+  transform(code: string, id: string) {
     if (/.stories.svelte/.test(id)) {
       const component = getNameFromFilename(id);
       const source = readFileSync(id).toString();

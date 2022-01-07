@@ -4,7 +4,7 @@ export const injectExportOrderPlugin = {
   name: 'storybook-vite-inject-export-order-plugin',
   // This should only run after the typescript has been transpiled
   enforce: 'post',
-  async transform(code, id) {
+  async transform(code: string, id: string) {
     if (!/\.stories\.([tj])sx?$/.test(id)) {
       return;
     }

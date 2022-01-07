@@ -3,14 +3,16 @@ import { promise as glob } from 'glob-promise';
 import { normalizePath } from 'vite';
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 
+import type { ExtendedOptions } from './types';
+
 // This is somewhat of a hack; the problem is that previewEntries resolves to
 // the CommonJS imports, probably because require.resolve in Node.js land leads
 // to that. For Vite, we need the ESM modules.
-function replaceCJStoESMPath(entryPath) {
+function replaceCJStoESMPath(entryPath: string) {
   return entryPath.replace('/cjs/', '/esm/');
 }
 
-export async function generateIframeScriptCode(options) {
+export async function generateIframeScriptCode(options: ExtendedOptions) {
   const { presets, configDir, framework, frameworkPath } = options;
   const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
 
@@ -28,10 +30,10 @@ export async function generateIframeScriptCode(options) {
     )
   ).reduce((carry, stories) => carry.concat(stories), []);
 
-  const absoluteFilesToImport = (files, name) =>
+  const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
 
-  const importArray = (name, length) =>
+  const importArray = (name: string, length: number) =>
     `[${new Array(length)
       .fill(0)
       .map((_, i) => `${name}_${i}`)

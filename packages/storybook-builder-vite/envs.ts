@@ -1,5 +1,8 @@
 import { stringifyEnvs } from '@storybook/core-common';
 
+import type { EnvsRaw } from './types';
+import type { UserConfig } from 'vite';
+
 // Allowed env variables on the client
 const allowedEnvVariables = [
   'STORYBOOK',
@@ -21,10 +24,10 @@ export const allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
  * @param {Object<string, string>} raw
  * @param {string[]|string} envPrefix
  */
-export function stringifyProcessEnvs(raw, envPrefix) {
-  const updatedRaw = {};
+export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPrefix']) {
+  const updatedRaw: EnvsRaw = {};
   const envs = Object.entries(raw).reduce(
-    (acc, [key, value]) => {
+    (acc: EnvsRaw, [key, value]) => {
       // Only add allowed values OR values from array OR string started with allowed prefixes
       if (
         allowedEnvVariables.includes(key) ||

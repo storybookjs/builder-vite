@@ -5,11 +5,14 @@ import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
 import { generateImportFnScriptCode } from './codegen-importfn-script';
 
-export function codeGeneratorPlugin(options) {
+import type { Plugin } from 'vite';
+import type { ExtendedOptions } from './types';
+
+export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
-  let iframeId;
+  let iframeId: string;
 
   // noinspection JSUnusedGlobalSymbols
   return {

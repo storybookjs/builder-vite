@@ -4,7 +4,11 @@ import { getOptimizeDeps } from './optimizeDeps';
 import { createServer } from 'vite';
 import { pluginConfig } from './vite-config';
 
-export async function createViteServer(options, devServer) {
+import type { Server } from 'http';
+import type { UserConfig } from 'vite';
+import type { EnvsRaw, ExtendedOptions } from './types';
+
+export async function createViteServer(options: ExtendedOptions, devServer: Server) {
   const { port, presets } = options;
   const root = path.resolve(options.configDir, '..');
 
@@ -30,11 +34,11 @@ export async function createViteServer(options, devServer) {
     },
     plugins: await pluginConfig(options, 'development'),
     optimizeDeps: await getOptimizeDeps(root, options),
-  };
+  } as UserConfig;
 
   const finalConfig = await presets.apply('viteFinal', defaultConfig, options);
 
-  const envsRaw = await presets.apply('env');
+  const envsRaw = await presets.apply<Promise<EnvsRaw>>('env');
   // Stringify env variables after getting `envPrefix` from the final config
   const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
   // Update `define`

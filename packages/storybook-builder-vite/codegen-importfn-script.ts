@@ -2,6 +2,8 @@ import { promise as glob } from 'glob-promise';
 import * as path from 'path';
 import { normalizePath } from 'vite';
 
+import type { Options } from '@storybook/core-common';
+
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
  */
@@ -14,7 +16,7 @@ import { normalizePath } from 'vite';
  * @param {string} relativePath
  * @returns {string}
  */
-function toImportPath(relativePath) {
+function toImportPath(relativePath: string) {
   return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
 }
 
@@ -26,7 +28,7 @@ function toImportPath(relativePath) {
  * @param stories An array of absolute story paths.
  * @returns {Promise<string>}
  */
-async function toImportFn(stories) {
+async function toImportFn(stories: string[]) {
   const objectEntries = stories.map((file) => {
     return `  '${toImportPath(normalizePath(path.relative(process.cwd(), file)))}': async () => import('/@fs/${file}')`;
   });
@@ -42,7 +44,7 @@ async function toImportFn(stories) {
   `;
 }
 
-export async function generateImportFnScriptCode(options) {
+export async function generateImportFnScriptCode(options: Options) {
   // First we need to get an array of stories and their absolute paths.
   const stories = (
     await Promise.all(

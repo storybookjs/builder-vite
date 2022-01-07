@@ -3,7 +3,10 @@ import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
 import { pluginConfig } from './vite-config';
 import { build as viteBuild } from 'vite';
 
-export async function build(options) {
+import type { UserConfig } from 'vite';
+import type { EnvsRaw, ExtendedOptions } from './types';
+
+export async function build(options: ExtendedOptions) {
   const { presets } = options;
 
   const config = {
@@ -22,11 +25,11 @@ export async function build(options) {
       },
     },
     plugins: await pluginConfig(options, 'build'),
-  };
+  } as UserConfig;
 
   const finalConfig = await presets.apply('viteFinal', config, options);
 
-  const envsRaw = await presets.apply('env');
+  const envsRaw = await presets.apply<Promise<EnvsRaw>>('env');
   // Stringify env variables after getting `envPrefix` from the final config
   const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
   // Update `define`

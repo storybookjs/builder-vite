@@ -6,7 +6,16 @@ import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
 
-function iframeMiddleware(options, server) {
+import type { Builder } from '@storybook/core-common';
+import type { RequestHandler, Request, Response } from 'express';
+import type { UserConfig, ViteDevServer } from 'vite';
+import type { ExtendedOptions } from './types';
+
+export interface ViteStats {}
+
+export type ViteBuilder = Builder<UserConfig, ViteStats>;
+
+function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
     if (!req.url.match(/^\/iframe.html($|\?)/)) {
       next();
@@ -20,22 +29,22 @@ function iframeMiddleware(options, server) {
   };
 }
 
-export async function start({ startTime, options, router, server: devServer }) {
-  const server = await createViteServer(options, devServer);
+export const start: ViteBuilder['start'] = async ({ startTime, options, router, server: devServer }) => {
+  const server = await createViteServer(options as ExtendedOptions, devServer);
 
   // Just mock this endpoint (which is really Webpack-specific) so we don't get spammed with 404 in browser devtools
   // TODO: we should either show some sort of progress from Vite, or just try to disable the whole Loader in the Manager UI.
-  router.get('/progress', (req, res) => {
+  router.get('/progress', (req: Request, res: Response) => {
     res.header('Cache-Control', 'no-cache');
     res.header('Content-Type', 'text/event-stream');
   });
 
-  router.use(await iframeMiddleware(options, server));
+  router.use(await iframeMiddleware(options as ExtendedOptions, server));
   router.use(server.middlewares);
 
-  function bail(e) {
+  function bail(e?: Error) {
     try {
-      server.close();
+      return server.close();
     } catch (err) {
       console.warn('unable to close vite server');
     }
@@ -45,13 +54,14 @@ export async function start({ startTime, options, router, server: devServer }) {
 
   return {
     bail,
+    stats: {} as ViteStats,
     totalTime: process.hrtime(startTime),
   };
-}
+};
 
-export async function build({ options }) {
-  return viteBuild(options);
-}
+export const build: ViteBuilder['build'] = async ({ options }) => {
+  return viteBuild(options as ExtendedOptions);
+};
 
 export const corePresets = [];
 export const previewPresets = [];

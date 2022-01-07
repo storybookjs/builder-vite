@@ -5,7 +5,11 @@ import { injectExportOrderPlugin } from './inject-export-order-plugin';
 import { mdxPlugin } from './mdx-plugin';
 import { sourceLoaderPlugin } from './source-loader-plugin';
 
-export async function pluginConfig(options, _type) {
+import type { ExtendedOptions } from './types';
+
+export type PluginConfigType = 'build' | 'development';
+
+export async function pluginConfig(options: ExtendedOptions, _type: PluginConfigType) {
   const { framework } = options;
   const svelteOptions = await options.presets.apply('svelteOptions', {}, options);
 
@@ -23,7 +27,7 @@ export async function pluginConfig(options, _type) {
       const { vueDocgen } = await import('./plugins/vue-docgen');
       plugins.push(vueDocgen());
     } catch (err) {
-      if (err.code !== 'MODULE_NOT_FOUND') {
+      if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
           'storybook-builder-vite requires @vitejs/plugin-vue to be installed ' +
             'when using @storybook/vue or @storybook/vue3.' +
@@ -38,7 +42,7 @@ export async function pluginConfig(options, _type) {
       const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte;
       plugins.push(sveltePlugin(svelteOptions));
     } catch (err) {
-      if (err.code !== 'MODULE_NOT_FOUND') {
+      if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
           'storybook-builder-vite requires @sveltejs/vite-plugin-svelte to be installed when using @storybook/svelte.' +
             '  Please install it and start storybook again.'
@@ -51,7 +55,7 @@ export async function pluginConfig(options, _type) {
       const csfPlugin = require('./svelte/csf-plugin');
       plugins.push(csfPlugin);
     } catch (err) {
-      if (err.code !== 'MODULE_NOT_FOUND') {
+      if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
           'storybook-builder-vite requires @storybook/addon-svelte-csf to be installed when using @storybook/svelte.' +
             '  Please install it and start storybook again.'
