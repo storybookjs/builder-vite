@@ -1,16 +1,17 @@
-const path = require('path');
-const glob = require('glob-promise');
-const { normalizePath } = require('vite');
-const { loadPreviewOrConfigFile } = require('@storybook/core-common');
+import { loadPreviewOrConfigFile } from '@storybook/core-common';
+import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
+
+import type { ExtendedOptions } from './types';
 
 // This is somewhat of a hack; the problem is that previewEntries resolves to
 // the CommonJS imports, probably because require.resolve in Node.js land leads
 // to that. For Vite, we need the ESM modules.
-function replaceCJStoESMPath(entryPath) {
+function replaceCJStoESMPath(entryPath: string) {
   return entryPath.replace('/cjs/', '/esm/');
 }
 
-module.exports.generateIframeScriptCode = async function generateIframeScriptCode(options) {
+export async function generateIframeScriptCode(options: ExtendedOptions) {
   const { presets, configDir, framework, frameworkPath } = options;
   const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
 
@@ -22,16 +23,12 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
 
-  const storyEntries = (
-    await Promise.all(
-      (await presets.apply('stories')).map((g) => glob(path.isAbsolute(g) ? g : path.join(configDir, g)))
-    )
-  ).reduce((carry, stories) => carry.concat(stories), []);
+  const storyEntries = await listStories(options);
 
-  const absoluteFilesToImport = (files, name) =>
+  const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
 
-  const importArray = (name, length) =>
+  const importArray = (name: string, length: number) =>
     `[${new Array(length)
       .fill(0)
       .map((_, i) => `${name}_${i}`)
@@ -109,4 +106,4 @@ module.exports.generateIframeScriptCode = async function generateIframeScriptCod
     )}.filter(el => el.default), { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
     `.trim();
   return code;
-};
+}

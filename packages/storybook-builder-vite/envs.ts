@@ -1,4 +1,7 @@
-const { stringifyEnvs } = require('@storybook/core-common');
+import { stringifyEnvs } from '@storybook/core-common';
+
+import type { EnvsRaw } from './types';
+import type { UserConfig } from 'vite';
 
 // Allowed env variables on the client
 const allowedEnvVariables = [
@@ -13,23 +16,21 @@ const allowedEnvVariables = [
 ];
 
 // Env variables starts with env prefix will be exposed to your client source code via `import.meta.env`
-module.exports.allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
+export const allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
 
 /**
  * Customized version of stringifyProcessEnvs from @storybook/core-common which
  * uses import.meta.env instead of process.env and checks for allowed variables.
- * @param {Object<string, string>} raw
- * @param {string[]|string} envPrefix
  */
-module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPrefix) {
-  const updatedRaw = {};
+export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPrefix']) {
+  const updatedRaw: EnvsRaw = {};
   const envs = Object.entries(raw).reduce(
-    (acc, [key, value]) => {
+    (acc: EnvsRaw, [key, value]) => {
       // Only add allowed values OR values from array OR string started with allowed prefixes
       if (
         allowedEnvVariables.includes(key) ||
         (Array.isArray(envPrefix) && !!envPrefix.find((prefix) => key.startsWith(prefix))) ||
-        key.startsWith(envPrefix)
+        (typeof envPrefix === 'string' && key.startsWith(envPrefix))
       ) {
         acc[`import.meta.env.${key}`] = JSON.stringify(value);
         updatedRaw[key] = value;
@@ -46,4 +47,4 @@ module.exports.stringifyProcessEnvs = function stringifyProcessEnvs(raw, envPref
   envs['import.meta.env'] = JSON.stringify(stringifyEnvs(updatedRaw));
 
   return envs;
-};
+}

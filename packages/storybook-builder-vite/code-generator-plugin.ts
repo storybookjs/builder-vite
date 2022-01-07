@@ -1,15 +1,18 @@
-const fs = require('fs');
-const path = require('path');
-const { transformIframeHtml } = require('./transform-iframe-html');
-const { generateIframeScriptCode } = require('./codegen-iframe-script');
-const { generateModernIframeScriptCode } = require('./codegen-modern-iframe-script');
-const { generateImportFnScriptCode } = require('./codegen-importfn-script');
+import * as fs from 'fs';
+import * as path from 'path';
+import { transformIframeHtml } from './transform-iframe-html';
+import { generateIframeScriptCode } from './codegen-iframe-script';
+import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
+import { generateImportFnScriptCode } from './codegen-importfn-script';
 
-module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
+import type { Plugin } from 'vite';
+import type { ExtendedOptions } from './types';
+
+export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
-  const iframePath = path.resolve(__dirname, 'input', 'iframe.html');
-  let iframeId;
+  const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
+  let iframeId: string;
 
   // noinspection JSUnusedGlobalSymbols
   return {
@@ -18,7 +21,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
     configureServer(server) {
       // invalidate the whole vite-app.js script on every file change.
       // (this might be a little too aggressive?)
-      server.watcher.on('change', () => {
+      server.watcher.on('change', (_e) => {
         const { moduleGraph } = server;
         const appModule = moduleGraph.getModuleById(virtualFileId);
         if (appModule) {
@@ -36,6 +39,9 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
       // to serve iframe.html. The reason is that Vite's dev server (at the time of writing)
       // does not support virtual files as entry points.
       if (command === 'build') {
+        if (!config.build) {
+          config.build = {};
+        }
         config.build.rollupOptions = {
           input: iframePath,
         };
@@ -67,7 +73,7 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
       }
 
       if (id === iframeId) {
-        return fs.readFileSync(path.resolve(__dirname, 'input', 'iframe.html'), 'utf-8');
+        return fs.readFileSync(path.resolve(__dirname, '..', 'input', 'iframe.html'), 'utf-8');
       }
     },
     async transformIndexHtml(html, ctx) {
@@ -77,4 +83,4 @@ module.exports.codeGeneratorPlugin = function codeGeneratorPlugin(options) {
       return transformIframeHtml(html, options);
     },
   };
-};
+}

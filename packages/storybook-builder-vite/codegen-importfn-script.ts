@@ -1,6 +1,8 @@
-const glob = require('glob-promise');
-const path = require('path');
-const { normalizePath } = require('vite');
+import * as path from 'path';
+import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
+
+import type { Options } from '@storybook/core-common';
 
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
@@ -10,11 +12,8 @@ const { normalizePath } = require('vite');
  * Paths get passed either with no leading './' - e.g. `src/Foo.stories.js`,
  * or with a leading `../` (etc), e.g. `../src/Foo.stories.js`.
  * We want to deal in importPaths relative to the working dir, so we normalize
- *
- * @param {string} relativePath
- * @returns {string}
  */
-function toImportPath(relativePath) {
+function toImportPath(relativePath: string) {
   return relativePath.startsWith('../') ? relativePath : `./${relativePath}`;
 }
 
@@ -24,9 +23,8 @@ function toImportPath(relativePath) {
  * to delay loading. It then creates a function, `importFn(path)`, which resolves a path to an import
  * function and this is called by Storybook to fetch a story dynamically when needed.
  * @param stories An array of absolute story paths.
- * @returns {Promise<string>}
  */
-async function toImportFn(stories) {
+async function toImportFn(stories: string[]) {
   const objectEntries = stories.map((file) => {
     return `  '${toImportPath(normalizePath(path.relative(process.cwd(), file)))}': async () => import('/@fs/${file}')`;
   });
@@ -42,16 +40,10 @@ async function toImportFn(stories) {
   `;
 }
 
-module.exports.generateImportFnScriptCode = async function generateImportFnScriptCode(options) {
+export async function generateImportFnScriptCode(options: Options) {
   // First we need to get an array of stories and their absolute paths.
-  const stories = (
-    await Promise.all(
-      (
-        await options.presets.apply('stories', [], options)
-      ).map((storyEntry) => glob(path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry)))
-    )
-  ).reduce((carry, stories) => carry.concat(stories), []);
+  const stories = await listStories(options);
 
   // We can then call toImportFn to create a function that can be used to load each story dynamically.
   return (await toImportFn(stories)).trim();
-};
+}

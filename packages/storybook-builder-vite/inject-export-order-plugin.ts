@@ -1,13 +1,16 @@
-const { parse } = require('es-module-lexer');
+import { parse } from 'es-module-lexer';
 
-module.exports.injectExportOrderPlugin = {
+export const injectExportOrderPlugin = {
   name: 'storybook-vite-inject-export-order-plugin',
   // This should only run after the typescript has been transpiled
   enforce: 'post',
-  async transform(code, id) {
+  async transform(code: string, id: string) {
     if (!/\.stories\.([tj])sx?$/.test(id)) {
       return;
     }
+    // TODO: Maybe convert `injectExportOrderPlugin` to function that returns object,
+    //  and run `await init;` once and then call `parse()` without `await`,
+    //  instead of calling `await parse()` every time.
     const [, exports] = await parse(code);
 
     if (exports.includes('__namedExportsOrder')) {

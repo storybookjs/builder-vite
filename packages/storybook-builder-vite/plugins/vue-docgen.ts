@@ -1,10 +1,10 @@
-const { parse } = require('vue-docgen-api');
+import { parse } from 'vue-docgen-api';
 
-module.exports = function () {
+export function vueDocgen() {
   return {
     name: 'vue-docgen',
 
-    async transform(src, id) {
+    async transform(src: string, id: string) {
       if (/\.(vue)$/.test(id)) {
         const metaData = await parse(id);
         const metaSource = JSON.stringify(metaData);
@@ -13,4 +13,4 @@ module.exports = function () {
       }
     },
   };
-};
+}

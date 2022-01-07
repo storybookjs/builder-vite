@@ -7,6 +7,8 @@
     "node": ">=16.0.0"
   },
   "scripts": {
+    "start": "cd packages/storybook-builder-vite && tsc -w",
+    "prepublish": "cd packages/storybook-builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --write .",
     "lint:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",

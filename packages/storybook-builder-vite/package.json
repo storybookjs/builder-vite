@@ -2,7 +2,8 @@
   "name": "storybook-builder-vite",
   "version": "0.1.13",
   "description": "An experimental plugin to run and build Storybooks with Vite",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Eirik Sletteberg",
   "license": "MIT",
   "repository": {
@@ -22,9 +23,11 @@
     "vite-plugin-mdx": "^3.5.6"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
     "vue-docgen-api": "^4.40.0"
   },
   "peerDependencies": {
+    "@storybook/core-common": "^6.4.3",
     "vite": ">=2.6.7"
   }
 }

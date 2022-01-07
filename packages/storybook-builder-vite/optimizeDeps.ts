@@ -1,12 +1,12 @@
-const path = require('path');
-module.exports.getOptimizeDeps = async (root, options) => {
-  const stories = await Promise.all(
-    (
-      await options.presets.apply('stories', [], options)
-    ).map((storyEntry) =>
-      path.relative(root, path.isAbsolute(storyEntry) ? storyEntry : path.join(options.configDir, storyEntry))
-    )
-  );
+import * as path from 'path';
+import { normalizePath } from 'vite';
+import { listStories } from './list-stories';
+
+import type { ExtendedOptions } from './types';
+
+export async function getOptimizeDeps(root: string, options: ExtendedOptions) {
+  const absoluteStories = await listStories(options);
+  const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
 
   return {
     // We don't need to resolve the glob since vite supports globs for entries.
@@ -105,4 +105,4 @@ module.exports.getOptimizeDeps = async (root, options) => {
       }
     }),
   };
-};
+}
