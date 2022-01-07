@@ -1,7 +1,7 @@
 import * as path from 'path';
+import { createServer } from 'vite';
 import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
 import { getOptimizeDeps } from './optimizeDeps';
-import { createServer } from 'vite';
 import { pluginConfig } from './vite-config';
 
 import type { Server } from 'http';

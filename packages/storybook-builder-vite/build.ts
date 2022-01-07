@@ -1,7 +1,7 @@
 import * as path from 'path';
+import { build as viteBuild } from 'vite';
 import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
 import { pluginConfig } from './vite-config';
-import { build as viteBuild } from 'vite';
 
 import type { UserConfig } from 'vite';
 import type { EnvsRaw, ExtendedOptions } from './types';
