@@ -15,24 +15,24 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
 
-    - name: npm / registry setup ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-        registry-url: https://registry.npmjs.org/
+      - name: npm / registry setup ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
 
-    - name: install, build, and test
-      run: |
-        yarn install
-        yarn prepublish
-        yarn workspaces foreach -p run build-storybook
-      env:
-        CI: true
+      - name: install, build, and test
+        run: |
+          yarn install
+          yarn prepublish
+          yarn workspaces foreach -p run build-storybook
+        env:
+          CI: true
 
-    - name: Publish if version is new
-      continue-on-error: true
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Publish if version is new
+        continue-on-error: true
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
