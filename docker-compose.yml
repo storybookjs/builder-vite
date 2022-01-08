@@ -1,0 +1,51 @@
+version: '3'
+
+volumes:
+  # Share `node_modules` directory between containers
+  node_modules:
+
+services:
+  # Based on the `Build examples` GitHub Workflow, used for emulation of GitHub Actions
+  ci:
+    image: node:lts-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - node_modules:/app/node_modules
+    environment:
+      # Enable source maps for tracing an error stack trace to a TypeScript source
+      - NODE_OPTIONS=${NODE_OPTIONS:---enable-source-maps}
+      # Run `build-storybook` in parallel for all examples, disabled by default
+      - PARALLEL=${PARALLEL:-false}
+    # language=sh
+    command: |
+      /bin/sh -c '
+      yarn
+      yarn lint-ci
+      yarn prepublish
+
+      if [ "$$PARALLEL" = true ] ; then
+        yarn workspaces foreach run --parallel build-storybook  
+      else
+        yarn workspaces foreach run build-storybook
+      fi
+      '
+  # Storybook example
+  example:
+    image: node:lts-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - node_modules:/app/node_modules
+    environment:
+      - NAME=${NAME:-vue}
+      - NODE_OPTIONS=${NODE_OPTIONS:---enable-source-maps}
+      - PORT=${PORT:-7707}
+    ports:
+      - 127.0.0.1:${PORT:-7707}:${PORT:-7707}
+    # language=sh
+    command: |
+      /bin/sh -c '
+      yarn
+      yarn workspace example-$$NAME storybook -p $$PORT
+      '
