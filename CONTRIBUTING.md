@@ -4,10 +4,12 @@
 
 - [Node.js][n] 16+;
 - [Git][g];
+- [Docker Desktop][d];
 - IDE.
 
 [n]: https://nodejs.org/
 [g]: https://git-scm.com/
+[d]: https://www.docker.com/products/docker-desktop
 
 ## Setup
 
@@ -67,3 +69,55 @@ Run before committing changes:
 ```
 yarn lint
 ```
+
+## Docker
+
+We're using Docker Compose for running code as service in an isolated GNU/Linux environment.
+
+For exit from a running service you need press <kbd>Ctrl</kbd> + <kbd>C</kbd> or <kbd>⌘</kbd> + <kbd>C</kbd>.
+
+### Run Storybook example in Docker
+
+You need run `yarn start` first, then in another Terminal run:
+
+```
+yarn docker:NAME
+```
+
+Where `NAME` is based on a `packages/example-*` directory.
+
+For Vue:
+
+```
+yarn docker:vue
+```
+
+### CI
+
+The Build Examples GitHub Workflow emulation:
+
+```
+yarn ci
+```
+
+#### CI with parallel Storybook building
+
+Faster, but impossible to debug:
+
+```
+yarn ci:parallel
+```
+
+Use only if your Docker Desktop has runtime memory limit set to >= 4GB.
+
+### Down
+
+Used to force stop and remove containers, images, networks and volumes:
+
+```
+yarn down
+```
+
+It's OK to use this command, because all will be recreated on next run.
+
+After using the down you need more time to start, because `node_modules` was cleaned.
