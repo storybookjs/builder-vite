@@ -4,11 +4,15 @@
 
 - [Node.js][n] 16+;
 - [Git][g];
-- [Docker Desktop][d];
 - IDE.
 
 [n]: https://nodejs.org/
 [g]: https://git-scm.com/
+
+### Optional
+
+- [Docker Desktop][d].
+
 [d]: https://www.docker.com/products/docker-desktop
 
 ## Setup
@@ -72,7 +76,7 @@ yarn lint
 
 ## Docker
 
-We're using Docker Compose for running code as service in an isolated GNU/Linux environment.
+Optionally, we're using Docker Compose for running code as service in an isolated GNU/Linux environment.
 
 For exit from a running service you need press <kbd>Ctrl</kbd> + <kbd>C</kbd> or <kbd>⌘</kbd> + <kbd>C</kbd>.
 
