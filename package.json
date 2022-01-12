@@ -14,7 +14,12 @@
     "lint:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
     "lint-ci": "yarn lint-ci:prettier && yarn lint-ci:eslint",
     "lint-ci:prettier": "prettier . --check",
-    "lint-ci:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0"
+    "lint-ci:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0",
+    "example": "NODE_OPTIONS=--enable-source-maps yarn workspace example-${NAME:-vue} storybook",
+    "example:react": "NAME=react yarn example",
+    "example:svetle": "NAME=svetle yarn example",
+    "example:vue": "NAME=vue yarn example",
+    "example:workspaces": "NAME=workspaces yarn example"
   },
   "workspaces": [
     "packages/example-react",

@@ -15,6 +15,8 @@ Are you willing to contribute?
 
 https://github.com/eirslett/storybook-builder-vite/issues/11
 
+Please read the [How to contribute](/CONTRIBUTING.md) guide.
+
 ### Installation
 
 ```bash
