@@ -101,6 +101,12 @@ npm install # or yarn
 npx sb@next init --builder storybook-builder-vite && npm run storybook
 ```
 
+## Known issues
+
+- Typescript react: docs view are not populated, and controls are not inferred (https://github.com/eirslett/storybook-builder-vite/issues/79)
+- HMR: saving a story file does not hot-module-reload. In svelte, the page is not reloaded either (https://github.com/eirslett/storybook-builder-vite/issues/209). HMR should work when saving component files.
+- Prebundling: Vite restarts if it detects new dependencies which it did not know about and needs to pre-bundle. This breaks within storybook, with confusing error messages. If you see a message in your terminal like `[vite] new dependencies found:`, please add those dependencies to your `optimizeDeps.include` in `viteFinal`. E.g. `config.optimizeDeps.include = [...(config.optimizeDeps?.include ?? []), "storybook-dark-mode"],`.
+
 ## Contributing
 
 Contributions are welcome!
