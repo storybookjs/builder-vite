@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "rootDir": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "esModuleInterop": true
   }
 }

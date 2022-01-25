@@ -1,6 +1,7 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
 import { listStories } from './list-stories';
+import slash from 'slash';
 
 import type { ExtendedOptions } from './types';
 
@@ -24,6 +25,11 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
 
   const storyEntries = await listStories(options);
+  const resolveMap = storyEntries.reduce<Record<string, string>>(
+    (prev, entry) => ({ ...prev, [entry]: entry.replace(slash(process.cwd()), '.') }),
+    {}
+  );
+  const modules = storyEntries.map((entry, i) => `${JSON.stringify(entry)}: story_${i}`).join(',');
 
   const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
@@ -100,10 +106,16 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     }
     */
     
-    configure(() => ${importArray(
-      'story',
-      storyEntries.length
-    )}.filter(el => el.default), { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
+    function loadable(key) {
+      return {${modules}}[key];
+    }
+    
+    Object.assign(loadable, {
+      keys: () => (${JSON.stringify(Object.keys(resolveMap))}),
+      resolve: (key) => (${JSON.stringify(resolveMap)}[key])
+    });
+    
+    configure(loadable, { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
     `.trim();
   return code;
 }
