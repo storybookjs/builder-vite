@@ -1,7 +1,7 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
 import { listStories } from './list-stories';
-import { default as slash } from 'slash';
+import slash from 'slash';
 
 import type { ExtendedOptions } from './types';
 
@@ -25,7 +25,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
 
   const storyEntries = await listStories(options);
-  const resolveMap = storyEntries.reduce(
+  const resolveMap = storyEntries.reduce<Record<string, string>>(
     (prev, entry) => ({ ...prev, [entry]: entry.replace(slash(process.cwd()), '.') }),
     {}
   );
