@@ -12,7 +12,7 @@ export async function build(options: ExtendedOptions) {
   const config = {
     configFile: false,
     root: path.resolve(options.configDir, '..'),
-    cacheDir: ".vite-storybook",
+    cacheDir: "node_modules/.vite-storybook",
     build: {
       outDir: options.outputDir,
       emptyOutDir: false, // do not clean before running Vite build - Storybook has already added assets in there!
