@@ -17,12 +17,14 @@
     "lint-ci:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0",
     "example": "NODE_OPTIONS=--enable-source-maps yarn workspace example-${NAME:-vue} storybook",
     "example:react": "NAME=react yarn example",
+    "example:react-ts": "NAME=react-ts yarn example",
     "example:svetle": "NAME=svetle yarn example",
     "example:vue": "NAME=vue yarn example",
     "example:workspaces": "NAME=workspaces yarn example"
   },
   "workspaces": [
     "packages/example-react",
+    "packages/example-react-ts",
     "packages/example-svelte",
     "packages/example-vue",
     "packages/example-workspaces",

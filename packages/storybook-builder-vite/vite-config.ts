@@ -1,4 +1,5 @@
 import { Plugin } from 'vite';
+import { TypescriptConfig } from '@storybook/core-common';
 import { mockCoreJs } from './mock-core-js';
 import { codeGeneratorPlugin } from './code-generator-plugin';
 import { injectExportOrderPlugin } from './inject-export-order-plugin';
@@ -10,8 +11,8 @@ import type { ExtendedOptions } from './types';
 export type PluginConfigType = 'build' | 'development';
 
 export async function pluginConfig(options: ExtendedOptions, _type: PluginConfigType) {
-  const { framework } = options;
-  const svelteOptions = await options.presets.apply('svelteOptions', {}, options);
+  const { framework, presets } = options;
+  const svelteOptions = await presets.apply('svelteOptions', {}, options);
 
   const plugins = [
     codeGeneratorPlugin(options),
@@ -72,6 +73,21 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
         exclude: [/\.stories\.([tj])sx?$/, /node_modules/],
       })
     );
+
+    const { reactDocgen, reactDocgenTypescriptOptions } = await presets.apply('typescript', {} as TypescriptConfig);
+
+    let typescriptPresent;
+
+    try {
+      require.resolve('typescript');
+      typescriptPresent = true;
+    } catch (e) {
+      typescriptPresent = false;
+    }
+
+    if (reactDocgen === 'react-docgen-typescript' && typescriptPresent) {
+      plugins.push(require('@joshwooding/vite-plugin-react-docgen-typescript').default(reactDocgenTypescriptOptions));
+    }
   }
 
   if (framework === 'glimmerx') {
