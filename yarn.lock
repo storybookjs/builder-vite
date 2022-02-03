@@ -2026,6 +2026,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.2":
+  version: 0.0.2
+  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.2"
+  dependencies:
+    glob: ^7.2.0
+    glob-promise: ^4.2.0
+    react-docgen-typescript: ^2.1.1
+  peerDependencies:
+    typescript: ">= 4.3.x"
+    vite: ">2.0.0-0"
+  checksum: fde9d485d3b9c973389b9b1f57e9559c79b9cd94d1f7008e6b10f4fc8d3d220e1baa4bfe704a8790d5b884aefef1d7aa1f9b829fe3b313a26454a3fccda161d3
+  languageName: node
+  linkType: hard
+
 "@mdx-js/loader@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/loader@npm:1.6.22"
@@ -7770,6 +7784,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"example-react-ts@workspace:packages/example-react-ts":
+  version: 0.0.0-use.local
+  resolution: "example-react-ts@workspace:packages/example-react-ts"
+  dependencies:
+    "@storybook/addon-a11y": ^6.4.0
+    "@storybook/addon-docs": ^6.4.0
+    "@storybook/addon-essentials": ^6.4.0
+    "@storybook/react": ^6.4.0
+    react: 17.0.2
+    react-dom: 17.0.2
+    storybook-builder-vite: "workspace:*"
+    typescript: ^4.5.4
+    vite: 2.7.0
+  languageName: unknown
+  linkType: soft
+
 "example-react@workspace:packages/example-react":
   version: 0.0.0-use.local
   resolution: "example-react@workspace:packages/example-react"
@@ -12715,6 +12745,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-docgen-typescript@npm:^2.1.1":
+  version: 2.2.2
+  resolution: "react-docgen-typescript@npm:2.2.2"
+  peerDependencies:
+    typescript: ">= 4.3.x"
+  checksum: a9826459ea44e818f21402728dd47f5cae60bd936574cefd4f90ad101ff3eebacd67b6e017b793309734ce62c037aa3072dbc855d2b0e29bad1a38cbf5bac115
+  languageName: node
+  linkType: hard
+
 "react-docgen@npm:^5.0.0":
   version: 5.4.0
   resolution: "react-docgen@npm:5.4.0"
@@ -14131,6 +14170,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "storybook-builder-vite@workspace:packages/storybook-builder-vite"
   dependencies:
+    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.2
     "@mdx-js/mdx": ^1.6.22
     "@storybook/csf-tools": ^6.3.3
     "@storybook/source-loader": ^6.3.12
