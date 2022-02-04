@@ -1,21 +1,17 @@
-import * as path from 'path';
 import { createServer } from 'vite';
-import { allowedEnvPrefix as envPrefix, stringifyProcessEnvs } from './envs';
+import { stringifyProcessEnvs } from './envs';
 import { getOptimizeDeps } from './optimizeDeps';
-import { pluginConfig } from './vite-config';
+import { commonConfig } from './vite-config';
 
 import type { Server } from 'http';
-import type { UserConfig } from 'vite';
 import type { EnvsRaw, ExtendedOptions } from './types';
 
 export async function createViteServer(options: ExtendedOptions, devServer: Server) {
   const { port, presets } = options;
-  const root = path.resolve(options.configDir, '..');
 
+  const baseConfig = await commonConfig(options, 'development');
   const defaultConfig = {
-    configFile: false,
-    root,
-    cacheDir: "node_modules/.vite-storybook",
+    ...baseConfig,
     server: {
       middlewareMode: true,
       hmr: {
@@ -26,16 +22,8 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
         strict: true,
       },
     },
-    envPrefix,
-    define: {},
-    resolve: {
-      alias: {
-        vue: 'vue/dist/vue.esm-bundler.js',
-      },
-    },
-    plugins: await pluginConfig(options, 'development'),
-    optimizeDeps: await getOptimizeDeps(root, options),
-  } as UserConfig;
+    optimizeDeps: await getOptimizeDeps(baseConfig.root, options),
+  };
 
   const finalConfig = await presets.apply('viteFinal', defaultConfig, options);
 
