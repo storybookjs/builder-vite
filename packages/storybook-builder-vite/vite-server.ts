@@ -15,6 +15,7 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
   const defaultConfig = {
     configFile: false,
     root,
+    cacheDir: "node_modules/.vite-storybook",
     server: {
       middlewareMode: true,
       hmr: {
