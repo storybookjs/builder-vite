@@ -3,7 +3,7 @@ import * as path from 'path';
 import { transformIframeHtml } from './transform-iframe-html';
 import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
-import { generateImportFnScriptCode } from './codegen-importfn-script';
+import { generateImportFnScriptCode, generateVirtualStoryEntryCode } from './codegen-importfn-script';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
@@ -60,15 +60,20 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
       }
     },
     async load(id) {
+      const storyStoreV7 = options.features?.storyStoreV7;
       if (id === virtualStoriesFile) {
-        return generateImportFnScriptCode(options);
+        if (storyStoreV7) {
+          return generateImportFnScriptCode(options);
+        } else {
+          return generateVirtualStoryEntryCode(options);
+        }
       }
 
       if (id === virtualFileId) {
-        if (options.features && options.features.storyStoreV7) {
+        if (storyStoreV7) {
           return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
         } else {
-          return generateIframeScriptCode(options);
+          return generateIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
         }
       }
 

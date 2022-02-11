@@ -1,7 +1,5 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
-import { listStories } from './list-stories';
-import slash from 'slash';
 
 import type { ExtendedOptions } from './types';
 
@@ -12,24 +10,20 @@ function replaceCJStoESMPath(entryPath: string) {
   return entryPath.replace('/cjs/', '/esm/');
 }
 
-export async function generateIframeScriptCode(options: ExtendedOptions) {
-  const { presets, configDir, framework, frameworkPath } = options;
+interface GenerateIframeScriptCodeOptions {
+  storiesFilename: string;
+}
+
+export async function generateIframeScriptCode(
+  options: ExtendedOptions,
+  { storiesFilename }: GenerateIframeScriptCodeOptions
+) {
+  const { presets, configDir, frameworkPath, framework } = options;
   const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
-
-  // Ensure that the client API is initialized by the framework before any other iframe code
-  // is loaded. That way our client-apis can assume the existence of the API+store
   const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
-
   const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
-
-  const storyEntries = await listStories(options);
-  const resolveMap = storyEntries.reduce<Record<string, string>>(
-    (prev, entry) => ({ ...prev, [entry]: entry.replace(slash(process.cwd()), '.') }),
-    {}
-  );
-  const modules = storyEntries.map((entry, i) => `${JSON.stringify(entry)}: story_${i}`).join(',');
 
   const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
@@ -44,7 +38,10 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
+    // Ensure that the client API is initialized by the framework before any other iframe code
+    // is loaded. That way our client-apis can assume the existence of the API+store
     import { configure } from '${frameworkImportPath}';
+    
     /* ${previewEntries.map((entry) => `// preview entry\nimport '${entry}';`).join('\n')} */
 
     import {
@@ -56,8 +53,8 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
-    ${absoluteFilesToImport(storyEntries, 'story')}
-      
+    import { configStories } from '${storiesFilename}';
+     
     const configs = ${importArray('config', configEntries.length)}
     configs.forEach(config => {
       Object.keys(config).forEach((key) => {
@@ -105,17 +102,8 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
         import.meta.hot.accept();    
     }
     */
-    
-    function loadable(key) {
-      return {${modules}}[key];
-    }
-    
-    Object.assign(loadable, {
-      keys: () => (${JSON.stringify(Object.keys(resolveMap))}),
-      resolve: (key) => (${JSON.stringify(resolveMap)}[key])
-    });
-    
-    configure(loadable, { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
+
+    configStories(configure);
     `.trim();
   return code;
 }

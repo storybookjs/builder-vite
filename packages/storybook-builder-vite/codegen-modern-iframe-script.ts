@@ -3,7 +3,7 @@ import { normalizePath } from 'vite';
 
 import type { ExtendedOptions } from './types';
 
-export interface GenerateModernIframeScriptCodeOptions {
+interface GenerateModernIframeScriptCodeOptions {
   storiesFilename: string;
 }
 
