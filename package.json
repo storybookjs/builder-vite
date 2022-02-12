@@ -18,7 +18,7 @@
     "example": "NODE_OPTIONS=--enable-source-maps yarn workspace example-${NAME:-vue} storybook",
     "example:react": "NAME=react yarn example",
     "example:react-ts": "NAME=react-ts yarn example",
-    "example:svetle": "NAME=svetle yarn example",
+    "example:svelte": "NAME=svelte yarn example",
     "example:vue": "NAME=vue yarn example",
     "example:workspaces": "NAME=workspaces yarn example"
   },
