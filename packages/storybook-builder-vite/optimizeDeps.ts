@@ -29,6 +29,7 @@ export async function getOptimizeDeps(root: string, options: ExtendedOptions) {
       '@storybook/csf',
       '@storybook/preview-web',
       '@storybook/react',
+      '@storybook/svelte',
       '@storybook/vue3',
       'acorn-jsx',
       'acorn-walk',
