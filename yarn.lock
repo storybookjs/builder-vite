@@ -2209,18 +2209,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@rollup/pluginutils@npm:4.1.0"
-  dependencies:
-    estree-walker: ^2.0.1
-    picomatch: ^2.2.2
-  peerDependencies:
-    rollup: ^1.20.0||^2.0.0
-  checksum: 5ef767b4e57aaea4ad223af2fa50e5ee1e2d8a94bd79f534b55485b5aeb89e8839236e45e2c0730541f18534288fba92ae223c54683613f26071e3474564ddd9
-  languageName: node
-  linkType: hard
-
 "@rollup/pluginutils@npm:^4.1.1":
   version: 4.1.1
   resolution: "@rollup/pluginutils@npm:4.1.1"
@@ -2228,6 +2216,16 @@ __metadata:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
   checksum: 405f681c7d32661980aa3caa928ff22e1c06f0e081db1550e6ab9c179dc9d3d8d63c05dcc7338fe65ab3f856a56c465696a51300b83e98171956fcb141106e39
+  languageName: node
+  linkType: hard
+
+"@rollup/pluginutils@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@rollup/pluginutils@npm:4.1.2"
+  dependencies:
+    estree-walker: ^2.0.1
+    picomatch: ^2.2.2
+  checksum: 498d67e7b48c707e3e0d9f7ddaa405833d77575b2d9607cd1914be40455ed534235e0512f9d046bf0e4ed1740e7816fd32ab1c673195e897c4fa180bcbfd7283
   languageName: node
   linkType: hard
 
@@ -3671,19 +3669,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.11":
-  version: 1.0.0-next.11
-  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.11"
+"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.37":
+  version: 1.0.0-next.37
+  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.37"
   dependencies:
-    "@rollup/pluginutils": ^4.1.0
-    chalk: ^4.1.1
-    debug: ^4.3.2
-    require-relative: ^0.8.7
-    svelte-hmr: ^0.14.4
+    "@rollup/pluginutils": ^4.1.2
+    debug: ^4.3.3
+    kleur: ^4.1.4
+    magic-string: ^0.25.7
+    svelte-hmr: ^0.14.9
   peerDependencies:
-    svelte: ^3.38.2
-    vite: ^2.3.7
-  checksum: d9c4feac16dfb86932da4aa3170e06dec2a8c11fb2b72b35037c35c7e48c818b3cafa86af04e5018f4520e68afa47d83051115a05575c8026038bd7fcc541def
+    diff-match-patch: ^1.0.5
+    svelte: ^3.44.0
+    vite: ^2.7.0
+  peerDependenciesMeta:
+    diff-match-patch:
+      optional: true
+  checksum: c92f6c90519025426e8a9f85745f6e949801f46350c2f8acf19b8c22897a1332f6db1fe0e55302291b3e07db29ff897c9b9a41ade01a611cdeefe5e1f6979bd6
   languageName: node
   linkType: hard
 
@@ -5829,7 +5831,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.0":
   version: 4.1.1
   resolution: "chalk@npm:4.1.1"
   dependencies:
@@ -6627,6 +6629,18 @@ __metadata:
   dependencies:
     ms: ^2.1.1
   checksum: b3d8c5940799914d30314b7c3304a43305fd0715581a919dacb8b3176d024a782062368405b47491516d2091d6462d4d11f2f4974a405048094f8bfebfa3071c
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "debug@npm:4.3.3"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 14472d56fe4a94dbcfaa6dbed2dd3849f1d72ba78104a1a328047bb564643ca49df0224c3a17fa63533fd11dd3d4c8636cd861191232a2c6735af00cc2d4de16
   languageName: node
   linkType: hard
 
@@ -7824,9 +7838,9 @@ __metadata:
     "@storybook/addon-links": ^6.4.0
     "@storybook/addon-svelte-csf": ^1.1.0
     "@storybook/svelte": ^6.4.0
-    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.11
+    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.37
     storybook-builder-vite: "workspace:*"
-    svelte: ^3.38.3
+    svelte: ^3.46.4
     vite: 2.7.0
   languageName: unknown
   linkType: soft
@@ -10390,6 +10404,13 @@ fsevents@^1.2.7:
   version: 3.0.3
   resolution: "kleur@npm:3.0.3"
   checksum: df82cd1e172f957bae9c536286265a5cdbd5eeca487cb0a3b2a7b41ef959fc61f8e7c0e9aeea9c114ccf2c166b6a8dd45a46fd619c1c569d210ecd2765ad5169
+  languageName: node
+  linkType: hard
+
+"kleur@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "kleur@npm:4.1.4"
+  checksum: 7f6db36e378045dec14acd3cbf0b1e59130c09e984ee8b8ce56dd2d2257cfff90389c1e8f8b19bd09dd5d241080566a814b4ccd99fdcef91f59ef93ec33c8a44
   languageName: node
   linkType: hard
 
@@ -13350,13 +13371,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"require-relative@npm:^0.8.7":
-  version: 0.8.7
-  resolution: "require-relative@npm:0.8.7"
-  checksum: f1c3be06977823bba43600344d9ea6fbf8a55bdb81ec76533126849ab4024e6c31c6666f37fa4b5cfeda9c41dee89b8e19597cac02bdefaab42255c6708661ab
-  languageName: node
-  linkType: hard
-
 "requireindex@npm:^1.1.0":
   version: 1.2.0
   resolution: "requireindex@npm:1.2.0"
@@ -14481,19 +14495,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"svelte-hmr@npm:^0.14.4":
-  version: 0.14.4
-  resolution: "svelte-hmr@npm:0.14.4"
+"svelte-hmr@npm:^0.14.9":
+  version: 0.14.9
+  resolution: "svelte-hmr@npm:0.14.9"
   peerDependencies:
     svelte: ">=3.19.0"
-  checksum: 267b46428c55162ad3abe63d1a8c09b3ad3f171cf64b60e4105077a34a06c120027888fc62f37d57d10e47fc0326bf236393ea4553abc8e101c866276f85101a
+  checksum: f13e152cad53a82181409fe1a3aebfb0465f837109f7f4a7aa52f357ab4153920a9d3aefb077b68d1cbc01e4fc4f907b9b142734bed2aa43b0e64f5b15ae9d98
   languageName: node
   linkType: hard
 
-"svelte@npm:^3.38.3":
-  version: 3.38.3
-  resolution: "svelte@npm:3.38.3"
-  checksum: 945f5f509014dde991d1d2508acd4dfa01ca3ca1ad1c8432b178d6698a6429c3428213a4dab4a876c01cff6588fe6598996a78241368394c77ed6b7775442561
+"svelte@npm:^3.46.4":
+  version: 3.46.4
+  resolution: "svelte@npm:3.46.4"
+  checksum: 929e6790cdd6d94c123b4b8a7b5a541164dbea6d4f4ed311f4e65cde60caa1c704e531bbf2e63519d1a96163cd3f812c6e5be5b2fd05f72d0177af5fd8ca8637
   languageName: node
   linkType: hard
 
