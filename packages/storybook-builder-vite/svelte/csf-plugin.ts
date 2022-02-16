@@ -7,7 +7,7 @@ export default {
   name: 'storybook-addon-svelte-csf',
   enforce: 'post',
   transform(code: string, id: string) {
-    if (/.stories.svelte/.test(id)) {
+    if (/\.stories\.svelte$/.test(id)) {
       const component = getNameFromFilename(id);
       const source = readFileSync(id).toString();
       const all = extractStories(source);
