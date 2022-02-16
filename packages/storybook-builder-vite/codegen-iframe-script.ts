@@ -1,4 +1,3 @@
-import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
 
 import type { ExtendedOptions } from './types';
@@ -12,27 +11,23 @@ function replaceCJStoESMPath(entryPath: string) {
 
 interface GenerateIframeScriptCodeOptions {
   storiesFilename: string;
+  previewFilename: string;
 }
 
 export async function generateIframeScriptCode(
   options: ExtendedOptions,
-  { storiesFilename }: GenerateIframeScriptCodeOptions
+  { storiesFilename, previewFilename }: GenerateIframeScriptCodeOptions
 ) {
-  const { presets, configDir, frameworkPath, framework } = options;
+  const { presets, frameworkPath, framework } = options;
   const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
   const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
-  const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
   const presetEntries = await presets.apply('config', [], options);
-  const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
+  const configEntries = [...presetEntries].filter(Boolean);
 
   const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
 
-  const importArray = (name: string, length: number) =>
-    `[${new Array(length)
-      .fill(0)
-      .map((_, i) => `${name}_${i}`)
-      .join(',')}]`;
+  const importArray = (name: string, length: number) => new Array(length).fill(0).map((_, i) => `${name}_${i}`);
 
   // noinspection UnnecessaryLocalVariableJS
   /** @todo Inline variable and remove `noinspection` */
@@ -53,9 +48,11 @@ export async function generateIframeScriptCode(
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
+    import preview from '${previewFilename}';
     import { configStories } from '${storiesFilename}';
-     
-    const configs = ${importArray('config', configEntries.length)}
+
+    const configs = [${importArray('config', configEntries.length).concat('preview').join(',')}]
+
     configs.forEach(config => {
       Object.keys(config).forEach((key) => {
         const value = config[key];

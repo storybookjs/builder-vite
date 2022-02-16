@@ -1,10 +1,12 @@
 import * as path from 'path';
 import slash from 'slash';
 import { normalizePath } from 'vite';
-import { listStories } from './list-stories';
-
+import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import type { Options } from '@storybook/core-common';
+
+import { listStories } from './list-stories';
 import type { ExtendedOptions } from './types';
+
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts
  */
@@ -76,4 +78,12 @@ export async function generateVirtualStoryEntryCode(options: ExtendedOptions) {
       configure(loadable, { hot: import.meta.hot }, false);
     }
   `.trim();
+}
+
+export async function generatePreviewEntryCode({ configDir }: Options) {
+  const previewFile = loadPreviewOrConfigFile({ configDir });
+  if (!previewFile) return '';
+
+  return `import * as preview from '${previewFile}';
+  export default preview;`;
 }

@@ -3,7 +3,11 @@ import * as path from 'path';
 import { transformIframeHtml } from './transform-iframe-html';
 import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
-import { generateImportFnScriptCode, generateVirtualStoryEntryCode } from './codegen-importfn-script';
+import {
+  generateImportFnScriptCode,
+  generateVirtualStoryEntryCode,
+  generatePreviewEntryCode,
+} from './codegen-importfn-script';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
@@ -11,6 +15,7 @@ import type { ExtendedOptions } from './types';
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
+  const virtualPreviewFile = '/virtual:/@storybook/builder-vite/preview-entry.js';
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
 
@@ -57,6 +62,8 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return iframeId;
       } else if (source === virtualStoriesFile) {
         return virtualStoriesFile;
+      } else if (source === virtualPreviewFile) {
+        return virtualPreviewFile;
       }
     },
     async load(id) {
@@ -69,11 +76,18 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         }
       }
 
+      if (id === virtualPreviewFile && !storyStoreV7) {
+        return generatePreviewEntryCode(options);
+      }
+
       if (id === virtualFileId) {
         if (storyStoreV7) {
           return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
         } else {
-          return generateIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
+          return generateIframeScriptCode(options, {
+            storiesFilename: virtualStoriesFile,
+            previewFilename: virtualPreviewFile,
+          });
         }
       }
 
