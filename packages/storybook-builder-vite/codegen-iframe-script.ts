@@ -2,13 +2,6 @@ import { normalizePath } from 'vite';
 
 import type { ExtendedOptions } from './types';
 
-// This is somewhat of a hack; the problem is that previewEntries resolves to
-// the CommonJS imports, probably because require.resolve in Node.js land leads
-// to that. For Vite, we need the ESM modules.
-function replaceCJStoESMPath(entryPath: string) {
-  return entryPath.replace('/cjs/', '/esm/');
-}
-
 interface GenerateIframeScriptCodeOptions {
   storiesFilename: string;
   previewFilename: string;
@@ -19,7 +12,6 @@ export async function generateIframeScriptCode(
   { storiesFilename, previewFilename }: GenerateIframeScriptCodeOptions
 ) {
   const { presets, frameworkPath, framework } = options;
-  const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
   const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries].filter(Boolean);
@@ -36,8 +28,6 @@ export async function generateIframeScriptCode(
     // Ensure that the client API is initialized by the framework before any other iframe code
     // is loaded. That way our client-apis can assume the existence of the API+store
     import { configure } from '${frameworkImportPath}';
-    
-    /* ${previewEntries.map((entry) => `// preview entry\nimport '${entry}';`).join('\n')} */
 
     import {
       addDecorator,
