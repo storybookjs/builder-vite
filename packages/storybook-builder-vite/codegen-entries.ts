@@ -38,6 +38,6 @@ export async function generatePreviewEntryCode({ configDir }: Options) {
   const previewFile = loadPreviewOrConfigFile({ configDir });
   if (!previewFile) return '';
 
-  return `import * as preview from '${previewFile}';
+  return `import * as preview from '${slash(previewFile)}';
   export default preview;`;
 }
