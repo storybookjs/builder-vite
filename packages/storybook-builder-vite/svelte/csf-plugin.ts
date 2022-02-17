@@ -2,14 +2,21 @@ import { getNameFromFilename } from '@storybook/addon-svelte-csf/dist/cjs/parser
 import { readFileSync } from 'fs';
 import { extractStories } from '@storybook/addon-svelte-csf/dist/cjs/parser/extract-stories';
 const parser = require.resolve('@storybook/addon-svelte-csf/dist/esm/parser/collect-stories').replace(/[/\\]/g, '/');
+import type { Options } from "@sveltejs/vite-plugin-svelte"
+import * as svelte from "svelte/compiler"
 
-export default {
+export default function csfPlugin(svelteOptions?: Options) {
+  return {
   name: 'storybook-addon-svelte-csf',
   enforce: 'post',
-  transform(code: string, id: string) {
+  async transform(code: string, id: string) {
     if (/\.stories\.svelte$/.test(id)) {
+    
       const component = getNameFromFilename(id);
-      const source = readFileSync(id).toString();
+      let source = readFileSync(id).toString();
+      if (svelteOptions && svelteOptions.preprocess) {
+        source = (await svelte.preprocess(source, svelteOptions.preprocess)).code
+      }
       const all = extractStories(source);
       const { stories } = all;
       const storyDef = Object.entries<any>(stories)
@@ -36,4 +43,5 @@ export default {
       };
     }
   },
+}
 };

@@ -76,8 +76,8 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     }
 
     try {
-      const csfPlugin = require('./svelte/csf-plugin');
-      plugins.push(csfPlugin);
+      const csfPlugin = require('./svelte/csf-plugin').default;
+      plugins.push(csfPlugin(svelteOptions));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
