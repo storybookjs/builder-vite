@@ -3,11 +3,8 @@ import * as path from 'path';
 import { transformIframeHtml } from './transform-iframe-html';
 import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
-import {
-  generateImportFnScriptCode,
-  generateVirtualStoryEntryCode,
-  generatePreviewEntryCode,
-} from './codegen-importfn-script';
+import { generateImportFnScriptCode } from './codegen-importfn-script';
+import { generateVirtualStoryEntryCode, generatePreviewEntryCode } from './codegen-entries';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
