@@ -1,8 +1,8 @@
 import * as path from 'path';
 import { normalizePath } from 'vite';
-import { listStories } from './list-stories';
-
 import type { Options } from '@storybook/core-common';
+
+import { listStories } from './list-stories';
 
 /**
  * This file is largely based on https://github.com/storybookjs/storybook/blob/d1195cbd0c61687f1720fefdb772e2f490a46584/lib/core-common/src/utils/to-importFn.ts

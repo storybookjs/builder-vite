@@ -4,6 +4,7 @@ import { transformIframeHtml } from './transform-iframe-html';
 import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
 import { generateImportFnScriptCode } from './codegen-importfn-script';
+import { generateVirtualStoryEntryCode, generatePreviewEntryCode } from './codegen-entries';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
@@ -11,6 +12,7 @@ import type { ExtendedOptions } from './types';
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
   const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
+  const virtualPreviewFile = '/virtual:/@storybook/builder-vite/preview-entry.js';
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
 
@@ -57,18 +59,32 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return iframeId;
       } else if (source === virtualStoriesFile) {
         return virtualStoriesFile;
+      } else if (source === virtualPreviewFile) {
+        return virtualPreviewFile;
       }
     },
     async load(id) {
+      const storyStoreV7 = options.features?.storyStoreV7;
       if (id === virtualStoriesFile) {
-        return generateImportFnScriptCode(options);
+        if (storyStoreV7) {
+          return generateImportFnScriptCode(options);
+        } else {
+          return generateVirtualStoryEntryCode(options);
+        }
+      }
+
+      if (id === virtualPreviewFile && !storyStoreV7) {
+        return generatePreviewEntryCode(options);
       }
 
       if (id === virtualFileId) {
-        if (options.features && options.features.storyStoreV7) {
+        if (storyStoreV7) {
           return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
         } else {
-          return generateIframeScriptCode(options);
+          return generateIframeScriptCode(options, {
+            storiesFilename: virtualStoriesFile,
+            previewFilename: virtualPreviewFile,
+          });
         }
       }
 

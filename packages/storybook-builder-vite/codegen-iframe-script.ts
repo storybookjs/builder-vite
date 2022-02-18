@@ -1,51 +1,33 @@
-import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
-import { listStories } from './list-stories';
-import slash from 'slash';
 
 import type { ExtendedOptions } from './types';
 
-// This is somewhat of a hack; the problem is that previewEntries resolves to
-// the CommonJS imports, probably because require.resolve in Node.js land leads
-// to that. For Vite, we need the ESM modules.
-function replaceCJStoESMPath(entryPath: string) {
-  return entryPath.replace('/cjs/', '/esm/');
+interface GenerateIframeScriptCodeOptions {
+  storiesFilename: string;
+  previewFilename: string;
 }
 
-export async function generateIframeScriptCode(options: ExtendedOptions) {
-  const { presets, configDir, framework, frameworkPath } = options;
-  const previewEntries = (await presets.apply('previewEntries', [], options)).map(replaceCJStoESMPath);
-
-  // Ensure that the client API is initialized by the framework before any other iframe code
-  // is loaded. That way our client-apis can assume the existence of the API+store
+export async function generateIframeScriptCode(
+  options: ExtendedOptions,
+  { storiesFilename, previewFilename }: GenerateIframeScriptCodeOptions
+) {
+  const { presets, frameworkPath, framework } = options;
   const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
-
-  const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
   const presetEntries = await presets.apply('config', [], options);
-  const configEntries = [...presetEntries, previewOrConfigFile].filter(Boolean);
-
-  const storyEntries = await listStories(options);
-  const resolveMap = storyEntries.reduce<Record<string, string>>(
-    (prev, entry) => ({ ...prev, [entry]: entry.replace(slash(process.cwd()), '.') }),
-    {}
-  );
-  const modules = storyEntries.map((entry, i) => `${JSON.stringify(entry)}: story_${i}`).join(',');
+  const configEntries = [...presetEntries].filter(Boolean);
 
   const absoluteFilesToImport = (files: string[], name: string) =>
     files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
 
-  const importArray = (name: string, length: number) =>
-    `[${new Array(length)
-      .fill(0)
-      .map((_, i) => `${name}_${i}`)
-      .join(',')}]`;
+  const importArray = (name: string, length: number) => new Array(length).fill(0).map((_, i) => `${name}_${i}`);
 
   // noinspection UnnecessaryLocalVariableJS
   /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
+    // Ensure that the client API is initialized by the framework before any other iframe code
+    // is loaded. That way our client-apis can assume the existence of the API+store
     import { configure } from '${frameworkImportPath}';
-    /* ${previewEntries.map((entry) => `// preview entry\nimport '${entry}';`).join('\n')} */
 
     import {
       addDecorator,
@@ -56,9 +38,11 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
-    ${absoluteFilesToImport(storyEntries, 'story')}
-      
-    const configs = ${importArray('config', configEntries.length)}
+    import preview from '${previewFilename}';
+    import { configStories } from '${storiesFilename}';
+
+    const configs = [${importArray('config', configEntries.length).concat('preview').join(',')}]
+
     configs.forEach(config => {
       Object.keys(config).forEach((key) => {
         const value = config[key];
@@ -105,17 +89,8 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
         import.meta.hot.accept();    
     }
     */
-    
-    function loadable(key) {
-      return {${modules}}[key];
-    }
-    
-    Object.assign(loadable, {
-      keys: () => (${JSON.stringify(Object.keys(resolveMap))}),
-      resolve: (key) => (${JSON.stringify(resolveMap)}[key])
-    });
-    
-    configure(loadable, { hot: import.meta.hot }, false); // not sure if the import.meta.hot thing is correct
+
+    configStories(configure);
     `.trim();
   return code;
 }
