@@ -14,9 +14,9 @@
     "vue": "^3.1.4"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.4.0",
-    "@storybook/addon-essentials": "^6.4.0",
-    "@storybook/vue3": "^6.4.0",
+    "@storybook/addon-a11y": "^6.4.14",
+    "@storybook/addon-essentials": "^6.4.14",
+    "@storybook/vue3": "^6.4.14",
     "@vitejs/plugin-vue": "^1.10.2",
     "storybook-builder-vite": "workspace:*",
     "vite": "2.7.0"
