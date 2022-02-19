@@ -1,0 +1,25 @@
+{
+  "name": "storybook-builder-vite-react",
+  "version": "0.1.15",
+  "description": "An experimental plugin to run and build Storybooks with Vite",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Eirik Sletteberg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eirslett/storybook-builder-vite.git",
+    "directory": "package/react"
+  },
+  "homepage": "https://github.com/eirslett/storybook-builder-vite/#readme",
+  "dependencies": {
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.2",
+    "@vitejs/plugin-react": "^1.0.8"
+  },
+  "peerDependencies": {
+    "@storybook/core-common": "^6.4.3"
+  },
+  "scripts": {
+    "prepare": "tsc"
+  }
+}

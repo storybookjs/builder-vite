@@ -1,0 +1,1 @@
+export { plugins } from './plugin-config';

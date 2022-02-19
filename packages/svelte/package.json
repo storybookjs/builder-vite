@@ -1,0 +1,29 @@
+{
+  "name": "storybook-builder-vite-svelte",
+  "version": "0.1.15",
+  "description": "An experimental plugin to run and build Storybooks with Vite",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Eirik Sletteberg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eirslett/storybook-builder-vite.git",
+    "directory": "package/storybook-builder-vite"
+  },
+  "homepage": "https://github.com/eirslett/storybook-builder-vite/#readme",
+  "dependencies": {
+    "@storybook/addon-svelte-csf": "^1.1.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.37"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "vue-docgen-api": "^4.40.0"
+  },
+  "peerDependencies": {
+    "svelte": "^3.46.4"
+  },
+  "scripts": {
+    "prepare": "tsc"
+  }
+}

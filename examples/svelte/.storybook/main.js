@@ -1,3 +1,4 @@
+const { plugins } = require('storybook-builder-vite-svelte');
 const preprocess = require('svelte-preprocess');
 
 module.exports = {
@@ -7,7 +8,8 @@ module.exports = {
   core: {
     builder: 'storybook-builder-vite',
   },
-  async viteFinal(config, { configType }) {
+  async viteFinal(config, options) {
+    config.plugins = config.plugins.concat(await plugins(options));
     // customize the Vite config here
     return config;
   },
