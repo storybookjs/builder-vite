@@ -38,10 +38,10 @@ export async function generateIframeScriptCode(
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
-    import preview from '${previewFilename}';
+    import * as preview from '${previewFilename}';
     import { configStories } from '${storiesFilename}';
 
-    const configs = [${importArray('config', configEntries.length).concat('preview').join(',')}]
+    const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
     configs.forEach(config => {
       Object.keys(config).forEach((key) => {
