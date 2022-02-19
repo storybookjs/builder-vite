@@ -11,10 +11,10 @@
     "prepublish": "cd packages/storybook-builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --write .",
-    "lint:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
+    "lint:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
     "lint-ci": "yarn lint-ci:prettier && yarn lint-ci:eslint",
     "lint-ci:prettier": "prettier . --check",
-    "lint-ci:eslint": "eslint \"packages/*/**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0",
+    "lint-ci:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0",
     "example": "NODE_OPTIONS=--enable-source-maps yarn workspace example-${NAME:-vue} storybook",
     "example:react": "NAME=react yarn example",
     "example:react-ts": "NAME=react-ts yarn example",
@@ -23,12 +23,8 @@
     "example:workspaces": "NAME=workspaces yarn example"
   },
   "workspaces": [
-    "packages/example-react",
-    "packages/example-react-ts",
-    "packages/example-svelte",
-    "packages/example-vue",
-    "packages/example-workspaces",
-    "packages/storybook-builder-vite"
+    "examples/*",
+    "packages/*"
   ],
   "devDependencies": {
     "@types/node": "^16.0.0",

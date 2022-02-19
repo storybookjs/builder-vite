@@ -7745,9 +7745,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"example-react-ts@workspace:packages/example-react-ts":
+"example-react-ts@workspace:examples/react-ts":
   version: 0.0.0-use.local
-  resolution: "example-react-ts@workspace:packages/example-react-ts"
+  resolution: "example-react-ts@workspace:examples/react-ts"
   dependencies:
     "@storybook/addon-a11y": 6.4.14
     "@storybook/addon-docs": 6.4.14
@@ -7761,9 +7761,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-react@workspace:packages/example-react":
+"example-react@workspace:examples/react":
   version: 0.0.0-use.local
-  resolution: "example-react@workspace:packages/example-react"
+  resolution: "example-react@workspace:examples/react"
   dependencies:
     "@storybook/addon-a11y": ^6.4.14
     "@storybook/addon-docs": ^6.4.14
@@ -7776,9 +7776,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-svelte@workspace:packages/example-svelte":
+"example-svelte@workspace:examples/svelte":
   version: 0.0.0-use.local
-  resolution: "example-svelte@workspace:packages/example-svelte"
+  resolution: "example-svelte@workspace:examples/svelte"
   dependencies:
     "@storybook/addon-actions": ^6.4.14
     "@storybook/addon-essentials": ^6.4.14
@@ -7792,9 +7792,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-vue@workspace:packages/example-vue":
+"example-vue@workspace:examples/vue":
   version: 0.0.0-use.local
-  resolution: "example-vue@workspace:packages/example-vue"
+  resolution: "example-vue@workspace:examples/vue"
   dependencies:
     "@storybook/addon-a11y": ^6.4.14
     "@storybook/addon-essentials": ^6.4.14
@@ -7806,9 +7806,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-workspaces-catalog@workspace:packages/example-workspaces/packages/catalog":
+"example-workspaces-catalog@workspace:examples/workspaces/packages/catalog":
   version: 0.0.0-use.local
-  resolution: "example-workspaces-catalog@workspace:packages/example-workspaces/packages/catalog"
+  resolution: "example-workspaces-catalog@workspace:examples/workspaces/packages/catalog"
   dependencies:
     "@storybook/addon-a11y": ^6.4.14
     "@storybook/addon-docs": ^6.4.14
@@ -7821,9 +7821,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-workspaces@workspace:packages/example-workspaces":
+"example-workspaces@workspace:examples/workspaces":
   version: 0.0.0-use.local
-  resolution: "example-workspaces@workspace:packages/example-workspaces"
+  resolution: "example-workspaces@workspace:examples/workspaces"
   languageName: unknown
   linkType: soft
 
