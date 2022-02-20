@@ -74,7 +74,7 @@ jobs:
       - name: Compile TypeScript
         run: yarn prepublish
       - name: Publish examples to Chromatic
-        run: yarn workspaces foreach -p run publish-chromatic
+        run: yarn workspaces foreach -p run publish-chromatic --debug
         if: ${{ github.event.pull_request.head.repo.full_name == 'eirslett/storybook-builder-vite' }}
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
