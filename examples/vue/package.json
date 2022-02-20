@@ -18,7 +18,7 @@
     "@storybook/addon-essentials": "^6.4.14",
     "@storybook/vue3": "^6.4.14",
     "@vitejs/plugin-vue": "^1.10.2",
-    "chromatic": "^6.3.3",
+    "chromatic": "^6.4.3",
     "storybook-builder-vite": "workspace:*",
     "vite": "2.7.0"
   }

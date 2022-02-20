@@ -5902,14 +5902,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^6.3.3":
-  version: 6.3.3
-  resolution: "chromatic@npm:6.3.3"
+"chromatic@npm:^6.4.3":
+  version: 6.4.3
+  resolution: "chromatic@npm:6.4.3"
   bin:
     chroma: bin/main.cjs
     chromatic: bin/main.cjs
     chromatic-cli: bin/main.cjs
-  checksum: 37aad4ac0d95634c23fec014d58c66740d8a7cc2364350afd07e48c385907457f63380ca432faf1876466bc2af8b1598c34e9dd9d3f8aac088ee4b9ef7bc6df2
+  checksum: 014523cf44607f259ee435be426adb9e1fe248af96947cd01cb476dc8f59866bcf1bbb1395bd3546aa9c380934aad5868ed72d3b90c3391968b3148722328b82
   languageName: node
   linkType: hard
 
@@ -7780,7 +7780,7 @@ __metadata:
     "@storybook/addon-docs": ^6.4.14
     "@storybook/addon-essentials": ^6.4.14
     "@storybook/react": ^6.4.14
-    chromatic: ^6.3.3
+    chromatic: ^6.4.3
     react: ^16.4.14
     react-dom: ^16.4.14
     storybook-builder-vite: "workspace:*"
@@ -7798,7 +7798,7 @@ __metadata:
     "@storybook/addon-svelte-csf": ^1.1.0
     "@storybook/svelte": ^6.4.14
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.37
-    chromatic: ^6.3.3
+    chromatic: ^6.4.3
     storybook-builder-vite: "workspace:*"
     svelte: ^3.46.4
     vite: 2.7.0
@@ -7813,7 +7813,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.4.14
     "@storybook/vue3": ^6.4.14
     "@vitejs/plugin-vue": ^1.10.2
-    chromatic: ^6.3.3
+    chromatic: ^6.4.3
     storybook-builder-vite: "workspace:*"
     vite: 2.7.0
     vue: ^3.1.4
