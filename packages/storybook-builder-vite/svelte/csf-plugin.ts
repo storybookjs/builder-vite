@@ -14,7 +14,7 @@ export default function csfPlugin(svelteOptions?: Options) {
         const component = getNameFromFilename(id);
         let source = readFileSync(id).toString();
         if (svelteOptions && svelteOptions.preprocess) {
-          source = (await svelte.preprocess(source, svelteOptions.preprocess)).code;
+          source = (await svelte.preprocess(source, svelteOptions.preprocess, { filename: id })).code;
         }
         const all = extractStories(source);
         const { stories } = all;
