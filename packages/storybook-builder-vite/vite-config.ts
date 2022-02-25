@@ -18,17 +18,22 @@ export async function commonConfig(
   options: ExtendedOptions,
   _type: PluginConfigType
 ): Promise<UserConfig & { configFile: false; root: string }> {
+  const { framework } = options;
+
   return {
     configFile: false,
     root: path.resolve(options.configDir, '..'),
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
-    resolve: {
-      alias: {
-        vue: 'vue/dist/vue.esm-bundler.js',
-      },
-    },
+    resolve:
+      framework === 'vue3'
+        ? {
+            alias: {
+              vue: 'vue/dist/vue.esm-bundler.js',
+            },
+          }
+        : {},
     plugins: await pluginConfig(options, _type),
   };
 }
