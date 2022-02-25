@@ -1,3 +1,5 @@
+const preprocess = require('svelte-preprocess');
+
 module.exports = {
   framework: '@storybook/svelte',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
@@ -8,5 +10,8 @@ module.exports = {
   async viteFinal(config, { configType }) {
     // customize the Vite config here
     return config;
+  },
+  svelteOptions: {
+    preprocess: preprocess(),
   },
 };
