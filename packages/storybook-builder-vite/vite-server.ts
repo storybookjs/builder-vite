@@ -22,7 +22,7 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
         strict: true,
       },
     },
-    optimizeDeps: await getOptimizeDeps(baseConfig.root, options),
+    optimizeDeps: await getOptimizeDeps(baseConfig, options),
   };
 
   const finalConfig = await presets.apply('viteFinal', defaultConfig, options);
