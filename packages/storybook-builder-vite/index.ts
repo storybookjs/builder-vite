@@ -17,7 +17,7 @@ export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
-    if (!req.url.match(/^\/iframe.html($|\?)/)) {
+    if (req.url.match(/\?html-proxy/) || !req.url.match(/^\/iframe.html($|\?)/)) {
       next();
       return;
     }
