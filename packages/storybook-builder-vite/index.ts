@@ -16,7 +16,7 @@ export interface ViteStats {}
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
 function parseRequest(id: string): Record<string, string> | null {
-  const { search } = new URL(`/${id}`);
+  const { search } = new URL(`file://${id}`);
   if (!search) {
     return null;
   }
