@@ -39,6 +39,7 @@ const INCLUDE_CANDIDATES = [
   'global',
   'html-tags',
   'isobject',
+  'jest-mock',
   'loader-utils',
   'lodash/cloneDeep',
   'lodash/isFunction',
