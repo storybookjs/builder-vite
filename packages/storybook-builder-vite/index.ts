@@ -15,12 +15,30 @@ export interface ViteStats {}
 
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
+function parseRequest(id: string): Record<string, string> | null {
+  const { search } = new URL(`/${id}`);
+  if (!search) {
+    return null;
+  }
+
+  return Object.fromEntries(new URLSearchParams(search.slice(1)));
+}
+
+
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
-    if (req.url.match(/\?html-proxy/) || !req.url.match(/^\/iframe.html($|\?)/)) {
+    if (!req.url.match(/^\/iframe.html($|\?)/)) {
       next();
       return;
     }
+
+    const query = parseRequest(req.url)!;
+
+    if (query['html-proxy'] !== undefined) {
+      next();
+      return;
+    }
+
     const indexHtml = fs.readFileSync(path.resolve(__dirname, '..', 'input', 'iframe.html'), 'utf-8');
     const generated = await transformIframeHtml(indexHtml, options);
     const transformed = await server.transformIndexHtml('/iframe.html', generated);
