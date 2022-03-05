@@ -2,6 +2,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { parse as parseUrl, URLSearchParams } from 'url';
 import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
@@ -16,7 +17,7 @@ export interface ViteStats {}
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
 function parseRequest(id: string): Record<string, string> | null {
-  const { search } = new URL(`file://${id}`);
+  const { search } = parseUrl(id);
   if (!search) {
     return null;
   }

@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "strict": true,
-    "lib": ["DOM", "DOM.Iterable"],
     "rootDir": ".",
     "outDir": "dist",
     "esModuleInterop": true
