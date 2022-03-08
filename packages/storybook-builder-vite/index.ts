@@ -2,7 +2,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { parse as parseUrl, URLSearchParams } from 'url';
+import { URL, URLSearchParams } from 'url';
 import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
@@ -17,12 +17,12 @@ export interface ViteStats {}
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
 function parseRequest(id: string): Record<string, string> | null {
-  const { search } = parseUrl(id);
+  const search = id.split('?').pop();
   if (!search) {
     return null;
   }
 
-  return Object.fromEntries(new URLSearchParams(search.slice(1)));
+  return Object.fromEntries(new URLSearchParams(search));
 }
 
 
