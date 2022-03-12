@@ -7868,7 +7868,7 @@ __metadata:
     "@storybook/vue3": ^6.4.14
     "@vitejs/plugin-vue": ^1.10.2
     storybook-builder-vite: "workspace:*"
-    vite: ^2.7.0
+    vite: 2.8.5
     vue: ^3.1.4
   languageName: unknown
   linkType: soft
@@ -15432,7 +15432,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"vite@npm:2.8.5, vite@npm:^2.7.0":
+"vite@npm:2.8.5":
   version: 2.8.5
   resolution: "vite@npm:2.8.5"
   dependencies:
