@@ -2,7 +2,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { URL, URLSearchParams } from 'url';
+import { URLSearchParams } from 'url';
 import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
@@ -24,7 +24,6 @@ function parseRequest(id: string): Record<string, string> | null {
 
   return Object.fromEntries(new URLSearchParams(search));
 }
-
 
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
