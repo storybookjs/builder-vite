@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build-examples": "yarn workspaces foreach --include 'example-*' -p run build-storybook",
+    "test-ci": "yarn workspaces foreach -p run test-ci",
     "start": "cd packages/storybook-builder-vite && tsc -w",
     "prepublish": "cd packages/storybook-builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
