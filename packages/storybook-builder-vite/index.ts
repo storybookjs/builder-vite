@@ -50,9 +50,9 @@ export const start: ViteBuilder['start'] = async ({ startTime, options, router, 
   router.use(await iframeMiddleware(options as ExtendedOptions, server));
   router.use(server.middlewares);
 
-  function bail(e?: Error) {
+  async function bail(e?: Error): Promise<void> {
     try {
-      return server.close();
+      return await server.close();
     } catch (err) {
       console.warn('unable to close vite server');
     }
