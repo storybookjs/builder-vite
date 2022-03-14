@@ -2,7 +2,6 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { URLSearchParams } from 'url';
 import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
@@ -16,25 +15,16 @@ export interface ViteStats {}
 
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
-function parseRequest(id: string): Record<string, string> | null {
-  const search = id.split('?').pop();
-  if (!search) {
-    return null;
-  }
-
-  return Object.fromEntries(new URLSearchParams(search));
-}
-
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
-    if (!req.url.match(/^\/iframe.html($|\?)/)) {
+    if (!req.url.match(/^\/iframe\.html($|\?)/)) {
       next();
       return;
     }
 
-    const query = parseRequest(req.url)!;
-
-    if (query['html-proxy'] !== undefined) {
+    // We need to handle `html-proxy` params for style tag HMR https://github.com/eirslett/storybook-builder-vite/issues/266#issuecomment-1055677865
+    // e.g. /iframe.html?html-proxy&index=0.css
+    if (req.query['html-proxy'] !== undefined) {
       next();
       return;
     }
