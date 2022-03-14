@@ -15,10 +15,10 @@
     "react-dom": "^16.4.14"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.4.14",
-    "@storybook/addon-docs": "^6.4.14",
-    "@storybook/addon-essentials": "^6.4.14",
-    "@storybook/react": "^6.4.14",
+    "@storybook/addon-a11y": "^6.5.0-alpha.48",
+    "@storybook/addon-docs": "^6.5.0-alpha.48",
+    "@storybook/addon-essentials": "^6.5.0-alpha.48",
+    "@storybook/react": "^6.5.0-alpha.48",
     "storybook-builder-vite": "workspace:*",
     "vite": "2.8.5"
   }

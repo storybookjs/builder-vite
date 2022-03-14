@@ -17,10 +17,10 @@
     "vue": "^3.1.4"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.4.14",
-    "@storybook/addon-essentials": "^6.4.14",
+    "@storybook/addon-a11y": "^6.5.0-alpha.48",
+    "@storybook/addon-essentials": "^6.5.0-alpha.48",
     "@storybook/test-runner": "^0.0.4",
-    "@storybook/vue3": "^6.4.14",
+    "@storybook/vue3": "^6.5.0-alpha.48",
     "@vitejs/plugin-vue": "^1.10.2",
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
