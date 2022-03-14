@@ -7,7 +7,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "build-examples": "yarn workspaces foreach -p run build-storybook",
+    "build-examples": "yarn workspaces foreach --include 'example-*' -p run build-storybook",
     "start": "cd packages/storybook-builder-vite && tsc -w",
     "prepublish": "cd packages/storybook-builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
