@@ -52,7 +52,7 @@ In another Terminal run:
 yarn example:NAME
 ```
 
-Where `NAME` is based on a `packages/example-*` directory.
+Where `NAME` is based on `examples/*` directories.
 
 For Vue:
 
