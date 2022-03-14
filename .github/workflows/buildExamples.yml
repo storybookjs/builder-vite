@@ -27,7 +27,7 @@ jobs:
         run: yarn prepublish
 
       - name: Build examples
-        run: yarn workspaces foreach -p run build-storybook
+        run: yarn build-examples
   lint:
     runs-on: ubuntu-latest
     steps:
