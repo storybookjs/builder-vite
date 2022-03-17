@@ -5,8 +5,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook --port 6008",
+    "build-storybook": "build-storybook",
+    "preview-storybook": "http-server storybook-static --port 6008 --silent",
+    "test": "wait-on tcp:6008 && test-storybook --url 'http://localhost:6008' --verbose",
+    "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",
   "license": "MIT",
@@ -19,11 +22,16 @@
     "@storybook/addon-links": "^6.4.14",
     "@storybook/addon-svelte-csf": "^1.1.0",
     "@storybook/svelte": "^6.4.14",
+    "@storybook/test-runner": "^0.0.4",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.37",
     "@tsconfig/svelte": "^3.0.0",
+    "http-server": "^14.1.0",
+    "jest": "^27.5.1",
+    "npm-run-all": "^4.1.5",
     "storybook-builder-vite": "workspace:*",
     "svelte-preprocess": "^4.10.4",
     "typescript": "^4.5.5",
-    "vite": "2.8.5"
+    "vite": "2.8.5",
+    "wait-on": "^6.0.1"
   }
 }
