@@ -2742,17 +2742,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.2":
-  version: 0.0.2
-  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.2"
+"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.4":
+  version: 0.0.4
+  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.4"
   dependencies:
     glob: ^7.2.0
     glob-promise: ^4.2.0
+    magic-string: ^0.26.1
     react-docgen-typescript: ^2.1.1
   peerDependencies:
     typescript: ">= 4.3.x"
     vite: ">2.0.0-0"
-  checksum: fde9d485d3b9c973389b9b1f57e9559c79b9cd94d1f7008e6b10f4fc8d3d220e1baa4bfe704a8790d5b884aefef1d7aa1f9b829fe3b313a26454a3fccda161d3
+  checksum: 068050e6b3ae92a30ac3777043fcb4d29b57d9cc5ab992eb7de65a1dc3d5898416670469a3bb4099c970f2d4702c96bfd13fd04687c886988d85b9d53f6d5175
   languageName: node
   linkType: hard
 
@@ -3498,7 +3499,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storybook/builder-vite@workspace:packages/builder-vite"
   dependencies:
-    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.2
+    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.4
     "@mdx-js/mdx": ^1.6.22
     "@storybook/csf-tools": ^6.3.3
     "@storybook/source-loader": ^6.3.12
@@ -13250,6 +13251,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "magic-string@npm:0.26.1"
+  dependencies:
+    sourcemap-codec: ^1.4.8
+  checksum: 23f21f5734346ddfbabd7b9834e3ecda3521e3e1db81166c1513b45b729489bbed1eafa8cd052c7db7fdc7c68ebc5c03bc00dd5a23697edda15dbecaf8c98397
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^2.0.0, make-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "make-dir@npm:2.1.0"
@@ -17071,7 +17081,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"sourcemap-codec@npm:^1.3.0, sourcemap-codec@npm:^1.4.4":
+"sourcemap-codec@npm:^1.3.0, sourcemap-codec@npm:^1.4.4, sourcemap-codec@npm:^1.4.8":
   version: 1.4.8
   resolution: "sourcemap-codec@npm:1.4.8"
   checksum: b57981c05611afef31605732b598ccf65124a9fcb03b833532659ac4d29ac0f7bfacbc0d6c5a28a03e84c7510e7e556d758d0bb57786e214660016fb94279316
