@@ -27,7 +27,7 @@
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
     "storybook-builder-vite": "workspace:*",
-    "vite": "2.8.5",
+    "vite": "2.9.0-beta.7",
     "wait-on": "^6.0.1"
   }
 }
