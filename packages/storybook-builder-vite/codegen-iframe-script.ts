@@ -11,8 +11,8 @@ export async function generateIframeScriptCode(
   options: ExtendedOptions,
   { storiesFilename, previewFilename }: GenerateIframeScriptCodeOptions
 ) {
-  const { presets, frameworkPath, framework } = options;
-  const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
+  const { presets } = options;
+
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries].filter(Boolean);
 
@@ -25,10 +25,6 @@ export async function generateIframeScriptCode(
   /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
-    // Ensure that the client API is initialized by the framework before any other iframe code
-    // is loaded. That way our client-apis can assume the existence of the API+store
-    import { configure } from '${frameworkImportPath}';
-
     import {
       addDecorator,
       addParameters,
@@ -39,6 +35,7 @@ export async function generateIframeScriptCode(
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     import * as preview from '${previewFilename}';
+    // This import should occur after the config imports above
     import { configStories } from '${storiesFilename}';
 
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
@@ -90,7 +87,7 @@ export async function generateIframeScriptCode(
     }
     */
 
-    configStories(configure);
+    configStories();
     `.trim();
   return code;
 }
