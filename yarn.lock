@@ -3325,6 +3325,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/builder-vite@workspace:*, @storybook/builder-vite@workspace:packages/builder-vite":
+  version: 0.0.0-use.local
+  resolution: "@storybook/builder-vite@workspace:packages/builder-vite"
+  dependencies:
+    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.2
+    "@mdx-js/mdx": ^1.6.22
+    "@storybook/csf-tools": ^6.3.3
+    "@storybook/source-loader": ^6.3.12
+    "@types/express": ^4.17.13
+    "@vitejs/plugin-react": ^1.0.8
+    es-module-lexer: ^0.9.3
+    glob: ^7.2.0
+    glob-promise: ^4.2.0
+    slash: ^3.0.0
+    vite-plugin-mdx: ^3.5.6
+    vue-docgen-api: ^4.40.0
+  peerDependencies:
+    "@storybook/core-common": ^6.4.3
+    vite: ">=2.6.7"
+  languageName: unknown
+  linkType: soft
+
 "@storybook/builder-webpack4@npm:6.5.0-alpha.49":
   version: 6.5.0-alpha.49
   resolution: "@storybook/builder-webpack4@npm:6.5.0-alpha.49"
@@ -9199,6 +9221,7 @@ __metadata:
     "@storybook/addon-a11y": ^6.5.0-alpha.49
     "@storybook/addon-docs": ^6.5.0-alpha.49
     "@storybook/addon-essentials": ^6.5.0-alpha.49
+    "@storybook/builder-vite": "workspace:*"
     "@storybook/react": ^6.5.0-alpha.49
     "@storybook/test-runner": ^0.0.4
     http-server: ^14.1.0
@@ -9206,7 +9229,6 @@ __metadata:
     npm-run-all: ^4.1.5
     react: ^16.4.14
     react-dom: ^16.4.14
-    storybook-builder-vite: "workspace:*"
     typescript: ^4.5.4
     vite: 2.9.0-beta.8
     wait-on: ^6.0.1
@@ -9220,6 +9242,7 @@ __metadata:
     "@storybook/addon-a11y": ^6.5.0-alpha.49
     "@storybook/addon-docs": ^6.5.0-alpha.49
     "@storybook/addon-essentials": ^6.5.0-alpha.49
+    "@storybook/builder-vite": "workspace:*"
     "@storybook/react": ^6.5.0-alpha.49
     "@storybook/test-runner": ^0.0.4
     http-server: ^14.1.0
@@ -9227,7 +9250,6 @@ __metadata:
     npm-run-all: ^4.1.5
     react: ^16.4.14
     react-dom: ^16.4.14
-    storybook-builder-vite: "workspace:*"
     vite: 2.9.0-beta.8
     wait-on: ^6.0.1
   languageName: unknown
@@ -9241,6 +9263,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.5.0-alpha.49
     "@storybook/addon-links": ^6.5.0-alpha.49
     "@storybook/addon-svelte-csf": ^1.1.0
+    "@storybook/builder-vite": "workspace:*"
     "@storybook/svelte": ^6.5.0-alpha.49
     "@storybook/test-runner": ^0.0.4
     "@sveltejs/vite-plugin-svelte": ^1.0.0-next.37
@@ -9248,7 +9271,6 @@ __metadata:
     http-server: ^14.1.0
     jest: ^27.5.1
     npm-run-all: ^4.1.5
-    storybook-builder-vite: "workspace:*"
     svelte: ^3.46.4
     svelte-preprocess: ^4.10.4
     typescript: ^4.5.5
@@ -9263,13 +9285,13 @@ __metadata:
   dependencies:
     "@storybook/addon-a11y": ^6.5.0-alpha.49
     "@storybook/addon-essentials": ^6.5.0-alpha.49
+    "@storybook/builder-vite": "workspace:*"
     "@storybook/test-runner": ^0.0.4
     "@storybook/vue3": ^6.5.0-alpha.49
     "@vitejs/plugin-vue": ^1.10.2
     http-server: ^14.1.0
     jest: ^27.5.1
     npm-run-all: ^4.1.5
-    storybook-builder-vite: "workspace:*"
     vite: 2.9.0-beta.8
     vue: ^3.2.0
     wait-on: ^6.0.1
@@ -9283,10 +9305,10 @@ __metadata:
     "@storybook/addon-a11y": ^6.5.0-alpha.49
     "@storybook/addon-docs": ^6.5.0-alpha.49
     "@storybook/addon-essentials": ^6.5.0-alpha.49
+    "@storybook/builder-vite": "workspace:*"
     "@storybook/react": ^6.5.0-alpha.49
     react: ^16.4.14
     react-dom: ^16.4.14
-    storybook-builder-vite: "workspace:*"
     vite: 2.9.0-beta.7
   languageName: unknown
   linkType: soft
@@ -17036,28 +17058,6 @@ fsevents@^1.2.7:
     eslint-plugin-storybook: ^0.5.5
     prettier: ^2.5.1
     typescript: ^4.5.4
-  languageName: unknown
-  linkType: soft
-
-"storybook-builder-vite@workspace:*, storybook-builder-vite@workspace:packages/storybook-builder-vite":
-  version: 0.0.0-use.local
-  resolution: "storybook-builder-vite@workspace:packages/storybook-builder-vite"
-  dependencies:
-    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.2
-    "@mdx-js/mdx": ^1.6.22
-    "@storybook/csf-tools": ^6.3.3
-    "@storybook/source-loader": ^6.3.12
-    "@types/express": ^4.17.13
-    "@vitejs/plugin-react": ^1.0.8
-    es-module-lexer: ^0.9.3
-    glob: ^7.2.0
-    glob-promise: ^4.2.0
-    slash: ^3.0.0
-    vite-plugin-mdx: ^3.5.6
-    vue-docgen-api: ^4.40.0
-  peerDependencies:
-    "@storybook/core-common": ^6.4.3
-    vite: ">=2.6.7"
   languageName: unknown
   linkType: soft
 

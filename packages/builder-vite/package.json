@@ -1,5 +1,5 @@
 {
-  "name": "storybook-builder-vite",
+  "name": "@storybook/builder-vite",
   "version": "0.1.22",
   "description": "An experimental plugin to run and build Storybooks with Vite",
   "main": "dist/index.js",
@@ -8,10 +8,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eirslett/storybook-builder-vite.git",
-    "directory": "package/storybook-builder-vite"
+    "url": "https://github.com/storybookjs/builder-vite.git",
+    "directory": "packages/builder-vite"
   },
-  "homepage": "https://github.com/eirslett/storybook-builder-vite/#readme",
+  "homepage": "https://github.com/storybookjs/builder-vite/#readme",
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.2",
     "@mdx-js/mdx": "^1.6.22",

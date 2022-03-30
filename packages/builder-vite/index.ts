@@ -22,7 +22,7 @@ function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): Requ
       return;
     }
 
-    // We need to handle `html-proxy` params for style tag HMR https://github.com/eirslett/storybook-builder-vite/issues/266#issuecomment-1055677865
+    // We need to handle `html-proxy` params for style tag HMR https://github.com/storybookjs/builder-vite/issues/266#issuecomment-1055677865
     // e.g. /iframe.html?html-proxy&index=0.css
     if (req.query['html-proxy'] !== undefined) {
       next();

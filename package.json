@@ -9,8 +9,8 @@
   "scripts": {
     "build-examples": "yarn workspaces foreach --include 'example-*' -p run build-storybook",
     "test-ci": "yarn workspaces foreach  --exclude 'example-svelte' -p run test-ci",
-    "start": "cd packages/storybook-builder-vite && tsc -w",
-    "prepublish": "cd packages/storybook-builder-vite && tsc",
+    "start": "cd packages/builder-vite && tsc -w",
+    "prepublish": "cd packages/builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --write .",
     "lint:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
