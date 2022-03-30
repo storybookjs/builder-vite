@@ -30,7 +30,8 @@ export async function generateIframeScriptCode(
       addParameters,
       addLoader,
       addArgTypesEnhancer,
-      addArgsEnhancer
+      addArgsEnhancer,
+      setGlobalRender
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
@@ -62,6 +63,9 @@ export async function generateIframeScriptCode(
           }
           case 'argsEnhancers': {
             return value.forEach((enhancer) => addArgsEnhancer(enhancer))
+          }
+          case 'render': {
+            return setGlobalRender(value)
           }
           case 'globals':
           case 'globalTypes': {
