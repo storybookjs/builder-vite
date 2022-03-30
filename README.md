@@ -1,1 +1,1 @@
-packages/storybook-builder-vite/README.md
+packages/builder-vite/README.md
