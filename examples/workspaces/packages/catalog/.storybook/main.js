@@ -3,7 +3,7 @@ module.exports = {
   stories: ['../../app/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: ['@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
-    builder: 'storybook-builder-vite',
+    builder: '@storybook/builder-vite',
   },
   features: {
     storyStoreV7: true,

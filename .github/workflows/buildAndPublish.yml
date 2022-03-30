@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 
 defaults:
   run:
-    working-directory: packages/storybook-builder-vite
+    working-directory: packages/builder-vite
 
 jobs:
   build:

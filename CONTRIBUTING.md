@@ -18,8 +18,8 @@
 2. Clone forked repository:
 
    ```
-   git clone https://github.com/YOUR_USERNAME/storybook-builder-vite
-   cd storybook-builder-vite
+   git clone https://github.com/YOUR_USERNAME/builder-vite
+   cd builder-vite
    ```
 
 3. Install dependencies:

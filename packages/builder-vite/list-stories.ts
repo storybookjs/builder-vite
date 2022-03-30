@@ -3,7 +3,7 @@ import { promise as glob } from 'glob-promise';
 
 import type { Options, StoriesEntry } from '@storybook/core-common';
 
-// TODO: Merge with https://github.com/eirslett/storybook-builder-vite/pull/182
+// TODO: Merge with https://github.com/storybookjs/builder-vite/pull/182
 export async function listStories({ presets, configDir }: Options) {
   return (
     await Promise.all(
