@@ -73,7 +73,8 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
-          '@storybook/builder-vite requires @sveltejs/vite-plugin-svelte to be installed when using @storybook/svelte.' +
+          '@storybook/builder-vite requires @sveltejs/vite-plugin-svelte to be installed' +
+            ' when using @storybook/svelte.' +
             '  Please install it and start storybook again.'
         );
       }
