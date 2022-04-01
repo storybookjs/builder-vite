@@ -5,6 +5,7 @@ import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
 import { generateImportFnScriptCode } from './codegen-importfn-script';
 import { generateVirtualStoryEntryCode, generatePreviewEntryCode } from './codegen-entries';
+import { generateAddonSetupCode } from './codegen-set-addon-channel';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
@@ -60,6 +61,8 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return virtualStoriesFile;
       } else if (source === virtualPreviewFile) {
         return virtualPreviewFile;
+      } else if (source === virtualAddonSetupFile) {
+        return virtualAddonSetupFile;
       }
     },
     async load(id) {
@@ -70,6 +73,10 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         } else {
           return generateVirtualStoryEntryCode(options);
         }
+      }
+
+      if (id === virtualAddonSetupFile) {
+        return generateAddonSetupCode();
       }
 
       if (id === virtualPreviewFile && !storyStoreV7) {

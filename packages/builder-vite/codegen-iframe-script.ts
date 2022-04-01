@@ -1,5 +1,5 @@
 import { normalizePath } from 'vite';
-import { virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
+import { virtualPreviewFile, virtualStoriesFile, virtualAddonSetupFile } from './virtual-file-names';
 
 import type { ExtendedOptions } from './types';
 
@@ -18,6 +18,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
+    import '${virtualAddonSetupFile}';
     import {
       addDecorator,
       addParameters,
