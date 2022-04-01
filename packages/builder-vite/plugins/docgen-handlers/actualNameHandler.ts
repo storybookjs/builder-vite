@@ -11,8 +11,10 @@
 
 import { namedTypes as t } from 'ast-types';
 import type { NodePath } from 'ast-types/lib/node-path';
-import { getNameOrValue, isReactForwardRefCall } from 'react-docgen/lib/utils';
-import type { Importer } from 'react-docgen/lib/parse';
+import { getNameOrValue, isReactForwardRefCall } from 'react-docgen/dist/utils';
+// import { getNameOrValue, isReactForwardRefCall } from 'react-docgen/lib/utils';
+import type { Importer } from 'react-docgen/dist/parse';
+// import type { Importer } from 'react-docgen/lib/parse';
 import type Documentation from 'react-docgen/lib/Documentation';
 
 export default function actualNameHandler(documentation: Documentation, path: NodePath, importer: Importer): void {

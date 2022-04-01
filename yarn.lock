@@ -3510,7 +3510,7 @@ __metadata:
     glob: ^7.2.0
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
-    react-docgen: "reactjs/react-docgen#69a631da7e9d897feb9d7cc52d9851bd01eda515"
+    react-docgen: ^6.0.0-alpha.0
     slash: ^3.0.0
     vite-plugin-mdx: ^3.5.6
     vue-docgen-api: ^4.40.0
@@ -15744,12 +15744,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-docgen@reactjs/react-docgen#69a631da7e9d897feb9d7cc52d9851bd01eda515":
+"react-docgen@npm:^6.0.0-alpha.0":
   version: 6.0.0-alpha.0
-  resolution: "react-docgen@https://github.com/reactjs/react-docgen.git#commit=69a631da7e9d897feb9d7cc52d9851bd01eda515"
+  resolution: "react-docgen@npm:6.0.0-alpha.0"
   dependencies:
     "@babel/core": ^7.7.5
     "@babel/generator": ^7.12.11
+    "@babel/runtime": ^7.7.6
     ast-types: ^0.14.2
     commander: ^2.19.0
     doctrine: ^3.0.0
@@ -15760,7 +15761,7 @@ fsevents@^1.2.7:
     strip-indent: ^3.0.0
   bin:
     react-docgen: bin/react-docgen.js
-  checksum: fb232247994eec25c9d2b242f1a29f4156bf2eb17f4c923ab6ba2607443324c4ce7b0526036451b01809ea6729f8fbdcf6f872ac3cc6e3e721923fc93894c1c1
+  checksum: b1e7ad594a6191ca9e83d1d94e103db6d7e643ef69e9a5d7ca593f0f94e124bcbd48f89aaae8d4952b465781025c74fc7ee2dd7d433136e07a6f3e9529411416
   languageName: node
   linkType: hard
 

@@ -23,7 +23,7 @@
     "glob": "^7.2.0",
     "glob-promise": "^4.2.0",
     "magic-string": "^0.26.1",
-    "react-docgen": "reactjs/react-docgen#69a631da7e9d897feb9d7cc52d9851bd01eda515",
+    "react-docgen": "^6.0.0-alpha.0",
     "slash": "^3.0.0",
     "vite-plugin-mdx": "^3.5.6"
   },
