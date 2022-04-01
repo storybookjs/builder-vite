@@ -3505,10 +3505,12 @@ __metadata:
     "@storybook/source-loader": ^6.3.12
     "@types/express": ^4.17.13
     "@vitejs/plugin-react": ^1.0.8
+    ast-types: ^0.14.2
     es-module-lexer: ^0.9.3
     glob: ^7.2.0
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
+    react-docgen: "reactjs/react-docgen#69a631da7e9d897feb9d7cc52d9851bd01eda515"
     slash: ^3.0.0
     vite-plugin-mdx: ^3.5.6
     vue-docgen-api: ^4.40.0
@@ -15742,6 +15744,26 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-docgen@reactjs/react-docgen#69a631da7e9d897feb9d7cc52d9851bd01eda515":
+  version: 6.0.0-alpha.0
+  resolution: "react-docgen@https://github.com/reactjs/react-docgen.git#commit=69a631da7e9d897feb9d7cc52d9851bd01eda515"
+  dependencies:
+    "@babel/core": ^7.7.5
+    "@babel/generator": ^7.12.11
+    ast-types: ^0.14.2
+    commander: ^2.19.0
+    doctrine: ^3.0.0
+    estree-to-babel: ^3.1.0
+    neo-async: ^2.6.1
+    node-dir: ^0.1.10
+    resolve: ^1.17.0
+    strip-indent: ^3.0.0
+  bin:
+    react-docgen: bin/react-docgen.js
+  checksum: fb232247994eec25c9d2b242f1a29f4156bf2eb17f4c923ab6ba2607443324c4ce7b0526036451b01809ea6729f8fbdcf6f872ac3cc6e3e721923fc93894c1c1
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:16.14.0, react-dom@npm:^16.4.14":
   version: 16.14.0
   resolution: "react-dom@npm:16.14.0"
@@ -16313,7 +16335,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.22.0":
+"resolve@npm:^1.17.0, resolve@npm:^1.22.0":
   version: 1.22.0
   resolution: "resolve@npm:1.22.0"
   dependencies:
@@ -16336,7 +16358,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>":
   version: 1.22.0
   resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
   dependencies:
