@@ -36,7 +36,7 @@ export function reactDocgen(): Plugin {
             }
           });
 
-          return extendedSrc;
+          return { code: extendedSrc, map: null };
         } catch (e) {
           // Usually this is just an error from react-docgen that it couldn't find a component
           // Only uncomment for troubleshooting
