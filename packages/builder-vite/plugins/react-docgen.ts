@@ -1,4 +1,3 @@
-import path from 'path';
 import {
   parse,
   handlers as docgenHandlers,
@@ -24,9 +23,8 @@ export function reactDocgen(): Plugin {
     async transform(src: string, id: string) {
       if (/\.(mjs|tsx|jsx)$/.test(id)) {
         try {
-          const filename = path.basename(id);
           // Since we're using `findAllExportedComponentDefinitions`, this will always be an array.
-          const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename }) as
+          const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename: id }) as
             | DocObj[];
           let extendedSrc = src;
 
