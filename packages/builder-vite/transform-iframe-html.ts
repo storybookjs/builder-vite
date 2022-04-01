@@ -1,7 +1,6 @@
 import { normalizeStories } from '@storybook/core-common';
 import type { CoreConfig } from '@storybook/core-common';
 import type { ExtendedOptions } from './types';
-import { virtualFileId } from './virtual-file-names';
 
 export type PreviewHtml = string | undefined;
 
@@ -32,7 +31,6 @@ export async function transformIframeHtml(html: string, options: ExtendedOptions
     .replace(`'[FEATURES HERE]'`, JSON.stringify(features || {}))
     .replace(`'[STORIES HERE]'`, JSON.stringify(stories || {}))
     .replace(`'[SERVER_CHANNEL_URL HERE]'`, JSON.stringify(serverChannelUrl))
-    .replace('[VIRTUAL FILE ID HERE]', virtualFileId || '')
     .replace('<!-- [HEAD HTML SNIPPET HERE] -->', headHtmlSnippet || '')
     .replace('<!-- [BODY HTML SNIPPET HERE] -->', bodyHtmlSnippet || '');
 }
