@@ -9,10 +9,9 @@ import { generateVirtualStoryEntryCode, generatePreviewEntryCode } from './codeg
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
 
+import { virtualAddonSetupFile, virtualFileId, virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
+
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
-  const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
-  const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
-  const virtualPreviewFile = '/virtual:/@storybook/builder-vite/preview-entry.js';
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
 
@@ -79,12 +78,9 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
 
       if (id === virtualFileId) {
         if (storyStoreV7) {
-          return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
+          return generateModernIframeScriptCode(options);
         } else {
-          return generateIframeScriptCode(options, {
-            storiesFilename: virtualStoriesFile,
-            previewFilename: virtualPreviewFile,
-          });
+          return generateIframeScriptCode(options);
         }
       }
 

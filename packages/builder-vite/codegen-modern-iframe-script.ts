@@ -1,16 +1,9 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
-
+import { virtualStoriesFile } from './virtual-file-names';
 import type { ExtendedOptions } from './types';
 
-interface GenerateModernIframeScriptCodeOptions {
-  storiesFilename: string;
-}
-
-export async function generateModernIframeScriptCode(
-  options: ExtendedOptions,
-  { storiesFilename }: GenerateModernIframeScriptCodeOptions
-) {
+export async function generateModernIframeScriptCode(options: ExtendedOptions) {
   const { presets, configDir } = options;
 
   const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
@@ -64,7 +57,7 @@ export async function generateModernIframeScriptCode(
     preview.initialize({ importFn, getProjectAnnotations });
 
     if (import.meta.hot) {
-        import.meta.hot.accept('${storiesFilename}', (newModule) => {
+        import.meta.hot.accept('${virtualStoriesFile}', (newModule) => {
 
         // importFn has changed so we need to patch the new one in
         preview.onStoriesChanged({ importFn: newModule.importFn });

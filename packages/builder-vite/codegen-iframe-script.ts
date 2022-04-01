@@ -1,16 +1,9 @@
 import { normalizePath } from 'vite';
+import { virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
 
 import type { ExtendedOptions } from './types';
 
-interface GenerateIframeScriptCodeOptions {
-  storiesFilename: string;
-  previewFilename: string;
-}
-
-export async function generateIframeScriptCode(
-  options: ExtendedOptions,
-  { storiesFilename, previewFilename }: GenerateIframeScriptCodeOptions
-) {
+export async function generateIframeScriptCode(options: ExtendedOptions) {
   const { presets } = options;
 
   const presetEntries = await presets.apply('config', [], options);
@@ -34,9 +27,9 @@ export async function generateIframeScriptCode(
     } from '@storybook/client-api';
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
-    import * as preview from '${previewFilename}';
+    import * as preview from '${virtualPreviewFile}';
     // This import should occur after the config imports above
-    import { configStories } from '${storiesFilename}';
+    import { configStories } from '${virtualStoriesFile}';
 
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
