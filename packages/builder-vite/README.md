@@ -42,13 +42,38 @@ Note: when using `pnpm`, you may need to enable [shamefully-hoist](https://pnpm.
 
 ### Usage
 
-In your `main.js` configuration file,
+In your `.storybook/main.js` configuration file,
 set `core: { builder: "@storybook/builder-vite" }`.
 
 > For autoreload of react stories to work, they need to have a `.stories.tsx` or `.stories.jsx` file suffix.
 > See also [#53](https://github.com/storybookjs/builder-vite/pull/53)
 
 The builder supports both development mode in Storybook, and building a static production version.
+
+It is also recommended to enable the new [on-demand story store](https://storybook.js.org/blog/storybook-on-demand-architecture/).
+
+```js
+// main.js
+
+module.exports = {
+  features: {
+    storyStoreV7: true,
+  },
+};
+```
+
+This will decrease the loading time for the first story in the browser, because each story is lazy loaded when needed. If for some reason lazy loading causes problems (e.g. due to https://github.com/vitejs/vite/issues/3924), you can disable lazy loading while still keeping the new story store with:
+
+```js
+// main.js
+
+module.exports = {
+  features: {
+    storyStoreV7: true,
+    eagerImportStories: false,
+  },
+};
+```
 
 ### Customize Vite config
 
