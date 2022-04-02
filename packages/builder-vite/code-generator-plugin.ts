@@ -5,14 +5,14 @@ import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
 import { generateImportFnScriptCode } from './codegen-importfn-script';
 import { generateVirtualStoryEntryCode, generatePreviewEntryCode } from './codegen-entries';
+import { generateAddonSetupCode } from './codegen-set-addon-channel';
 
 import type { Plugin } from 'vite';
 import type { ExtendedOptions } from './types';
 
+import { virtualAddonSetupFile, virtualFileId, virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
+
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
-  const virtualFileId = '/virtual:/@storybook/builder-vite/vite-app.js';
-  const virtualStoriesFile = '/virtual:/@storybook/builder-vite/storybook-stories.js';
-  const virtualPreviewFile = '/virtual:/@storybook/builder-vite/preview-entry.js';
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
 
@@ -61,6 +61,8 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return virtualStoriesFile;
       } else if (source === virtualPreviewFile) {
         return virtualPreviewFile;
+      } else if (source === virtualAddonSetupFile) {
+        return virtualAddonSetupFile;
       }
     },
     async load(id) {
@@ -73,18 +75,19 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         }
       }
 
+      if (id === virtualAddonSetupFile) {
+        return generateAddonSetupCode();
+      }
+
       if (id === virtualPreviewFile && !storyStoreV7) {
         return generatePreviewEntryCode(options);
       }
 
       if (id === virtualFileId) {
         if (storyStoreV7) {
-          return generateModernIframeScriptCode(options, { storiesFilename: virtualStoriesFile });
+          return generateModernIframeScriptCode(options);
         } else {
-          return generateIframeScriptCode(options, {
-            storiesFilename: virtualStoriesFile,
-            previewFilename: virtualPreviewFile,
-          });
+          return generateIframeScriptCode(options);
         }
       }
 

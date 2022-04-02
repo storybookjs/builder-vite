@@ -1,16 +1,9 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
 import { normalizePath } from 'vite';
-
+import { virtualStoriesFile, virtualAddonSetupFile } from './virtual-file-names';
 import type { ExtendedOptions } from './types';
 
-interface GenerateModernIframeScriptCodeOptions {
-  storiesFilename: string;
-}
-
-export async function generateModernIframeScriptCode(
-  options: ExtendedOptions,
-  { storiesFilename }: GenerateModernIframeScriptCodeOptions
-) {
+export async function generateModernIframeScriptCode(options: ExtendedOptions) {
   const { presets, configDir } = options;
 
   const previewOrConfigFile = loadPreviewOrConfigFile({ configDir });
@@ -28,43 +21,26 @@ export async function generateModernIframeScriptCode(
    */
   // language=JavaScript
   const code = `
-    import global from 'global';
-
     import { composeConfigs, PreviewWeb } from '@storybook/preview-web';
     import { ClientApi } from '@storybook/client-api';
-    import { addons } from '@storybook/addons';
-    import createPostMessageChannel from '@storybook/channel-postmessage';
-    import createWebSocketChannel from '@storybook/channel-websocket';
-
-    import { importFn } from '${storiesFilename}';
-
-    const { SERVER_CHANNEL_URL } = global;
+    import '${virtualAddonSetupFile}';
+    import { importFn } from '${virtualStoriesFile}';
 
     const getProjectAnnotations = async () =>
       composeConfigs(await Promise.all([${configEntries
         .map((configEntry) => `import('${configEntry}')`)
         .join(',\n')}]));
 
-    const channel = createPostMessageChannel({ page: 'preview' });
-    addons.setChannel(channel);
-
-    if (SERVER_CHANNEL_URL) {
-      const serverChannel = createWebSocketChannel({ url: SERVER_CHANNEL_URL });
-      addons.setServerChannel(serverChannel);
-      window.__STORYBOOK_SERVER_CHANNEL__ = serverChannel;
-    }
-
     const preview = new PreviewWeb();
 
     window.__STORYBOOK_PREVIEW__ = preview;
     window.__STORYBOOK_STORY_STORE__ = preview.storyStore;
-    window.__STORYBOOK_ADDONS_CHANNEL__ = channel;
     window.__STORYBOOK_CLIENT_API__ = new ClientApi({ storyStore: preview.storyStore });
 
     preview.initialize({ importFn, getProjectAnnotations });
 
     if (import.meta.hot) {
-        import.meta.hot.accept('${storiesFilename}', (newModule) => {
+        import.meta.hot.accept('${virtualStoriesFile}', (newModule) => {
 
         // importFn has changed so we need to patch the new one in
         preview.onStoriesChanged({ importFn: newModule.importFn });
