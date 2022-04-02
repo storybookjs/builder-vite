@@ -21,7 +21,8 @@ export function reactDocgen(): Plugin {
     name: 'react-docgen',
     enforce: 'pre',
     async transform(src: string, id: string) {
-      if (/\.(mjs|tsx|jsx)$/.test(id)) {
+      // JSX syntax is only allowed in .tsx and .jsx, but components can technically be created without JSX
+      if (/\.(mjs|tsx?|jsx?)$/.test(id)) {
         try {
           // Since we're using `findAllExportedComponentDefinitions`, this will always be an array.
           const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename: id }) as
