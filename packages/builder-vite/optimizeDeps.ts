@@ -10,20 +10,7 @@ const INCLUDE_CANDIDATES = [
   '@emotion/is-prop-valid',
   '@emotion/styled',
   '@mdx-js/react',
-  '@storybook/addon-docs > acorn-jsx',
-  '@storybook/addon-docs',
-  '@storybook/addons',
-  '@storybook/channel-postmessage',
-  '@storybook/channel-websocket',
-  '@storybook/client-api',
-  '@storybook/client-logger',
-  '@storybook/core/client',
   '@storybook/csf',
-  '@storybook/preview-web',
-  '@storybook/react > acorn-jsx',
-  '@storybook/react',
-  '@storybook/svelte',
-  '@storybook/vue3',
   'acorn-jsx',
   'acorn-walk',
   'acorn',
@@ -119,5 +106,14 @@ export async function getOptimizeDeps(
     // We need Vite to precompile these dependencies, because they contain non-ESM code that would break
     // if we served it directly to the browser.
     include,
+    // TODO: It's unclear why these are attempted to be optimized, when they don't need it.
+    exclude: [
+      '@storybook/addon-docs',
+      '@storybook/client-api',
+      '@storybook/client-logger',
+      '@storybook/react',
+      '@storybook/svelte',
+      '@storybook/vue3',
+    ],
   };
 }
