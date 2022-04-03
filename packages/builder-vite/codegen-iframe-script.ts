@@ -4,14 +4,16 @@ import { virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
 import type { ExtendedOptions } from './types';
 
 export async function generateIframeScriptCode(options: ExtendedOptions) {
-  const { presets, frameworkPath, framework } = options;
+  const { presets, frameworkPath, framework, browserHash } = options;
   const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
 
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries].filter(Boolean);
 
   const absoluteFilesToImport = (files: string[], name: string) =>
-    files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
+    files
+      .map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}?v=${browserHash}'`)
+      .join('\n');
 
   const importArray = (name: string, length: number) => new Array(length).fill(0).map((_, i) => `${name}_${i}`);
 

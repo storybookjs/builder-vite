@@ -15,6 +15,7 @@ import { virtualAddonSetupFile, virtualFileId, virtualPreviewFile, virtualStorie
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
+  let browserHash: string;
 
   // noinspection JSUnusedGlobalSymbols
   return {
@@ -87,7 +88,7 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         if (storyStoreV7) {
           return generateModernIframeScriptCode(options);
         } else {
-          return generateIframeScriptCode(options);
+          return generateIframeScriptCode({ ...options, browserHash });
         }
       }
 
@@ -99,6 +100,9 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
       if (ctx.path !== '/iframe.html') {
         return;
       }
+      // We need the browserHash from the server so that we can append it to imports.
+      // @ts-expect-error accessing private property of server
+      browserHash = ctx.server?._optimizedDeps.metadata.browserHash ?? '';
       return transformIframeHtml(html, options);
     },
   };

@@ -4,6 +4,7 @@ import type { Options } from '@storybook/core-common';
 type IframeOptions = {
   frameworkPath: string;
   title: string;
+  browserHash: string;
 };
 
 export type ExtendedOptions = Options & IframeOptions;
