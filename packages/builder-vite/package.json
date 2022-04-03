@@ -21,6 +21,7 @@
     "es-module-lexer": "^0.9.3",
     "glob": "^7.2.0",
     "glob-promise": "^4.2.0",
+    "magic-string": "^0.26.1",
     "slash": "^3.0.0",
     "vite-plugin-mdx": "^3.5.6"
   },
