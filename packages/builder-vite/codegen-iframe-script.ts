@@ -1,10 +1,11 @@
 import { normalizePath } from 'vite';
-import { virtualPreviewFile, virtualStoriesFile, virtualAddonSetupFile } from './virtual-file-names';
+import { virtualPreviewFile, virtualStoriesFile } from './virtual-file-names';
 
 import type { ExtendedOptions } from './types';
 
 export async function generateIframeScriptCode(options: ExtendedOptions) {
-  const { presets } = options;
+  const { presets, frameworkPath, framework } = options;
+  const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
 
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries].filter(Boolean);
@@ -18,7 +19,10 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
   /** @todo Inline variable and remove `noinspection` */
   // language=JavaScript
   const code = `
-    import '${virtualAddonSetupFile}';
+    // Ensure that the client API is initialized by the framework before any other iframe code
+    // is loaded. That way our client-apis can assume the existence of the API+store
+    import { configure } from '${frameworkImportPath}';
+
     import {
       addDecorator,
       addParameters,
@@ -29,7 +33,6 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     import * as preview from '${virtualPreviewFile}';
-    // This import should occur after the config imports above
     import { configStories } from '${virtualStoriesFile}';
 
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
@@ -81,7 +84,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     }
     */
 
-    configStories();
+    configStories(configure);
     `.trim();
   return code;
 }
