@@ -5,6 +5,7 @@ import {
   importers as docgenImporters,
 } from 'react-docgen';
 import type { DocumentationObject } from 'react-docgen/lib/Documentation';
+import MagicString from 'magic-string';
 import type { Plugin } from 'vite';
 import actualNameHandler from './docgen-handlers/actualNameHandler';
 
@@ -27,17 +28,20 @@ export function reactDocgen(): Plugin {
           // Since we're using `findAllExportedComponentDefinitions`, this will always be an array.
           const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename: id }) as
             | DocObj[];
-          let extendedSrc = src;
+          const s = new MagicString(src);
 
           docgenResults.forEach((info) => {
             const { actualName, ...docgenInfo } = info;
             if (actualName) {
               const docNode = JSON.stringify(docgenInfo);
-              extendedSrc = `${extendedSrc};${actualName}.__docgenInfo=${docNode}`;
+              s.append(`;${actualName}.__docgenInfo=${docNode}`);
             }
           });
 
-          return { code: extendedSrc, map: null };
+          return {
+            code: s.toString(),
+            map: s.generateMap(),
+          };
         } catch (e) {
           // Usually this is just an error from react-docgen that it couldn't find a component
           // Only uncomment for troubleshooting
