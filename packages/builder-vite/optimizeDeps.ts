@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { normalizePath, resolveConfig, UserConfig } from 'vite';
 import { listStories } from './list-stories';
+import semver from 'semver';
 
 import type { ExtendedOptions } from './types';
 
@@ -10,20 +11,7 @@ const INCLUDE_CANDIDATES = [
   '@emotion/is-prop-valid',
   '@emotion/styled',
   '@mdx-js/react',
-  '@storybook/addon-docs > acorn-jsx',
-  '@storybook/addon-docs',
-  '@storybook/addons',
-  '@storybook/channel-postmessage',
-  '@storybook/channel-websocket',
-  '@storybook/client-api',
-  '@storybook/client-logger',
-  '@storybook/core/client',
   '@storybook/csf',
-  '@storybook/preview-web',
-  '@storybook/react > acorn-jsx',
-  '@storybook/react',
-  '@storybook/svelte',
-  '@storybook/vue3',
   'acorn-jsx',
   'acorn-walk',
   'acorn',
@@ -109,7 +97,21 @@ export async function getOptimizeDeps(
   const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
   const resolvedConfig = await resolveConfig(config, 'serve', 'development');
 
-  const exclude = [];
+  // This function converts ids which might include ` > ` to a real path, if it exists on disk.
+  // See https://github.com/vitejs/vite/blob/67d164392e8e9081dc3f0338c4b4b8eea6c5f7da/packages/vite/src/node/optimizer/index.ts#L182-L199
+  const resolve = resolvedConfig.createResolver({ asSrc: false });
+  const include = await asyncFilter(INCLUDE_CANDIDATES, async (id) => Boolean(await resolve(id)));
+
+  // We can exclude some packages which otherwise are optimized
+  const exclude = [
+    '@storybook/addon-docs',
+    '@storybook/client-api',
+    '@storybook/client-logger',
+    '@storybook/preview-web',
+    '@storybook/channel-postmessage',
+    '@storybook/channel-websocket',
+    '@storybook/addons',
+  ];
   // This is necessary to support react < 18 with new versions of @storybook/react that support react 18.
   // TODO: narrow this down to just framework === 'react'.  But causes a vue dev start problem in this monorepo.
   try {
@@ -119,11 +121,16 @@ export async function getOptimizeDeps(
       exclude.push('react-dom/client');
     }
   }
-
-  // This function converts ids which might include ` > ` to a real path, if it exists on disk.
-  // See https://github.com/vitejs/vite/blob/67d164392e8e9081dc3f0338c4b4b8eea6c5f7da/packages/vite/src/node/optimizer/index.ts#L182-L199
-  const resolve = resolvedConfig.createResolver({ asSrc: false });
-  const include = await asyncFilter(INCLUDE_CANDIDATES, async (id) => Boolean(await resolve(id)));
+  // Depending on the user's storybook version, we can also exclude the framework from prebundling
+  // See https://github.com/storybookjs/storybook/pull/17875
+  const { frameworkPath, framework } = options;
+  const frameworkPackageName = frameworkPath || `@storybook/${framework}`;
+  const sbVersion: string | undefined = (await import(`${frameworkPackageName}/package.json`))?.version;
+  if (sbVersion && semver.gte(sbVersion, '6.5.0-alpha.58', { includePrerelease: true })) {
+    exclude.push(frameworkPackageName);
+  } else {
+    include.push(frameworkPackageName);
+  }
 
   return {
     // We don't need to resolve the glob since vite supports globs for entries.
