@@ -67,8 +67,8 @@ module.exports = {
     return mergeConfig(config, {
       // customize the Vite config here
       resolve: {
-        alias: { foo: 'bar' }
-      }
+        alias: { foo: 'bar' },
+      },
     });
   },
   // ... other options here
