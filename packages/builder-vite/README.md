@@ -58,7 +58,7 @@ In `.storybook/main.js` (or whatever your Storybook config file is named)
 you can override the Vite config:
 
 ```javascript
-// use `mergeConfig` to recursively merge vite options
+// use `mergeConfig` to recursively merge Vite options
 const { mergeConfig } = require('vite');
 
 module.exports = {
