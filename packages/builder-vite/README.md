@@ -58,13 +58,18 @@ In `.storybook/main.js` (or whatever your Storybook config file is named)
 you can override the Vite config:
 
 ```javascript
+// use `mergeConfig` to recursively merge Vite options
+const { mergeConfig } = require('vite');
+
 module.exports = {
   async viteFinal(config, { configType }) {
-    // customize the Vite config here
-    config.resolve.alias.foo = 'bar';
-
     // return the customized config
-    return config;
+    return mergeConfig(config, {
+      // customize the Vite config here
+      resolve: {
+        alias: { foo: 'bar' },
+      },
+    });
   },
   // ... other options here
 };
