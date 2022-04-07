@@ -15,6 +15,7 @@ import { virtualAddonSetupFile, virtualFileId, virtualPreviewFile, virtualStorie
 export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
   const iframePath = path.resolve(__dirname, '..', 'input', 'iframe.html');
   let iframeId: string;
+  let projRoot: string;
 
   // noinspection JSUnusedGlobalSymbols
   return {
@@ -50,6 +51,7 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
       }
     },
     configResolved(config) {
+      projRoot = config.root;
       iframeId = `${config.root}/iframe.html`;
     },
     resolveId(source) {
@@ -63,6 +65,14 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return virtualPreviewFile;
       } else if (source === virtualAddonSetupFile) {
         return virtualAddonSetupFile;
+        // Avoid error in react < 18 projects
+      } else if (source === 'react-dom/client') {
+        try {
+          return require.resolve('react-dom/client', { paths: [projRoot] });
+        } catch (e) {
+          // This is not a react 18 project, need to stub out to avoid error
+          return path.resolve(__dirname, '..', 'input', 'react-dom-client-placeholder.js');
+        }
       }
     },
     async load(id) {

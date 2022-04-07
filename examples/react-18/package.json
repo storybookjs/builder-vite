@@ -1,28 +1,30 @@
 {
-  "name": "example-vue",
+  "name": "example-react-18",
   "private": true,
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook --port 6009",
+    "storybook": "start-storybook --port 6018",
     "build-storybook": "build-storybook",
-    "preview-storybook": "http-server storybook-static --port 6009 --silent",
-    "test": "wait-on tcp:6009 && test-storybook --url 'http://localhost:6009'",
+    "preview-storybook": "http-server storybook-static --port 6018 --silent",
+    "test": "wait-on tcp:6018 && test-storybook --url 'http://localhost:6018'",
     "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.2.25"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.5.0-alpha.58",
+    "@storybook/addon-docs": "^6.5.0-alpha.58",
     "@storybook/addon-essentials": "^6.5.0-alpha.58",
     "@storybook/builder-vite": "workspace:*",
+    "@storybook/react": "^6.5.0-alpha.58",
     "@storybook/test-runner": "^0.0.4",
-    "@storybook/vue3": "^6.5.0-alpha.58",
-    "@vitejs/plugin-vue": "^2.3.0",
+    "@vitejs/plugin-react": "^1.3.0",
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",

@@ -63,6 +63,7 @@ const INCLUDE_CANDIDATES = [
   'prop-types',
   'qs',
   'react-dom',
+  'react-dom/client',
   'react-fast-compare',
   'react-is',
   'react-textarea-autosize',
@@ -108,6 +109,17 @@ export async function getOptimizeDeps(
   const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
   const resolvedConfig = await resolveConfig(config, 'serve', 'development');
 
+  const exclude = [];
+  // This is necessary to support react < 18 with new versions of @storybook/react that support react 18.
+  // TODO: narrow this down to just framework === 'react'.  But causes a vue dev start problem in this monorepo.
+  try {
+    require.resolve('react-dom/client', { paths: [config.root] });
+  } catch (e) {
+    if (isNodeError(e) && e.code === 'MODULE_NOT_FOUND') {
+      exclude.push('react-dom/client');
+    }
+  }
+
   // This function converts ids which might include ` > ` to a real path, if it exists on disk.
   // See https://github.com/vitejs/vite/blob/67d164392e8e9081dc3f0338c4b4b8eea6c5f7da/packages/vite/src/node/optimizer/index.ts#L182-L199
   const resolve = resolvedConfig.createResolver({ asSrc: false });
@@ -119,5 +131,10 @@ export async function getOptimizeDeps(
     // We need Vite to precompile these dependencies, because they contain non-ESM code that would break
     // if we served it directly to the browser.
     include,
+    // In some cases we need to prevent deps from being pre-bundled
+    exclude,
   };
 }
+
+// Refines an error received from 'catch' to be a NodeJS exception
+const isNodeError = (error: unknown): error is NodeJS.ErrnoException => error instanceof Error;

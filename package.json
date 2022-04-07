@@ -7,8 +7,8 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "build-examples": "yarn workspaces foreach --include 'example-*' -p run build-storybook",
-    "test-ci": "yarn workspaces foreach  --exclude 'example-svelte' -p run test-ci",
+    "build-examples": "yarn workspaces foreach -v --include 'example-*' -p run build-storybook",
+    "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' -p run test-ci",
     "start": "cd packages/builder-vite && tsc -w",
     "prepublish": "cd packages/builder-vite && tsc",
     "lint": "yarn lint:prettier && yarn lint:eslint",
@@ -23,6 +23,9 @@
     "example:svelte": "NAME=svelte yarn example",
     "example:vue": "NAME=vue yarn example",
     "example:workspaces": "NAME=workspaces yarn example"
+  },
+  "resolutions": {
+    "vue-loader": "16.4.1"
   },
   "workspaces": [
     "examples/*",
