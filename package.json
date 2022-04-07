@@ -24,6 +24,9 @@
     "example:vue": "NAME=vue yarn example",
     "example:workspaces": "NAME=workspaces yarn example"
   },
+  "resolutions": {
+    "vue-loader": "16.4.1"
+  },
   "workspaces": [
     "examples/*",
     "packages/*"

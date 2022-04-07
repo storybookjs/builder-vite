@@ -19035,14 +19035,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"vue-loader@npm:^16.0.0":
-  version: 16.2.0
-  resolution: "vue-loader@npm:16.2.0"
+"vue-loader@npm:16.4.1":
+  version: 16.4.1
+  resolution: "vue-loader@npm:16.4.1"
   dependencies:
     chalk: ^4.1.0
     hash-sum: ^2.0.0
     loader-utils: ^2.0.0
-  checksum: 8697786cf52c6e216e583efb522e122c00381797f0cb282bf24ef5b76c49ce9b119bd8930ce565029ef93d917ade3ec27e299de6c6a345bcbcdeab28362a15b9
+  peerDependencies:
+    "@vue/compiler-sfc": ^3.0.8
+    webpack: ^4.1.0 || ^5.0.0-0
+  peerDependenciesMeta:
+    "@vue/compiler-sfc":
+      optional: true
+  checksum: 9142b561fbdbb4c1f4a0a418be6d373efda9aaabd8a0118e1c29fc8c2b0f663102e66198e89f674f78f9a2f7c124ac964fd33042bcfe006f2cb4531a5fe122ef
   languageName: node
   linkType: hard
 
