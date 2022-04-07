@@ -105,20 +105,18 @@ export async function getOptimizeDeps(
   options: ExtendedOptions
 ) {
   const { root } = config;
-  const { framework } = options;
   const absoluteStories = await listStories(options);
   const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
   const resolvedConfig = await resolveConfig(config, 'serve', 'development');
 
   const exclude = [];
   // This is necessary to support react < 18 with new versions of @storybook/react that support react 18.
-  if (framework === 'react') {
-    try {
-      require.resolve('react-dom/client');
-    } catch (e) {
-      if (isNodeError(e) && e.code === 'MODULE_NOT_FOUND') {
-        exclude.push('react-dom/client');
-      }
+  // TODO: narrow this down to just framework === 'react'.  But causes a vue dev start problem in this monorepo.
+  try {
+    require.resolve('react-dom/client');
+  } catch (e) {
+    if (isNodeError(e) && e.code === 'MODULE_NOT_FOUND') {
+      exclude.push('react-dom/client');
     }
   }
 
