@@ -12,9 +12,4 @@ module.exports = {
     // customize the Vite config here
     return config;
   },
-  // Normally this wouldn't be necessary, but `react-docgen-typescript` is the default,
-  // and since typescript is installed in the monorepo, we can't rely on that check.
-  typescript: {
-    reactDocgen: 'react-docgen',
-  },
 };

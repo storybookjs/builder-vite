@@ -1,4 +1,5 @@
 import * as path from 'path';
+import fs from 'fs';
 import { Plugin } from 'vite';
 import { allowedEnvPrefix as envPrefix } from './envs';
 import { TypescriptConfig } from '@storybook/core-common';
@@ -12,6 +13,16 @@ import type { UserConfig } from 'vite';
 import type { ExtendedOptions } from './types';
 
 export type PluginConfigType = 'build' | 'development';
+
+export function readPackageJson(): Record<string, any> | false {
+  const packageJsonPath = path.resolve('package.json');
+  if (!fs.existsSync(packageJsonPath)) {
+    return false;
+  }
+
+  const jsonContent = fs.readFileSync(packageJsonPath, 'utf8');
+  return JSON.parse(jsonContent);
+}
 
 // Vite config that is common to development and production mode
 export async function commonConfig(
@@ -108,8 +119,8 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     let typescriptPresent;
 
     try {
-      require.resolve('typescript');
-      typescriptPresent = true;
+      const pkgJson = readPackageJson();
+      typescriptPresent = pkgJson && (pkgJson?.devDependencies?.typescript || pkgJson?.dependencies?.typescript);
     } catch (e) {
       typescriptPresent = false;
     }
