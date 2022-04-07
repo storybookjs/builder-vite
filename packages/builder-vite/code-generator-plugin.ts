@@ -63,6 +63,14 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         return virtualPreviewFile;
       } else if (source === virtualAddonSetupFile) {
         return virtualAddonSetupFile;
+        // Avoid error in react < 18 projects
+      } else if (source === 'react-dom/client') {
+        try {
+          return require.resolve('react-dom/client');
+        } catch (e) {
+          // This is not a react 18 project, need to stub out to avoid error
+          return path.resolve(__dirname, '..', 'input', 'react-dom-client-placeholder.js');
+        }
       }
     },
     async load(id) {
