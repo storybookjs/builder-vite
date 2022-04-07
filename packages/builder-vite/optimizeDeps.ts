@@ -113,7 +113,7 @@ export async function getOptimizeDeps(
   // This is necessary to support react < 18 with new versions of @storybook/react that support react 18.
   // TODO: narrow this down to just framework === 'react'.  But causes a vue dev start problem in this monorepo.
   try {
-    require.resolve('react-dom/client');
+    require.resolve('react-dom/client', { paths: [config.root] });
   } catch (e) {
     if (isNodeError(e) && e.code === 'MODULE_NOT_FOUND') {
       exclude.push('react-dom/client');
