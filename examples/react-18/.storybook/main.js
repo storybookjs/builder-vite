@@ -10,7 +10,6 @@ module.exports = {
   },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
-    config.optimizeDeps.include = [...config.optimizeDeps.include, 'react-dom/client'];
     return config;
   },
 };
