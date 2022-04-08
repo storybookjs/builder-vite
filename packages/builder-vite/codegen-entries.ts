@@ -9,17 +9,14 @@ const absoluteFilesToImport = (files: string[], name: string) =>
   files.map((el, i) => `import ${name ? `* as ${name}_${i} from ` : ''}'/@fs/${normalizePath(el)}'`).join('\n');
 
 export async function generateVirtualStoryEntryCode(options: ExtendedOptions) {
-  const { frameworkPath, framework } = options;
   const storyEntries = await listStories(options);
   const resolveMap = storyEntries.reduce<Record<string, string>>(
     (prev, entry) => ({ ...prev, [entry]: entry.replace(slash(process.cwd()), '.') }),
     {}
   );
   const modules = storyEntries.map((entry, i) => `${JSON.stringify(entry)}: story_${i}`).join(',');
-  const frameworkImportPath = frameworkPath || `@storybook/${framework}`;
 
   return `
-    import { configure } from '${frameworkImportPath}';
     ${absoluteFilesToImport(storyEntries, 'story')}
 
     function loadable(key) {
@@ -31,7 +28,7 @@ export async function generateVirtualStoryEntryCode(options: ExtendedOptions) {
       resolve: (key) => (${JSON.stringify(resolveMap)}[key])
     });
 
-    export function configStories() {
+    export function configStories(configure) {
       configure(loadable, { hot: import.meta.hot }, false);
     }
   `.trim();
