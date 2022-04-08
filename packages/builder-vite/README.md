@@ -21,7 +21,7 @@ To manually migrate:
 Requirements:
 
 - Vite 2.5 or newer
-- Storybook 6.4.0 or newer (for storybook 6.3, use `storybook-builder-vite@0.1.16)
+- Storybook 6.4.0 or newer (for storybook 6.3, use `storybook-builder-vite@0.1.16`)
 
 ```bash
 npm install @storybook/builder-vite --save-dev
