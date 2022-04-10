@@ -1,6 +1,8 @@
 import { Button } from './Button';
 
 export default {
+  // This component uses autotitles with a configuration object
+  // See https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

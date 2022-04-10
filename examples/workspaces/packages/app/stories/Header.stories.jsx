@@ -1,7 +1,8 @@
 import { Header } from './Header';
 
 export default {
-  title: 'Example/Header',
+  // This component uses autotitles with a configuration object
+  // See https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
   component: Header,
 };
 
