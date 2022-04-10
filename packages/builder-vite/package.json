@@ -15,8 +15,8 @@
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.4",
     "@mdx-js/mdx": "^1.6.22",
-    "@storybook/csf-tools": "^6.3.3",
-    "@storybook/source-loader": "^6.3.12",
+    "@storybook/csf-tools": "^6.4.3",
+    "@storybook/source-loader": "^6.4.3",
     "@vitejs/plugin-react": "^1.0.8",
     "ast-types": "^0.14.2",
     "es-module-lexer": "^0.9.3",

@@ -1,6 +1,6 @@
 module.exports = {
   framework: '@storybook/react',
-  stories: ['../../app/stories/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: [{ directory: '../../app/stories', titlePrefix: 'Example' }],
   addons: ['@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
     builder: '@storybook/builder-vite',
