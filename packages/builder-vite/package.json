@@ -24,14 +24,12 @@
     "glob-promise": "^4.2.0",
     "magic-string": "^0.26.1",
     "react-docgen": "^6.0.0-alpha.0",
-    "semver": "^7.3.5",
     "slash": "^3.0.0",
     "vite-plugin-mdx": "^3.5.6"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.23",
-    "@types/semver": "^7.3.9",
     "vue-docgen-api": "^4.40.0"
   },
   "peerDependencies": {
