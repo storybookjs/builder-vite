@@ -1,8 +1,9 @@
 import page from './Example.docs.mdx';
-import { Button } from '../Button';
+import { Button } from '../components/Button';
 
 export default {
-  title: 'Example/MDX in stories',
+  // This title overrides the autotitle
+  title: 'Examples/MDX in stories',
 
   parameters: {
     docs: {

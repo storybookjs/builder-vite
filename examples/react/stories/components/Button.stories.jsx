@@ -1,7 +1,7 @@
 import { Button } from './Button';
 
 export default {
-  // no title, to demonstrate autotitle
+  // This component uses auto-title
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

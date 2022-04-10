@@ -2,6 +2,7 @@ import { Page } from './Page';
 import * as HeaderStories from './Header.stories';
 
 export default {
+  // This component uses auto-title
   component: Page,
 };
 

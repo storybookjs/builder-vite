@@ -1,6 +1,7 @@
 import { Header } from './Header';
 
 export default {
+  // This component uses auto-title
   component: Header,
 };
 
