@@ -1,6 +1,6 @@
 import { loadPreviewOrConfigFile } from '@storybook/core-common';
-import { normalizePath } from 'vite';
 import { virtualStoriesFile, virtualAddonSetupFile } from './virtual-file-names';
+import { transformAbsPath } from './utils/transform-abs-path';
 import type { ExtendedOptions } from './types';
 
 export async function generateModernIframeScriptCode(options: ExtendedOptions) {
@@ -10,7 +10,7 @@ export async function generateModernIframeScriptCode(options: ExtendedOptions) {
   const presetEntries = await presets.apply('config', [], options);
   const configEntries = [...presetEntries, previewOrConfigFile]
     .filter(Boolean)
-    .map((configEntry) => `/@fs/${normalizePath(configEntry)}`);
+    .map((configEntry) => transformAbsPath(configEntry));
 
   // noinspection UnnecessaryLocalVariableJS
   /**
