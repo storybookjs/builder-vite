@@ -24,11 +24,9 @@ type Options = {
   exclude?: string | RegExp | (string | RegExp)[];
 };
 
-export function reactDocgen(
-  options: Options = { include: /\.(mjs|tsx?|jsx?)$/, exclude: [/node_modules\/.*/] }
-): Plugin {
+export function reactDocgen({ include = /\.(mjs|tsx?|jsx?)$/, exclude = [/node_modules\/.*/] }: Options = {}): Plugin {
   const cwd = process.cwd();
-  const filter = createFilter(options.include, options.exclude);
+  const filter = createFilter(include, exclude);
 
   return {
     name: 'react-docgen',
