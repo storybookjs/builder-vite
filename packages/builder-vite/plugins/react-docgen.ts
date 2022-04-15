@@ -24,9 +24,9 @@ type Options = {
   exclude?: string | RegExp | (string | RegExp)[];
 };
 
-// pattern /^..\// prevents files that are outside of the project root (process.cwd());
-const DEFAULT_EXCLUDE = [/node_modules\/.*/, /^..\//];
-export function reactDocgen(options: Options = { include: /\.(mjs|tsx?|jsx?)$/, exclude: DEFAULT_EXCLUDE }): Plugin {
+export function reactDocgen(
+  options: Options = { include: /\.(mjs|tsx?|jsx?)$/, exclude: [/node_modules\/.*/] }
+): Plugin {
   const cwd = process.cwd();
   const filter = createFilter(options.include, options.exclude);
 
