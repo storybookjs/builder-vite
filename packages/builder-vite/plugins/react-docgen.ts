@@ -1,3 +1,5 @@
+import path from 'path';
+import { createFilter } from '@rollup/pluginutils';
 import {
   parse,
   handlers as docgenHandlers,
@@ -17,36 +19,44 @@ const defaultResolver = docgenResolver.findAllExportedComponentDefinitions;
 const defaultImporter = docgenImporters.makeFsImporter();
 const handlers = [...defaultHandlers, actualNameHandler];
 
-export function reactDocgen(): Plugin {
+type Options = {
+  include?: string | RegExp | (string | RegExp)[];
+  exclude?: string | RegExp | (string | RegExp)[];
+};
+
+export function reactDocgen({ include = /\.(mjs|tsx?|jsx?)$/, exclude = [/node_modules\/.*/] }: Options = {}): Plugin {
+  const cwd = process.cwd();
+  const filter = createFilter(include, exclude);
+
   return {
     name: 'react-docgen',
     enforce: 'pre',
     async transform(src: string, id: string) {
-      // JSX syntax is only allowed in .tsx and .jsx, but components can technically be created without JSX
-      if (/\.(mjs|tsx?|jsx?)$/.test(id)) {
-        try {
-          // Since we're using `findAllExportedComponentDefinitions`, this will always be an array.
-          const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename: id }) as
-            | DocObj[];
-          const s = new MagicString(src);
+      const relPath = path.relative(cwd, id);
+      if (!filter(relPath)) return;
 
-          docgenResults.forEach((info) => {
-            const { actualName, ...docgenInfo } = info;
-            if (actualName) {
-              const docNode = JSON.stringify(docgenInfo);
-              s.append(`;${actualName}.__docgenInfo=${docNode}`);
-            }
-          });
+      try {
+        // Since we're using `findAllExportedComponentDefinitions`, this will always be an array.
+        const docgenResults = parse(src, defaultResolver, handlers, { importer: defaultImporter, filename: id }) as
+          | DocObj[];
+        const s = new MagicString(src);
 
-          return {
-            code: s.toString(),
-            map: s.generateMap(),
-          };
-        } catch (e) {
-          // Usually this is just an error from react-docgen that it couldn't find a component
-          // Only uncomment for troubleshooting
-          // console.error(e);
-        }
+        docgenResults.forEach((info) => {
+          const { actualName, ...docgenInfo } = info;
+          if (actualName) {
+            const docNode = JSON.stringify(docgenInfo);
+            s.append(`;${actualName}.__docgenInfo=${docNode}`);
+          }
+        });
+
+        return {
+          code: s.toString(),
+          map: s.generateMap(),
+        };
+      } catch (e) {
+        // Usually this is just an error from react-docgen that it couldn't find a component
+        // Only uncomment for troubleshooting
+        // console.error(e);
       }
     },
   };
