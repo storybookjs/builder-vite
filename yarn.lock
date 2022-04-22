@@ -10621,6 +10621,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"example-lit-ts@workspace:examples/lit-ts":
+  version: 0.0.0-use.local
+  resolution: "example-lit-ts@workspace:examples/lit-ts"
+  dependencies:
+    "@babel/core": ^7.17.9
+    "@mdx-js/react": ^1.6.22
+    "@storybook/addon-actions": ^6.4.22
+    "@storybook/addon-docs": ^6.4.22
+    "@storybook/addon-essentials": ^6.4.22
+    "@storybook/addon-links": ^6.4.22
+    "@storybook/builder-vite": "workspace:*"
+    "@storybook/web-components": ^6.4.22
+    babel-loader: ^8.2.5
+    http-server: ^14.1.0
+    lit: ^2.2.2
+    npm-run-all: ^4.1.5
+    rollup-plugin-postcss-lit: ^2.0.0
+    sass: ^1.50.1
+    vite: 2.9.0
+    wait-on: ^6.0.1
+  languageName: unknown
+  linkType: soft
+
 "example-react-18@workspace:examples/react-18":
   version: 0.0.0-use.local
   resolution: "example-react-18@workspace:examples/react-18"
@@ -14378,29 +14401,6 @@ fsevents@^1.2.7:
   checksum: f5291201f4fe5bde77a77d3befe515bf8d22d75f4f9c3c98230fd9ba865fb424002fa7d5c9b7cbf01225cd7fa81b09757f8f0c52b79560c57c7ca279fd3c2cdf
   languageName: node
   linkType: hard
-
-"lit-ts@workspace:examples/lit-ts":
-  version: 0.0.0-use.local
-  resolution: "lit-ts@workspace:examples/lit-ts"
-  dependencies:
-    "@babel/core": ^7.17.9
-    "@mdx-js/react": ^1.6.22
-    "@storybook/addon-actions": ^6.4.22
-    "@storybook/addon-docs": ^6.4.22
-    "@storybook/addon-essentials": ^6.4.22
-    "@storybook/addon-links": ^6.4.22
-    "@storybook/builder-vite": "workspace:*"
-    "@storybook/web-components": ^6.4.22
-    babel-loader: ^8.2.5
-    http-server: ^14.1.0
-    lit: ^2.2.2
-    npm-run-all: ^4.1.5
-    rollup-plugin-postcss-lit: ^2.0.0
-    sass: ^1.50.1
-    vite: 2.9.0
-    wait-on: ^6.0.1
-  languageName: unknown
-  linkType: soft
 
 "lit@npm:^2.2.2":
   version: 2.2.2
