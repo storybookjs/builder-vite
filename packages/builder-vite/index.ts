@@ -6,14 +6,18 @@ import { transformIframeHtml } from './transform-iframe-html';
 import { createViteServer } from './vite-server';
 import { build as viteBuild } from './build';
 
-import type { Builder } from '@storybook/core-common';
+import type { Builder, Options } from '@storybook/core-common';
 import type { RequestHandler, Request, Response } from 'express';
-import type { UserConfig, ViteDevServer } from 'vite';
+import type { InlineConfig, UserConfig, ViteDevServer } from 'vite';
 import type { ExtendedOptions } from './types';
 
 export interface ViteStats {}
 
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
+
+export type ViteFinal = {
+  viteFinal(config: InlineConfig, options: Options): Record<string, any>;
+};
 
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
