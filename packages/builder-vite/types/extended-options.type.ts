@@ -6,4 +6,8 @@ type IframeOptions = {
   title: string;
 };
 
-export type ExtendedOptions = Options & IframeOptions;
+type ViteBuilderFeatures = Options['features'] & {
+  eagerImportStories?: boolean;
+};
+
+export type ExtendedOptions = Options & IframeOptions & { features: ViteBuilderFeatures };

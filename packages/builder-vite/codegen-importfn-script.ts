@@ -1,7 +1,6 @@
 import * as path from 'path';
 import { normalizePath } from 'vite';
-import type { Options } from '@storybook/core-common';
-
+import type { ExtendedOptions } from './types';
 import { listStories } from './list-stories';
 
 /**
@@ -24,7 +23,7 @@ function toImportPath(relativePath: string) {
  * function and this is called by Storybook to fetch a story dynamically when needed.
  * @param stories An array of absolute story paths.
  */
-async function toImportFn(stories: string[]) {
+function toImportFnLazy(stories: string[]) {
   const objectEntries = stories.map((file) => {
     return `  '${toImportPath(normalizePath(path.relative(process.cwd(), file)))}': async () => import('/@fs/${file}')`;
   });
@@ -40,10 +39,39 @@ async function toImportFn(stories: string[]) {
   `;
 }
 
-export async function generateImportFnScriptCode(options: Options) {
+/**
+ * This function takes an array of stories and creates a mapping between the stories' relative paths
+ * to the working directory and their imports. The import is done synchronously, as opposed to toImportFnLazy.
+ * It then creates a function, `importFn(path)`, which resolves a path to an import
+ * function and this is called by Storybook to fetch a story dynamically when needed.
+ * @param stories An array of absolute story paths.
+ */
+function toImportFn(stories: string[]) {
+  const imports = stories.map((file, index) => {
+    return `import * as story${index} from '/@fs/${file}';`;
+  });
+
+  const objectEntries = stories.map((file, index) => {
+    return `  '${toImportPath(normalizePath(path.relative(process.cwd(), file)))}': () => story${index}`;
+  });
+
+  return `
+    ${imports.join('\n')}
+
+    const importers = {
+      ${objectEntries.join(',\n')}
+    };
+
+    export async function importFn(path) {
+        return importers[path]();
+    }
+  `;
+}
+
+export async function generateImportFnScriptCode(options: ExtendedOptions) {
   // First we need to get an array of stories and their absolute paths.
   const stories = await listStories(options);
 
-  // We can then call toImportFn to create a function that can be used to load each story dynamically.
-  return (await toImportFn(stories)).trim();
+  // We can then create a function that can be used to load each story dynamically.
+  return options.features?.eagerImportStories ? toImportFnLazy(stories).trim() : toImportFn(stories).trim();
 }
