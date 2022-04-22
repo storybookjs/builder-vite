@@ -22,6 +22,7 @@
     "example:react-ts": "NAME=react-ts yarn example",
     "example:svelte": "NAME=svelte yarn example",
     "example:vue": "NAME=vue yarn example",
+    "example:lit-ts": "NAME=lit-ts yarn example",
     "example:workspaces": "NAME=workspaces yarn example"
   },
   "resolutions": {
