@@ -51,6 +51,8 @@ set `core: { builder: "@storybook/builder-vite" }`.
 
 The builder supports both development mode in Storybook, and building a static production version.
 
+If you were previously using `@storybook/manager-webpack5`, you'll need to remove it, since currently the vite builder only works with `manager-webpack4`, which is the default and does not need to be installed manually.
+
 ### Customize Vite config
 
 The builder will _not_ read your `vite.config.js` file by default.
