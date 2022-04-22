@@ -16,7 +16,25 @@ body:
   - type: textarea
     attributes:
       label: System info and storybook versions
-      placeholder: Please paste the results of `npx sb@next info`` here
+      description: Please paste the results of `npx sb@next info` here.  If it doesn't include storybook versions, please add them as well.
+      placeholder: |
+        System:
+          OS: macOS 12.3.1
+          CPU: (16) x64 Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
+        Binaries:
+          Node: 16.4.0 - ~/.nvm/versions/node/v16.4.0/bin/node
+          Yarn: 1.22.17 - ~/.yarn/bin/yarn
+          npm: 8.6.0 - ~/.nvm/versions/node/v16.4.0/bin/npm
+        Browsers:
+          Firefox: 99.0.1
+          Safari: 15.4
+        npmPackages:
+          @storybook/addon-actions: ^6.4.22 => 6.4.22
+          @storybook/addon-essentials: ^6.4.22 => 6.4.22
+          @storybook/addon-interactions: ^6.4.22 => 6.4.22
+          @storybook/addon-links: ^6.4.22 => 6.4.22
+          @storybook/builder-vite: ^0.1.29 => 0.1.29
+          @storybook/react: ^6.4.22 => 6.4.22
     validations:
       required: true
   - type: textarea

@@ -2,7 +2,8 @@ blank_issues_enabled: false
 contact_links:
   - name: 👾 Chat
     url: https://discord.gg/uST2e5y4XA
-    about: Come join the \#vite channel in the storybook discord.
+    about: |
+      Come join the #vite channel in the storybook discord.
   - name: 💬 Discussion & Support
     url: https://github.com/storybookjs/builder-vite/discussions
     about: Ask a question, or share an idea.
