@@ -21,22 +21,27 @@ export function noFouc(): Plugin {
   };
 }
 
+/**
+ * Insert default styles to hide storybook elements as the page loads until JS can
+ * add the official storybook default head styles and scripts.  These lines are mostly
+ * taken from https://github.com/storybookjs/storybook/blob/next/lib/core-common/templates/base-preview-head.html#L6-L20
+ */
 function insertHeadStyles(html: string) {
   return html.replace(
     '</head>',
     `
   <style>
-    /* Fix for elements flashing */
-    body > * {
-      display: none !important;
+    .sb-show-preparing-story:not(.sb-show-main) > :not(.sb-preparing-story) {
+      display: none;
     }
-    .sb-show-preparing-story > .sb-preparing-story,
-    .sb-show-preparing-docs > .sb-preparing-docs,
-    .sb-show-nopreview > .sb-nopreview,
-    .sb-show-errordisplay > .sb-errordisplay,
-    .sb-show-main > #root,
-    .sb-show-main > #docs-root {
-      display: block !important;
+    .sb-show-preparing-docs:not(.sb-show-main) > :not(.sb-preparing-docs) {
+      display: none;
+    }
+    :not(.sb-show-preparing-story) > .sb-preparing-story,
+    :not(.sb-show-preparing-docs) > .sb-preparing-docs,
+    :not(.sb-show-nopreview) > .sb-nopreview,
+    :not(.sb-show-errordisplay) > .sb-errordisplay {
+      display: none;
     }
     #root[hidden],
     #docs-root[hidden] {
