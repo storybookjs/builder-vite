@@ -1,0 +1,40 @@
+name: "\U0001F41B Bug Report"
+description: Report an issue or possible bug
+title: "[Bug] "
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to file a bug report! Please fill out this form as completely as possible, it will help us address your problem more quickly.
+  - type: input
+    attributes:
+      label: What version of `vite` are you using?
+      placeholder: 0.0.0
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System info and storybook versions
+      placeholder: Please paste the results of `npx sb@next info`` here
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of what the bug is.  What do you expect, vs what is happening?  Screenshots and logs are helpful as well.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to Minimal Reproducible Example
+      description: 'Use `npm create vite@latest` and then `npx sb@next init` to create a minimal reproduction of the problem, document any additional steps in README.md, and push up the repo to github.  We prioritize issues with reproductions over those without.'
+      placeholder: 'https://github.com/ianvs/storybook-vite-issue-repro'
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: Participation
+      options:
+        - label:  I am willing to submit a pull request for this issue.
+          required: false
