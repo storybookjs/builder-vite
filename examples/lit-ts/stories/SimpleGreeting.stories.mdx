@@ -1,8 +1,25 @@
-import { SimpleGreeting } from './SimpleGreeting';
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { html } from 'lit';
+import './SimpleGreeting.ts';
 
-<Meta title="Example/Simple Greeting" />
+<Meta
+  title="Example/Simple Greeting"
+  component="simple-greeting"
+  argTypes={{
+    name: "World"
+  }}
+/>
 
-<div>
-  <simple-greeting></simple-greeting>
-  <simple-greeting name="World"></simple-greeting>
-</div>
+<Canvas withSource="open">
+  <Story
+    name="Simple Greeting"
+    component="simple-greeting"
+    args={{
+      name: "World"
+    }}
+  >
+  {(args) => html`
+    <simple-greeting name="${args.name}"></simple-greeting>
+    `}
+  </Story>
+</Canvas>
