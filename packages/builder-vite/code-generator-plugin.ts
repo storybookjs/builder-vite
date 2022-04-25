@@ -46,6 +46,7 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
           config.build = {};
         }
         config.build.rollupOptions = {
+          ...config.build.rollupOptions,
           input: iframePath,
         };
       }
