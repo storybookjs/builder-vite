@@ -113,7 +113,7 @@ import { StorybookViteConfig } from "@storybook/builder-vite"
 
 const config: StorybookViteConfig = {
     ...,
-    async viteFin(config, options) {
+    async viteFinal(config, options) {
       // do something
     },
 }
