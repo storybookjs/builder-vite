@@ -104,6 +104,37 @@ module.exports = {
 };
 ```
 
+## TypeScript
+
+- Configure your `.storybook/main.ts` to use TypeScript
+
+```typescript
+import { StorybookViteConfig } from "@storybook/builder-vite"
+
+const config: StorybookViteConfig = {
+    ...,
+    viteFinal(config, options) {
+      // do something
+    },
+}
+```
+
+or
+
+```typescript
+import { StorybookViteConfig, ViteFinal } from "@storybook/builder-vite"
+
+const viteFinal: ViteFinal = (config, options) => {
+    // do something
+}
+
+const config: StorybookViteConfig = {
+    ...,
+    viteFinal
+}
+
+```
+
 ## Note about working directory
 
 The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/config/#server-fs-strict)
