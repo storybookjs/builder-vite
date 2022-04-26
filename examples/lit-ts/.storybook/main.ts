@@ -10,7 +10,8 @@ module.exports = {
   framework: '@storybook/web-components',
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
-      plugins: [postcssLit()],
+      // prettier-ignore
+      plugins: [postcssLit({ include: ['**/*.scss', '**/*.scss\?*'] })],
     });
   },
 };
