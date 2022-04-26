@@ -17,6 +17,10 @@ export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
 export type ViteFinal = (config: InlineConfig, options: StorybookConfig) => InlineConfig | Promise<InlineConfig>;
 
+export type StorybookViteConfig = StorybookConfig & {
+  viteFinal: ViteFinal;
+};
+
 function iframeMiddleware(options: ExtendedOptions, server: ViteDevServer): RequestHandler {
   return async (req, res, next) => {
     if (!req.url.match(/^\/iframe\.html($|\?)/)) {
