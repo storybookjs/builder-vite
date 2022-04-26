@@ -113,26 +113,22 @@ import { StorybookViteConfig } from "@storybook/builder-vite"
 
 const config: StorybookViteConfig = {
     ...,
-    viteFinal(config, options) {
+    async viteFin(config, options) {
       // do something
     },
 }
+
+export default config;
 ```
 
 or
 
 ```typescript
-import { StorybookViteConfig, ViteFinal } from "@storybook/builder-vite"
+import { StorybookViteConfig, ViteFinal } from '@storybook/builder-vite';
 
-const viteFinal: ViteFinal = (config, options) => {
-    // do something
-}
-
-const config: StorybookViteConfig = {
-    ...,
-    viteFinal
-}
-
+export const viteFinal: ViteFinal = async (config, options) => {
+  // do something
+};
 ```
 
 ## Note about working directory
