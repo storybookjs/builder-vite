@@ -18,7 +18,7 @@
     "packages/catalog"
   ],
   "devDependencies": {
-    "@storybook/test-runner": "^0.0.4",
+    "@storybook/test-runner": "^0.0.7",
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
