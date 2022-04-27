@@ -2,6 +2,20 @@
 
 Build your stories with [vite](https://vitejs.dev/) for fast startup times and near-instant HMR.
 
+# Table of Contents
+
+- [Migration from storybook-builder-vite](#project-has-been-renamed)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Customize Vite Config](#customize-vite-config)
+  - [Svelte Customization](#svelte-customization)
+  - [TypeScript](#typescript)
+  - [React Docgen](#react-docgen)
+  - [Working Directory](#note-about-working-directory)
+- [How to Start a New Project](#getting-started-with-vite-and-storybook-on-a-new-project)
+- [Known issues](#known-issues)
+- [Contributing](#contributing)
+
 ## Project has been renamed
 
 This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
@@ -16,7 +30,7 @@ To manually migrate:
 2. Install `@storybook/builder-vite`
 3. Update your `core.builder` setting in `.storybook/main.js` to `@storybook/builder-vite`.
 
-### Installation
+## Installation
 
 Requirements:
 
@@ -41,7 +55,7 @@ pnpm add --save-dev @storybook/builder-vite
 
 Note: when using `pnpm`, you may need to enable [shamefully-hoist](https://pnpm.io/npmrc#shamefully-hoist), until https://github.com/storybookjs/builder-vite/issues/55 can be fixed.
 
-### Usage
+## Usage
 
 In your `main.js` configuration file,
 set `core: { builder: "@storybook/builder-vite" }`.
@@ -106,7 +120,7 @@ module.exports = {
 };
 ```
 
-## TypeScript
+### TypeScript
 
 Configure your `.storybook/main.ts` to use TypeScript:
 
@@ -135,7 +149,7 @@ export const viteFinal: ViteFinal = async (config, options) => {
 
 See [Customize Vite config](#customize-vite-config) for details about using `viteFinal`.
 
-## React Docgen
+### React Docgen
 
 Docgen is used in Storybook to populate the props table in docs view, the controls panel, and for several other addons. Docgen is supported in vue and react, and there are two docgen options when using react, `react-docgen` and `react-docgen-typescript`. You can learn more about the pros/cons of each in [this gist](https://gist.github.com/shilman/036313ffa3af52ca986b375d90ea46b0). By default, if we find a `typescript` dependency in your `package.json` file, we will assume you're using typescript and will choose `react-docgen-typescript`. You can change this by setting the `typescript.reactDocgen` option in your `.storybook/main.js` file:
 
@@ -149,13 +163,13 @@ module.exports = {
 
 If you're using TypeScript, we encourage you to experiment and see which option works better for your project.
 
-## Note about working directory
+### Note about working directory
 
 The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/config/#server-fs-strict)
 option, for increased security. The default project `root` is set to the parent directory of the
 storybook configuration directory. This can be overridden in viteFinal.
 
-### Getting started with Vite and Storybook (on a new project)
+## Getting started with Vite and Storybook (on a new project)
 
 See https://vitejs.dev/guide/#scaffolding-your-first-vite-project,
 
