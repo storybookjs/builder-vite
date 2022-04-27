@@ -8,7 +8,7 @@
     "storybook": "yarn workspace example-workspaces-catalog run storybook --port 6010",
     "build-storybook": "yarn workspace example-workspaces-catalog run build-storybook",
     "preview-storybook": "http-server packages/catalog/storybook-static --port 6010 --silent",
-    "test": "wait-on tcp:6010 && test-storybook --stories-json --url 'http://localhost:6010' --config-dir packages/catalog/.storybook",
+    "test": "wait-on tcp:6010 && test-storybook --url 'http://localhost:6010' --config-dir packages/catalog/.storybook",
     "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",

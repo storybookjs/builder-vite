@@ -7,7 +7,6 @@ module.exports = {
   },
   features: {
     storyStoreV7: false,
-    buildStoriesJson: true,
   },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
