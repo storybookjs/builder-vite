@@ -11,7 +11,7 @@
     "storybook": "start-storybook -p 6005",
     "build-storybook": "build-storybook",
     "preview-storybook": "http-server storybook-static --port 6005 --silent",
-    "test": "wait-on tcp:6005 && test-storybook --stories-json --url 'http://localhost:6005'",
+    "test": "wait-on tcp:6005 && test-storybook --stories-json --url 'http://localhost:6005' -- --passWithNoTests",
     "test-ci": "npm-run-all -p --race test preview-storybook"
   },
   "author": "",
