@@ -108,30 +108,46 @@ module.exports = {
 
 ## TypeScript
 
-- Configure your `.storybook/main.ts` to use TypeScript
+Configure your `.storybook/main.ts` to use TypeScript:
 
 ```typescript
-import { StorybookViteConfig } from "@storybook/builder-vite"
+import type { StorybookViteConfig } from '@storybook/builder-vite';
 
 const config: StorybookViteConfig = {
-    ...,
-    async viteFinal(config, options) {
-      // do something
-    },
-}
+  // other storybook options...,
+  async viteFinal(config, options) {
+    // modify and return config
+  },
+};
 
 export default config;
 ```
 
-or
+Or alternatively, you can use named exports:
 
 ```typescript
-import { StorybookViteConfig, ViteFinal } from '@storybook/builder-vite';
+import type { ViteFinal } from '@storybook/builder-vite';
 
 export const viteFinal: ViteFinal = async (config, options) => {
-  // do something
+  // modify and return config
 };
 ```
+
+See [Customize Vite config](#customize-vite-config) for details about using `viteFinal`.
+
+## React Docgen
+
+Docgen is used in Storybook to populate the props table in docs view, the controls panel, and for several other addons. Docgen is supported in vue and react, and there are two docgen options when using react, `react-docgen` and `react-docgen-typescript`. You can learn more about the pros/cons of each in [this gist](https://gist.github.com/shilman/036313ffa3af52ca986b375d90ea46b0). By default, if we find a `typescript` dependency in your `package.json` file, we will assume you're using typescript and will choose `react-docgen-typescript`. You can change this by setting the `typescript.reactDocgen` option in your `.storybook/main.js` file:
+
+```javascript
+module.exports = {
+  typescript: {
+    reactDocgen: 'react-docgen`
+  }
+}
+```
+
+If you're using TypeScript, we encourage you to experiment and see which option works better for your project.
 
 ## Note about working directory
 
@@ -151,7 +167,7 @@ npx sb init --builder @storybook/builder-vite && npm run storybook
 ## Known issues
 
 - HMR: saving a story file does not hot-module-reload, a full reload happens instead. HMR works correctly when saving component files.
-- Prebundling: Vite restarts if it detects new dependencies which it did not know about and needs to pre-bundle. This breaks within storybook, with confusing error messages. If you see a message in your terminal like `[vite] new dependencies found:`, please add those dependencies to your `optimizeDeps.include` in `viteFinal`. E.g. `config.optimizeDeps.include = [...(config.optimizeDeps?.include ?? []), "storybook-dark-mode"],`. Vite 2.9.0 may improve this behavior.
+- Prebundling: Vite restarts if it detects new dependencies which it did not know about and needs to pre-bundle. This breaks within storybook, with confusing error messages. If you see a message in your terminal like `[vite] new dependencies found:`, please add those dependencies to your `optimizeDeps.include` in `viteFinal`. E.g. `config.optimizeDeps.include = [...(config.optimizeDeps?.include ?? []), "storybook-dark-mode"],`. Vite 2.9.0+ may improve this behavior.
 
 ## Contributing
 
