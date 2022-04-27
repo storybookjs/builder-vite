@@ -8,7 +8,9 @@ module.exports = {
     builder: '@storybook/builder-vite',
   },
   framework: '@storybook/web-components',
-  features: { buildStoriesJson: true },
+  features: {
+    buildStoriesJson: true,
+  },
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
       // prettier-ignore

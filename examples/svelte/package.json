@@ -8,7 +8,7 @@
     "storybook": "start-storybook --port 6008",
     "build-storybook": "build-storybook",
     "preview-storybook": "http-server storybook-static --port 6008 --silent",
-    "test": "wait-on tcp:6008 && test-storybook --url 'http://localhost:6008' --verbose",
+    "test": "wait-on tcp:6008 && test-storybook --stories-json --url 'http://localhost:6008'",
     "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",
