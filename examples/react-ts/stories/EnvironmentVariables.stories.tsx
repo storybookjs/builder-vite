@@ -7,4 +7,9 @@ const meta: ComponentMeta<typeof EnvironmentVariables> = {
 };
 export default meta;
 
-export const Info = () => <EnvironmentVariables />;
+const Template = (args) => <EnvironmentVariables {...args} />;
+
+export const Info = Template.bind({});
+Info.args = {
+  dynamic: import.meta.env.VITE_ENV_VAR,
+};

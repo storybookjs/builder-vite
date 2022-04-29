@@ -8,8 +8,10 @@
   component={EnvironmentVariables}
 />
 
-<Template>
-  <EnvironmentVariables />
+<Template let:args>
+  <EnvironmentVariables {...args} />
 </Template>
 
-<Story name="Info" />
+<Story name="Info" args={{
+  dynamic: import.meta.env.VITE_ENV_VAR,
+}} />
