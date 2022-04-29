@@ -17,13 +17,13 @@
     "svelte": "^3.46.4"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.5.0-beta.0",
-    "@storybook/addon-essentials": "^6.5.0-beta.0",
-    "@storybook/addon-links": "^6.5.0-beta.0",
+    "@storybook/addon-actions": "^6.5.0-beta.1",
+    "@storybook/addon-essentials": "^6.5.0-beta.1",
+    "@storybook/addon-links": "^6.5.0-beta.1",
     "@storybook/addon-svelte-csf": "^1.1.0",
     "@storybook/builder-vite": "workspace:*",
-    "@storybook/svelte": "^6.5.0-beta.0",
-    "@storybook/test-runner": "0.0.8-canary.0b166f8.0",
+    "@storybook/svelte": "^6.5.0-beta.1",
+    "@storybook/test-runner": "0.0.8",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.37",
     "@tsconfig/svelte": "^3.0.0",
     "http-server": "^14.1.0",
