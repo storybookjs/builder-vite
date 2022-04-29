@@ -7,6 +7,10 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
+  features: {
+    // On-demand store does not work for .svelte stories, only CSF.
+    storyStoreV7: false,
+  },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
     return config;
