@@ -7,7 +7,7 @@ import type { EnvsRaw, ExtendedOptions } from './types';
 export async function build(options: ExtendedOptions) {
   const { presets } = options;
 
-  const baseConfig = await commonConfig(options, 'development');
+  const baseConfig = await commonConfig(options, 'build');
   const config = {
     ...baseConfig,
     build: {
