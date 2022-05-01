@@ -1,3 +1,4 @@
+import type { Plugin } from 'vite';
 import sourceLoaderTransform from '@storybook/source-loader';
 import type { ExtendedOptions } from './types';
 
@@ -12,14 +13,14 @@ const replaceAll = (str: string, search: string, replacement: string) => {
   return str.split(search).join(replacement);
 };
 
-export function sourceLoaderPlugin(config: ExtendedOptions) {
+export function sourceLoaderPlugin(config: ExtendedOptions): Plugin | Plugin[] {
   if (config.configType === 'DEVELOPMENT') {
     return {
       name: 'storybook-vite-source-loader-plugin',
       enforce: 'pre',
       async transform(src: string, id: string) {
         if (id.match(storyPattern)) {
-          const code = await sourceLoaderTransform.call(mockClassLoader(id), src);
+          const code: string = await sourceLoaderTransform.call(mockClassLoader(id), src);
 
           return {
             code,
@@ -42,18 +43,18 @@ export function sourceLoaderPlugin(config: ExtendedOptions) {
       },
       async transform(src: string, id: string) {
         if (id.match(storyPattern)) {
-          const code = await sourceLoaderTransform.call(mockClassLoader(id), src);
+          let code: string = await sourceLoaderTransform.call(mockClassLoader(id), src);
           const [_, sourceString] = code.match(storySourcePattern) ?? [null, null];
           if (sourceString) {
             const map = storySources.get(config);
             map?.set(id, sourceString);
+
+            // Remove story source so that it is not processed by vite:define plugin
+            code = replaceAll(code, sourceString, storySourceReplacement);
           }
 
-          // Remove story source so that it is not processed by vite:define plugin
-          const replacedCode = replaceAll(code, sourceString, storySourceReplacement);
-
           return {
-            code: replacedCode,
+            code,
             map: { mappings: '' },
           };
         }
