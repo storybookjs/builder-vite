@@ -52,7 +52,7 @@ export async function commonConfig(
 
 export async function pluginConfig(options: ExtendedOptions, _type: PluginConfigType) {
   const { framework, presets } = options;
-  const svelteOptions = await presets.apply('svelteOptions', {}, options);
+  const svelteOptions: Record<string, any> = await presets.apply('svelteOptions', {}, options);
 
   const plugins = [
     codeGeneratorPlugin(options),
@@ -82,7 +82,27 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   if (framework === 'svelte') {
     try {
       const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte;
-      plugins.push(sveltePlugin(svelteOptions));
+
+      // We need to create two separate svelte plugins, one for stories, and one for other svelte files
+      // because stories.svelte files cannot be hot-module-reloaded.
+      // Suggested in: https://github.com/sveltejs/vite-plugin-svelte/issues/321#issuecomment-1113205509
+
+      // First, create an array containing user exclude patterns, to combine with ours.
+      const userExclude = Array.isArray(svelteOptions?.exclude)
+        ? svelteOptions?.exclude
+        : svelteOptions?.exclude
+        ? [svelteOptions?.exclude]
+        : [];
+
+      // These are the svelte stories we need to exclude from HMR
+      const storyPatterns = ['**/*.story.svelte', '**/*.stories.svelte'];
+      // Non-story svelte files
+      plugins.push(sveltePlugin({ ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
+      // Svelte stories without HMR
+      plugins.push({
+        ...sveltePlugin({ ...svelteOptions, exclude: userExclude, include: storyPatterns, hot: false }),
+        name: 'vite-plugin-svelte-stories',
+      });
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
         throw new Error(
