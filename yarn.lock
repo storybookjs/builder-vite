@@ -3189,69 +3189,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-common@npm:^6.4.14":
-  version: 6.4.22
-  resolution: "@storybook/core-common@npm:6.4.22"
-  dependencies:
-    "@babel/core": ^7.12.10
-    "@babel/plugin-proposal-class-properties": ^7.12.1
-    "@babel/plugin-proposal-decorators": ^7.12.12
-    "@babel/plugin-proposal-export-default-from": ^7.12.1
-    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.12.1
-    "@babel/plugin-proposal-object-rest-spread": ^7.12.1
-    "@babel/plugin-proposal-optional-chaining": ^7.12.7
-    "@babel/plugin-proposal-private-methods": ^7.12.1
-    "@babel/plugin-syntax-dynamic-import": ^7.8.3
-    "@babel/plugin-transform-arrow-functions": ^7.12.1
-    "@babel/plugin-transform-block-scoping": ^7.12.12
-    "@babel/plugin-transform-classes": ^7.12.1
-    "@babel/plugin-transform-destructuring": ^7.12.1
-    "@babel/plugin-transform-for-of": ^7.12.1
-    "@babel/plugin-transform-parameters": ^7.12.1
-    "@babel/plugin-transform-shorthand-properties": ^7.12.1
-    "@babel/plugin-transform-spread": ^7.12.1
-    "@babel/preset-env": ^7.12.11
-    "@babel/preset-react": ^7.12.10
-    "@babel/preset-typescript": ^7.12.7
-    "@babel/register": ^7.12.1
-    "@storybook/node-logger": 6.4.22
-    "@storybook/semver": ^7.3.2
-    "@types/node": ^14.0.10
-    "@types/pretty-hrtime": ^1.0.0
-    babel-loader: ^8.0.0
-    babel-plugin-macros: ^3.0.1
-    babel-plugin-polyfill-corejs3: ^0.1.0
-    chalk: ^4.1.0
-    core-js: ^3.8.2
-    express: ^4.17.1
-    file-system-cache: ^1.0.5
-    find-up: ^5.0.0
-    fork-ts-checker-webpack-plugin: ^6.0.4
-    fs-extra: ^9.0.1
-    glob: ^7.1.6
-    handlebars: ^4.7.7
-    interpret: ^2.2.0
-    json5: ^2.1.3
-    lazy-universal-dotenv: ^3.0.1
-    picomatch: ^2.3.0
-    pkg-dir: ^5.0.0
-    pretty-hrtime: ^1.0.3
-    resolve-from: ^5.0.0
-    slash: ^3.0.0
-    telejson: ^5.3.2
-    ts-dedent: ^2.0.0
-    util-deprecate: ^1.0.2
-    webpack: 4
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: afcbeb5878a3e01ec8b6258a64bb74610345419f10db6e8a9d9c5149b83a6dc4db8c5e60dac5967e0d0fe2c45b6cefb1877975756689c2b6ad7721f117f4c634
-  languageName: node
-  linkType: hard
-
 "@storybook/core-events@npm:6.4.22":
   version: 6.4.22
   resolution: "@storybook/core-events@npm:6.4.22"
@@ -3380,7 +3317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/csf-tools@npm:^6.4.14, @storybook/csf-tools@npm:^6.4.3":
+"@storybook/csf-tools@npm:^6.4.3":
   version: 6.4.22
   resolution: "@storybook/csf-tools@npm:6.4.22"
   dependencies:
@@ -3512,19 +3449,6 @@ __metadata:
     prettier: ">=2.2.1 <=2.3.0"
     ts-dedent: ^2.0.0
   checksum: a5a11b352d9cecb35b57d796591292c42e005d2761489987a4419cd0ff103a992ab23305ec29824b976b88ff8b6119f0e29a0b9da2588dec97e1a85c575d2585
-  languageName: node
-  linkType: hard
-
-"@storybook/node-logger@npm:6.4.22":
-  version: 6.4.22
-  resolution: "@storybook/node-logger@npm:6.4.22"
-  dependencies:
-    "@types/npmlog": ^4.1.2
-    chalk: ^4.1.0
-    core-js: ^3.8.2
-    npmlog: ^5.0.1
-    pretty-hrtime: ^1.0.3
-  checksum: 9025f1c4d6bddaeddfd98471b3490b16747f9d8198292c58bd9311fd5d7e9fecc8ce7b20ea1bb52877eb2b21d6d1b9d4072ac4d5d21ef926e1c809b42f6f36ce
   languageName: node
   linkType: hard
 
@@ -3777,32 +3701,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/store@npm:^6.4.14":
-  version: 6.4.22
-  resolution: "@storybook/store@npm:6.4.22"
-  dependencies:
-    "@storybook/addons": 6.4.22
-    "@storybook/client-logger": 6.4.22
-    "@storybook/core-events": 6.4.22
-    "@storybook/csf": 0.0.2--canary.87bc651.0
-    core-js: ^3.8.2
-    fast-deep-equal: ^3.1.3
-    global: ^4.4.0
-    lodash: ^4.17.21
-    memoizerific: ^1.11.3
-    regenerator-runtime: ^0.13.7
-    slash: ^3.0.0
-    stable: ^0.1.8
-    synchronous-promise: ^2.0.15
-    ts-dedent: ^2.0.0
-    util-deprecate: ^1.0.2
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: b2bd7be4aa3b71f17d371b0acb9cc5e39cd76c485b8f6c830f313ffb899a93496a352f17755d42c315108b6ab6b2ff576e7536c167fbe47a93ba65c55bf33874
-  languageName: node
-  linkType: hard
-
 "@storybook/svelte@npm:^6.5.0-beta.1":
   version: 6.5.0-beta.1
   resolution: "@storybook/svelte@npm:6.5.0-beta.1"
@@ -3859,31 +3757,6 @@ __metadata:
   bin:
     test-storybook: bin/test-storybook.js
   checksum: 0734547985c88f5c33b42c6edfe0347b458f00a301cb831413a1dfc4bc4abee696e495f73a666ab2b9a92624487a0d106d5fd56102ded9593c4aad166dfb65f6
-  languageName: node
-  linkType: hard
-
-"@storybook/test-runner@npm:^0.0.7":
-  version: 0.0.7
-  resolution: "@storybook/test-runner@npm:0.0.7"
-  dependencies:
-    "@storybook/core-common": ^6.4.14
-    "@storybook/csf": 0.0.2--canary.87bc651.0
-    "@storybook/csf-tools": ^6.4.14
-    "@storybook/store": ^6.4.14
-    commander: ^9.0.0
-    global: ^4.4.0
-    is-localhost-ip: ^1.4.0
-    jest-playwright-preset: ^1.7.0
-    jest-watch-typeahead: ^1.0.0
-    node-fetch: ^2
-    playwright: ^1.14.0
-    tempy: ^1.0.1
-    ts-dedent: ^2.0.0
-  peerDependencies:
-    jest: ">=26.6.3"
-  bin:
-    test-storybook: bin/test-storybook.js
-  checksum: 703eb81c1a2ae58e376cea8758e8551cf603f7dc9193d5fe0fac0994e3ef305d888faee14586cc6385b45c64d0c4c0364de2f865f76ee89d108a237ff2649c0f
   languageName: node
   linkType: hard
 
@@ -4317,13 +4190,6 @@ __metadata:
   version: 17.0.28
   resolution: "@types/node@npm:17.0.28"
   checksum: c85a5a9471bdec8bd6335221cfa4e3956d5500ae5f7072e4c1cf700787b8c43fceac1086617a68cc2bb3e4580e7325ffd1333eefd1bb04e3595a1562a0b3d22d
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^14.0.10":
-  version: 14.18.16
-  resolution: "@types/node@npm:14.18.16"
-  checksum: 1999799309dc8620a2adf9a5d5e48416af87321bae4c950b4aa8018fcef2c3b6c1fcf98c39eae06f6492c03a643a5a44e2bb3750cd2574d9cf7eac33bac50e24
   languageName: node
   linkType: hard
 
@@ -9133,7 +8999,7 @@ __metadata:
     "@storybook/addon-essentials": ^6.5.0-beta.1
     "@storybook/builder-vite": "workspace:*"
     "@storybook/react": ^6.5.0-beta.1
-    "@storybook/test-runner": ^0.0.7
+    "@storybook/test-runner": 0.0.8
     "@vitejs/plugin-react": ^1.3.0
     http-server: ^14.1.0
     jest: ^27.5.1
