@@ -35,6 +35,9 @@ jobs:
 
       - name: Test built examples
         run: yarn test-ci
+        env:
+          # Workaround for https://github.com/facebook/jest/issues/8536 
+          TEMP: ${{ runner.temp }}
   lint:
     runs-on: ubuntu-latest
     steps:
