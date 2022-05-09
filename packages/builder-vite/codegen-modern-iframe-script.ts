@@ -17,11 +17,7 @@ export async function generateModernIframeScriptCode(options: ExtendedOptions) {
     if (framework === 'web-components') {
       return `
       if (import.meta.hot) {
-        import.meta.hot.accept((newModule) => {
-          const currentLocationHref = window.location.href;
-          window.history.pushState(null, null, currentLocationHref);
-          window.location.reload();
-        });
+        import.meta.hot.decline();
       }`.trim();
     }
 
