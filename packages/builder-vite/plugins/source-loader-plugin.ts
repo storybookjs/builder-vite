@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 import sourceLoaderTransform from '@storybook/source-loader';
-import type { ExtendedOptions } from './types';
+import type { ExtendedOptions } from '../types';
 
 const storyPattern = /\.stories\.[jt]sx?$/;
 const storySourcePattern = /var __STORY__ = "(.*)"/;

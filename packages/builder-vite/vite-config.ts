@@ -1,16 +1,11 @@
 import * as path from 'path';
 import fs from 'fs';
-import { Plugin } from 'vite';
 import { allowedEnvPrefix as envPrefix } from './envs';
 import { TypescriptConfig } from '@storybook/core-common';
-import { mockCoreJs } from './mock-core-js';
-import { codeGeneratorPlugin } from './code-generator-plugin';
-import { injectExportOrderPlugin } from './inject-export-order-plugin';
-import { mdxPlugin } from './mdx-plugin';
-import { noFouc } from './plugins/no-fouc';
-import { sourceLoaderPlugin } from './source-loader-plugin';
+import { mockCoreJs } from './plugins/mock-core-js';
+import { mdxPlugin, noFouc, injectExportOrderPlugin, codeGeneratorPlugin, sourceLoaderPlugin } from './plugins';
 
-import type { UserConfig } from 'vite';
+import type { Plugin, PluginOption, UserConfig } from 'vite';
 import type { ExtendedOptions } from './types';
 
 export type PluginConfigType = 'build' | 'development';
@@ -54,17 +49,17 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   const { framework, presets } = options;
   const svelteOptions: Record<string, any> = await presets.apply('svelteOptions', {}, options);
 
-  const plugins = [
+  const plugins: Plugin | PluginOption = [
     codeGeneratorPlugin(options),
     mockCoreJs(),
     sourceLoaderPlugin(options),
     mdxPlugin(),
     noFouc(),
     injectExportOrderPlugin,
-  ] as Plugin[];
+  ];
   if (framework === 'vue' || framework === 'vue3') {
     try {
-      const vuePlugin = require('@vitejs/plugin-vue');
+      const { default: vuePlugin } = await import('@vitejs/plugin-vue');
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
       plugins.push(vueDocgen());
@@ -81,7 +76,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
   if (framework === 'svelte') {
     try {
-      const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte;
+      const { svelte: sveltePlugin } = await import('@sveltejs/vite-plugin-svelte');
 
       // We need to create two separate svelte plugins, one for stories, and one for other svelte files
       // because stories.svelte files cannot be hot-module-reloaded.
@@ -115,7 +110,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     }
 
     try {
-      const csfPlugin = require('./svelte/csf-plugin').default;
+      const { csfPlugin } = await import('./plugins/svelte/csf-plugin');
       plugins.push(csfPlugin(svelteOptions));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
@@ -129,8 +124,9 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
 
   if (framework === 'react') {
+    const { default: viteReact } = await import('@vitejs/plugin-react');
     plugins.push(
-      require('@vitejs/plugin-react')({
+      viteReact({
         // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
         exclude: [/\.stories\.([tj])sx?$/, /node_modules/],
       })
@@ -150,15 +146,15 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     if (reactDocgen === 'react-docgen-typescript' && typescriptPresent) {
       plugins.push(require('@joshwooding/vite-plugin-react-docgen-typescript').default(reactDocgenTypescriptOptions));
     } else if (reactDocgen) {
-      const { reactDocgen } = await import('./plugins/react-docgen');
+      const { reactDocgen } = await import('./plugins/react/react-docgen');
       // Needs to run before the react plugin, so add to the front
       plugins.unshift(reactDocgen());
     }
   }
 
   if (framework === 'glimmerx') {
-    const plugin = require('vite-plugin-glimmerx/index.cjs');
-    plugins.push(plugin.default());
+    const { default: glimmerxPlugin } = require('vite-plugin-glimmerx/index.cjs');
+    plugins.push(glimmerxPlugin.default());
   }
 
   return plugins;

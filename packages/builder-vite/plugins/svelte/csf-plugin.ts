@@ -4,8 +4,9 @@ import { extractStories } from '@storybook/addon-svelte-csf/dist/cjs/parser/extr
 const parser = require.resolve('@storybook/addon-svelte-csf/dist/esm/parser/collect-stories').replace(/[/\\]/g, '/');
 import type { Options } from '@sveltejs/vite-plugin-svelte';
 import * as svelte from 'svelte/compiler';
+import type { Plugin } from 'vite';
 
-export default function csfPlugin(svelteOptions?: Options) {
+export function csfPlugin(svelteOptions?: Options): Plugin {
   return {
     name: 'storybook-addon-svelte-csf',
     enforce: 'post',

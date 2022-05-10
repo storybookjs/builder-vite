@@ -1,4 +1,6 @@
-export function mockCoreJs() {
+import type { Plugin } from 'vite';
+
+export function mockCoreJs(): Plugin {
   return {
     name: 'mock-core-js',
     resolveId(id: string) {
