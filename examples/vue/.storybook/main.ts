@@ -7,6 +7,9 @@ export default {
     // we don't want to muck up the data when we're working on the builder
     disableTelemetry: true,
   },
+  features: {
+    previewMdx2: true,
+  },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
     return config;

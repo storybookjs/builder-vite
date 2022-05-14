@@ -10,7 +10,8 @@ export default withOverview(__dirname)({
     disableTelemetry: true,
   },
   features: {
-    storyStoreV7: false,
+    storyStoreV7: true,
+    previewMdx2: true,
   },
   async viteFinal(config) {
     return config;
