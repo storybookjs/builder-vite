@@ -24,15 +24,24 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
     configureServer(server) {
       // invalidate the whole vite-app.js script on every file change.
       // (this might be a little too aggressive?)
-      server.watcher.on('change', (_e) => {
-        const { moduleGraph } = server;
-        const appModule = moduleGraph.getModuleById(virtualFileId);
+      server.watcher.on('change', () => {
+        const appModule = server.moduleGraph.getModuleById(virtualFileId);
         if (appModule) {
           server.moduleGraph.invalidateModule(appModule);
         }
-        const storiesModule = moduleGraph.getModuleById(virtualStoriesFile);
+        const storiesModule = server.moduleGraph.getModuleById(virtualStoriesFile);
         if (storiesModule) {
           server.moduleGraph.invalidateModule(storiesModule);
+        }
+      });
+
+      // Adding new story files is not covered by the change event above. So we need to detect this and trigger
+      // HMR to update the importFn.
+      server.watcher.on('add', (path) => {
+        // TODO maybe use the stories declaration in main
+        if (/\.stories\.([tj])sx?$/.test(path) || /\.(story|stories).mdx$/.test(path)) {
+          // We need to emit a change event to trigger HMR
+          server.watcher.emit('change', virtualStoriesFile);
         }
       });
     },
