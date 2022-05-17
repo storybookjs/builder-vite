@@ -7,6 +7,7 @@ module.exports = {
   },
   features: {
     storyStoreV7: true,
+    previewMdx2: true,
   },
   async viteFinal(config, { configType }) {
     // customize the Vite config here
