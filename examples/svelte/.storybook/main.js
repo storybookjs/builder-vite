@@ -17,5 +17,8 @@ module.exports = {
   },
   svelteOptions: {
     preprocess: preprocess(),
+    // Possible with @sveltejs/vite-plugin-svelte version 1.0.0-next.43 or higher.
+    // Focus a story iframe and press cmd+shift (mac) or ctrl+shift (windows) to activate.
+    experimental: { inspector: true },
   },
 };
