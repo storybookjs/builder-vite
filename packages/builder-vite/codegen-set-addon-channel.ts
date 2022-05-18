@@ -1,6 +1,5 @@
 export function generateAddonSetupCode() {
   return `
-    import global from 'global';
     import createPostMessageChannel from '@storybook/channel-postmessage';
     import createWebSocketChannel from '@storybook/channel-websocket';
     import { addons } from '@storybook/addons';
@@ -9,7 +8,7 @@ export function generateAddonSetupCode() {
     addons.setChannel(channel);
     window.__STORYBOOK_ADDONS_CHANNEL__ = channel;
 
-    const { SERVER_CHANNEL_URL } = global;
+    const { SERVER_CHANNEL_URL } = globalThis;
     if (SERVER_CHANNEL_URL) {
       const serverChannel = createWebSocketChannel({ url: SERVER_CHANNEL_URL });
       addons.setServerChannel(serverChannel);
