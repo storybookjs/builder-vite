@@ -97,10 +97,20 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       // These are the svelte stories we need to exclude from HMR
       const storyPatterns = ['**/*.story.svelte', '**/*.stories.svelte'];
       // Non-story svelte files
-      plugins.push(sveltePlugin({ ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
+      // Starting in 1.0.0-next.42, svelte.config.js is included by default.
+      // We disable that, but allow it to be overridden in svelteOptions
+      plugins.push(sveltePlugin({ configFile: false, ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
       // Svelte stories without HMR
+      const storySveltePlugin = sveltePlugin({
+        configFile: false,
+        ...svelteOptions,
+        exclude: userExclude,
+        include: storyPatterns,
+        hot: false,
+      });
       plugins.push({
-        ...sveltePlugin({ ...svelteOptions, exclude: userExclude, include: storyPatterns, hot: false }),
+        // Starting in 1.0.0-next.43, the plugin function returns an array of plugins.  We only want the first one here.
+        ...(Array.isArray(storySveltePlugin) ? storySveltePlugin[0] : storySveltePlugin),
         name: 'vite-plugin-svelte-stories',
       });
     } catch (err) {

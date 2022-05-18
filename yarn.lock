@@ -2338,7 +2338,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.1.0, @rollup/pluginutils@npm:^4.2.0":
+"@rollup/pluginutils@npm:^4.1.0, @rollup/pluginutils@npm:^4.2.0, @rollup/pluginutils@npm:^4.2.1":
   version: 4.2.1
   resolution: "@rollup/pluginutils@npm:4.2.1"
   dependencies:
@@ -3893,12 +3893,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^1.0.0-next.37":
-  version: 1.0.0-next.41
-  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.41"
+"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.44":
+  version: 1.0.0-next.44
+  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.44"
   dependencies:
-    "@rollup/pluginutils": ^4.2.0
+    "@rollup/pluginutils": ^4.2.1
     debug: ^4.3.4
+    deepmerge: ^4.2.2
     kleur: ^4.1.4
     magic-string: ^0.26.1
     svelte-hmr: ^0.14.11
@@ -3909,7 +3910,7 @@ __metadata:
   peerDependenciesMeta:
     diff-match-patch:
       optional: true
-  checksum: 23e2290aa3e115c638c180a16782ba57eb529e3de832f2302f378b5b28d1963861cf1c1179ecd9d6a09d204985d3dafb04dfa94939c83347569f5970bad3a2b8
+  checksum: c222a4a63f30618fa098caca631999a9252b3a282821e1b7731f6f5999a4085a1c7dee7202a1602d4348ca3c9f9d4338f187afca744c6b91da41c2eecb11a3fa
   languageName: node
   linkType: hard
 
@@ -9066,7 +9067,7 @@ __metadata:
     "@storybook/builder-vite": "workspace:*"
     "@storybook/svelte": ^6.5.0-beta.1
     "@storybook/test-runner": 0.0.8
-    "@sveltejs/vite-plugin-svelte": ^1.0.0-next.37
+    "@sveltejs/vite-plugin-svelte": 1.0.0-next.44
     "@tsconfig/svelte": ^3.0.0
     http-server: ^14.1.0
     jest: ^27.5.1
