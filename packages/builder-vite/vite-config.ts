@@ -69,7 +69,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       const { vueDocgen } = await import('./plugins/vue-docgen');
       plugins.push(vueDocgen());
     } catch (err) {
-      if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(
           '@storybook/builder-vite requires @vitejs/plugin-vue to be installed ' +
             'when using @storybook/vue or @storybook/vue3.' +
@@ -114,7 +114,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
         name: 'vite-plugin-svelte-stories',
       });
     } catch (err) {
-      if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(
           '@storybook/builder-vite requires @sveltejs/vite-plugin-svelte to be installed' +
             ' when using @storybook/svelte.' +
@@ -128,13 +128,11 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       const csfPlugin = require('./svelte/csf-plugin').default;
       plugins.push(csfPlugin(svelteOptions));
     } catch (err) {
+      // Not all projects use `.stories.svelte` for stories, and by default 6.5+ does not auto-install @storybook/addon-svelte-csf.
+      // If it's any other kind of error, re-throw.
       if ((err as NodeJS.ErrnoException).code !== 'MODULE_NOT_FOUND') {
-        throw new Error(
-          '@storybook/builder-vite requires @storybook/addon-svelte-csf to be installed when using @storybook/svelte.' +
-            '  Please install it and start storybook again.'
-        );
+        throw err;
       }
-      throw err;
     }
   }
 
