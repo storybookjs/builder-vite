@@ -134,6 +134,9 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
         throw err;
       }
     }
+
+    const { svelteDocgen } = await import('./plugins/svelte-docgen');
+    plugins.push(svelteDocgen(svelteOptions));
   }
 
   if (framework === 'react') {
