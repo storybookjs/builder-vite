@@ -9059,9 +9059,149 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esbuild-windows-arm64@npm:0.14.47":
+  version: 0.14.47
+  resolution: "esbuild-windows-arm64@npm:0.14.47"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:0.13.8":
+  version: 0.13.8
+  resolution: "esbuild@npm:0.13.8"
+  dependencies:
+    esbuild-android-arm64: 0.13.8
+    esbuild-darwin-64: 0.13.8
+    esbuild-darwin-arm64: 0.13.8
+    esbuild-freebsd-64: 0.13.8
+    esbuild-freebsd-arm64: 0.13.8
+    esbuild-linux-32: 0.13.8
+    esbuild-linux-64: 0.13.8
+    esbuild-linux-arm: 0.13.8
+    esbuild-linux-arm64: 0.13.8
+    esbuild-linux-mips64le: 0.13.8
+    esbuild-linux-ppc64le: 0.13.8
+    esbuild-netbsd-64: 0.13.8
+    esbuild-openbsd-64: 0.13.8
+    esbuild-sunos-64: 0.13.8
+    esbuild-windows-32: 0.13.8
+    esbuild-windows-64: 0.13.8
+    esbuild-windows-arm64: 0.13.8
+  dependenciesMeta:
+    esbuild-android-arm64:
+      optional: true
+    esbuild-darwin-64:
+      optional: true
+    esbuild-darwin-arm64:
+      optional: true
+    esbuild-freebsd-64:
+      optional: true
+    esbuild-freebsd-arm64:
+      optional: true
+    esbuild-linux-32:
+      optional: true
+    esbuild-linux-64:
+      optional: true
+    esbuild-linux-arm:
+      optional: true
+    esbuild-linux-arm64:
+      optional: true
+    esbuild-linux-mips64le:
+      optional: true
+    esbuild-linux-ppc64le:
+      optional: true
+    esbuild-netbsd-64:
+      optional: true
+    esbuild-openbsd-64:
+      optional: true
+    esbuild-sunos-64:
+      optional: true
+    esbuild-windows-32:
+      optional: true
+    esbuild-windows-64:
+      optional: true
+    esbuild-windows-arm64:
+      optional: true
+  bin:
+    esbuild: bin/esbuild
+  checksum: 239b48f26af525236d96385a0854eb86886581d503eee81c18d189cc8d099ff182fc0de9b14c4328fd146ca3ec506efa5d011c95c6af2dd7011cb0b225dfd140
+  languageName: node
+  linkType: hard
+
 "esbuild@npm:^0.14.27":
   version: 0.14.38
   resolution: "esbuild@npm:0.14.38"
+  dependencies:
+    esbuild-android-64: 0.14.38
+    esbuild-android-arm64: 0.14.38
+    esbuild-darwin-64: 0.14.38
+    esbuild-darwin-arm64: 0.14.38
+    esbuild-freebsd-64: 0.14.38
+    esbuild-freebsd-arm64: 0.14.38
+    esbuild-linux-32: 0.14.38
+    esbuild-linux-64: 0.14.38
+    esbuild-linux-arm: 0.14.38
+    esbuild-linux-arm64: 0.14.38
+    esbuild-linux-mips64le: 0.14.38
+    esbuild-linux-ppc64le: 0.14.38
+    esbuild-linux-riscv64: 0.14.38
+    esbuild-linux-s390x: 0.14.38
+    esbuild-netbsd-64: 0.14.38
+    esbuild-openbsd-64: 0.14.38
+    esbuild-sunos-64: 0.14.38
+    esbuild-windows-32: 0.14.38
+    esbuild-windows-64: 0.14.38
+    esbuild-windows-arm64: 0.14.38
+  dependenciesMeta:
+    esbuild-android-64:
+      optional: true
+    esbuild-android-arm64:
+      optional: true
+    esbuild-darwin-64:
+      optional: true
+    esbuild-darwin-arm64:
+      optional: true
+    esbuild-freebsd-64:
+      optional: true
+    esbuild-freebsd-arm64:
+      optional: true
+    esbuild-linux-32:
+      optional: true
+    esbuild-linux-64:
+      optional: true
+    esbuild-linux-arm:
+      optional: true
+    esbuild-linux-arm64:
+      optional: true
+    esbuild-linux-mips64le:
+      optional: true
+    esbuild-linux-ppc64le:
+      optional: true
+    esbuild-linux-riscv64:
+      optional: true
+    esbuild-linux-s390x:
+      optional: true
+    esbuild-netbsd-64:
+      optional: true
+    esbuild-openbsd-64:
+      optional: true
+    esbuild-sunos-64:
+      optional: true
+    esbuild-windows-32:
+      optional: true
+    esbuild-windows-64:
+      optional: true
+    esbuild-windows-arm64:
+      optional: true
+  bin:
+    esbuild: bin/esbuild
+  checksum: d7523a36bd28016c010829c527386dbc0c6b9f514920abf5ac8003f346665161aa61026fd6822c5091fc1c1af52fe26c9281a81740fc06f2994cdbb7c2880297
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.14.27, esbuild@npm:^0.14.43":
+  version: 0.14.47
+  resolution: "esbuild@npm:0.14.47"
   dependencies:
     esbuild-android-64: 0.14.38
     esbuild-android-arm64: 0.14.38
@@ -9650,7 +9790,7 @@ __metadata:
     npm-run-all: ^4.1.5
     rollup-plugin-postcss-lit: ^2.0.0
     sass: ^1.50.1
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -9710,7 +9850,7 @@ __metadata:
     npm-run-all: ^4.1.5
     react: ^18.0.0
     react-dom: ^18.0.0
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -9733,7 +9873,7 @@ __metadata:
     react-dom: ^16.4.14
     ts-node: ^10.7.0
     typescript: ^4.5.4
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -9755,7 +9895,7 @@ __metadata:
     npm-run-all: ^4.1.5
     react: ^16.4.14
     react-dom: ^16.4.14
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -9779,7 +9919,7 @@ __metadata:
     svelte: ^3.46.4
     svelte-preprocess: ^4.10.4
     typescript: ^4.5.5
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -9798,7 +9938,7 @@ __metadata:
     http-server: ^14.1.0
     jest: ^27.5.1
     npm-run-all: ^4.1.5
-    vite: 2.9.6
+    vite: ^3.0.0-beta.0
     vue: ^3.2.25
     wait-on: ^6.0.1
   languageName: unknown
@@ -9815,7 +9955,7 @@ __metadata:
     "@storybook/react": ^6.5.9
     react: ^16.4.14
     react-dom: ^16.4.14
-    vite: 2.9.0
+    vite: ^3.0.0-beta.0
   languageName: unknown
   linkType: soft
 
@@ -16359,6 +16499,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.1.10, postcss@npm:^8.4.12, postcss@npm:^8.4.13, postcss@npm:^8.4.14":
+  version: 8.4.14
+  resolution: "postcss@npm:8.4.14"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: fe58766ff32e4becf65a7d57678995cfd239df6deed2fe0557f038b47c94e4132e7e5f68b5aa820c13adfec32e523b693efaeb65798efb995ce49ccd83953816
+  languageName: node
+  linkType: hard
+
 "postcss@npm:^8.4.13":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
@@ -17649,9 +17800,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"resolve@npm:^1.10.0, resolve@npm:^1.14.2, resolve@npm:^1.15.1, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.0, resolve@npm:^1.22.1, resolve@npm:^1.3.2":
+  version: 1.22.1
+  resolution: "resolve@npm:1.22.1"
+  dependencies:
+    is-core-module: ^2.8.1
+    path-parse: ^1.0.7
+    supports-preserve-symlinks-flag: ^1.0.0
+  bin:
+    resolve: bin/resolve
+  checksum: a2d14cc437b3a23996f8c7367eee5c7cf8149c586b07ca2ae00e96581ce59455555a1190be9aa92154785cf9f2042646c200d0e00e0bbd2b8a995a93a0ed3e4e
+  languageName: node
+  linkType: hard
+
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.15.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>":
   version: 1.22.0
   resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
+  dependencies:
+    is-core-module: ^2.8.1
+    path-parse: ^1.0.7
+    supports-preserve-symlinks-flag: ^1.0.0
+  bin:
+    resolve: bin/resolve
+  checksum: c79ecaea36c872ee4a79e3db0d3d4160b593f2ca16e031d8283735acd01715a203607e9ded3f91f68899c2937fa0d49390cddbe0fb2852629212f3cda283f4a7
+  languageName: node
+  linkType: hard
+
+"resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.15.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>":
+  version: 1.22.1
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
@@ -17739,6 +17916,20 @@ __metadata:
 "rollup@npm:^2.59.0":
   version: 2.70.2
   resolution: "rollup@npm:2.70.2"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: eb04eb9b87b30517308cb41018d57a23976f42b269c3229e4124746d3136a77aa16ba8b891a3fa571931dd72419eea40642a334835fe4f33161fea30d0b803f7
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^2.59.0, rollup@npm:^2.75.6":
+  version: 2.75.7
+  resolution: "rollup@npm:2.75.7"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -20348,35 +20539,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:2.9.0":
-  version: 2.9.0
-  resolution: "vite@npm:2.9.0"
-  dependencies:
-    esbuild: ^0.14.27
-    fsevents: ~2.3.2
-    postcss: ^8.4.12
-    resolve: ^1.22.0
-    rollup: ^2.59.0
-  peerDependencies:
-    less: "*"
-    sass: "*"
-    stylus: "*"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  peerDependenciesMeta:
-    less:
-      optional: true
-    sass:
-      optional: true
-    stylus:
-      optional: true
-  bin:
-    vite: bin/vite.js
-  checksum: 2355a5a7a57a86558fb2378b493c98c97218ffdf5c7555df5531147217c8ec804d66434dfed130034c920cb0913cd5f0fa1f5d7756101601558320349c0e1cee
-  languageName: node
-  linkType: hard
-
 "vite@npm:2.9.6":
   version: 2.9.6
   resolution: "vite@npm:2.9.6"
@@ -20432,6 +20594,38 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 33cf8b6bfbbcae4b7f856d739ae519bed6b1ce23fc652ca98db1d4878bf35424885951c13e0d2536248423a0836d91ef7cae744ff40cbcbd6e7ffe495bd15ea5
+  languageName: node
+  linkType: hard
+
+"vite@npm:^3.0.0-beta.0":
+  version: 3.0.0-beta.4
+  resolution: "vite@npm:3.0.0-beta.4"
+  dependencies:
+    esbuild: ^0.14.43
+    fsevents: ~2.3.2
+    postcss: ^8.4.14
+    resolve: ^1.22.1
+    rollup: ^2.75.6
+  peerDependencies:
+    less: "*"
+    sass: "*"
+    stylus: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    less:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: d1930e6ee0ada4f594e314b616b0fa6bf43a287f5660f9975e5947861b2c1c6a801a7937ec7da3d01fa0580a0d03eefa8d075af35de860da9bfb054b3893a092
   languageName: node
   linkType: hard
 
