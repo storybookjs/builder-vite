@@ -6,6 +6,8 @@ module.exports = {
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-svelte-csf'],
   core: {
     builder: '@storybook/builder-vite',
+    // we don't want to muck up the data when we're working on the builder
+    disableTelemetry: true,
   },
   features: {
     // On-demand store does not work for .svelte stories, only CSF.

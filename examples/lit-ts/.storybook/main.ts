@@ -6,6 +6,8 @@ module.exports = {
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
     builder: '@storybook/builder-vite',
+    // we don't want to muck up the data when we're working on the builder
+    disableTelemetry: true,
   },
   framework: '@storybook/web-components',
   features: {
