@@ -6,7 +6,10 @@ const stories = getPackagesInfo()
   .map((info) => {
     const { packageJson } = info;
     // TODO && packageJson?.pages?.url.endsWith('svelte')
-    if (packageJson?.pages) {
+    if (
+      packageJson?.pages &&
+      (packageJson?.pages?.url.endsWith('svelte') || packageJson?.pages?.url.endsWith('preview'))
+    ) {
       return info;
     }
     return undefined;
