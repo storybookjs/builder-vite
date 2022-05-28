@@ -32,14 +32,11 @@ jobs:
       - name: Build examples
         run: yarn build-examples:preview
 
-      - name: DEBUG
-        run: pwd && ls && cd ./public && pwd && ls
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public/preview
+          publish_dir: ./public
   lint:
     runs-on: ubuntu-latest
     steps:
