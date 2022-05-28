@@ -13,7 +13,6 @@
     "start": "cd packages/builder-vite && tsc -w",
     "prepublish": "cd packages/builder-vite && tsc",
     "deploy": "gh-pages -d public",
-    "predeploy": "yarn build-examples:preview",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --write .",
     "lint:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",

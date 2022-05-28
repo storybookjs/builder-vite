@@ -30,7 +30,7 @@ jobs:
         run: yarn prepublish
 
       - name: Build examples
-        run: yarn deploy
+        run: yarn build-examples:preview & yarn deploy
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
