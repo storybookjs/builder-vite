@@ -33,7 +33,7 @@ jobs:
         run: yarn build-examples:preview
 
       - name: DEBUG
-        run: pwd && ls && ../ && pwd && ls
+        run: pwd && ls && cd ./public && pwd && ls
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
