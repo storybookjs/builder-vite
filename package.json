@@ -12,6 +12,8 @@
     "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' -p run test-ci",
     "start": "cd packages/builder-vite && tsc -w",
     "prepublish": "cd packages/builder-vite && tsc",
+    "deploy": "gh-pages -d public",
+    "predeploy": "yarn build-examples:preview",
     "lint": "yarn lint:prettier && yarn lint:eslint",
     "lint:prettier": "prettier --write .",
     "lint:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
@@ -41,7 +43,8 @@
     "eslint-plugin-only-warn": "^1.0.3",
     "eslint-plugin-storybook": "^0.5.5",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "gh-pages": "^3.2.3"
   },
   "dependencies": {
     "types-package-json": "^2.0.39"
