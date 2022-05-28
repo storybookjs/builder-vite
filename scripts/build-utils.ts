@@ -38,7 +38,7 @@ export const definePreviewConfig = (packagePath: string, config: Record<string, 
   return mergeConfig(
     config,
     defineConfig({
-      mode:'development',
+      mode: 'development',
       base: getBasePath(baseName),
       build: { outDir, rollupOptions: { external: [] } },
     })
