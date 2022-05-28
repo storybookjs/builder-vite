@@ -5,8 +5,7 @@ import { getBasePath, getModuleInfo, getOutDir, getPackagesInfo } from './build-
 const stories = getPackagesInfo()
   .map((info) => {
     const { packageJson } = info;
-    // TODO
-    if (packageJson?.pages && packageJson?.pages?.url.endsWith('preview')) {
+    if (packageJson?.pages) {
       return info;
     }
     return undefined;
