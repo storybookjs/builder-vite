@@ -6,7 +6,7 @@ const isPreview = process.env.IS_PREVIEW === 'true';
 
 const config: StorybookViteConfig = {
   framework: '@storybook/react',
-  stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../stories/**/*stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
     builder: '@storybook/builder-vite',
@@ -14,7 +14,7 @@ const config: StorybookViteConfig = {
     disableTelemetry: true,
   },
   features: {
-    storyStoreV7: true,
+    storyStoreV7: false,
     buildStoriesJson: isPreview,
   },
   // @ts-ignore

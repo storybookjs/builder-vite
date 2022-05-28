@@ -1,6 +1,5 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
-
   "include": ["stories/**/*"],
   "exclude": ["node_modules/*"]
 }

@@ -1,11 +1,11 @@
 {
-  "name": "example-react",
+  "name": "example-preview",
   "private": true,
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "pages": {
-    "url": "/builder-vite/react"
+    "url": "/builder-vite/preview"
   },
   "scripts": {
     "storybook": "start-storybook --port 6006",

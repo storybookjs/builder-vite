@@ -6,6 +6,9 @@
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": ["@types/node", "./types"]
   }
 }

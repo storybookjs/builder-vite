@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "pages": {
+    "url": "/builder-vite/svelte"
+  },
   "scripts": {
     "storybook": "start-storybook --port 6008",
     "build-storybook": "build-storybook",
