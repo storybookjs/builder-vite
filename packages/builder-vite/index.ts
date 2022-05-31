@@ -11,7 +11,8 @@ import type { RequestHandler, Request, Response } from 'express';
 import type { InlineConfig, UserConfig, ViteDevServer } from 'vite';
 import type { ExtendedOptions } from './types';
 
-export interface ViteStats {}
+// Storybook's Stats are optional Webpack related property
+export type ViteStats = null;
 
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
@@ -68,7 +69,7 @@ export const start: ViteBuilder['start'] = async ({ startTime, options, router, 
 
   return {
     bail,
-    stats: {} as ViteStats,
+    stats: null,
     totalTime: process.hrtime(startTime),
   };
 };
