@@ -37,13 +37,30 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
 
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
+    try {
+      // these were added in 6.5, but we support 6.4 as well.
+      var {addArgs, addArgTypes} = await import('@storybook/client-api');
+    } catch (err) {
+      // ignore error
+    }
+
     configs.forEach(config => {
-      Object.keys(config).forEach((key) => {
+      Object.keys(config).forEach(async (key) => {
         const value = config[key];
         switch (key) {
-          case 'args':
+          case 'args': {
+            if (typeof addArgs !== 'undefined') {
+              return addArgs(value);
+            } else {
+              return logger.warn('Could not add global args. Please open an issue in storybookjs/builder-vite.');
+            }
+          }
           case 'argTypes': {
-            return logger.warn('Invalid args/argTypes in config, ignoring.', JSON.stringify(value));
+            if (typeof addArgTypes !== 'undefined') {
+              return addArgTypes(value);
+            } else {
+              return logger.warn('Could not add global argTypes. Please open an issue in storybookjs/builder-vite.');
+            }
           }
           case 'decorators': {
             return value.forEach((decorator) => addDecorator(decorator, false));
