@@ -2,33 +2,20 @@
 
 Build your stories with [vite](https://vitejs.dev/) for fast startup times and near-instant HMR.
 
-# Table of Contents
+# Table of Contents <!-- omit in toc -->
 
-- [Migration from storybook-builder-vite](#project-has-been-renamed)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Customize Vite Config](#customize-vite-config)
-  - [Svelte Customization](#svelte-customization)
-  - [TypeScript](#typescript)
-  - [React Docgen](#react-docgen)
-  - [Working Directory](#note-about-working-directory)
-- [How to Start a New Project](#getting-started-with-vite-and-storybook-on-a-new-project)
-- [Known issues](#known-issues)
-- [Contributing](#contributing)
-
-## Project has been renamed
-
-This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
-
-```bash
-npx sb@next automigrate
-```
-
-To manually migrate:
-
-1. Remove `storybook-builder-vite` from your `package.json` dependencies
-2. Install `@storybook/builder-vite`
-3. Update your `core.builder` setting in `.storybook/main.js` to `@storybook/builder-vite`.
+- [Storybook builder for Vite](#storybook-builder-for-vite)
+  - [Installation](#installation)
+  - [Migration from storybook-builder-vite](#migration-from-storybook-builder-vite)
+  - [Usage](#usage)
+    - [Customize Vite config](#customize-vite-config)
+    - [Svelte Customization](#svelte-customization)
+    - [TypeScript](#typescript)
+    - [React Docgen](#react-docgen)
+    - [Working directory](#working-directory)
+  - [How to start a new project](#how-to-start-a-new-project)
+  - [Known issues](#known-issues)
+  - [Contributing](#contributing)
 
 ## Installation
 
@@ -54,6 +41,20 @@ pnpm add --save-dev @storybook/builder-vite
 ```
 
 Note: when using `pnpm`, you may need to enable [shamefully-hoist](https://pnpm.io/npmrc#shamefully-hoist), until https://github.com/storybookjs/builder-vite/issues/55 can be fixed.
+
+## Migration from storybook-builder-vite
+
+This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
+
+```bash
+npx sb@next automigrate
+```
+
+To manually migrate:
+
+1. Remove `storybook-builder-vite` from your `package.json` dependencies
+2. Install `@storybook/builder-vite`
+3. Update your `core.builder` setting in `.storybook/main.js` to `@storybook/builder-vite`.
 
 ## Usage
 
@@ -163,13 +164,13 @@ module.exports = {
 
 If you're using TypeScript, we encourage you to experiment and see which option works better for your project.
 
-### Note about working directory
+### Working directory
 
 The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/config/#server-fs-strict)
 option, for increased security. The default project `root` is set to the parent directory of the
 storybook configuration directory. This can be overridden in viteFinal.
 
-## Getting started with Vite and Storybook (on a new project)
+## How to start a new project
 
 See https://vitejs.dev/guide/#scaffolding-your-first-vite-project,
 
@@ -193,13 +194,4 @@ https://github.com/storybookjs/builder-vite/issues/11
 Have a look at the GitHub issues for known bugs. If you find any new bugs,
 feel free to create an issue or send a pull request!
 
-Please read the [How to contribute](/CONTRIBUTING.md) guide.
-
-### About this codebase
-
-The code is a monorepo with the core `@storybook/builder-vite` package,
-and examples (like `examples/react`) to test the builder implementation.
-
-Similar to the main storybook monorepo, you need yarn to develop this builder, because the project is organized as yarn workspaces.
-This lets you write new code in the core builder package, and instantly use them from
-the example packages.
+Please read the [contributing](/CONTRIBUTING.md) guide to learn how to run the vite builder locally, and read through our [architecture](/ARCHITECTURE.md) guide for an overview of how the project code is structured.
