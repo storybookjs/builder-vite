@@ -1,6 +1,6 @@
 {
   "name": "storybook-builder-vite-parent",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "A plugin to run and build Storybooks with Vite",
   "license": "MIT",
   "engines": {
