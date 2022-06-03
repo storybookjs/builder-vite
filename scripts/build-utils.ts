@@ -5,7 +5,7 @@ import { readdirSync, readFileSync } from 'fs';
 import path from 'path';
 import { mergeConfig, defineConfig } from 'vite';
 
-export const PREVIEW_BASE = '/builder-vite/';
+export const PREVIEW_BASE = '/';
 export const OUTPUT_BASE = path.join(__dirname, `../public/`);
 export const EXAMPLES_BASE = path.join(__dirname, `../examples/`);
 
@@ -38,7 +38,7 @@ export const definePreviewConfig = (packagePath: string, config: Record<string, 
   return mergeConfig(
     config,
     defineConfig({
-      mode: 'development',
+      mode: 'production',
       base: getBasePath(baseName),
       build: { outDir, rollupOptions: { external: [] } },
     })

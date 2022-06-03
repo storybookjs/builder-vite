@@ -18,7 +18,7 @@ stories.forEach((info) => {
   const { outDir } = getOutDir(info.path);
   const pkgStorybookConfig = path.join(pkgDir, '.storybook');
   // eslint-disable-next-line max-len
-  const buildCommand = `npx cross-env NODE_OPTIONS=--enable-source-maps IS_PREVIEW=true build-storybook -c ${pkgStorybookConfig} -o ${outDir} --no-manager-cache --preview-url ${path.join(
+  const buildCommand = `yarn dlx cross-env NODE_OPTIONS=--enable-source-maps IS_PREVIEW=true yarn build-storybook -c ${pkgStorybookConfig} -o ${outDir} --no-manager-cache --preview-url ${path.join(
     basePath,
     'iframe.html'
   )} --force-build-preview`;
