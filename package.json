@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build-examples": "yarn workspaces foreach -v --include 'example-*' -p run build-storybook",
-    "build-examples:preview": "npx ts-node ./scripts/build-storybook.ts",
+    "build-examples:overview": "npx ts-node ./scripts/build-storybook.ts",
     "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' -p run test-ci",
     "start": "cd packages/builder-vite && tsc -w",
     "prepublish": "cd packages/builder-vite && tsc",

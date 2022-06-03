@@ -6,8 +6,7 @@ import { readdirSync, readFileSync } from 'fs';
 import path from 'path';
 import { mergeConfig, defineConfig } from 'vite';
 
-export const PREVIEW_BASE = '/';
-// export const PREVIEW_BASE = '/builder-vite/';
+export const OVERVIEW_BASE = '/builder-vite/';
 export const OUTPUT_BASE = path.join(__dirname, `../public/`);
 export const EXAMPLES_BASE = path.join(__dirname, `../examples/`);
 
@@ -30,10 +29,10 @@ export function getOutDir(packagePath: string) {
 }
 
 export function getBasePath(baseName: string) {
-  return path.join(PREVIEW_BASE, baseName, '/');
+  return path.join(OVERVIEW_BASE, baseName, '/');
 }
 
-const definePreviewConfig = (packagePath: string, config: Record<string, any>): InlineConfig => {
+const defineOverviewConfig = (packagePath: string, config: Record<string, any>): InlineConfig => {
   const { baseName } = getModuleInfo(packagePath);
   const { outDir } = getOutDir(packagePath);
 
@@ -81,11 +80,11 @@ export const withOverview =
       throw new Error('features.buildStoriesJson is not enabled');
     }
 
-    const isPreview = process.env.IS_PREVIEW === 'true';
+    const isOverview = process.env.IS_OVERVIEW === 'true';
 
     const managerWebpack = async (...args) => {
       const config = (await _config['managerWebpack']?.(...args)) || args?.[0];
-      if (isPreview) {
+      if (isOverview) {
         return defineManagerConfig(path.resolve(__dirname, '../'), config);
       }
       return config;
@@ -93,15 +92,15 @@ export const withOverview =
 
     const viteFinal: typeof _config['viteFinal'] = async (...args) => {
       const config = (await _config['viteFinal']?.(...args)) || args?.[0];
-      if (isPreview) {
-        return definePreviewConfig(path.resolve(__dirname, '../'), config);
+      if (isOverview) {
+        return defineOverviewConfig(path.resolve(__dirname, '../'), config);
       }
       return config;
     };
 
     return {
       ..._config,
-      features: { ...(_config.features || {}), buildStoriesJson: _config?.features?.buildStoriesJson ?? isPreview },
+      features: { ...(_config.features || {}), buildStoriesJson: _config?.features?.buildStoriesJson ?? isOverview },
       // @ts-ignore
       managerWebpack,
       viteFinal,

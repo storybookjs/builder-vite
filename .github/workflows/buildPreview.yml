@@ -1,4 +1,4 @@
-name: Build Preview
+name: Build Overview
 
 on:
   pull_request:
@@ -30,7 +30,7 @@ jobs:
         run: yarn prepublish
 
       - name: Build examples
-        run: yarn build-examples:preview
+        run: yarn build-examples:overview
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

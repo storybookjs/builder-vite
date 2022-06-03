@@ -1,11 +1,11 @@
 {
-  "name": "example-preview",
+  "name": "example-overview",
   "private": true,
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "pages": {
-    "url": "/builder-vite/preview"
+    "url": "/builder-vite/overview"
   },
   "scripts": {
     "storybook": "start-storybook --port 6006",

@@ -1,5 +1,5 @@
 import path from 'path';
-import { getPackagesInfo, PREVIEW_BASE, withOverview } from '../../../scripts/build-utils';
+import { getPackagesInfo, OVERVIEW_BASE, withOverview } from '../../../scripts/build-utils';
 import pkg from '../package.json';
 
 const refs = getPackagesInfo()
@@ -20,7 +20,7 @@ const refs = getPackagesInfo()
     }
     prev[baseName] = {
       title: baseName,
-      url: path.join(PREVIEW_BASE, baseName),
+      url: path.join(OVERVIEW_BASE, baseName),
     };
     return prev;
   }, {});
