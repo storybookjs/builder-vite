@@ -29,6 +29,7 @@ jobs:
         run: yarn prepublish
 
       - name: Build examples
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: yarn build-examples:overview
 
       - name: Deploy
