@@ -5,7 +5,7 @@ import { readdirSync, readFileSync } from 'fs';
 import path from 'path';
 import { mergeConfig, defineConfig } from 'vite';
 
-export const PREVIEW_BASE = '/';
+export const PREVIEW_BASE = '/builder-vite/';
 export const OUTPUT_BASE = path.join(__dirname, `../public/`);
 export const EXAMPLES_BASE = path.join(__dirname, `../examples/`);
 
