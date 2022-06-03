@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "pages": {
+    "url": "/builder-vite/react-18"
+  },
   "scripts": {
     "storybook": "start-storybook --port 6018",
     "build-storybook": "build-storybook",

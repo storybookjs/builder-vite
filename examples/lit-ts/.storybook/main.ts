@@ -1,7 +1,9 @@
+import { withOverview } from '../../../scripts/build-utils';
+
 const { mergeConfig } = require('vite');
 const postcssLit = require('rollup-plugin-postcss-lit');
 
-module.exports = {
+export default withOverview(__dirname)({
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
@@ -20,4 +22,4 @@ module.exports = {
       plugins: [postcssLit({ include: ['**/*.scss', '**/*.scss\?*'] })],
     });
   },
-};
+});

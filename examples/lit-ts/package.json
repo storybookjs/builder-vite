@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "pages": {
+    "url": "/builder-vite/lit-ts"
+  },
   "dependencies": {
     "lit": "^2.2.2"
   },

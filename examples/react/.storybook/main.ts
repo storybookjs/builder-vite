@@ -1,10 +1,6 @@
-import type { StorybookViteConfig } from '@storybook/builder-vite';
-import { defineManagerConfig, definePreviewConfig } from '../../../scripts/build-utils';
-import path from 'path';
+import { withOverview } from '../../../scripts/build-utils';
 
-const isPreview = process.env.IS_PREVIEW === 'true';
-
-const config: StorybookViteConfig = {
+export default withOverview(__dirname)({
   framework: '@storybook/react',
   stories: ['../stories/**/*stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-essentials'],
@@ -15,22 +11,8 @@ const config: StorybookViteConfig = {
   },
   features: {
     storyStoreV7: false,
-    buildStoriesJson: isPreview,
   },
-  // @ts-ignore
-  managerWebpack(config) {
-    if (isPreview) {
-      return defineManagerConfig(path.resolve(__dirname, '../'), config);
-    }
+  async viteFinal(config) {
     return config;
   },
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
-    if (isPreview) {
-      return definePreviewConfig(path.resolve(__dirname, '../'), config);
-    }
-    return config;
-  },
-};
-
-export default config;
+});
