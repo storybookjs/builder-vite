@@ -1,22 +1,24 @@
-# Storybook builder for Vite
+# Storybook builder for Vite <!-- omit in toc -->
 
 Build your stories with [vite](https://vitejs.dev/) for fast startup times and near-instant HMR.
 
-# Table of Contents
+# Table of Contents <!-- omit in toc -->
 
-- [Migration from storybook-builder-vite](#project-has-been-renamed)
+- [Migration from storybook-builder-vite](#migration-from-storybook-builder-vite)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Customize Vite Config](#customize-vite-config)
+  - [Getting started with Vite and Storybook (on a new project)](#getting-started-with-vite-and-storybook-on-a-new-project)
+  - [Migration from webpack / CRA](#migration-from-webpack--cra)
+  - [Customize Vite config](#customize-vite-config)
   - [Svelte Customization](#svelte-customization)
   - [TypeScript](#typescript)
   - [React Docgen](#react-docgen)
-  - [Working Directory](#note-about-working-directory)
-- [How to Start a New Project](#getting-started-with-vite-and-storybook-on-a-new-project)
+  - [Note about working directory](#note-about-working-directory)
 - [Known issues](#known-issues)
 - [Contributing](#contributing)
+  - [About this codebase](#about-this-codebase)
 
-## Project has been renamed
+## Migration from storybook-builder-vite
 
 This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
 
@@ -65,7 +67,36 @@ set `core: { builder: "@storybook/builder-vite" }`.
 
 The builder supports both development mode in Storybook, and building a static production version.
 
-If you were previously using `@storybook/manager-webpack5`, you'll need to remove it, since currently the vite builder only works with `manager-webpack4`, which is the default and does not need to be installed manually.
+### Getting started with Vite and Storybook (on a new project)
+
+See https://vitejs.dev/guide/#scaffolding-your-first-vite-project,
+
+```
+npm create vite@latest # follow the prompts
+npx sb init --builder @storybook/builder-vite && npm run storybook
+```
+
+### Migration from webpack / CRA
+
+1. Install `vite` and `@storybook/builder-vite`
+2. Remove any explicit project dependencies on `webpack`, `react-scripts`, and any other webpack plugins or loaders.
+3. If you were previously using `@storybook/manager-webpack5`, you'll need to remove it, since currently the vite builder only works with `manager-webpack4`, which is the default and does not need to be installed manually. Also remove `@storybook/builder-webpack5` or `@storybook/builder-webpack4` if they are installed.
+4. Set `core: { builder: "@storybook/builder-vite" }` in your `.storybook/main.js` file.
+5. Remove storybook webpack cache (`rm -rf node_modules/.cache`)
+6. Update your `/public/index.html` file for vite (be sure there are no `%PUBLIC_URL%` inside it, which is a CRA variable)
+7. Be sure that any files containing JSX syntax use a `.jsx` or `.tsx` file extension, which [vite requires](https://vitejs.dev/guide/features.html#jsx). This includes `.storybook/preview.jsx` if it contains JSX syntax.
+8. If you are using `@storybook/addon-interactions`, for now you'll need to add a [workaround](https://github.com/storybookjs/storybook/issues/18399) for jest-mock relying on the node `global` variable by creating a `.storybook/preview-head.html` file containing the following:
+
+```html
+<script>
+  window.global = window;
+</script>
+```
+
+9.  Start up your storybook using the same `yarn storybook` or `npm run storybook` commands you are used to.
+10. If you see the message `[vite-plugin-mdx] "@mdx-js/react" must be installed`, manually install the missing dependency using, for example, `npm i --save-dev @mdx-js/react@1 --force`. This is a workaround to a current bug, https://github.com/storybookjs/builder-vite/issues/391.
+
+For other details about the differences between vite and webpack projects, be sure to read through the [vite documentation](https://vitejs.dev/).
 
 ### Customize Vite config
 
@@ -169,24 +200,15 @@ The builder will by default enable Vite's [server.fs.strict](https://vitejs.dev/
 option, for increased security. The default project `root` is set to the parent directory of the
 storybook configuration directory. This can be overridden in viteFinal.
 
-## Getting started with Vite and Storybook (on a new project)
-
-See https://vitejs.dev/guide/#scaffolding-your-first-vite-project,
-
-```
-npm create vite@latest # follow the prompts
-npx sb init --builder @storybook/builder-vite && npm run storybook
-```
-
 ## Known issues
 
 - HMR: saving a story file does not hot-module-reload, a full reload happens instead. HMR works correctly when saving component files.
-- Prebundling: Vite restarts if it detects new dependencies which it did not know about and needs to pre-bundle. This breaks within storybook, with confusing error messages. If you see a message in your terminal like `[vite] new dependencies found:`, please add those dependencies to your `optimizeDeps.include` in `viteFinal`. E.g. `config.optimizeDeps.include = [...(config.optimizeDeps?.include ?? []), "storybook-dark-mode"],`. Vite 2.9.0+ may improve this behavior.
+- MDX: You may see a message about a missing `@mdx-js/XXXX` package. For now, you should manually install version 1.x of this package using `--force` if necessary. See https://github.com/storybookjs/builder-vite/issues/391.
 
 ## Contributing
 
 The Vite builder cannot build itself.
-Are you willing to contribute?
+Are you willing to contribute? We are especially looking for vue and svelte experts, as the current maintainers are react users.
 
 https://github.com/storybookjs/builder-vite/issues/11
 
