@@ -17,6 +17,7 @@
     "preact": "^10.5.15"
   },
   "devDependencies": {
+    "@mdx-js/preact": "1",
     "@preact/preset-vite": "^2.1.5",
     "@storybook/addon-essentials": "^6.5.0",
     "@storybook/builder-vite": "workspace:*",

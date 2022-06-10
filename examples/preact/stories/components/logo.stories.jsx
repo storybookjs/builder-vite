@@ -1,7 +1,7 @@
-import { Logo } from "./logo";
+import { Logo } from './logo';
 
 export default {
-  title: "Example/Logo",
+  title: 'Example/Logo',
   component: Logo,
 };
 

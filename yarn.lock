@@ -2412,7 +2412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:1, @mdx-js/react@npm:^1.6.22":
+"@mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
@@ -10061,6 +10061,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-preact@workspace:examples/preact"
   dependencies:
+    "@mdx-js/preact": 1
     "@preact/preset-vite": ^2.1.5
     "@storybook/addon-essentials": ^6.5.0
     "@storybook/builder-vite": "workspace:*"
@@ -10123,8 +10124,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-react@workspace:examples/react"
   dependencies:
-    "@mdx-js/preact": 1
-    "@mdx-js/react": 1
     "@storybook/addon-a11y": ^6.5.0
     "@storybook/addon-docs": ^6.5.0
     "@storybook/addon-essentials": ^6.5.0
