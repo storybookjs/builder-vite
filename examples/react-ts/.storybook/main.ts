@@ -1,4 +1,4 @@
-import { withOverview } from '../../../scripts/build-utils';
+import { withOverview } from 'bookcase-builder';
 
 export default withOverview(__dirname)({
   framework: '@storybook/react',

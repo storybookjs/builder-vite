@@ -46,6 +46,13 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "bookcase-builder": "^0.0.0",
     "types-package-json": "^2.0.39"
-  }
+  },
+	"bookcase-builder": {
+		"workspaces": [
+			"examples/*"
+		],
+		"output": "./public"
+	}
 }

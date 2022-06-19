@@ -4,9 +4,6 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
-  "pages": {
-    "url": "/builder-vite/react-ts"
-  },
   "scripts": {
     "storybook": "start-storybook --port 6007",
     "build-storybook": "build-storybook",
@@ -35,5 +32,6 @@
     "typescript": "^4.5.4",
     "vite": "2.9.6",
     "wait-on": "^6.0.1"
-  }
+  },
+  "bookcase-builder":{}
 }
