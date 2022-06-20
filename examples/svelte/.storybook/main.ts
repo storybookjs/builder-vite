@@ -1,4 +1,4 @@
-import { withOverview } from '../../../scripts/build-utils';
+import { withOverview } from 'bookcase-builder';
 
 const preprocess = require('svelte-preprocess');
 

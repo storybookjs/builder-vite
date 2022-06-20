@@ -1,6 +1,4 @@
-import { withOverview } from '../../../scripts/build-utils';
-
-export default withOverview(__dirname)({
+export default {
   framework: '@storybook/vue3',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
@@ -13,4 +11,4 @@ export default withOverview(__dirname)({
     // customize the Vite config here
     return config;
   },
-});
+}

@@ -4,9 +4,6 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
-  "pages": {
-    "url": "/builder-vite/vue"
-  },
   "scripts": {
     "storybook": "start-storybook --port 6009",
     "build-storybook": "build-storybook",
