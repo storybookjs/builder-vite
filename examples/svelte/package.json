@@ -14,7 +14,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "svelte": "^3.46.4"
+    "svelte": "^3.46.4",
+    "vite-plugin-istanbul": "^2.8.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.0",

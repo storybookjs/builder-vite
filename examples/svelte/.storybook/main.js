@@ -1,4 +1,5 @@
 const preprocess = require('svelte-preprocess');
+const istanbul = require('vite-plugin-istanbul');
 
 module.exports = {
   framework: '@storybook/svelte',
@@ -14,6 +15,9 @@ module.exports = {
     storyStoreV7: false,
   },
   async viteFinal(config, { configType }) {
+    config.build ||= {};
+    config.build.sourcemap = true;
+    config.plugins.push(istanbul());
     // customize the Vite config here
     return config;
   },

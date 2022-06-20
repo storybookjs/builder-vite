@@ -9213,6 +9213,7 @@ __metadata:
     svelte-preprocess: ^4.10.4
     typescript: ^4.5.5
     vite: 2.9.6
+    vite-plugin-istanbul: ^2.8.0
     wait-on: ^6.0.1
   languageName: unknown
   linkType: soft
@@ -18662,6 +18663,17 @@ __metadata:
     unist-util-stringify-position: ^2.0.0
     vfile-message: ^2.0.0
   checksum: ee5726e10d170472cde778fc22e0f7499caa096eb85babea5d0ce0941455b721037ee1c9e6ae506ca2803250acd313d0f464328ead0b55cfe7cb6315f1b462d6
+  languageName: node
+  linkType: hard
+
+"vite-plugin-istanbul@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "vite-plugin-istanbul@npm:2.8.0"
+  dependencies:
+    istanbul-lib-instrument: ^5.1.0
+    picocolors: ^1.0.0
+    test-exclude: ^6.0.0
+  checksum: af68abb1d0afd304e452dcf2f5c2aecfa70565f3e3e6215da161c92775dcc15a0000a625a6c63689f0475c8bc38f2cc6e85c90b4b662381db7dd9bd767874d61
   languageName: node
   linkType: hard
 
