@@ -45,6 +45,9 @@ export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPre
   // support destructuring like
   // const { foo } = import.meta.env;
   envs['import.meta.env'] = JSON.stringify(stringifyEnvs(updatedRaw));
+  // Prevent build breaking on a missing var, similar to vite
+  // @see https://github.com/vitejs/vite/blob/908c9e4cdd2cceb0f01495e38066ffe33c21ddb8/packages/vite/src/node/plugins/define.ts#L50
+  envs['import.meta.env.'] = '({}).';
 
   return envs;
 }
