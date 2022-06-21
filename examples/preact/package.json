@@ -19,9 +19,9 @@
   "devDependencies": {
     "@mdx-js/preact": "1",
     "@preact/preset-vite": "^2.1.5",
-    "@storybook/addon-essentials": "^6.5.0",
+    "@storybook/addon-essentials": "^6.5.9",
     "@storybook/builder-vite": "workspace:*",
-    "@storybook/preact": "^6.5.0",
+    "@storybook/preact": "^6.5.9",
     "@storybook/test-runner": "0.1.0",
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
