@@ -1,6 +1,5 @@
 import { withOverview } from 'bookcase-builder';
-
-const preprocess = require('svelte-preprocess');
+import preprocess from 'svelte-preprocess'
 
 export default withOverview(__dirname)({
   framework: '@storybook/svelte',

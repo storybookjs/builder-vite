@@ -34,5 +34,5 @@
     "vite": "2.9.6",
     "wait-on": "^6.0.1"
   },
-  "bookcase-builder":{}
+  "bookcase-builder": {}
 }
