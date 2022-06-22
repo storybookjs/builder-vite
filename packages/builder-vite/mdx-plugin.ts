@@ -1,6 +1,10 @@
 import mdx from 'vite-plugin-mdx';
 import { createCompiler } from '@storybook/csf-tools/mdx';
 
+type Options = {
+  framework: string;
+};
+
 /**
  * Storybook uses two different loaders when dealing with MDX:
  *
@@ -9,8 +13,13 @@ import { createCompiler } from '@storybook/csf-tools/mdx';
  *
  * @see https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md#csf-stories-with-arbitrary-mdx
  */
-export function mdxPlugin() {
-  return mdx((filename) => {
+export function mdxPlugin({ framework }: Options) {
+  const mdxPlugin =
+    framework === 'preact'
+      ? mdx.withImports({ preact: ['h'], '@mdx-js/preact': ['mdx'] })
+      : mdx.withImports({ react: 'React', '@mdx-js/react': ['mdx'] });
+
+  return mdxPlugin((filename) => {
     const compilers = [];
 
     if (filename.endsWith('stories.mdx') || filename.endsWith('story.mdx')) {
