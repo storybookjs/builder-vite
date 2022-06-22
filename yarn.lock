@@ -6000,9 +6000,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bookcase-builder@npm:^0.0.4":
-  version: 0.0.4
-  resolution: "bookcase-builder@npm:0.0.4"
+"bookcase-builder@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "bookcase-builder@npm:0.0.8"
   dependencies:
     "@storybook/addon-docs": ^6.5.9
     "@storybook/addon-essentials": ^6.5.0
@@ -6019,7 +6019,8 @@ __metadata:
     vite: ^2.9.12
   bin:
     bb: dist/build.cjs
-  checksum: ee529625162733f12c3d31bf352b95cd6832b754f09246d3f1797e67375dfa7285193f70c675f68b5b87f119e25107cac90b309f58728eca79bed3cbdf743a59
+    bookcase-builder: dist/build.cjs
+  checksum: 0af79739333f3b7020826c4e0ad284b60e307a620476bcfcc94580f36e03b66797cd8ae3b66ca0f498ffd6e2043a6aa2b268c79fa7996e95c79c6215c45e200a
   languageName: node
   linkType: hard
 
@@ -16949,7 +16950,7 @@ __metadata:
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.9.0
     "@typescript-eslint/parser": ^5.9.0
-    bookcase-builder: ^0.0.4
+    bookcase-builder: ^0.0.8
     eslint: ^8.6.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-only-warn: ^1.0.3

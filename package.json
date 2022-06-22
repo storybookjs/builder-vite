@@ -38,6 +38,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
+    "bookcase-builder": "^0.0.8",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-only-warn": "^1.0.3",
@@ -47,7 +48,6 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "bookcase-builder": "^0.0.4",
     "types-package-json": "^2.0.39"
   },
   "bookcase-builder": {
@@ -55,7 +55,7 @@
       "examples/*"
     ],
     "output": "./public",
-    "publicURL":"/builder-vite/",
+    "publicURL": "/builder-vite/",
     "packageManager": "yarn"
   }
 }
