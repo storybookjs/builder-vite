@@ -8,7 +8,7 @@
     "storybook": "start-storybook --port 6004",
     "build-storybook": "build-storybook",
     "preview-storybook": "http-server storybook-static --port 6004 --silent",
-    "test": "wait-on tcp:6004 && test-storybook",
+    "test": "wait-on tcp:6004 && test-storybook --url 'http://localhost:6004'",
     "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",
