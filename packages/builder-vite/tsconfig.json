@@ -4,7 +4,6 @@
     "strict": true,
     "rootDir": ".",
     "outDir": "dist",
-    "esModuleInterop": true,
-    "types": []
+    "esModuleInterop": true
   }
 }

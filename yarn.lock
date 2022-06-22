@@ -16957,7 +16957,6 @@ __metadata:
     eslint-plugin-storybook: ^0.5.5
     gh-pages: ^3.2.3
     prettier: ^2.5.1
-    types-package-json: ^2.0.39
     typescript: ^4.5.4
   languageName: unknown
   linkType: soft
@@ -18019,13 +18018,6 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
-  languageName: node
-  linkType: hard
-
-"types-package-json@npm:^2.0.39":
-  version: 2.0.39
-  resolution: "types-package-json@npm:2.0.39"
-  checksum: 5b575dbfad03a29e509cfdec0e8b32cceffd4a3416a47899541ae0658cb904a1c177930148899936f7e617ddf3cea757f09860b854dfa055a1185f15e1f43e48
   languageName: node
   linkType: hard
 
