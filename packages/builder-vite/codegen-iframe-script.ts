@@ -40,7 +40,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
     configs.forEach(config => {
-      Object.keys(config).forEach(async (key) => {
+      Object.keys(config).forEach((key) => {
         const value = config[key];
         switch (key) {
           case 'args': {
