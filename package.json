@@ -55,6 +55,7 @@
       "examples/*"
     ],
     "output": "./public",
+    "publicURL":"/builder-vite/",
     "packageManager": "yarn"
   }
 }
