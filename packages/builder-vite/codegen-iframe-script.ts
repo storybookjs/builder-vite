@@ -22,44 +22,43 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     // is loaded. That way our client-apis can assume the existence of the API+store
     import { configure } from '${frameworkImportPath}';
 
-    import {
-      addDecorator,
-      addParameters,
-      addLoader,
-      addArgTypesEnhancer,
-      addArgsEnhancer,
-      setGlobalRender
-    } from '@storybook/client-api';
+    import * as clientApi from "@storybook/client-api";
     import { logger } from '@storybook/client-logger';
     ${absoluteFilesToImport(configEntries, 'config')}
     import * as preview from '${virtualPreviewFile}';
     import { configStories } from '${virtualStoriesFile}';
 
-    const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
+    const {
+      addDecorator,
+      addParameters,
+      addLoader,
+      addArgTypesEnhancer,
+      addArgsEnhancer,
+      setGlobalRender,
+    } = clientApi;
 
-    try {
-      // these were added in 6.5, but we support 6.4 as well.
-      var {addArgs, addArgTypes} = await import('@storybook/client-api');
-    } catch (err) {
-      // ignore error
-    }
+    const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
     configs.forEach(config => {
       Object.keys(config).forEach(async (key) => {
         const value = config[key];
         switch (key) {
           case 'args': {
-            if (typeof addArgs !== 'undefined') {
-              return addArgs(value);
+            if (typeof clientApi.addArgs !== "undefined") {
+              return clientApi.addArgs(value);
             } else {
-              return logger.warn('Could not add global args. Please open an issue in storybookjs/builder-vite.');
+              return logger.warn(
+                "Could not add global args. Please open an issue in storybookjs/builder-vite."
+              );
             }
           }
           case 'argTypes': {
-            if (typeof addArgTypes !== 'undefined') {
-              return addArgTypes(value);
+            if (typeof clientApi.addArgTypes !== "undefined") {
+              return clientApi.addArgTypes(value);
             } else {
-              return logger.warn('Could not add global argTypes. Please open an issue in storybookjs/builder-vite.');
+              return logger.warn(
+                "Could not add global argTypes. Please open an issue in storybookjs/builder-vite."
+              );
             }
           }
           case 'decorators': {
