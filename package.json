@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build-examples": "yarn workspaces foreach -v --include 'example-*' -p run build-storybook",
-    "build-examples:overview": "npx ts-node ./scripts/build-storybook.ts",
+    "build-examples:overview": "bb",
     "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' -p run test-ci",
     "start": "yarn build -w",
     "build": "tsc -p packages/builder-vite/tsconfig.json",
@@ -46,13 +46,14 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "bookcase-builder": "^0.0.3",
+    "bookcase-builder": "^0.0.4",
     "types-package-json": "^2.0.39"
   },
   "bookcase-builder": {
     "workspaces": [
       "examples/*"
     ],
-    "output": "./public"
+    "output": "./public",
+    "packageManager": "yarn"
   }
 }
