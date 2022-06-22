@@ -31,6 +31,8 @@ jobs:
         run: yarn prepublish
 
       - name: Build examples
+        env:
+          NODE_OPTIONS: "--max-old-space-size=6144"
         run: yarn build-examples
 
       - name: Test built examples
