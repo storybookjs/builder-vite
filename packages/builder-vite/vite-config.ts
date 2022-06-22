@@ -139,6 +139,10 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     plugins.push(svelteDocgen(svelteOptions));
   }
 
+  if (framework === 'preact') {
+    plugins.push(require('@preact/preset-vite').default());
+  }
+
   if (framework === 'react') {
     plugins.push(
       require('@vitejs/plugin-react')({

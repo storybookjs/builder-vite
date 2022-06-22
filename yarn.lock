@@ -62,7 +62,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.10, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.17.10, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.0":
+"@babel/core@npm:^7.1.0, @babel/core@npm:^7.12.10, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.17.10, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5, @babel/core@npm:^7.8.0, @babel/core@npm:^7.9.6":
   version: 7.18.5
   resolution: "@babel/core@npm:7.18.5"
   dependencies:
@@ -1234,7 +1234,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx@npm:^7.12.12, @babel/plugin-transform-react-jsx@npm:^7.16.7, @babel/plugin-transform-react-jsx@npm:^7.17.12, @babel/plugin-transform-react-jsx@npm:^7.17.3":
+"@babel/plugin-transform-react-jsx@npm:^7.12.12, @babel/plugin-transform-react-jsx@npm:^7.14.9, @babel/plugin-transform-react-jsx@npm:^7.16.7, @babel/plugin-transform-react-jsx@npm:^7.17.12, @babel/plugin-transform-react-jsx@npm:^7.17.3":
   version: 7.17.12
   resolution: "@babel/plugin-transform-react-jsx@npm:7.17.12"
   dependencies:
@@ -2115,6 +2115,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mdx-js/preact@npm:1":
+  version: 1.6.22
+  resolution: "@mdx-js/preact@npm:1.6.22"
+  peerDependencies:
+    preact: ^10.4.8
+  checksum: 0a8bb49319a39d1612ead383120ee308c45f0f3c7e1e2a5308f3c898ee9e23f90f06fff6d16e3cb97fad290af943ac2361da736852ada0fa93430dbc72afeaa7
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
@@ -2254,7 +2263,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.1.0, @rollup/pluginutils@npm:^4.2.1":
+"@preact/preset-vite@npm:^2.1.5":
+  version: 2.2.0
+  resolution: "@preact/preset-vite@npm:2.2.0"
+  dependencies:
+    "@babel/plugin-transform-react-jsx": ^7.14.9
+    "@babel/plugin-transform-react-jsx-development": ^7.16.7
+    "@prefresh/vite": ^2.2.6
+    "@rollup/pluginutils": ^4.1.1
+    babel-plugin-transform-hook-names: ^1.0.2
+    debug: ^4.3.1
+    kolorist: ^1.2.10
+    resolve: ^1.20.0
+  peerDependencies:
+    "@babel/core": 7.x
+    vite: 2.x
+  checksum: 6353cae32f33dc76ea216c29329fbae65cb04ce737e629ea02a10ec374584e1d76e2e2135ce4fd79ff1ebe3d90e2d7d9992b088767228194ccd597c6d7cc380c
+  languageName: node
+  linkType: hard
+
+"@prefresh/babel-plugin@npm:0.4.3":
+  version: 0.4.3
+  resolution: "@prefresh/babel-plugin@npm:0.4.3"
+  checksum: 0bd68589b1491da7b5c4920a9958b74fbdf75f54c12b5713e1c708e4a21df7f47f9d265d8ee291bdc03c3c4fcd12bd97b34835b565292c0a69a5858ff37e556c
+  languageName: node
+  linkType: hard
+
+"@prefresh/core@npm:^1.3.3":
+  version: 1.3.4
+  resolution: "@prefresh/core@npm:1.3.4"
+  peerDependencies:
+    preact: ^10.0.0
+  checksum: 545cc3e678bf0669e5726ac4da5b5f95ae7f1ce20e850a2a824e662e1fae11422d9681b5cc253b07c1ebe09a8c42c4b2247a45afecc81014b799eb1a8d7447a0
+  languageName: node
+  linkType: hard
+
+"@prefresh/utils@npm:^1.1.2":
+  version: 1.1.3
+  resolution: "@prefresh/utils@npm:1.1.3"
+  checksum: a95b816d08a68f499489f1e0098effcda99ccba06c80986cb0dfbcda4fc9c8f8e3238603ead4ee35bb9fb7985de66b1a785d12c64fbc61600e0a8bd388fc2de0
+  languageName: node
+  linkType: hard
+
+"@prefresh/vite@npm:^2.2.6":
+  version: 2.2.8
+  resolution: "@prefresh/vite@npm:2.2.8"
+  dependencies:
+    "@babel/core": ^7.9.6
+    "@prefresh/babel-plugin": 0.4.3
+    "@prefresh/core": ^1.3.3
+    "@prefresh/utils": ^1.1.2
+    "@rollup/pluginutils": ^4.1.0
+  peerDependencies:
+    preact: ^10.4.0
+    vite: ">=2.0.0-beta.3"
+  checksum: bfe207a2f2b517b067cb2b937fcf1d6b1435cb9d07e1786618b34497e6b3b9ecf28ea2ce9777f8a6beff32afbda6ca61ed33ec94187b74081aea96b476f88208
+  languageName: node
+  linkType: hard
+
+"@rollup/pluginutils@npm:^4.1.0, @rollup/pluginutils@npm:^4.1.1, @rollup/pluginutils@npm:^4.2.1":
   version: 4.2.1
   resolution: "@rollup/pluginutils@npm:4.2.1"
   dependencies:
@@ -2312,7 +2379,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-a11y@npm:^6.5.0":
+"@storybook/addon-a11y@npm:^6.5.0, @storybook/addon-a11y@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-a11y@npm:6.5.9"
   dependencies:
@@ -2344,7 +2411,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.5.9, @storybook/addon-actions@npm:^6.5.0":
+"@storybook/addon-actions@npm:6.5.9, @storybook/addon-actions@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-actions@npm:6.5.9"
   dependencies:
@@ -2483,7 +2550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-essentials@npm:^6.5.0":
+"@storybook/addon-essentials@npm:^6.5.0, @storybook/addon-essentials@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-essentials@npm:6.5.9"
   dependencies:
@@ -2543,7 +2610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-links@npm:^6.5.0":
+"@storybook/addon-links@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/addon-links@npm:6.5.9"
   dependencies:
@@ -3277,6 +3344,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/preact@npm:^6.5.9":
+  version: 6.5.9
+  resolution: "@storybook/preact@npm:6.5.9"
+  dependencies:
+    "@babel/plugin-transform-react-jsx": ^7.12.12
+    "@storybook/addons": 6.5.9
+    "@storybook/core": 6.5.9
+    "@storybook/core-common": 6.5.9
+    "@storybook/csf": 0.0.2--canary.4566f4d.1
+    "@storybook/store": 6.5.9
+    "@types/node": ^14.14.20 || ^16.0.0
+    "@types/webpack-env": ^1.16.0
+    core-js: ^3.8.2
+    global: ^4.4.0
+    react: 16.14.0
+    react-dom: 16.14.0
+    read-pkg-up: ^7.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    webpack: ">=4.0.0 <6.0.0"
+  peerDependencies:
+    "@babel/core": "*"
+    preact: ^8.0.0||^10.0.0
+  bin:
+    build-storybook: bin/build.js
+    start-storybook: bin/index.js
+    storybook-server: bin/index.js
+  checksum: ac8e15931521e6c289058e073343415330094278501f26a6352cbd9419c722d3d3089869f29fc649c73f9feba1707086b768f3282c67220b9157aa31067a6a39
+  languageName: node
+  linkType: hard
+
 "@storybook/preview-web@npm:6.5.9":
   version: 6.5.9
   resolution: "@storybook/preview-web@npm:6.5.9"
@@ -3322,7 +3420,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:^6.5.0":
+"@storybook/react@npm:^6.5.0, @storybook/react@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/react@npm:6.5.9"
   dependencies:
@@ -3462,7 +3560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/svelte@npm:^6.5.0":
+"@storybook/svelte@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/svelte@npm:6.5.9"
   dependencies:
@@ -3581,7 +3679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/vue3@npm:^6.5.0":
+"@storybook/vue3@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/vue3@npm:6.5.9"
   dependencies:
@@ -3618,7 +3716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/web-components@npm:^6.5.0":
+"@storybook/web-components@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/web-components@npm:6.5.9"
   dependencies:
@@ -5711,6 +5809,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-transform-hook-names@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "babel-plugin-transform-hook-names@npm:1.0.2"
+  peerDependencies:
+    "@babel/core": ^7.12.10
+  checksum: d48d513569261fd6c8b2da29ce899ac7bd59dcc32593044b1c79953aed51d4f68a7dbbf5c1dfd35c65192d82df82d13009581c7e0499799fc687d87b6211b148
+  languageName: node
+  linkType: hard
+
 "babel-preset-current-node-syntax@npm:^1.0.0":
   version: 1.0.1
   resolution: "babel-preset-current-node-syntax@npm:1.0.1"
@@ -7296,7 +7403,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -8855,13 +8962,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-lit-ts@workspace:examples/lit-ts"
   dependencies:
-    "@storybook/addon-actions": ^6.5.0
-    "@storybook/addon-docs": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
-    "@storybook/addon-links": ^6.5.0
+    "@storybook/addon-actions": ^6.5.9
+    "@storybook/addon-docs": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
+    "@storybook/addon-links": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
     "@storybook/test-runner": 0.1.0
-    "@storybook/web-components": ^6.5.0
+    "@storybook/web-components": ^6.5.9
     http-server: ^14.1.0
     jest: ^27.5.1
     lit: ^2.2.2
@@ -8894,15 +9001,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"example-preact@workspace:examples/preact":
+  version: 0.0.0-use.local
+  resolution: "example-preact@workspace:examples/preact"
+  dependencies:
+    "@mdx-js/preact": 1
+    "@preact/preset-vite": ^2.1.5
+    "@storybook/addon-essentials": ^6.5.9
+    "@storybook/builder-vite": "workspace:*"
+    "@storybook/preact": ^6.5.9
+    "@storybook/test-runner": 0.1.0
+    http-server: ^14.1.0
+    jest: ^27.5.1
+    npm-run-all: ^4.1.5
+    preact: ^10.5.15
+    vite: 2.9.6
+    wait-on: ^6.0.1
+  languageName: unknown
+  linkType: soft
+
 "example-react-18@workspace:examples/react-18":
   version: 0.0.0-use.local
   resolution: "example-react-18@workspace:examples/react-18"
   dependencies:
-    "@storybook/addon-a11y": ^6.5.0
-    "@storybook/addon-docs": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-docs": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
-    "@storybook/react": ^6.5.0
+    "@storybook/react": ^6.5.9
     "@storybook/test-runner": 0.1.0
     "@vitejs/plugin-react": ^1.3.0
     http-server: ^14.1.0
@@ -8919,11 +9045,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-react-ts@workspace:examples/react-ts"
   dependencies:
-    "@storybook/addon-a11y": ^6.5.0
-    "@storybook/addon-docs": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-docs": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
-    "@storybook/react": ^6.5.0
+    "@storybook/react": ^6.5.9
     "@storybook/test-runner": 0.1.0
     "@vitejs/plugin-react": ^1.3.0
     http-server: ^14.1.0
@@ -8942,11 +9068,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-react@workspace:examples/react"
   dependencies:
-    "@storybook/addon-a11y": ^6.5.0
-    "@storybook/addon-docs": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-docs": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
-    "@storybook/react": ^6.5.0
+    "@storybook/react": ^6.5.9
     "@storybook/test-runner": 0.1.0
     "@vitejs/plugin-react": ^1.3.0
     http-server: ^14.1.0
@@ -8963,12 +9089,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-svelte@workspace:examples/svelte"
   dependencies:
-    "@storybook/addon-actions": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
-    "@storybook/addon-links": ^6.5.0
+    "@storybook/addon-actions": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
+    "@storybook/addon-links": ^6.5.9
     "@storybook/addon-svelte-csf": ^2.0.3
     "@storybook/builder-vite": "workspace:*"
-    "@storybook/svelte": ^6.5.0
+    "@storybook/svelte": ^6.5.9
     "@storybook/test-runner": 0.1.0
     "@sveltejs/vite-plugin-svelte": 1.0.0-next.44
     "@tsconfig/svelte": ^3.0.0
@@ -8987,11 +9113,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-vue@workspace:examples/vue"
   dependencies:
-    "@storybook/addon-a11y": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
     "@storybook/test-runner": 0.1.0
-    "@storybook/vue3": ^6.5.0
+    "@storybook/vue3": ^6.5.9
     "@vitejs/plugin-vue": ^2.3.0
     http-server: ^14.1.0
     jest: ^27.5.1
@@ -9006,11 +9132,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-workspaces-catalog@workspace:examples/workspaces/packages/catalog"
   dependencies:
-    "@storybook/addon-a11y": ^6.5.0
-    "@storybook/addon-docs": ^6.5.0
-    "@storybook/addon-essentials": ^6.5.0
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-docs": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
-    "@storybook/react": ^6.5.0
+    "@storybook/react": ^6.5.9
     react: ^16.4.14
     react-dom: ^16.4.14
     vite: 2.9.0
@@ -12574,6 +12700,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kolorist@npm:^1.2.10":
+  version: 1.5.1
+  resolution: "kolorist@npm:1.5.1"
+  checksum: c113be08834fc03a24699612141c79879fceba9ff9765ad500507fb594ee4fa3465a3453ea90bbc9b0dd82f7ba5dbd79814da28e9ebaf8da27266a0088ba2714
+  languageName: node
+  linkType: hard
+
 "lazy-universal-dotenv@npm:^3.0.1":
   version: 3.0.1
   resolution: "lazy-universal-dotenv@npm:3.0.1"
@@ -14722,6 +14855,13 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: fe58766ff32e4becf65a7d57678995cfd239df6deed2fe0557f038b47c94e4132e7e5f68b5aa820c13adfec32e523b693efaeb65798efb995ce49ccd83953816
+  languageName: node
+  linkType: hard
+
+"preact@npm:^10.5.15":
+  version: 10.8.1
+  resolution: "preact@npm:10.8.1"
+  checksum: 273500b3a763b8582420273f6bddcc74268d3cbd66f1c3cca7c4fbd0eb781740dd948bccf7011acd0b28f35dee116d038aa4d0a2112856939c26567d957d7155
   languageName: node
   linkType: hard
 
