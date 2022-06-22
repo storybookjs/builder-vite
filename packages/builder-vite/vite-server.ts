@@ -29,7 +29,7 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
 
   const envsRaw = await presets.apply<Promise<EnvsRaw>>('env');
   // Stringify env variables after getting `envPrefix` from the final config
-  const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix, false);
+  const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix, 'serve');
   // Update `define`
   finalConfig.define = {
     ...finalConfig.define,

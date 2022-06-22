@@ -22,7 +22,7 @@ export const allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
  * Customized version of stringifyProcessEnvs from @storybook/core-common which
  * uses import.meta.env instead of process.env and checks for allowed variables.
  */
-export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPrefix'], isBuild: boolean) {
+export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPrefix'], command: 'build' | 'serve') {
   const updatedRaw: EnvsRaw = {};
   const envs = Object.entries(raw).reduce(
     (acc: EnvsRaw, [key, value]) => {
@@ -48,7 +48,7 @@ export function stringifyProcessEnvs(raw: EnvsRaw, envPrefix: UserConfig['envPre
 
   // Prevent build breaking on a missing var, similar to vite
   // @see https://github.com/vitejs/vite/blob/908c9e4cdd2cceb0f01495e38066ffe33c21ddb8/packages/vite/src/node/plugins/define.ts#L50
-  if (isBuild) {
+  if (command === 'build') {
     envs['import.meta.env.'] = '({}).';
   }
 

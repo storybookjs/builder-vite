@@ -21,7 +21,7 @@ export async function build(options: ExtendedOptions) {
 
   const envsRaw = await presets.apply<Promise<EnvsRaw>>('env');
   // Stringify env variables after getting `envPrefix` from the final config
-  const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix);
+  const envs = stringifyProcessEnvs(envsRaw, finalConfig.envPrefix, 'build');
   // Update `define`
   finalConfig.define = {
     ...finalConfig.define,
