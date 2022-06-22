@@ -11,4 +11,4 @@ export default {
     // customize the Vite config here
     return config;
   },
-}
+};
