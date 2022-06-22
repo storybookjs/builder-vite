@@ -1,6 +1,7 @@
-const preprocess = require('svelte-preprocess');
+import { withOverview } from 'bookcase-builder';
+import preprocess from 'svelte-preprocess';
 
-module.exports = {
+export default withOverview(__dirname)({
   framework: '@storybook/svelte',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-svelte-csf'],
@@ -17,10 +18,11 @@ module.exports = {
     // customize the Vite config here
     return config;
   },
+  // @ts-ignore
   svelteOptions: {
     preprocess: preprocess(),
     // Possible with @sveltejs/vite-plugin-svelte version 1.0.0-next.43 or higher.
     // Focus a story iframe and press cmd+shift (mac) or ctrl+shift (windows) to activate.
     experimental: { inspector: true },
   },
-};
+});

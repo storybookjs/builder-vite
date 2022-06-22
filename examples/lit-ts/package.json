@@ -31,5 +31,6 @@
     "sass": "^1.50.1",
     "vite": "2.9.6",
     "wait-on": "^6.0.1"
-  }
+  },
+  "bookcase-builder": {}
 }

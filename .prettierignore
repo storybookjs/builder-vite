@@ -2,3 +2,4 @@
 **/*/storybook-static/*
 *.yml
 dist
+public

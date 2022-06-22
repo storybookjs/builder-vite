@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build-examples": "yarn workspaces foreach -v --include 'example-*' -p run build-storybook",
-    "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' -p run test-ci",
+    "build-examples:overview": "bb",
+    "test-ci": "yarn workspaces foreach  -v --exclude 'example-svelte' --exclude 'example-overview' -p run test-ci",
     "start": "yarn build -w",
     "build": "tsc -p packages/builder-vite/tsconfig.json",
     "prepublish": "yarn build",
@@ -35,14 +36,25 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-only-warn": "^1.0.3",
     "eslint-plugin-storybook": "^0.5.5",
+    "gh-pages": "^3.2.3",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "bookcase-builder": "^0.0.8"
+  },
+  "bookcase-builder": {
+    "workspaces": [
+      "examples/*"
+    ],
+    "output": "./public",
+    "publicURL": "/builder-vite/",
+    "packageManager": "yarn"
   }
 }

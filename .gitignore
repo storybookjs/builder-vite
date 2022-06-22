@@ -4,6 +4,7 @@ storybook-static
 
 # TypeScript
 dist
+public
 
 # Yarn stuff
 /**/.yarn/*
