@@ -22,18 +22,20 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
     // is loaded. That way our client-apis can assume the existence of the API+store
     import { configure } from '${frameworkImportPath}';
 
-    import {
+    import * as clientApi from "@storybook/client-api";
+    import { logger } from '@storybook/client-logger';
+    ${absoluteFilesToImport(configEntries, 'config')}
+    import * as preview from '${virtualPreviewFile}';
+    import { configStories } from '${virtualStoriesFile}';
+
+    const {
       addDecorator,
       addParameters,
       addLoader,
       addArgTypesEnhancer,
       addArgsEnhancer,
-      setGlobalRender
-    } from '@storybook/client-api';
-    import { logger } from '@storybook/client-logger';
-    ${absoluteFilesToImport(configEntries, 'config')}
-    import * as preview from '${virtualPreviewFile}';
-    import { configStories } from '${virtualStoriesFile}';
+      setGlobalRender,
+    } = clientApi;
 
     const configs = [${importArray('config', configEntries.length).concat('preview.default').join(',')}].filter(Boolean)
 
@@ -41,9 +43,23 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
       Object.keys(config).forEach((key) => {
         const value = config[key];
         switch (key) {
-          case 'args':
+          case 'args': {
+            if (typeof clientApi.addArgs !== "undefined") {
+              return clientApi.addArgs(value);
+            } else {
+              return logger.warn(
+                "Could not add global args. Please open an issue in storybookjs/builder-vite."
+              );
+            }
+          }
           case 'argTypes': {
-            return logger.warn('Invalid args/argTypes in config, ignoring.', JSON.stringify(value));
+            if (typeof clientApi.addArgTypes !== "undefined") {
+              return clientApi.addArgTypes(value);
+            } else {
+              return logger.warn(
+                "Could not add global argTypes. Please open an issue in storybookjs/builder-vite."
+              );
+            }
           }
           case 'decorators': {
             return value.forEach((decorator) => addDecorator(decorator, false));

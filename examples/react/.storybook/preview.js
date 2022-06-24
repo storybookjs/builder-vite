@@ -7,3 +7,7 @@ export const parameters = {
     },
   },
 };
+
+export const argTypes = { globalArg: { options: ['A', 'B'], control: 'select' } };
+
+export const args = { globalArg: 'A' };
