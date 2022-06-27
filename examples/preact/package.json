@@ -17,7 +17,7 @@
     "preact": "^10.5.15"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.1.5",
+    "@preact/preset-vite": "^2.3.0",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/builder-vite": "workspace:*",
     "@storybook/preact": "^6.5.9",
