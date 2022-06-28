@@ -2430,15 +2430,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/preact@npm:1":
-  version: 1.6.22
-  resolution: "@mdx-js/preact@npm:1.6.22"
-  peerDependencies:
-    preact: ^10.4.8
-  checksum: 0a8bb49319a39d1612ead383120ee308c45f0f3c7e1e2a5308f3c898ee9e23f90f06fff6d16e3cb97fad290af943ac2361da736852ada0fa93430dbc72afeaa7
-  languageName: node
-  linkType: hard
-
 "@mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
@@ -9605,7 +9596,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-preact@workspace:examples/preact"
   dependencies:
-    "@mdx-js/preact": 1
     "@preact/preset-vite": ^2.1.5
     "@storybook/addon-essentials": ^6.5.9
     "@storybook/builder-vite": "workspace:*"
