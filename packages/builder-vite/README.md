@@ -94,7 +94,6 @@ npx sb init --builder @storybook/builder-vite && npm run storybook
 ```
 
 9.  Start up your storybook using the same `yarn storybook` or `npm run storybook` commands you are used to.
-10. If you see the message `[vite-plugin-mdx] "@mdx-js/react" must be installed`, manually install the missing dependency using, for example, `npm i --save-dev @mdx-js/react@1 --force`. This is a workaround to a current bug, https://github.com/storybookjs/builder-vite/issues/391.
 
 For other details about the differences between vite and webpack projects, be sure to read through the [vite documentation](https://vitejs.dev/).
 
@@ -203,7 +202,6 @@ storybook configuration directory. This can be overridden in viteFinal.
 ## Known issues
 
 - HMR: saving a story file does not hot-module-reload, a full reload happens instead. HMR works correctly when saving component files.
-- MDX: You may see a message about a missing `@mdx-js/XXXX` package. For now, you should manually install version 1.x of this package using `--force` if necessary. See https://github.com/storybookjs/builder-vite/issues/391.
 
 ## Contributing
 
