@@ -22,6 +22,7 @@
     "@storybook/addon-docs": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/builder-vite": "workspace:*",
+    "@storybook/mdx2-csf": "^0.0.3",
     "@storybook/react": "^6.5.9",
     "@storybook/test-runner": "0.1.0",
     "@vitejs/plugin-react": "^1.3.0",

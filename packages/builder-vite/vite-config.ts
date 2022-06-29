@@ -1,12 +1,14 @@
 import * as path from 'path';
 import fs from 'fs';
 import { Plugin } from 'vite';
-import { allowedEnvPrefix as envPrefix } from './envs';
 import { TypescriptConfig } from '@storybook/core-common';
+import viteReact from '@vitejs/plugin-react';
+
+import { allowedEnvPrefix as envPrefix } from './envs';
 import { mockCoreJs } from './mock-core-js';
 import { codeGeneratorPlugin } from './code-generator-plugin';
 import { injectExportOrderPlugin } from './inject-export-order-plugin';
-import { mdxPlugin } from './mdx-plugin';
+import { mdxPlugin } from './plugins/mdx-plugin';
 import { noFouc } from './plugins/no-fouc';
 import { sourceLoaderPlugin } from './source-loader-plugin';
 
@@ -58,9 +60,14 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     codeGeneratorPlugin(options),
     mockCoreJs(),
     sourceLoaderPlugin(options),
-    mdxPlugin({ framework }),
+    mdxPlugin(options),
     noFouc(),
     injectExportOrderPlugin,
+    // We need the react plugin here to support MDX.
+    viteReact({
+      // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
+      exclude: [/\.stories\.([tj])sx?$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
+    }),
   ] as Plugin[];
   if (framework === 'vue' || framework === 'vue3') {
     try {
@@ -144,13 +151,6 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
 
   if (framework === 'react') {
-    plugins.push(
-      require('@vitejs/plugin-react')({
-        // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-        exclude: [/\.stories\.([tj])sx?$/, /node_modules/],
-      })
-    );
-
     const { reactDocgen, reactDocgenTypescriptOptions } = await presets.apply('typescript', {} as TypescriptConfig);
 
     let typescriptPresent;

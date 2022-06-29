@@ -14,8 +14,7 @@
   "homepage": "https://github.com/storybookjs/builder-vite/#readme",
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.4",
-    "@mdx-js/mdx": "^1.6.22",
-    "@storybook/csf-tools": "^6.4.3",
+    "@storybook/mdx1-csf": "^0.0.4",
     "@storybook/source-loader": "^6.4.3",
     "@vitejs/plugin-react": "^1.0.8",
     "ast-types": "^0.14.2",
@@ -25,19 +24,25 @@
     "magic-string": "^0.26.1",
     "react-docgen": "^6.0.0-alpha.0",
     "slash": "^3.0.0",
-    "sveltedoc-parser": "^4.2.1",
-    "vite-plugin-mdx": "^3.5.6"
+    "sveltedoc-parser": "^4.2.1"
   },
   "devDependencies": {
+    "@storybook/mdx2-csf": "^0.0.3",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.23",
     "vue-docgen-api": "^4.40.0"
   },
   "peerDependencies": {
     "@storybook/core-common": ">=6.4.3 || >=6.5.0-alpha.0",
+    "@storybook/mdx2-csf": "^0.0.3",
     "@storybook/node-logger": ">=6.4.3 || >=6.5.0-alpha.0",
     "@storybook/source-loader": ">=6.4.3 || >=6.5.0-alpha.0",
     "vite": ">=2.6.7"
+  },
+  "peerDependenciesMeta": {
+    "@storybook/mdx2-csf": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

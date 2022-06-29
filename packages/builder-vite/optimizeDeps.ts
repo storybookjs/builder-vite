@@ -68,6 +68,7 @@ const INCLUDE_CANDIDATES = [
   'react-is',
   'react-textarea-autosize',
   'react',
+  'react/jsx-runtime',
   'refractor/core',
   'refractor/lang/bash.js',
   'refractor/lang/css.js',
