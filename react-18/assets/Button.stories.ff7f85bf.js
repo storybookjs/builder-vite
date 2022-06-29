@@ -1,0 +1,2 @@
+import{B as r}from"./Button.4b729409.js";import"./index.33068e5f.js";import"./jsx-runtime.ba8985d3.js";import"./index.fdaa6df7.js";var l={component:r,argTypes:{backgroundColor:{control:"color"}}};const n={args:{primary:!0,label:"Button"}},s={args:{label:"Button"}},m={args:{size:"large",label:"Button"}},c={args:{size:"small",label:"Button"}},i=["Primary","Secondary","Large","Small"];export{m as Large,n as Primary,s as Secondary,c as Small,i as __namedExportsOrder,l as default};
+//# sourceMappingURL=Button.stories.ff7f85bf.js.map
