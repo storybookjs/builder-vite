@@ -106,10 +106,9 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       // Non-story svelte files
       // Starting in 1.0.0-next.42, svelte.config.js is included by default.
       // We disable that, but allow it to be overridden in svelteOptions
-      plugins.push(sveltePlugin({ configFile: false, ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
+      plugins.push(sveltePlugin({ ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
       // Svelte stories without HMR
       const storySveltePlugin = sveltePlugin({
-        configFile: false,
         ...svelteOptions,
         exclude: userExclude,
         include: storyPatterns,
