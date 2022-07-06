@@ -40,11 +40,6 @@ export async function commonConfig(
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
-    server: {
-      fs: {
-        allow: ['.storybook'],
-      },
-    },
     resolve:
       framework === 'vue3'
         ? {
@@ -73,6 +68,15 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
       exclude: [/\.stories\.([tj])sx?$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
     }),
+    {
+      name: 'vite-plugin-storybook-allow',
+      enforce: 'post',
+      config(config) {
+        if (config?.server?.fs?.allow) {
+          config.server.fs.allow.push('.storybook');
+        }
+      },
+    },
   ] as Plugin[];
   if (framework === 'vue' || framework === 'vue3') {
     try {
