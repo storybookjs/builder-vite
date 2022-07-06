@@ -50,7 +50,7 @@ export function mdxPlugin(options: Options): Plugin {
       reactRefresh = reactRefreshPlugins.find((p) => p.transform);
     },
     async transform(code, id, options) {
-      if (id.endsWith('.mdx')) {
+      if (id.match(/\.mdx?$/)) {
         // @ts-ignore
         const { compile } = features?.previewMdx2
           ? await import('@storybook/mdx2-csf')
