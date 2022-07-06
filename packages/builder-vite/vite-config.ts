@@ -42,8 +42,8 @@ export async function commonConfig(
     define: {},
     server: {
       fs: {
-        allow: ['.storybook']
-      }
+        allow: ['.storybook'],
+      },
     },
     resolve:
       framework === 'vue3'
