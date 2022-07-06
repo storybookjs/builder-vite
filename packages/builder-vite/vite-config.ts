@@ -40,6 +40,11 @@ export async function commonConfig(
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
+    server: {
+      fs: {
+        allow: ['.storybook']
+      }
+    },
     resolve:
       framework === 'vue3'
         ? {
