@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { mergeConfig } from 'vite';
 import { transformIframeHtml } from './transform-iframe-html';
 import { generateIframeScriptCode } from './codegen-iframe-script';
 import { generateModernIframeScriptCode } from './codegen-modern-iframe-script';
@@ -64,13 +65,11 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
         require.resolve('react-dom/client', { paths: [config.root || process.cwd()] });
       } catch (e) {
         if (isNodeError(e) && e.code === 'MODULE_NOT_FOUND') {
-          config.resolve = {
-            ...config.resolve,
+          config.resolve = mergeConfig(config.resolve ?? {}, {
             alias: {
-              ...config.resolve?.alias,
               'react-dom/client': path.resolve(__dirname, '..', 'input', 'react-dom-client-placeholder.js'),
             },
-          };
+          });
         }
       }
     },
