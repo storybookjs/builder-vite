@@ -72,6 +72,10 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       name: 'vite-plugin-storybook-allow',
       enforce: 'post',
       config(config) {
+        // if there is no allow list then Vite allows anything in the root directory
+        // if there is an allow list then Vite allows anything in the listed directories
+        // add the .storybook directory only if there's an allow list so that we don't end up
+        // disallowing the root directory unless it's already disallowed
         if (config?.server?.fs?.allow) {
           config.server.fs.allow.push('.storybook');
         }
