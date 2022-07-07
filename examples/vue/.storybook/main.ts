@@ -1,3 +1,6 @@
+const { resolve } = require('path');
+const { mergeConfig } = require('vite');
+
 export default {
   framework: '@storybook/vue3',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -11,7 +14,9 @@ export default {
     previewMdx2: true,
   },
   async viteFinal(config, { configType }) {
-    // customize the Vite config here
-    return config;
+    // Demonstrates use of mergeConfig and resolve.alias as an array
+    return mergeConfig(config, {
+      resolve: { alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }] },
+    });
   },
 };
