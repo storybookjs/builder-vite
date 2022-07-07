@@ -132,7 +132,8 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
     try {
       const csfPlugin = require('./svelte/csf-plugin').default;
-      plugins.push(csfPlugin(svelteOptions));
+      const config = (await import(path.join(process.cwd(), 'svelte.config.js'))).default;
+      plugins.push(csfPlugin({ ...config, ...svelteOptions }));
     } catch (err) {
       // Not all projects use `.stories.svelte` for stories, and by default 6.5+ does not auto-install @storybook/addon-svelte-csf.
       // If it's any other kind of error, re-throw.
