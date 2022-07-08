@@ -16,7 +16,7 @@
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.4",
     "@storybook/mdx1-csf": "^0.0.4",
     "@storybook/source-loader": "^6.4.3",
-    "@vitejs/plugin-react": "^2.0.0-alpha.2",
+    "@vitejs/plugin-react": "^2.0.0-beta.1",
     "ast-types": "^0.14.2",
     "es-module-lexer": "^0.9.3",
     "glob": "^7.2.0",
