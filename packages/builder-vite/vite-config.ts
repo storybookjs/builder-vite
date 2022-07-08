@@ -2,7 +2,6 @@ import * as path from 'path';
 import fs from 'fs';
 import { Plugin } from 'vite';
 import { TypescriptConfig } from '@storybook/core-common';
-import { loadSvelteConfig } from '@sveltejs/vite-plugin-svelte';
 import viteReact from '@vitejs/plugin-react';
 
 import { allowedEnvPrefix as envPrefix } from './envs';
@@ -146,6 +145,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
     try {
       const csfPlugin = require('./svelte/csf-plugin').default;
+      const { loadSvelteConfig } = require('@sveltejs/vite-plugin-svelte');
       const config = loadSvelteConfig();
       plugins.push(csfPlugin({ ...config, ...svelteOptions }));
     } catch (err) {
