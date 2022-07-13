@@ -51,7 +51,7 @@ export function reactDocgen({ include = /\.(mjs|tsx?|jsx?)$/, exclude = [/node_m
 
         return {
           code: s.toString(),
-          map: s.generateMap(),
+          map: s.generateMap({ hires: true, source: id }),
         };
       } catch (e) {
         // Usually this is just an error from react-docgen that it couldn't find a component

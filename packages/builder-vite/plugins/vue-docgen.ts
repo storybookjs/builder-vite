@@ -15,7 +15,7 @@ export function vueDocgen(): Plugin {
 
         return {
           code: s.toString(),
-          map: s.generateMap(),
+          map: s.generateMap({ hires: true, source: id }),
         };
       }
     },

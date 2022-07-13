@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite';
 import sourceLoaderTransform from '@storybook/source-loader';
 import type { ExtendedOptions } from './types';
+import MagicString from 'magic-string';
 
 const storyPattern = /\.stories\.[jt]sx?$/;
 const storySourcePattern = /var __STORY__ = "(.*)"/;
@@ -21,10 +22,13 @@ export function sourceLoaderPlugin(config: ExtendedOptions): Plugin | Plugin[] {
       async transform(src: string, id: string) {
         if (id.match(storyPattern)) {
           const code: string = await sourceLoaderTransform.call(mockClassLoader(id), src);
+          const s = new MagicString(src);
+          // Entirely replace with new code
+          s.overwrite(0, src.length, code);
 
           return {
-            code,
-            map: { mappings: '' },
+            code: s.toString(),
+            map: s.generateMap({ hires: true, source: id }),
           };
         }
       },
@@ -53,9 +57,13 @@ export function sourceLoaderPlugin(config: ExtendedOptions): Plugin | Plugin[] {
             code = replaceAll(code, sourceString, storySourceReplacement);
           }
 
+          const s = new MagicString(src);
+          // Entirely replace with new code
+          s.overwrite(0, src.length, code);
+
           return {
-            code,
-            map: { mappings: '' },
+            code: s.toString(),
+            map: s.generateMap(),
           };
         }
       },
@@ -68,19 +76,18 @@ export function sourceLoaderPlugin(config: ExtendedOptions): Plugin | Plugin[] {
       },
       async transform(src: string, id: string) {
         if (id.match(storyPattern)) {
-          let code;
+          const s = new MagicString(src);
           const map = storySources.get(config);
           const storySourceStatement = map?.get(id);
           // Put the previously-extracted source back in
           if (storySourceStatement) {
-            code = replaceAll(src, storySourceReplacement, storySourceStatement);
-          } else {
-            code = src;
+            const newCode = replaceAll(src, storySourceReplacement, storySourceStatement);
+            s.overwrite(0, src.length, newCode);
           }
 
           return {
-            code,
-            map: { mappings: '' },
+            code: s.toString(),
+            map: s.generateMap(),
           };
         }
       },
