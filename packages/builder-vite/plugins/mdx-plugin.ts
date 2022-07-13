@@ -49,18 +49,26 @@ export function mdxPlugin(options: Options): Plugin {
       );
       reactRefresh = reactRefreshPlugins.find((p) => p.transform);
     },
-    async transform(code, id, options) {
+    async transform(src, id, options) {
       if (id.match(/\.mdx?$/)) {
         // @ts-ignore
         const { compile } = features?.previewMdx2
           ? await import('@storybook/mdx2-csf')
           : await import('@storybook/mdx1-csf');
 
-        const mdxCode = String(await compile(code, { skipCsf: !isStorybookMdx(id) }));
+        const mdxCode = String(await compile(src, { skipCsf: !isStorybookMdx(id) }));
 
         const modifiedCode = injectRenderer(mdxCode, Boolean(features?.previewMdx2));
 
-        return reactRefresh?.transform!.call(this, modifiedCode, `${id}.jsx`, options);
+        const result = await reactRefresh?.transform!.call(this, modifiedCode, `${id}.jsx`, options);
+
+        if (!result) return modifiedCode;
+
+        if (typeof result === 'string') return result;
+
+        const { code, map: resultMap } = result;
+
+        return { code, map: !resultMap || typeof resultMap === 'string' ? resultMap : { ...resultMap, sources: [id] } };
       }
     },
   };

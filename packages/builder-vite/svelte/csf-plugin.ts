@@ -4,6 +4,7 @@ import { extractStories } from '@storybook/addon-svelte-csf/dist/cjs/parser/extr
 const parser = require.resolve('@storybook/addon-svelte-csf/dist/esm/parser/collect-stories').replace(/[/\\]/g, '/');
 import type { Options } from '@sveltejs/vite-plugin-svelte';
 import * as svelte from 'svelte/compiler';
+import MagicString from 'magic-string';
 
 export default function csfPlugin(svelteOptions?: Options) {
   return {
@@ -11,6 +12,7 @@ export default function csfPlugin(svelteOptions?: Options) {
     enforce: 'post',
     async transform(code: string, id: string) {
       if (/\.stories\.svelte$/.test(id)) {
+        const s = new MagicString(code);
         const component = getNameFromFilename(id);
         let source = readFileSync(id).toString();
         if (svelteOptions && svelteOptions.preprocess) {
@@ -23,22 +25,26 @@ export default function csfPlugin(svelteOptions?: Options) {
           .map(([id]) => `export const ${id} = __storiesMetaData.stories[${JSON.stringify(id)}];`)
           .join('\n');
 
-        const codeWithoutDefaultExport = code.replace('export default ', '// export default ');
+        s.replace('export default', '// export default');
 
         const namedExportsOrder = Object.entries<any>(stories)
           .filter(([, def]) => !def.template)
           .map(([id]) => id);
 
         const output = [
-          codeWithoutDefaultExport,
+          '',
           `import parser from '${parser}';`,
           `const __storiesMetaData = parser(${component}, ${JSON.stringify(all)});`,
           'export default __storiesMetaData.meta;',
           `export const __namedExportsOrder = ${JSON.stringify(namedExportsOrder)};`,
           storyDef,
         ].join('\n');
+
+        s.append(output);
+
         return {
-          code: output,
+          code: s.toString(),
+          map: s.generateMap({ hires: true, source: id }),
         };
       }
     },
