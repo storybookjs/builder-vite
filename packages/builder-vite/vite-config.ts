@@ -2,7 +2,6 @@ import * as path from 'path';
 import fs from 'fs';
 import { Plugin } from 'vite';
 import { TypescriptConfig } from '@storybook/core-common';
-import { loadSvelteConfig } from '@sveltejs/vite-plugin-svelte';
 import viteReact from '@vitejs/plugin-react';
 
 import { allowedEnvPrefix as envPrefix } from './envs';
@@ -120,9 +119,10 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       // Non-story svelte files
       // Starting in 1.0.0-next.42, svelte.config.js is included by default.
       // We disable that, but allow it to be overridden in svelteOptions
-      plugins.push(sveltePlugin({ ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
+      plugins.push(sveltePlugin({ configFile: false, ...svelteOptions, exclude: [...userExclude, ...storyPatterns] }));
       // Svelte stories without HMR
       const storySveltePlugin = sveltePlugin({
+        configFile: false,
         ...svelteOptions,
         exclude: userExclude,
         include: storyPatterns,
@@ -146,8 +146,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
     try {
       const csfPlugin = require('./svelte/csf-plugin').default;
-      const config = loadSvelteConfig();
-      plugins.push(csfPlugin({ ...config, ...svelteOptions }));
+      plugins.push(csfPlugin(svelteOptions));
     } catch (err) {
       // Not all projects use `.stories.svelte` for stories, and by default 6.5+ does not auto-install @storybook/addon-svelte-csf.
       // If it's any other kind of error, re-throw.
