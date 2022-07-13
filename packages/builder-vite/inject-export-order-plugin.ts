@@ -1,4 +1,5 @@
 import { parse } from 'es-module-lexer';
+import MagicString from 'magic-string';
 
 export const injectExportOrderPlugin = {
   name: 'storybook-vite-inject-export-order-plugin',
@@ -17,12 +18,12 @@ export const injectExportOrderPlugin = {
       // user has defined named exports already
       return;
     }
-
+    const s = new MagicString(code);
     const orderedExports = exports.filter((e) => e !== 'default');
-
+    s.append(`;export const __namedExportsOrder = ${JSON.stringify(orderedExports)};`);
     return {
-      code: `${code};\nexport const __namedExportsOrder = ${JSON.stringify(orderedExports)};`,
-      map: null,
+      code: s.toString(),
+      map: s.generateMap({ hires: true, source: id }),
     };
   },
 };
