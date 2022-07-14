@@ -2857,9 +2857,10 @@ __metadata:
   resolution: "@storybook/builder-vite@workspace:packages/builder-vite"
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.4
+    "@storybook/core-common": ^6.4.3
     "@storybook/mdx1-csf": ^0.0.4
     "@storybook/mdx2-csf": ^0.0.3
-    "@storybook/node-logger": ">=6.4.3"
+    "@storybook/node-logger": ^6.4.3
     "@storybook/source-loader": ^6.4.3
     "@sveltejs/vite-plugin-svelte": ^1.0.0
     "@types/express": ^4.17.13
@@ -3080,7 +3081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-common@npm:6.5.9":
+"@storybook/core-common@npm:6.5.9, @storybook/core-common@npm:^6.4.3":
   version: 6.5.9
   resolution: "@storybook/core-common@npm:6.5.9"
   dependencies:
@@ -3401,7 +3402,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/node-logger@npm:6.5.9, @storybook/node-logger@npm:>=6.4.3":
+"@storybook/node-logger@npm:6.5.9, @storybook/node-logger@npm:^6.4.3":
   version: 6.5.9
   resolution: "@storybook/node-logger@npm:6.5.9"
   dependencies:
