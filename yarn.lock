@@ -2860,6 +2860,7 @@ __metadata:
     "@storybook/mdx1-csf": ^0.0.4
     "@storybook/mdx2-csf": ^0.0.3
     "@storybook/source-loader": ^6.4.3
+    "@sveltejs/vite-plugin-svelte": ^1.0.0
     "@types/express": ^4.17.13
     "@types/node": ^17.0.23
     "@vitejs/plugin-react": ^2.0.0
@@ -17739,7 +17740,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "storybook-builder-vite-parent@workspace:."
   dependencies:
-    "@sveltejs/vite-plugin-svelte": ^1.0.0
     "@typescript-eslint/eslint-plugin": ^5.9.0
     "@typescript-eslint/parser": ^5.9.0
     bookcase-builder: ^0.0.8
