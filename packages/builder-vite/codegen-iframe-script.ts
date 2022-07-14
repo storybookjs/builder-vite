@@ -85,6 +85,7 @@ export async function generateIframeScriptCode(options: ExtendedOptions) {
             v[key] = value;
             return addParameters(v, false);
           }
+          case 'decorateStory':
           case 'applyDecorators':
           case 'renderToDOM': {
             return null; // This key is not handled directly in v6 mode.
