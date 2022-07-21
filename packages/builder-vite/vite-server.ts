@@ -14,6 +14,7 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
     ...baseConfig,
     server: {
       middlewareMode: true,
+      appType: 'custom',
       hmr: {
         port,
         server: devServer,
