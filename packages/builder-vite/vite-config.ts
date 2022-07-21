@@ -143,11 +143,12 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       throw err;
     }
 
+    const { loadSvelteConfig } = require('@sveltejs/vite-plugin-svelte');
+    const config = { ...loadSvelteConfig(), ...svelteOptions };
+
     try {
       const csfPlugin = require('./svelte/csf-plugin').default;
-      const { loadSvelteConfig } = require('@sveltejs/vite-plugin-svelte');
-      const config = loadSvelteConfig();
-      plugins.push(csfPlugin({ ...config, ...svelteOptions }));
+      plugins.push(csfPlugin(config));
     } catch (err) {
       // Not all projects use `.stories.svelte` for stories, and by default 6.5+ does not auto-install @storybook/addon-svelte-csf.
       // If it's any other kind of error, re-throw.
@@ -157,7 +158,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     }
 
     const { svelteDocgen } = await import('./plugins/svelte-docgen');
-    plugins.push(svelteDocgen(svelteOptions));
+    plugins.push(svelteDocgen(config));
   }
 
   if (framework === 'preact') {
