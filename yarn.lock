@@ -2005,6 +2005,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.5":
+  version: 0.0.5
+  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.5"
+  dependencies:
+    "@rollup/pluginutils": ^4.2.1
+    glob: ^7.2.0
+    glob-promise: ^4.2.0
+    magic-string: ^0.26.1
+    react-docgen-typescript: ^2.1.1
+  peerDependencies:
+    typescript: ">= 4.3.x"
+    vite: ">2.0.0-0"
+  checksum: e722b472413bf67e879bdd3969a43223e161b2d2b634848b7a88c89ddb507ad331959808ff7e17b6513527e797aae4aad973dda0bd3c7ab3348ebc691ab76b83
+  languageName: node
+  linkType: hard
+
 "@jridgewell/gen-mapping@npm:^0.1.0":
   version: 0.1.1
   resolution: "@jridgewell/gen-mapping@npm:0.1.1"
@@ -2856,7 +2872,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storybook/builder-vite@workspace:packages/builder-vite"
   dependencies:
-    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.4
+    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.5
     "@storybook/core-common": ^6.4.3
     "@storybook/mdx1-csf": ^0.0.4
     "@storybook/mdx2-csf": ^0.0.3
