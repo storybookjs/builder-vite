@@ -178,7 +178,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     }
 
     if (reactDocgen === 'react-docgen-typescript' && typescriptPresent) {
-      plugins.push(require('@joshwooding/vite-plugin-react-docgen-typescript').default(reactDocgenTypescriptOptions));
+      plugins.push(require('@joshwooding/vite-plugin-react-docgen-typescript')(reactDocgenTypescriptOptions));
     } else if (reactDocgen) {
       const { reactDocgen } = await import('./plugins/react-docgen');
       // Needs to run before the react plugin, so add to the front
