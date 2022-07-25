@@ -5,7 +5,6 @@ import { TypescriptConfig } from '@storybook/core-common';
 import viteReact from '@vitejs/plugin-react';
 
 import { allowedEnvPrefix as envPrefix } from './envs';
-import { mockCoreJs } from './mock-core-js';
 import { codeGeneratorPlugin } from './code-generator-plugin';
 import { injectExportOrderPlugin } from './inject-export-order-plugin';
 import { mdxPlugin } from './plugins/mdx-plugin';
@@ -58,7 +57,6 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
   const plugins = [
     codeGeneratorPlugin(options),
-    mockCoreJs(),
     sourceLoaderPlugin(options),
     mdxPlugin(options),
     noFouc(),
