@@ -1,2 +1,0 @@
-import{B as t}from"./Button.c75e0742.js";import"./jsx-runtime.a0a861f6.js";import"./iframe.76fa48fc.js";const e={title:"Example/Button",component:t},l={args:{primary:!0,label:"Button"}},n={args:{label:"Button"}},s={args:{size:"large",label:"Button"}},m={args:{size:"small",label:"Button"}},c=["Primary","Secondary","Large","Small"];export{s as Large,l as Primary,n as Secondary,m as Small,c as __namedExportsOrder,e as default};
-//# sourceMappingURL=Button.stories.f12e469b.js.map

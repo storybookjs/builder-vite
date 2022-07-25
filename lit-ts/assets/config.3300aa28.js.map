@@ -1,0 +1,1 @@
+{"version":3,"file":"config.3300aa28.js","sources":["../../../node_modules/@storybook/web-components/dist/esm/client/preview/config.js"],"sourcesContent":["export { renderToDOM } from './render';\nexport var parameters = {\n  framework: 'web-components'\n};"],"names":[],"mappings":"qGACU,GAAC,GAAa,CACtB,UAAW,gBACb"}
