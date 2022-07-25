@@ -166,23 +166,29 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
 
   if (framework === 'react') {
-    const { reactDocgen, reactDocgenTypescriptOptions } = await presets.apply('typescript', {} as TypescriptConfig);
+    const { reactDocgen: reactDocgenOption, reactDocgenTypescriptOptions } = await presets.apply(
+      'typescript',
+      {} as TypescriptConfig
+    );
 
-    let typescriptPresent;
-
-    try {
-      const pkgJson = readPackageJson();
-      typescriptPresent = pkgJson && (pkgJson?.devDependencies?.typescript || pkgJson?.dependencies?.typescript);
-    } catch (e) {
-      typescriptPresent = false;
+    if (reactDocgenOption === 'react-docgen-typescript') {
+      plugins.push(
+        require('@joshwooding/vite-plugin-react-docgen-typescript')({
+          ...reactDocgenTypescriptOptions,
+          // We *need* this set so that RDT returns default values in the same format as react-docgen
+          savePropValueAsString: true,
+        })
+      );
     }
 
-    if (reactDocgen === 'react-docgen-typescript' && typescriptPresent) {
-      plugins.push(require('@joshwooding/vite-plugin-react-docgen-typescript')(reactDocgenTypescriptOptions));
-    } else if (reactDocgen) {
+    // Add react-docgen so long as the option is not false
+    if (typeof reactDocgenOption === 'string') {
       const { reactDocgen } = await import('./plugins/react-docgen');
       // Needs to run before the react plugin, so add to the front
-      plugins.unshift(reactDocgen());
+      plugins.unshift(
+        // If react-docgen is specified, use it for everything, otherwise only use it for non-typescript files
+        reactDocgen({ include: reactDocgenOption === 'react-docgen' ? /\.(mjs|tsx?|jsx?)$/ : /\.(mjs|jsx?)$/ })
+      );
     }
   }
 
