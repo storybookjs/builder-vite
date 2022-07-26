@@ -22,7 +22,7 @@ export async function createViteServer(options: ExtendedOptions, devServer: Serv
         strict: true,
       },
     },
-    appType: 'custom',
+    appType: 'custom' as const,
     optimizeDeps: await getOptimizeDeps(baseConfig, options),
   };
 
