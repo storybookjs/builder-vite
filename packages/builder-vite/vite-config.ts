@@ -40,14 +40,13 @@ export async function commonConfig(
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
-    resolve:
-      /^vue3?$/.test(framework)
-        ? {
-            alias: {
-              vue: vuePath
-            },
-          }
-        : {},
+    resolve: /^vue3?$/.test(framework)
+      ? {
+          alias: {
+            vue: vuePath,
+          },
+        }
+      : {},
     plugins: await pluginConfig(options, _type),
   };
 }
@@ -84,9 +83,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   if (/^vue3?$/.test(framework)) {
     const isVue3 = framework === 'vue3';
     try {
-      const vuePlugin = isVue3
-        ? require('@vitejs/plugin-vue')
-        : require('@vitejs/plugin-vue2');
+      const vuePlugin = isVue3 ? require('@vitejs/plugin-vue') : require('@vitejs/plugin-vue2');
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
       plugins.push(vueDocgen(isVue3));
