@@ -85,7 +85,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       const vuePlugin = require('@vitejs/plugin-vue');
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen());
+      plugins.push(vueDocgen(true));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(
