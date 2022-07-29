@@ -4717,6 +4717,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitejs/plugin-vue@npm:^3.0.0-beta.1":
+  version: 3.0.1
+  resolution: "@vitejs/plugin-vue@npm:3.0.1"
+  peerDependencies:
+    vite: ^3.0.0
+    vue: ^3.2.25
+  checksum: 8a48888f0e97bb9f0a7c59ca55546f4fcc316609850630ae27e9702ca7030b19d3c023e8a52de8631c243bc32825bf1a88b7ddd2b0f802916d47171465959159
+  languageName: node
+  linkType: hard
+
 "@vue/compiler-core@npm:3.2.37":
   version: 3.2.37
   resolution: "@vue/compiler-core@npm:3.2.37"
@@ -9353,6 +9363,7 @@ __metadata:
     "@storybook/mdx2-csf": ^0.0.3
     "@storybook/test-runner": 0.1.0
     "@storybook/vue3": ^6.5.9
+    "@vitejs/plugin-vue": ^3.0.0-beta.1
     http-server: ^14.1.0
     jest: ^27.5.1
     npm-run-all: ^4.1.5
