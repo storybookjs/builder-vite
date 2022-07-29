@@ -81,19 +81,23 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       },
     },
   ] as Plugin[];
-  if (framework === 'vue' || framework === 'vue3') {
+  if (/^vue3?$/.test(framework)) {
+    const isVue3 = framework === 'vue3';
     try {
-      const vuePlugin = require('@vitejs/plugin-vue');
+      const vuePlugin = isVue3
+        ? require('@vitejs/plugin-vue')
+        : require('@vitejs/plugin-vue2');
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen(true));
+      plugins.push(vueDocgen(isVue3));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
-        throw new Error(
-          '@storybook/builder-vite requires @vitejs/plugin-vue to be installed ' +
-            'when using @storybook/vue or @storybook/vue3.' +
-            '  Please install it and start storybook again.'
-        );
+        const viteDep = isVue3 ? '@vitejs/plugin-vue' : '@vitejs/plugin-vue2';
+        const storybookDep = isVue3 ? '@storybook/vue3' : '@storybook/vue';
+        throw new Error(`
+          @storybook/builder-vite requires ${viteDep} to be installed when using ${storybookDep}.
+          Please install it and start storybook again.
+        `);
       }
       throw err;
     }
