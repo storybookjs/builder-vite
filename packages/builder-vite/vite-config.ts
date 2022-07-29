@@ -32,6 +32,7 @@ export async function commonConfig(
   _type: PluginConfigType
 ): Promise<UserConfig & { configFile: false; root: string }> {
   const { framework } = options;
+  const vuePath = framework === 'vue3' ? 'vue/dist/vue.esm-bundler.js' : 'vue/dist/vue.esm.js';
 
   return {
     configFile: false,
@@ -40,10 +41,10 @@ export async function commonConfig(
     envPrefix,
     define: {},
     resolve:
-      framework === 'vue3'
+      /^vue3?$/.test(framework)
         ? {
             alias: {
-              vue: 'vue/dist/vue.esm-bundler.js',
+              vue: vuePath
             },
           }
         : {},
