@@ -2,7 +2,7 @@ const { resolve } = require('path');
 const { mergeConfig } = require('vite');
 
 export default {
-  framework: '@storybook/vue3',
+  framework: '@storybook/vue',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   core: {

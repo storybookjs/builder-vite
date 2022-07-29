@@ -390,6 +390,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/parser@npm:^7.18.4":
+  version: 7.18.9
+  resolution: "@babel/parser@npm:7.18.9"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 81a966b334e3ef397e883c64026265a5ae0ad435a86f52a84f60a5ee1efc0738c1f42c55e0dc5f191cc6a83ba0c61350433eee417bf1dff160ca5f3cfde244c6
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@npm:7.18.6"
@@ -3813,6 +3822,45 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/vue@npm:^6.5.9":
+  version: 6.5.9
+  resolution: "@storybook/vue@npm:6.5.9"
+  dependencies:
+    "@storybook/addons": 6.5.9
+    "@storybook/client-logger": 6.5.9
+    "@storybook/core": 6.5.9
+    "@storybook/core-common": 6.5.9
+    "@storybook/csf": 0.0.2--canary.4566f4d.1
+    "@storybook/docs-tools": 6.5.9
+    "@storybook/store": 6.5.9
+    "@types/node": ^14.14.20 || ^16.0.0
+    "@types/webpack-env": ^1.16.0
+    core-js: ^3.8.2
+    global: ^4.4.0
+    react: 16.14.0
+    react-dom: 16.14.0
+    read-pkg-up: ^7.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    ts-loader: ^8.0.14
+    vue-docgen-api: ^4.44.15
+    vue-docgen-loader: ^1.5.0
+    webpack: ">=4.0.0 <6.0.0"
+  peerDependencies:
+    "@babel/core": "*"
+    babel-loader: ^7.0.0 || ^8.0.0
+    css-loader: "*"
+    vue: ^2.6.8
+    vue-loader: ^15.7.0
+    vue-template-compiler: ^2.6.8
+  bin:
+    build-storybook: bin/build.js
+    start-storybook: bin/index.js
+    storybook-server: bin/index.js
+  checksum: 3e130bedc37f0d34cb83cbe30fd8a3d2d941a6bac25b54f63d7123009f6846d45fd92137570b7283f40fabc58d885035926c52016c684cf8677c62bb8f0eb55d
+  languageName: node
+  linkType: hard
+
 "@storybook/web-components@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/web-components@npm:6.5.9"
@@ -4659,13 +4707,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^3.0.0-beta.1":
-  version: 3.0.0-beta.1
-  resolution: "@vitejs/plugin-vue@npm:3.0.0-beta.1"
+"@vitejs/plugin-vue2@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@vitejs/plugin-vue2@npm:1.1.2"
   peerDependencies:
-    vite: ^3.0.0-alpha
-    vue: ^3.2.25
-  checksum: 82b02f91ad5b0765bffc7af2d315d713bea13a30bd1935ba2ae6bf80bf9051975b4b1c36dd002c725f737a9855de647adf047bc7fada69a86358f75c70a9756e
+    vite: ">=2.5.10"
+    vue: ^2.7.0-0
+  checksum: a0b4ca94489f7dbb5d8f44f9fed8c6ad094456ec014096157054ed2b2432f56462400882a1639ca695bad2010d341b5b1a43f8b9f54c7a5eb8a399c1174c52ba
   languageName: node
   linkType: hard
 
@@ -4688,6 +4736,17 @@ __metadata:
     "@vue/compiler-core": 3.2.37
     "@vue/shared": 3.2.37
   checksum: 6cfa9d2ee123339549ba005fa61b2cd5ccf079ba8d8d797f0075e7054c2766744029cb0997341bcb6a51e129ae43489263aa7d8500b262ef7b81c63c2b0c4576
+  languageName: node
+  linkType: hard
+
+"@vue/compiler-sfc@npm:2.7.8":
+  version: 2.7.8
+  resolution: "@vue/compiler-sfc@npm:2.7.8"
+  dependencies:
+    "@babel/parser": ^7.18.4
+    postcss: ^8.4.14
+    source-map: ^0.6.1
+  checksum: da0b4b0866224fe2aee376a88c25914da4e73ba9e11e7aa2ed240b99897735b4a988e951dcae9c8f0843216c5a97050bf16e1bb04bf65541444a8bdfedc35b38
   languageName: node
   linkType: hard
 
@@ -7601,7 +7660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2":
+"csstype@npm:^3.0.2, csstype@npm:^3.1.0":
   version: 3.1.0
   resolution: "csstype@npm:3.1.0"
   checksum: 644e986cefab86525f0b674a06889cfdbb1f117e5b7d1ce0fc55b0423ecc58807a1ea42ecc75c4f18999d14fc42d1d255f84662a45003a52bb5840e977eb2ffd
@@ -9263,9 +9322,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-vue@workspace:examples/vue":
+"example-vue2@workspace:examples/vue2":
   version: 0.0.0-use.local
-  resolution: "example-vue@workspace:examples/vue"
+  resolution: "example-vue2@workspace:examples/vue2"
+  dependencies:
+    "@storybook/addon-a11y": ^6.5.9
+    "@storybook/addon-essentials": ^6.5.9
+    "@storybook/builder-vite": "workspace:*"
+    "@storybook/mdx2-csf": ^0.0.3
+    "@storybook/test-runner": 0.1.0
+    "@storybook/vue": ^6.5.9
+    "@vitejs/plugin-vue2": ^1.1.2
+    http-server: ^14.1.0
+    jest: ^27.5.1
+    npm-run-all: ^4.1.5
+    vite: ^3.0.0-beta.9
+    vue: ^2.7
+    vue-loader: ^15.9.8
+    wait-on: ^6.0.1
+  languageName: unknown
+  linkType: soft
+
+"example-vue3@workspace:examples/vue3":
+  version: 0.0.0-use.local
+  resolution: "example-vue3@workspace:examples/vue3"
   dependencies:
     "@storybook/addon-a11y": ^6.5.9
     "@storybook/addon-essentials": ^6.5.9
@@ -9273,7 +9353,6 @@ __metadata:
     "@storybook/mdx2-csf": ^0.0.3
     "@storybook/test-runner": 0.1.0
     "@storybook/vue3": ^6.5.9
-    "@vitejs/plugin-vue": ^3.0.0-beta.1
     http-server: ^14.1.0
     jest: ^27.5.1
     npm-run-all: ^4.1.5
@@ -19640,6 +19719,16 @@ __metadata:
     "@vue/compiler-sfc":
       optional: true
   checksum: 9142b561fbdbb4c1f4a0a418be6d373efda9aaabd8a0118e1c29fc8c2b0f663102e66198e89f674f78f9a2f7c124ac964fd33042bcfe006f2cb4531a5fe122ef
+  languageName: node
+  linkType: hard
+
+"vue@npm:^2.7":
+  version: 2.7.8
+  resolution: "vue@npm:2.7.8"
+  dependencies:
+    "@vue/compiler-sfc": 2.7.8
+    csstype: ^3.1.0
+  checksum: 45fc85a13fc027798ad859fe4a5509b54217ae2f129240fc349a799bd4dbc6848ef8fa9968ab7ef7afcb954735882dbfdeb746673aa3f051e4d7ae555c213a1b
   languageName: node
   linkType: hard
 
