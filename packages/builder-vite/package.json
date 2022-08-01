@@ -14,7 +14,6 @@
   "homepage": "https://github.com/storybookjs/builder-vite/#readme",
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.5",
-    "@rollup/pluginutils": "^4.2.1",
     "@storybook/core-common": "^6.4.3",
     "@storybook/mdx1-csf": "^0.0.4",
     "@storybook/node-logger": "^6.4.3",
