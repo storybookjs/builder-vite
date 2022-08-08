@@ -1,5 +1,4 @@
 import path from 'path';
-import { createFilter } from '@rollup/pluginutils';
 import {
   parse,
   handlers as docgenHandlers,
@@ -9,6 +8,7 @@ import {
 import type { DocumentationObject } from 'react-docgen/lib/Documentation';
 import MagicString from 'magic-string';
 import type { Plugin } from 'vite';
+import { createFilter } from 'vite';
 import actualNameHandler from './docgen-handlers/actualNameHandler';
 
 type DocObj = DocumentationObject & { actualName: string };
