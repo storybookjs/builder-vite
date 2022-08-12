@@ -21,6 +21,7 @@
     "@vitejs/plugin-react": "^2.0.0",
     "ast-types": "^0.14.2",
     "es-module-lexer": "^0.9.3",
+    "find-up": "^6.3.0",
     "glob": "^7.2.0",
     "glob-promise": "^4.2.0",
     "magic-string": "^0.26.1",

@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { normalizePath, resolveConfig, UserConfig } from 'vite';
+import { normalizePath, resolveConfig } from 'vite';
+import type { InlineConfig as ViteInlineConfig } from 'vite';
 import { listStories } from './list-stories';
 
 import type { ExtendedOptions } from './types';
@@ -101,13 +102,11 @@ const INCLUDE_CANDIDATES = [
 const asyncFilter = async (arr: string[], predicate: (val: string) => Promise<boolean>) =>
   Promise.all(arr.map(predicate)).then((results) => arr.filter((_v, index) => results[index]));
 
-export async function getOptimizeDeps(
-  config: UserConfig & { configFile: false; root: string },
-  options: ExtendedOptions
-) {
-  const { root } = config;
+export async function getOptimizeDeps(config: ViteInlineConfig, options: ExtendedOptions) {
+  const { root = process.cwd() } = config;
   const absoluteStories = await listStories(options);
   const stories = absoluteStories.map((storyPath) => normalizePath(path.relative(root, storyPath)));
+  // TODO: check if resolveConfig takes a lot of time, possible optimizations here
   const resolvedConfig = await resolveConfig(config, 'serve', 'development');
 
   // This function converts ids which might include ` > ` to a real path, if it exists on disk.

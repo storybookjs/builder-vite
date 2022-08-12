@@ -1,17 +1,16 @@
 import * as path from 'path';
 import fs from 'fs';
-import { Plugin } from 'vite';
+import { PluginOption } from 'vite';
 import { TypescriptConfig } from '@storybook/core-common';
 import viteReact from '@vitejs/plugin-react';
 
-import { allowedEnvPrefix as envPrefix } from './envs';
 import { codeGeneratorPlugin } from './code-generator-plugin';
 import { injectExportOrderPlugin } from './inject-export-order-plugin';
 import { mdxPlugin } from './plugins/mdx-plugin';
 import { noFouc } from './plugins/no-fouc';
 import { sourceLoaderPlugin } from './source-loader-plugin';
 
-import type { UserConfig } from 'vite';
+import type { InlineConfig as ViteInlineConfig } from 'vite';
 import type { ExtendedOptions } from './types';
 
 export type PluginConfigType = 'build' | 'development';
@@ -27,31 +26,18 @@ export function readPackageJson(): Record<string, any> | false {
 }
 
 // Vite config that is common to development and production mode
-export async function commonConfig(
-  options: ExtendedOptions,
-  _type: PluginConfigType
-): Promise<UserConfig & { configFile: false; root: string }> {
-  const { framework } = options;
+export async function commonConfig(options: ExtendedOptions, _type: PluginConfigType): Promise<ViteInlineConfig> {
+  // FIXME: workaround for https://github.com/microsoft/TypeScript/issues/43329
+  const { findUp } = await eval("import('find-up')");
+  const viteConfigPath = await findUp(viteConfigFileNames);
 
   return {
-    configFile: false,
+    configFile: viteConfigPath,
     root: path.resolve(options.configDir, '..'),
-    cacheDir: 'node_modules/.vite-storybook',
-    envPrefix,
-    define: {},
-    resolve:
-      framework === 'vue3'
-        ? {
-            alias: {
-              vue: 'vue/dist/vue.esm-bundler.js',
-            },
-          }
-        : {},
-    plugins: await pluginConfig(options, _type),
   };
 }
 
-export async function pluginConfig(options: ExtendedOptions, _type: PluginConfigType) {
+export async function pluginConfig(options: ExtendedOptions) {
   const { framework, presets } = options;
   const svelteOptions: Record<string, any> = await presets.apply('svelteOptions', {}, options);
 
@@ -61,11 +47,6 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     mdxPlugin(options),
     noFouc(),
     injectExportOrderPlugin,
-    // We need the react plugin here to support MDX.
-    viteReact({
-      // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-      exclude: [/\.stories\.([tj])sx?$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
-    }),
     {
       name: 'vite-plugin-storybook-allow',
       enforce: 'post',
@@ -79,7 +60,23 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
         }
       },
     },
-  ] as Plugin[];
+  ] as PluginOption[];
+
+  // We need the react plugin here to support MDX.
+  const reactPlugins = viteReact({
+    // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
+    exclude: [/\.stories\.([tj])sx?$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
+  });
+
+  // Add `:storybook` to the names of each react plugin so they're not filtered out by our storybook:plugin-filter plugin
+  reactPlugins.forEach((plugin) => {
+    if (plugin) {
+      // @ts-expect-error we know that the react plugin creates an array of three plugins
+      plugin.name = `${plugin.name}:storybook`;
+    }
+  });
+  plugins.push(reactPlugins);
+
   if (framework === 'vue' || framework === 'vue3') {
     try {
       const vuePlugin = require('@vitejs/plugin-vue');
@@ -197,3 +194,12 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
   return plugins;
 }
+
+const viteConfigFileNames = [
+  'vite.config.ts',
+  'vite.config.mts',
+  'vite.config.cts',
+  'vite.config.js',
+  'vite.config.mjs',
+  'vite.config.cjs',
+];

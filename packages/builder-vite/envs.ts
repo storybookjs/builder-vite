@@ -15,9 +15,6 @@ const allowedEnvVariables = [
   'SSR',
 ];
 
-// Env variables starts with env prefix will be exposed to your client source code via `import.meta.env`
-export const allowedEnvPrefix = ['VITE_', 'STORYBOOK_'];
-
 /**
  * Customized version of stringifyProcessEnvs from @storybook/core-common which
  * uses import.meta.env instead of process.env and checks for allowed variables.
