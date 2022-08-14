@@ -8,7 +8,7 @@ import { build as viteBuild } from './build';
 
 import type { Builder, StorybookConfig, Options } from '@storybook/core-common';
 import type { RequestHandler, Request, Response } from 'express';
-import type { InlineConfig, UserConfig, ViteDevServer } from 'vite';
+import type { ResolvedConfig, UserConfig, ViteDevServer } from 'vite';
 import type { ExtendedOptions } from './types';
 
 // Storybook's Stats are optional Webpack related property
@@ -16,7 +16,7 @@ export type ViteStats = null;
 
 export type ViteBuilder = Builder<UserConfig, ViteStats>;
 
-export type ViteFinal = (config: InlineConfig, options: Options) => InlineConfig | Promise<InlineConfig>;
+export type ViteFinal = (config: ResolvedConfig, options: Options) => ResolvedConfig | Promise<ResolvedConfig>;
 
 export type StorybookViteConfig = StorybookConfig & {
   viteFinal: ViteFinal;
