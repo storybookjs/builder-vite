@@ -18,7 +18,6 @@ export default {
     return mergeConfig(config, {
       resolve: {
         alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }],
-        dedupe: ['@storybook/client-api'],
       },
     });
   },
