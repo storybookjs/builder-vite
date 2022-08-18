@@ -4,7 +4,7 @@ const { mergeConfig } = require('vite');
 export default {
   framework: '@storybook/vue3',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
   core: {
     builder: '@storybook/builder-vite',
     // we don't want to muck up the data when we're working on the builder
@@ -16,7 +16,10 @@ export default {
   async viteFinal(config, { configType }) {
     // Demonstrates use of mergeConfig and resolve.alias as an array
     return mergeConfig(config, {
-      resolve: { alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }] },
+      resolve: {
+        alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }],
+        dedupe: ['@storybook/client-api'],
+      },
     });
   },
 };
