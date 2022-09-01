@@ -43,8 +43,8 @@ function insertHeadStyles(html: string) {
     :not(.sb-show-errordisplay) > .sb-errordisplay {
       display: none;
     }
-    #root[hidden],
-    #docs-root[hidden] {
+    #storybook-root[hidden],
+    #storybook-docs[hidden] {
       display: none !important;
     }
   </style>
