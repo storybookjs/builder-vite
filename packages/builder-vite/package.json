@@ -33,6 +33,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.0",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.23",
+    "vite": "^3.1.0-beta.1",
     "vue-docgen-api": "^4.40.0"
   },
   "peerDependencies": {
