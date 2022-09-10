@@ -60,7 +60,11 @@ export function mdxPlugin(options: Options): Plugin {
 
         const modifiedCode = injectRenderer(mdxCode, Boolean(features?.previewMdx2));
 
-        const result = await reactRefresh?.transform!.call(this, modifiedCode, `${id}.jsx`, options);
+        // Hooks in recent rollup versions can be functions or objects, and though react hasn't changed, the typescript defs have
+        const rTransform = reactRefresh?.transform;
+        const transform = rTransform && 'handler' in rTransform ? rTransform.handler : rTransform;
+
+        const result = await transform!.call(this, modifiedCode, `${id}.jsx`, options);
 
         if (!result) return modifiedCode;
 
