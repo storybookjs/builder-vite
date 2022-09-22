@@ -67,10 +67,18 @@
   },
   "peerDependencies": {
     "@storybook/mdx2-csf": "^0.0.3",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0",
+    "@vitejs/plugin-vue": "^3.0.0",
     "vite": ">= 3.0.0"
   },
   "peerDependenciesMeta": {
     "@storybook/mdx2-csf": {
+      "optional": true
+    },
+    "@sveltejs/vite-plugin-svelte": {
+      "optional": true
+    },
+    "@vitejs/plugin-vue": {
       "optional": true
     }
   },
