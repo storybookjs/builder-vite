@@ -133,7 +133,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
     try {
       const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen(3);
+      plugins.push(vueDocgen(3));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(
