@@ -55,6 +55,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: builder-vite
+          path: |
+            ./packages/builder-vite/dist
       - name: Lint
         run: yarn lint-ci
         working-directory: ${{env.wd}}
@@ -85,6 +87,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: builder-vite
+          path: |
+            ./packages/builder-vite/dist
       - name: Build example
         run: yarn build-storybook
         working-directory: ${{env.wd}}
@@ -121,6 +125,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: builder-vite
+          path: |
+            ./packages/builder-vite/dist
       - name: Build example
         run: yarn build-storybook
         working-directory: ${{env.wd}}
