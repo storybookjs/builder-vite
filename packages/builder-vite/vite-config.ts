@@ -40,14 +40,13 @@ export async function commonConfig(
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
-    resolve:
-      /^vue3?$/.test(framework)
-        ? {
-            alias: {
-              vue: vuePath
-            },
-          }
-        : {},
+    resolve: /^vue3?$/.test(framework)
+      ? {
+          alias: {
+            vue: vuePath,
+          },
+        }
+      : {},
     plugins: await pluginConfig(options, _type),
   };
 }
@@ -81,21 +80,33 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       },
     },
   ] as Plugin[];
-  if (/^vue3?$/.test(framework)) {
-    const isVue3 = framework === 'vue3';
+  if (framework === 'vue') {
     try {
-      const vuePlugin = isVue3
-        ? require('@vitejs/plugin-vue')
-        : require('@vitejs/plugin-vue2');
+      const vuePlugin = require('@vitejs/plugin-vue2');
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen(isVue3));
+      plugins.push(vueDocgen(2));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
-        const viteDep = isVue3 ? '@vitejs/plugin-vue' : '@vitejs/plugin-vue2';
-        const storybookDep = isVue3 ? '@storybook/vue3' : '@storybook/vue';
         throw new Error(`
-          @storybook/builder-vite requires ${viteDep} to be installed when using ${storybookDep}.
+          @storybook/builder-vite requires @vitejs/plugin-vue2 to be installed when using @storybook/vue.
+          Please install it and start storybook again.
+        `);
+      }
+      throw err;
+    }
+  }
+
+  if (framework === 'vue3') {
+    try {
+      const vuePlugin = require('@vitejs/plugin-vue');
+      plugins.push(vuePlugin());
+      const { vueDocgen } = await import('./plugins/vue-docgen');
+      plugins.push(vueDocgen(3));
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+        throw new Error(`
+          @storybook/builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue3.
           Please install it and start storybook again.
         `);
       }
