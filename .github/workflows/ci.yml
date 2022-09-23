@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  buildAndLint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/builder-vite
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build builder
+        run: yarn build
+      - name: Lint
+        run: yarn lint-ci
