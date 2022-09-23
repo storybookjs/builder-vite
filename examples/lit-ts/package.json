@@ -17,11 +17,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-docs": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-vite": "workspace:*",
+    "@storybook/builder-vite": "portal:../../packages/builder-vite",
     "@storybook/test-runner": "0.1.0",
     "@storybook/web-components": "^6.5.9",
     "http-server": "^14.1.0",
