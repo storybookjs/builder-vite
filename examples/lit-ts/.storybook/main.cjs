@@ -1,9 +1,7 @@
-import { withOverview } from 'bookcase-builder';
-
 const { mergeConfig } = require('vite');
 const postcssLit = require('rollup-plugin-postcss-lit');
 
-export default withOverview(__dirname)({
+module.exports = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   core: {
@@ -22,4 +20,4 @@ export default withOverview(__dirname)({
       plugins: [postcssLit({ include: ['**/*.scss', '**/*.scss\?*'] })],
     });
   },
-});
+};
