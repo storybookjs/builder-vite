@@ -55,7 +55,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.12.10, @babel/core@npm:^7.18.13, @babel/core@npm:^7.7.5":
+"@babel/core@npm:^7.12.10, @babel/core@npm:^7.18.13, @babel/core@npm:^7.7.5, @babel/core@npm:^7.9.6":
   version: 7.19.1
   resolution: "@babel/core@npm:7.19.1"
   dependencies:
@@ -1158,7 +1158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx-development@npm:^7.18.6":
+"@babel/plugin-transform-react-jsx-development@npm:^7.16.7, @babel/plugin-transform-react-jsx-development@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/plugin-transform-react-jsx-development@npm:7.18.6"
   dependencies:
@@ -1191,7 +1191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx@npm:^7.18.10, @babel/plugin-transform-react-jsx@npm:^7.18.6":
+"@babel/plugin-transform-react-jsx@npm:^7.14.9, @babel/plugin-transform-react-jsx@npm:^7.18.10, @babel/plugin-transform-react-jsx@npm:^7.18.6":
   version: 7.19.0
   resolution: "@babel/plugin-transform-react-jsx@npm:7.19.0"
   dependencies:
@@ -1804,7 +1804,65 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.2.1":
+"@preact/preset-vite@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@preact/preset-vite@npm:2.4.0"
+  dependencies:
+    "@babel/plugin-transform-react-jsx": ^7.14.9
+    "@babel/plugin-transform-react-jsx-development": ^7.16.7
+    "@prefresh/vite": ^2.2.8
+    "@rollup/pluginutils": ^4.1.1
+    babel-plugin-transform-hook-names: ^1.0.2
+    debug: ^4.3.1
+    kolorist: ^1.2.10
+    resolve: ^1.20.0
+  peerDependencies:
+    "@babel/core": 7.x
+    vite: 2.x || 3.x
+  checksum: 8dbff4c53395bc1c4c91308a361273c3ae8446d21a7fcedf96d610c93d3020b3be5b0e0ca2c0f63473fc251bb992439fd664853b929af4675215383baa2cba73
+  languageName: node
+  linkType: hard
+
+"@prefresh/babel-plugin@npm:0.4.3":
+  version: 0.4.3
+  resolution: "@prefresh/babel-plugin@npm:0.4.3"
+  checksum: 0bd68589b1491da7b5c4920a9958b74fbdf75f54c12b5713e1c708e4a21df7f47f9d265d8ee291bdc03c3c4fcd12bd97b34835b565292c0a69a5858ff37e556c
+  languageName: node
+  linkType: hard
+
+"@prefresh/core@npm:^1.3.3":
+  version: 1.4.1
+  resolution: "@prefresh/core@npm:1.4.1"
+  peerDependencies:
+    preact: ^10.0.0
+  checksum: afac93e1225d871d88c47717f8b6a328abc9760b212836986fd8bb3017bb6737bb397e016b31c4f542722d0b9c05e1e43d1b5710a61c8efb5208d717d2bb1bba
+  languageName: node
+  linkType: hard
+
+"@prefresh/utils@npm:^1.1.2":
+  version: 1.1.3
+  resolution: "@prefresh/utils@npm:1.1.3"
+  checksum: a95b816d08a68f499489f1e0098effcda99ccba06c80986cb0dfbcda4fc9c8f8e3238603ead4ee35bb9fb7985de66b1a785d12c64fbc61600e0a8bd388fc2de0
+  languageName: node
+  linkType: hard
+
+"@prefresh/vite@npm:^2.2.8":
+  version: 2.2.8
+  resolution: "@prefresh/vite@npm:2.2.8"
+  dependencies:
+    "@babel/core": ^7.9.6
+    "@prefresh/babel-plugin": 0.4.3
+    "@prefresh/core": ^1.3.3
+    "@prefresh/utils": ^1.1.2
+    "@rollup/pluginutils": ^4.1.0
+  peerDependencies:
+    preact: ^10.4.0
+    vite: ">=2.0.0-beta.3"
+  checksum: bfe207a2f2b517b067cb2b937fcf1d6b1435cb9d07e1786618b34497e6b3b9ecf28ea2ce9777f8a6beff32afbda6ca61ed33ec94187b74081aea96b476f88208
+  languageName: node
+  linkType: hard
+
+"@rollup/pluginutils@npm:^4.1.0, @rollup/pluginutils@npm:^4.1.1, @rollup/pluginutils@npm:^4.2.1":
   version: 4.2.1
   resolution: "@rollup/pluginutils@npm:4.2.1"
   dependencies:
@@ -1885,6 +1943,7 @@ __metadata:
   resolution: "@storybook/builder-vite@workspace:."
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.5
+    "@preact/preset-vite": ^2.4.0
     "@storybook/addon-svelte-csf": ^2.0.7
     "@storybook/core-common": ^6.4.3
     "@storybook/mdx1-csf": ^0.0.4
@@ -1906,6 +1965,7 @@ __metadata:
     glob: ^7.2.0
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
+    preact: ^10.11.0
     prettier: ^2.7.1
     react-docgen: ^6.0.0-alpha.0
     slash: ^3.0.0
@@ -3292,6 +3352,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-transform-hook-names@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "babel-plugin-transform-hook-names@npm:1.0.2"
+  peerDependencies:
+    "@babel/core": ^7.12.10
+  checksum: d48d513569261fd6c8b2da29ce899ac7bd59dcc32593044b1c79953aed51d4f68a7dbbf5c1dfd35c65192d82df82d13009581c7e0499799fc687d87b6211b148
+  languageName: node
+  linkType: hard
+
 "babel-walk@npm:3.0.0-canary-5":
   version: 3.0.0-canary-5
   resolution: "babel-walk@npm:3.0.0-canary-5"
@@ -4255,7 +4324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -6981,6 +7050,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kolorist@npm:^1.2.10":
+  version: 1.6.0
+  resolution: "kolorist@npm:1.6.0"
+  checksum: 4d898b782ceaaac3a51d9820a13563fcd0ed516d5493374a0e04ceda93ed4d74f9e267e8da5fb4453e508099b9f6b22e38ac1bff92fdc227081f460c003401c0
+  languageName: node
+  linkType: hard
+
 "lazy-universal-dotenv@npm:^3.0.1":
   version: 3.0.1
   resolution: "lazy-universal-dotenv@npm:3.0.1"
@@ -8705,6 +8781,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact@npm:^10.11.0":
+  version: 10.11.0
+  resolution: "preact@npm:10.11.0"
+  checksum: 1e3f8e6fe88f26a2896826f69121b70eb69c63a46bfc1160da8672b37618fcfd294128979ed27e37499604df90c1505c30545f75683f23d8f7e6ac0693d2ff14
+  languageName: node
+  linkType: hard
+
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -9421,7 +9504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.14.2, resolve@npm:^1.15.1, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.22.1, resolve@npm:^1.3.2":
+"resolve@npm:^1.14.2, resolve@npm:^1.15.1, resolve@npm:^1.17.0, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.3.2":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
   dependencies:
@@ -9434,7 +9517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.15.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.15.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>":
   version: 1.22.1
   resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:

@@ -17,9 +17,9 @@
     "preact": "^10.5.15"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.3.0",
+    "@preact/preset-vite": "^2.4.0",
     "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/builder-vite": "workspace:*",
+    "@storybook/builder-vite": "portal:../../packages/builder-vite",
     "@storybook/preact": "^6.5.9",
     "@storybook/test-runner": "0.1.0",
     "http-server": "^14.1.0",
