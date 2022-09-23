@@ -69,6 +69,7 @@
     "@storybook/mdx2-csf": "^0.0.3",
     "@sveltejs/vite-plugin-svelte": "^1.0.0",
     "@vitejs/plugin-vue": "^3.0.0",
+    "vue-docgen-api": "^4.40.0",
     "vite": ">= 3.0.0"
   },
   "peerDependenciesMeta": {
@@ -76,6 +77,9 @@
       "optional": true
     },
     "@sveltejs/vite-plugin-svelte": {
+      "optional": true
+    },
+    "vue-docgen-api": {
       "optional": true
     },
     "@vitejs/plugin-vue": {
