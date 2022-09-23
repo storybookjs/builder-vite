@@ -1814,6 +1814,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-svelte-csf@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@storybook/addon-svelte-csf@npm:2.0.7"
+  dependencies:
+    ts-dedent: ^2.0.0
+  peerDependencies:
+    "@storybook/svelte": ">=6.4.20"
+    svelte: ^3.46.6
+    svelte-loader: ^3.1.2
+  peerDependenciesMeta:
+    svelte-loader:
+      optional: true
+  checksum: 207a2efd70ae340affd1b18c26c37c1a5c43fbce207d2dc5f5b2899cdc4160acd209d5ba2573de192f7dbdabfaa4b40839bba2746f6866871c998b838c6c7ed0
+  languageName: node
+  linkType: hard
+
 "@storybook/addons@npm:6.5.12":
   version: 6.5.12
   resolution: "@storybook/addons@npm:6.5.12"
@@ -1869,6 +1885,7 @@ __metadata:
   resolution: "@storybook/builder-vite@workspace:."
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.5
+    "@storybook/addon-svelte-csf": ^2.0.7
     "@storybook/core-common": ^6.4.3
     "@storybook/mdx1-csf": ^0.0.4
     "@storybook/mdx2-csf": ^0.0.3

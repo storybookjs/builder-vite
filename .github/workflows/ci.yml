@@ -183,3 +183,44 @@ jobs:
         env:
           # Workaround for https://github.com/facebook/jest/issues/8536 
           TEMP: ${{ runner.temp }}
+
+  exampleSvelte:
+    needs: build
+    env:
+      wd: ./examples/svelte
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+          cache-dependency-path: ${{env.wd}}/yarn.lock
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ${{env.wd}}
+      - name: Install builder-vite dependencies
+        run: yarn install
+        working-directory: packages/builder-vite
+      - name: Restore builder-vite dist
+        uses: actions/download-artifact@v3
+        with:
+          name: builder-vite
+          path: |
+            ./packages/builder-vite/dist
+      - name: Build example
+        run: yarn build-storybook
+        working-directory: ${{env.wd}}
+      - name: Test built example
+        run: yarn test-ci
+        working-directory: ${{env.wd}}
+        env:
+          # Workaround for https://github.com/facebook/jest/issues/8536 
+          TEMP: ${{ runner.temp }}
