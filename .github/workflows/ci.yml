@@ -72,7 +72,7 @@ jobs:
       matrix:
         node-version: [16.x]
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        framework: [lit-ts, preact, react, react-18, react-ts, svelte]
+        framework: [lit-ts, preact, react, react-18, react-ts, svelte, vue]
 
     steps:
       - uses: actions/checkout@v2

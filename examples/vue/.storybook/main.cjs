@@ -4,7 +4,7 @@ const { mergeConfig } = require('vite');
 module.exports = {
   framework: '@storybook/vue3',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
   core: {
     builder: '@storybook/builder-vite',
     // we don't want to muck up the data when we're working on the builder

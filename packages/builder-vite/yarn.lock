@@ -1957,6 +1957,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.38.0
     "@typescript-eslint/parser": ^5.38.0
     "@vitejs/plugin-react": ^2.0.0
+    "@vitejs/plugin-vue": ^3.1.0
     ast-types: ^0.14.2
     es-module-lexer: ^0.9.3
     eslint: ^8.23.1
@@ -2705,6 +2706,16 @@ __metadata:
   peerDependencies:
     vite: ^3.0.0
   checksum: cd13ad549f33e579e0e1d14f5b8a4ad60d5fbbc8cd579e4381d52bb426700118e876644a619a19c5cec4efeb4f8a0ff50b6c9456d5c24836071190b46d781fef
+  languageName: node
+  linkType: hard
+
+"@vitejs/plugin-vue@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@vitejs/plugin-vue@npm:3.1.0"
+  peerDependencies:
+    vite: ^3.0.0
+    vue: ^3.2.25
+  checksum: 351436306090dee709314f71bb52f0b502c284c8f556d4aecbbdfea840b1d35a8af32e78e962df28d3a6034a75c78886448e3371cee320f711dab833f6ada274
   languageName: node
   linkType: hard
 
