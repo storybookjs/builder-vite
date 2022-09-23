@@ -6,12 +6,15 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: false
+
 jobs:
-  buildAndLint:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./packages/builder-vite
+    env:
+      wd: ./packages/builder-vite
     steps:
       - uses: actions/checkout@v2
       - name: Use Node
@@ -19,9 +22,111 @@ jobs:
         with:
           node-version: 16.x
           cache: 'yarn'
+          cache-dependency-path: ${{env.wd}}/yarn.lock
       - name: Install dependencies
         run: yarn install
+        working-directory: ${{env.wd}}
       - name: Build builder
         run: yarn build
+        working-directory: ${{env.wd}}
+      - name: Archive built files
+        uses: actions/upload-artifact@v3
+        with:
+          name: builder-vite
+          path: |
+            ./packages/builder-vite/dist
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      wd: ./packages/builder-vite
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+          cache-dependency-path: ${{env.wd}}/yarn.lock
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ${{env.wd}}
+      - name: Restore builder-vite dist
+        uses: actions/download-artifact@v3
+        with:
+          name: builder-vite
       - name: Lint
         run: yarn lint-ci
+        working-directory: ${{env.wd}}
+  
+  exampleReact:
+    needs: build
+    env:
+      wd: ./examples/react
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+          cache-dependency-path: ${{env.wd}}/yarn.lock
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ${{env.wd}}
+      - name: Restore builder-vite dist
+        uses: actions/download-artifact@v3
+        with:
+          name: builder-vite
+      - name: Build example
+        run: yarn build-storybook
+        working-directory: ${{env.wd}}
+      - name: Test built example
+        run: yarn test-ci
+        working-directory: ${{env.wd}}
+        env:
+          # Workaround for https://github.com/facebook/jest/issues/8536 
+          TEMP: ${{ runner.temp }}
+
+  exampleReactTS:
+    needs: build
+    env:
+      wd: ./examples/react-ts
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+          cache-dependency-path: ${{env.wd}}/yarn.lock
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ${{env.wd}}
+      - name: Restore builder-vite dist
+        uses: actions/download-artifact@v3
+        with:
+          name: builder-vite
+      - name: Build example
+        run: yarn build-storybook
+        working-directory: ${{env.wd}}
+      - name: Test built example
+        run: yarn test-ci
+        working-directory: ${{env.wd}}
+        env:
+          # Workaround for https://github.com/facebook/jest/issues/8536 
+          TEMP: ${{ runner.temp }}
