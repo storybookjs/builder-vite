@@ -8,7 +8,7 @@
     "storybook": "start-storybook --port 6012",
     "build-storybook": "build-storybook",
     "preview-storybook": "http-server storybook-static --port 6012 --silent",
-    "test": "wait-on tcp:6009 && test-storybook --url 'http://localhost:6009'",
+    "test": "wait-on tcp:6012 && test-storybook --url 'http://localhost:6012'",
     "test-ci": "run-p --race test preview-storybook"
   },
   "author": "",
