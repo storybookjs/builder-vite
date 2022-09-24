@@ -23,6 +23,7 @@ const INCLUDE_CANDIDATES = [
   '@storybook/react > acorn-jsx',
   '@storybook/react',
   '@storybook/svelte',
+  '@storybook/vue',
   '@storybook/vue3',
   'acorn-jsx',
   'acorn-walk',
