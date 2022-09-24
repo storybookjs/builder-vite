@@ -30,12 +30,13 @@ Primary.args = {
   primary: true,
   label: 'Button',
 };
-Primary.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  const button = canvas.getByRole('button');
-  await userEvent.click(button);
-  await expect(args.onClick).toHaveBeenCalled();
-};
+// TODO: Interaction tests do not work in vue2 yet.  See https://github.com/storybookjs/storybook/pull/19207
+// Primary.play = async ({ args, canvasElement }) => {
+//   const canvas = within(canvasElement);
+//   const button = canvas.getByRole('button');
+//   await userEvent.click(button);
+//   await expect(args.onClick).toHaveBeenCalled();
+// };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
