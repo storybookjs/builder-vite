@@ -3,7 +3,7 @@ import sourceLoaderTransform from '@storybook/source-loader';
 import type { ExtendedOptions } from './types';
 import MagicString from 'magic-string';
 
-const storyPattern = /\.stories\.[jt]sx?$/;
+const storyPattern = /\.stories\.(([jt]sx?)|(vue))$/;
 const storySourcePattern = /var __STORY__ = "(.*)"/;
 const storySourceReplacement = '--STORY_SOURCE_REPLACEMENT--';
 

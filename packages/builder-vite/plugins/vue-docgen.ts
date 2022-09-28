@@ -7,7 +7,7 @@ export function vueDocgen(vueVersion: 2 | 3): Plugin {
     name: 'vue-docgen',
 
     async transform(src: string, id: string) {
-      if (/\.(vue)$/.test(id)) {
+      if (/\.(vue)$/.test(id) && !/\.(stories)\.(vue)$/.test(id)) {
         const metaData = await parse(id);
         const metaSource = JSON.stringify(metaData);
         const s = new MagicString(src);

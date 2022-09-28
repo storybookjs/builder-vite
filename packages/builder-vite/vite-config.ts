@@ -120,7 +120,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   if (framework === 'vue3') {
     try {
       const vuePlugin = require('@vitejs/plugin-vue');
-      plugins.push(vuePlugin());
+      plugins.push(vuePlugin({exclude: [/\.stories\.vue$/]}));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(`
