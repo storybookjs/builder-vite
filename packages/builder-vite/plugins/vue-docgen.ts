@@ -2,7 +2,7 @@ import { parse } from 'vue-docgen-api';
 import type { Plugin } from 'vite';
 import MagicString from 'magic-string';
 
-export function vueDocgen(): Plugin {
+export function vueDocgen(vueVersion: 2 | 3): Plugin {
   return {
     name: 'vue-docgen',
 
@@ -11,7 +11,8 @@ export function vueDocgen(): Plugin {
         const metaData = await parse(id);
         const metaSource = JSON.stringify(metaData);
         const s = new MagicString(src);
-        s.append(`;_sfc_main.__docgenInfo = ${metaSource}`);
+        const componentLocation = vueVersion === 3 ? '_sfc_main' : '__component__.exports';
+        s.append(`;${componentLocation}.__docgenInfo = ${metaSource}`);
 
         return {
           code: s.toString(),

@@ -3,6 +3,7 @@ import fs from 'fs';
 import { Plugin } from 'vite';
 import { TypescriptConfig } from '@storybook/core-common';
 import viteReact from '@vitejs/plugin-react';
+import semver from '@storybook/semver';
 
 import { allowedEnvPrefix as envPrefix } from './envs';
 import { codeGeneratorPlugin } from './code-generator-plugin';
@@ -16,8 +17,8 @@ import type { ExtendedOptions } from './types';
 
 export type PluginConfigType = 'build' | 'development';
 
-export function readPackageJson(): Record<string, any> | false {
-  const packageJsonPath = path.resolve('package.json');
+export function readPackageJson(dir: string = process.cwd()): Record<string, any> | false {
+  const packageJsonPath = path.resolve(dir, 'package.json');
   if (!fs.existsSync(packageJsonPath)) {
     return false;
   }
@@ -32,6 +33,7 @@ export async function commonConfig(
   _type: PluginConfigType
 ): Promise<UserConfig & { configFile: false; root: string }> {
   const { framework } = options;
+  const vuePath = framework === 'vue3' ? 'vue/dist/vue.esm-bundler.js' : 'vue/dist/vue.esm.js';
 
   return {
     configFile: false,
@@ -39,14 +41,13 @@ export async function commonConfig(
     cacheDir: 'node_modules/.vite-storybook',
     envPrefix,
     define: {},
-    resolve:
-      framework === 'vue3'
-        ? {
-            alias: {
-              vue: 'vue/dist/vue.esm-bundler.js',
-            },
-          }
-        : {},
+    resolve: /^vue3?$/.test(framework)
+      ? {
+          alias: {
+            vue: vuePath,
+          },
+        }
+      : {},
     plugins: await pluginConfig(options, _type),
   };
 }
@@ -54,6 +55,7 @@ export async function commonConfig(
 export async function pluginConfig(options: ExtendedOptions, _type: PluginConfigType) {
   const { framework, presets } = options;
   const svelteOptions: Record<string, any> = await presets.apply('svelteOptions', {}, options);
+  const root = path.resolve(options.configDir, '..');
 
   const plugins = [
     codeGeneratorPlugin(options),
@@ -80,23 +82,47 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       },
     },
   ] as Plugin[];
-  if (framework === 'vue' || framework === 'vue3') {
+
+  if (framework === 'vue') {
+    const pkgJson = readPackageJson(root);
+    const vueVer = pkgJson && (pkgJson?.dependencies?.vue ?? pkgJson?.devDependencies?.vue);
+    // Default to 2.7, but check it package.json has a version that isn't 2.7
+    const is27 = !vueVer || semver.satisfies('2.7.0', vueVer);
     try {
-      const vuePlugin = require('@vitejs/plugin-vue');
+      const vuePlugin = is27 ? require('@vitejs/plugin-vue2') : require('vite-plugin-vue2').createVuePlugin;
       plugins.push(vuePlugin());
       const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen());
+      plugins.push(vueDocgen(2));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
-        throw new Error(
-          '@storybook/builder-vite requires @vitejs/plugin-vue to be installed ' +
-            'when using @storybook/vue or @storybook/vue3.' +
-            '  Please install it and start storybook again.'
-        );
+        throw new Error(`
+          @storybook/builder-vite requires ${
+            is27 ? '@vitejs/plugin-vue2' : 'vite-plugin-vue2'
+          } to be installed when using @storybook/vue.
+          Please install it and start storybook again.
+        `);
       }
       throw err;
     }
   }
+
+  if (framework === 'vue3') {
+    try {
+      const vuePlugin = require('@vitejs/plugin-vue');
+      plugins.push(vuePlugin());
+      const { vueDocgen } = await import('./plugins/vue-docgen');
+      plugins.push(vueDocgen(3));
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+        throw new Error(`
+          @storybook/builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue3.
+          Please install it and start storybook again.
+        `);
+      }
+      throw err;
+    }
+  }
+
   if (framework === 'svelte') {
     try {
       const sveltePlugin = require('@sveltejs/vite-plugin-svelte').svelte;
