@@ -91,8 +91,6 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     try {
       const vuePlugin = is27 ? require('@vitejs/plugin-vue2') : require('vite-plugin-vue2').createVuePlugin;
       plugins.push(vuePlugin());
-      const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen(2));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(`
@@ -104,20 +102,45 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       }
       throw err;
     }
+    try {
+      const { vueDocgen } = await import('./plugins/vue-docgen');
+      plugins.push(vueDocgen(2));
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+        throw new Error(
+          '@storybook/builder-vite requires vue-docgen-api to be installed ' +
+            'when using @storybook/vue.' +
+            '  Please install it and start storybook again.'
+        );
+      }
+      throw err;
+    }
   }
 
   if (framework === 'vue3') {
     try {
       const vuePlugin = require('@vitejs/plugin-vue');
       plugins.push(vuePlugin());
-      const { vueDocgen } = await import('./plugins/vue-docgen');
-      plugins.push(vueDocgen(3));
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(`
           @storybook/builder-vite requires @vitejs/plugin-vue to be installed when using @storybook/vue3.
           Please install it and start storybook again.
         `);
+      }
+      throw err;
+    }
+
+    try {
+      const { vueDocgen } = await import('./plugins/vue-docgen');
+      plugins.push(vueDocgen(3));
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+        throw new Error(
+          '@storybook/builder-vite requires vue-docgen-api to be installed ' +
+            'when using @storybook/vue3.' +
+            '  Please install it and start storybook again.'
+        );
       }
       throw err;
     }
