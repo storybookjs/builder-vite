@@ -1,7 +1,6 @@
-import { withOverview } from 'bookcase-builder';
-import preprocess from 'svelte-preprocess';
+const preprocess = require('svelte-preprocess');
 
-export default withOverview(__dirname)({
+module.exports = {
   framework: '@storybook/svelte',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-svelte-csf'],
@@ -24,4 +23,4 @@ export default withOverview(__dirname)({
     // Focus a story iframe and press cmd+shift (mac) or ctrl+shift (windows) to activate.
     experimental: { inspector: true },
   },
-});
+};

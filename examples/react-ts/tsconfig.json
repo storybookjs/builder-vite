@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "es2020",
     "jsx": "react-jsx",
     "types": []
   },

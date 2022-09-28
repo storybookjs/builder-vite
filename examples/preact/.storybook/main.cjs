@@ -1,6 +1,4 @@
-import { withOverview } from 'bookcase-builder';
-
-export default withOverview(__dirname)({
+module.exports = {
   framework: '@storybook/preact',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-essentials'],
@@ -9,4 +7,4 @@ export default withOverview(__dirname)({
     // we don't want to muck up the data when we're working on the builder
     disableTelemetry: true,
   },
-});
+};

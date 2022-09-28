@@ -1,5 +1,5 @@
 .yarn
 **/*/storybook-static/*
 *.yml
-dist
+**/dist
 public
