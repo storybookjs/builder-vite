@@ -85,17 +85,17 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
 
   if (framework === 'vue') {
     const pkgJson = readPackageJson(root);
-    const vueVer = pkgJson && (pkgJson?.dependencies?.vue ?? pkgJson?.devDependencies?.vue);
-    // Default to 2.7, but check it package.json has a version that isn't 2.7
-    const is27 = !vueVer || semver.satisfies('2.7.0', vueVer);
+    const vueVer: string | false | undefined = pkgJson && (pkgJson?.dependencies?.vue ?? pkgJson?.devDependencies?.vue);
+    // Default to 2.7, but check if package.json has a version that is less than 2.7
+    const is26 = vueVer && semver.gtr('2.7.0', vueVer);
     try {
-      const vuePlugin = is27 ? require('@vitejs/plugin-vue2') : require('vite-plugin-vue2').createVuePlugin;
+      const vuePlugin = is26 ? require('vite-plugin-vue2').createVuePlugin : require('@vitejs/plugin-vue2');
       plugins.push(vuePlugin());
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
         throw new Error(`
           @storybook/builder-vite requires ${
-            is27 ? '@vitejs/plugin-vue2' : 'vite-plugin-vue2'
+            is26 ? 'vite-plugin-vue2' : '@vitejs/plugin-vue2'
           } to be installed when using @storybook/vue.
           Please install it and start storybook again.
         `);
