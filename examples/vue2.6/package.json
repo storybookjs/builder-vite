@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook --port 6011",
-    "build-storybook": "build-storybook",
+    "storybook": "NODE_PATH=./node_modules start-storybook --port 6011",
+    "build-storybook": "NODE_PATH=./node_modules build-storybook",
     "preview-storybook": "http-server storybook-static --port 6011 --silent",
     "test": "wait-on tcp:6011 && test-storybook --url 'http://localhost:6011'",
     "test-ci": "run-p --race test preview-storybook"
@@ -31,7 +31,7 @@
     "vite": "^3.0.0-beta.9",
     "vite-plugin-vue2": "^2.0.2",
     "vue-loader": "^15.0.0",
-    "vue-template-compiler": "^2.7.10",
+    "vue-template-compiler": "2.6.x",
     "wait-on": "^6.0.1"
   }
 }

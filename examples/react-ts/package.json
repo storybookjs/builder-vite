@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook --port 6007",
-    "build-storybook": "build-storybook",
+    "storybook": "NODE_PATH=./node_modules start-storybook --port 6007",
+    "build-storybook": "NODE_PATH=./node_modules build-storybook",
     "preview-storybook": "http-server storybook-static --port 6007 --silent",
     "test": "wait-on tcp:6007 && test-storybook --url 'http://localhost:6007'",
     "test-ci": "run-p --race test preview-storybook"
