@@ -218,7 +218,16 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
       {} as TypescriptConfig
     );
 
-    if (reactDocgenOption === 'react-docgen-typescript') {
+    let typescriptPresent;
+
+    try {
+      require.resolve('typescript');
+      typescriptPresent = true;
+    } catch (e) {
+      typescriptPresent = false;
+    }
+
+    if (reactDocgenOption === 'react-docgen-typescript' && typescriptPresent) {
       plugins.push(
         require('@joshwooding/vite-plugin-react-docgen-typescript')({
           ...reactDocgenTypescriptOptions,
