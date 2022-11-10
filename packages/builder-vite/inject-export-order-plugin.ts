@@ -6,7 +6,7 @@ export const injectExportOrderPlugin = {
   // This should only run after the typescript has been transpiled
   enforce: 'post',
   async transform(code: string, id: string) {
-    if (!/\.stories\.([tj])sx?$/.test(id) && !/(stories|story).mdx$/.test(id)) {
+    if (!/\.stories\.(([jt]sx?)|(vue))$/.test(id) && !/(stories|story).mdx$/.test(id)) {
       return;
     }
     // TODO: Maybe convert `injectExportOrderPlugin` to function that returns object,
