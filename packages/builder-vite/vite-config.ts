@@ -238,7 +238,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     }
 
     // Add react-docgen so long as the option is not false
-    if (typeof reactDocgenOption === 'string') {
+    else if (typeof reactDocgenOption === 'string') {
       const { reactDocgen } = await import('./plugins/react-docgen');
       // Needs to run before the react plugin, so add to the front
       plugins.unshift(
