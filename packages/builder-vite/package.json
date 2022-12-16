@@ -36,7 +36,7 @@
     "glob": "^7.2.0",
     "glob-promise": "^4.2.0",
     "magic-string": "^0.26.1",
-    "react-docgen": "^6.0.0-alpha.0",
+    "react-docgen": "6.0.0-alpha.3",
     "slash": "^3.0.0",
     "sveltedoc-parser": "^4.2.1"
   },

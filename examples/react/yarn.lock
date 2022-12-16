@@ -2726,7 +2726,7 @@ __metadata:
     glob: ^7.2.0
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
-    react-docgen: ^6.0.0-alpha.0
+    react-docgen: 6.0.0-alpha.3
     slash: ^3.0.0
     sveltedoc-parser: ^4.2.1
   peerDependencies:
@@ -14132,6 +14132,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-docgen@npm:6.0.0-alpha.3":
+  version: 6.0.0-alpha.3
+  resolution: "react-docgen@npm:6.0.0-alpha.3"
+  dependencies:
+    "@babel/core": ^7.7.5
+    "@babel/generator": ^7.12.11
+    ast-types: ^0.14.2
+    commander: ^2.19.0
+    doctrine: ^3.0.0
+    estree-to-babel: ^3.1.0
+    neo-async: ^2.6.1
+    node-dir: ^0.1.10
+    resolve: ^1.17.0
+    strip-indent: ^3.0.0
+  bin:
+    react-docgen: bin/react-docgen.js
+  checksum: db4c300910e2ef7b854ccf4f454bd701875b787d0bc0f444f89415223e7c288a5808d6cd0f7ef6346332c9de2d068d648bc801d16b6b07a1699c3e10670c4801
+  languageName: node
+  linkType: hard
+
 "react-docgen@npm:^5.0.0":
   version: 5.4.3
   resolution: "react-docgen@npm:5.4.3"
@@ -14149,26 +14169,6 @@ __metadata:
   bin:
     react-docgen: bin/react-docgen.js
   checksum: cef935ba948195eaeec9126c62f53bc015b9a5ad3a7eeb4a4604668d5b12bd5d0c9058c279eaf33ee6b47f2a24ccf01818b67af64d7f61265c4d3a5aa4ff0a3a
-  languageName: node
-  linkType: hard
-
-"react-docgen@npm:^6.0.0-alpha.0":
-  version: 6.0.0-alpha.3
-  resolution: "react-docgen@npm:6.0.0-alpha.3"
-  dependencies:
-    "@babel/core": ^7.7.5
-    "@babel/generator": ^7.12.11
-    ast-types: ^0.14.2
-    commander: ^2.19.0
-    doctrine: ^3.0.0
-    estree-to-babel: ^3.1.0
-    neo-async: ^2.6.1
-    node-dir: ^0.1.10
-    resolve: ^1.17.0
-    strip-indent: ^3.0.0
-  bin:
-    react-docgen: bin/react-docgen.js
-  checksum: db4c300910e2ef7b854ccf4f454bd701875b787d0bc0f444f89415223e7c288a5808d6cd0f7ef6346332c9de2d068d648bc801d16b6b07a1699c3e10670c4801
   languageName: node
   linkType: hard
 
