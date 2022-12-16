@@ -2631,7 +2631,7 @@ __metadata:
     glob: ^7.2.0
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
-    react-docgen: ^6.0.0-alpha.0
+    react-docgen: 6.0.0-alpha.3
     slash: ^3.0.0
     sveltedoc-parser: ^4.2.1
   peerDependencies:
@@ -13293,7 +13293,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen@npm:^6.0.0-alpha.0":
+"react-docgen@npm:6.0.0-alpha.3":
   version: 6.0.0-alpha.3
   resolution: "react-docgen@npm:6.0.0-alpha.3"
   dependencies:
