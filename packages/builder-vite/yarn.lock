@@ -1909,7 +1909,7 @@ __metadata:
     glob-promise: ^4.2.0
     magic-string: ^0.26.1
     prettier: ^2.7.1
-    react-docgen: ^6.0.0-alpha.0
+    react-docgen: 6.0.0-alpha.3
     slash: ^3.0.0
     svelte: ^3.50.1
     sveltedoc-parser: ^4.2.1
@@ -9184,7 +9184,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen@npm:^6.0.0-alpha.0":
+"react-docgen@npm:6.0.0-alpha.3":
   version: 6.0.0-alpha.3
   resolution: "react-docgen@npm:6.0.0-alpha.3"
   dependencies:
