@@ -39,7 +39,7 @@ export function codeGeneratorPlugin(options: ExtendedOptions): Plugin {
       // HMR to update the importFn.
       server.watcher.on('add', (path) => {
         // TODO maybe use the stories declaration in main
-        if (/\.stories\.(([tj]sx?)|(vue))$/.test(path) || /\.(story|stories).mdx$/.test(path)) {
+        if (/\.stories\.(?:[tj]sx?|vue)$/.test(path) || /\.(story|stories).mdx$/.test(path)) {
           // We need to emit a change event to trigger HMR
           server.watcher.emit('change', virtualStoriesFile);
         }
