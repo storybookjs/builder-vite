@@ -66,7 +66,7 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     // We need the react plugin here to support MDX.
     viteReact({
       // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-      exclude: [/\.stories\.([tj])sx?$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
+      exclude: [/\.stories\.(?:[tj]sx?|vue)$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
     }),
     {
       name: 'vite-plugin-storybook-allow',
