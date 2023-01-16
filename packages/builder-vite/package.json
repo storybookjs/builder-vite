@@ -21,7 +21,8 @@
     "lint:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --fix",
     "lint-ci": "yarn lint-ci:prettier && yarn lint-ci:eslint",
     "lint-ci:prettier": "prettier . --check",
-    "lint-ci:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0"
+    "lint-ci:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0",
+    "update-examples": "cd ../../examples/lit-ts && yarn && cd ../preact && yarn && cd ../react && cd ../react-18 && yarn && cd ../react-ts && yarn && cd ../svelte && yarn && cd ../vue2.6 && yarn && cd ../vue2.7 && yarn && cd ../vue3 && yarn && cd ../workspaces && yarn"
   },
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.2.1",
