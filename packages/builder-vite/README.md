@@ -36,7 +36,7 @@ To manually migrate:
 
 Requirements:
 
-- Vite 3.0 or newer (for Vite v2 (2.5+), use `@storybook/builder-vite@0.1.x`)
+- Vite 4.0 or newer (for Vite v3, use `@storybook/builder-vite@0.2.x`)
 - Storybook 6.4.0 or newer (for storybook 6.3, use `storybook-builder-vite@0.1.16`)
 
 ```bash

@@ -1959,19 +1959,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.5":
-  version: 0.0.5
-  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.0.5"
+"@joshwooding/vite-plugin-react-docgen-typescript@npm:0.2.1":
+  version: 0.2.1
+  resolution: "@joshwooding/vite-plugin-react-docgen-typescript@npm:0.2.1"
   dependencies:
-    "@rollup/pluginutils": ^4.2.1
     glob: ^7.2.0
     glob-promise: ^4.2.0
-    magic-string: ^0.26.1
-    react-docgen-typescript: ^2.1.1
+    magic-string: ^0.27.0
+    react-docgen-typescript: ^2.2.2
   peerDependencies:
     typescript: ">= 4.3.x"
-    vite: ">2.0.0-0"
-  checksum: e722b472413bf67e879bdd3969a43223e161b2d2b634848b7a88c89ddb507ad331959808ff7e17b6513527e797aae4aad973dda0bd3c7ab3348ebc691ab76b83
+    vite: ^3.0.0 || ^4.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 91401505b379396cb48c74e99ebafb8a3f85bb0c38783d4b17df42d5420782bf733f049f9a97659feb4423b4e4db9ba35fd8230add5fd32e615d5633d37cdcfd
   languageName: node
   linkType: hard
 
@@ -2020,7 +2022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:^1.4.10":
+"@jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.13":
   version: 1.4.14
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.14"
   checksum: 61100637b6d173d3ba786a5dff019e1a74b1f394f323c1fee337ff390239f053b87266c7a948777f4b1ee68c01a8ad0ab61e5ff4abb5a012a0b091bec391ab97
@@ -2619,7 +2621,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@storybook/builder-vite@portal:../../packages/builder-vite::locator=example-svelte%40workspace%3A."
   dependencies:
-    "@joshwooding/vite-plugin-react-docgen-typescript": 0.0.5
+    "@joshwooding/vite-plugin-react-docgen-typescript": 0.2.1
     "@storybook/core-common": ^6.4.3
     "@storybook/mdx1-csf": ^0.0.4
     "@storybook/node-logger": ^6.4.3
@@ -2636,9 +2638,9 @@ __metadata:
     sveltedoc-parser: ^4.2.1
   peerDependencies:
     "@storybook/mdx2-csf": ^0.0.3
-    "@sveltejs/vite-plugin-svelte": ^1.0.0
-    "@vitejs/plugin-vue": ^3.0.0
-    vite: ">= 3.0.0"
+    "@sveltejs/vite-plugin-svelte": ^2.0.0
+    "@vitejs/plugin-vue": ^4.0.0
+    vite: ">= 4.0.0"
     vue-docgen-api: ^4.40.0
   peerDependenciesMeta:
     "@storybook/mdx2-csf":
@@ -11175,6 +11177,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "magic-string@npm:0.27.0"
+  dependencies:
+    "@jridgewell/sourcemap-codec": ^1.4.13
+  checksum: 273faaa50baadb7a2df6e442eac34ad611304fc08fe16e24fe2e472fd944bfcb73ffb50d2dc972dc04e92784222002af46868cb9698b1be181c81830fd95a13e
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^2.0.0, make-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "make-dir@npm:2.1.0"
@@ -13284,7 +13295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-docgen-typescript@npm:^2.1.1":
+"react-docgen-typescript@npm:^2.2.2":
   version: 2.2.2
   resolution: "react-docgen-typescript@npm:2.2.2"
   peerDependencies:
