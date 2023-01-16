@@ -2,9 +2,10 @@
 
 Build your stories with [vite](https://vitejs.dev/) for fast startup times and near-instant HMR.
 
+**Note:** This Repository is for Storybook 6.4 and 6.5. In Storybook 7, the Vite builder was brought into the main Storybook monorepo (https://github.com/storybookjs/storybook). See https://storybook.js.org/blog/first-class-vite-support-in-storybook/ for details.
+
 # Table of Contents <!-- omit in toc -->
 
-- [Migration from storybook-builder-vite](#migration-from-storybook-builder-vite)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Getting started with Vite and Storybook (on a new project)](#getting-started-with-vite-and-storybook-on-a-new-project)
@@ -15,29 +16,16 @@ Build your stories with [vite](https://vitejs.dev/) for fast startup times and n
   - [React Docgen](#react-docgen)
   - [Note about working directory](#note-about-working-directory)
 - [Known issues](#known-issues)
+- [Migration from storybook-builder-vite](#migration-from-storybook-builder-vite)
 - [Contributing](#contributing)
   - [About this codebase](#about-this-codebase)
-
-## Migration from storybook-builder-vite
-
-This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
-
-```bash
-npx sb@next automigrate
-```
-
-To manually migrate:
-
-1. Remove `storybook-builder-vite` from your `package.json` dependencies
-2. Install `@storybook/builder-vite`
-3. Update your `core.builder` setting in `.storybook/main.js` to `@storybook/builder-vite`.
 
 ## Installation
 
 Requirements:
 
 - Vite 4.0 or newer (for Vite v3, use `@storybook/builder-vite@0.2.x`)
-- Storybook 6.4.0 or newer (for storybook 6.3, use `storybook-builder-vite@0.1.16`)
+- Storybook 6.4 or 6.5 (for storybook 7, see https://github.com/storybookjs/storybook/tree/next/code/lib/builder-vite)
 
 ```bash
 npm install @storybook/builder-vite --save-dev
@@ -132,7 +120,9 @@ The function should return the updated Vite configuration.
 
 ### Svelte Customization
 
-When using this builder with Svelte, your `.storybook/main.js` (or equivalent)
+When using this builder with Svelte, your `svelte.config.js` file will be used automatically.
+
+If you need to make overrides for Storybook, your `.storybook/main.js` (or equivalent)
 can contain a `svelteOptions` object to pass custom options to
 [`vite-plugin-svelte`](https://github.com/sveltejs/vite-plugin-svelte/tree/main/packages/vite-plugin-svelte):
 
@@ -202,6 +192,20 @@ storybook configuration directory. This can be overridden in viteFinal.
 ## Known issues
 
 - HMR: saving a story file does not hot-module-reload, a full reload happens instead. HMR works correctly when saving component files.
+
+## Migration from storybook-builder-vite
+
+This project has moved from `storybook-builder-vite` to `@storybook/builder-vite` as part of a larger effort to improve Vite support in Storybook. To automatically migrate your existing project, you can run
+
+```bash
+npx sb@next automigrate
+```
+
+To manually migrate:
+
+1. Remove `storybook-builder-vite` from your `package.json` dependencies
+2. Install `@storybook/builder-vite`
+3. Update your `core.builder` setting in `.storybook/main.js` to `@storybook/builder-vite`.
 
 ## Contributing
 
