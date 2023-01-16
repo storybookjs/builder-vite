@@ -24,7 +24,7 @@
     "lint-ci:eslint": "eslint \"**/*.{ts,tsx,js,jsx,mjs,cjs}\" --max-warnings=0"
   },
   "dependencies": {
-    "@joshwooding/vite-plugin-react-docgen-typescript": "0.0.5",
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.2.1",
     "@storybook/core-common": "^6.4.3",
     "@storybook/mdx1-csf": "^0.0.4",
     "@storybook/node-logger": "^6.4.3",
