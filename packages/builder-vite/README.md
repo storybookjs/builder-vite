@@ -24,6 +24,7 @@ Build your stories with [vite](https://vitejs.dev/) for fast startup times and n
 
 Requirements:
 
+- Node 14 - 16 (Node 18 is supported by Storybook 7.0)
 - Vite 4.0 or newer (for Vite v3, use `@storybook/builder-vite@0.2.x`)
 - Storybook 6.4 or 6.5 (for storybook 7, see https://github.com/storybookjs/storybook/tree/next/code/lib/builder-vite)
 
