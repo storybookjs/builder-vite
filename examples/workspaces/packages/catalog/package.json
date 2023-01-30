@@ -19,6 +19,7 @@
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/builder-vite": "portal:../../../../packages/builder-vite",
     "@storybook/react": "^6.5.9",
+    "@vitejs/plugin-react": "^3.0.1",
     "vite": "4.0.4"
   }
 }
