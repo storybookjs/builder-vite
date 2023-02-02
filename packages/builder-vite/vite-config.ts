@@ -2,7 +2,6 @@ import * as path from 'path';
 import fs from 'fs';
 import { Plugin } from 'vite';
 import { TypescriptConfig } from '@storybook/core-common';
-import viteReact from '@vitejs/plugin-react';
 import semver from '@storybook/semver';
 
 import { allowedEnvPrefix as envPrefix } from './envs';
@@ -63,11 +62,6 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
     mdxPlugin(options),
     noFouc(),
     injectExportOrderPlugin,
-    // We need the react plugin here to support MDX.
-    viteReact({
-      // Do not treat story files as HMR boundaries, storybook itself needs to handle them.
-      exclude: [/\.stories\.(?:[tj]sx?|vue)$/, /node_modules/].concat(framework === 'react' ? [] : [/\.([tj])sx?$/]),
-    }),
     {
       name: 'vite-plugin-storybook-allow',
       enforce: 'post',
@@ -213,6 +207,19 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
 
   if (framework === 'react') {
+    try {
+      const reactPlugin = require('@vitejs/plugin-react');
+      plugins.push(reactPlugin());
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+        throw new Error(`
+          @storybook/builder-vite requires @vitejs/plugin-react to be installed when using @storybook/react.
+          Please install it and start storybook again.
+        `);
+      }
+      throw err;
+    }
+
     const { reactDocgen: reactDocgenOption, reactDocgenTypescriptOptions } = await presets.apply(
       'typescript',
       {} as TypescriptConfig

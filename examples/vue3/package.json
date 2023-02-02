@@ -22,7 +22,7 @@
     "@storybook/addon-interactions": "6.5.9",
     "@storybook/builder-vite": "portal:../../packages/builder-vite",
     "@storybook/jest": "^0.0.10",
-    "@storybook/mdx2-csf": "^0.0.3",
+    "@storybook/mdx2-csf": "next",
     "@storybook/test-runner": "^0.5.0",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/vue3": "6.5.9",
@@ -30,7 +30,7 @@
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
-    "vite": "^3.1.0-beta.1",
+    "vite": "4.0.4",
     "wait-on": "^6.0.1"
   }
 }

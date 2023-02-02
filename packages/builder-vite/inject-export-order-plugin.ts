@@ -13,7 +13,6 @@ export const injectExportOrderPlugin = {
     //  and run `await init;` once and then call `parse()` without `await`,
     //  instead of calling `await parse()` every time.
     const [, exports] = await parse(code);
-
     if (exports.includes('__namedExportsOrder')) {
       // user has defined named exports already
       return;
