@@ -207,17 +207,27 @@ export async function pluginConfig(options: ExtendedOptions, _type: PluginConfig
   }
 
   if (framework === 'react') {
+    // First, look for plugin-react
     try {
       const reactPlugin = require('@vitejs/plugin-react');
       plugins.push(reactPlugin());
     } catch (err) {
       if ((err as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
-        throw new Error(`
-          @storybook/builder-vite requires @vitejs/plugin-react to be installed when using @storybook/react.
-          Please install it and start storybook again.
-        `);
+        // Next, check if plugin-react-swc is installed, and if so, use that
+        try {
+          const reactSWCPlugin = require('@vitejs/plugin-react-swc');
+          plugins.push(reactSWCPlugin());
+        } catch (err2) {
+          if ((err2 as NodeJS.ErrnoException).code === 'MODULE_NOT_FOUND') {
+            throw new Error(
+              '@storybook/builder-vite requires @vitejs/plugin-react or @vitejs/plugin-react-swc ' +
+                'to be installed when using @storybook/react. \n' +
+                'Please install one of them and start storybook again.'
+            );
+          }
+          throw err;
+        }
       }
-      throw err;
     }
 
     const { reactDocgen: reactDocgenOption, reactDocgenTypescriptOptions } = await presets.apply(
