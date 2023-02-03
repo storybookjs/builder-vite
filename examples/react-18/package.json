@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "NODE_PATH=./node_modules start-storybook --port 6018",
-    "build-storybook": "NODE_PATH=./node_modules build-storybook",
+    "storybook": "NODE_PATH=$(pwd)/node_modules start-storybook --port 6018",
+    "build-storybook": "NODE_PATH=$(pwd)/node_modules build-storybook",
     "preview-storybook": "http-server storybook-static --port 6018 --silent",
     "test": "wait-on tcp:6018 && test-storybook --url 'http://localhost:6018'",
     "test-ci": "run-p --race test preview-storybook"

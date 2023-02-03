@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "NODE_PATH=./node_modules start-storybook --port 6008",
-    "build-storybook": "NODE_PATH=./node_modules build-storybook",
+    "storybook": "NODE_PATH=$(pwd)/node_modules start-storybook --port 6008",
+    "build-storybook": "NODE_PATH=$(pwd)/node_modules build-storybook",
     "preview-storybook": "http-server storybook-static --port 6008 --silent",
     "test": "wait-on tcp:6008 && test-storybook --url 'http://localhost:6008'",
     "test-ci": "echo 'tests do not work with svelte yet'"
