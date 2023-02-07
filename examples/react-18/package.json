@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "NODE_PATH=./node_modules start-storybook --port 6018",
-    "build-storybook": "NODE_PATH=./node_modules build-storybook",
+    "storybook": "NODE_PATH=$(pwd)/node_modules start-storybook --port 6018",
+    "build-storybook": "NODE_PATH=$(pwd)/node_modules build-storybook",
     "preview-storybook": "http-server storybook-static --port 6018 --silent",
     "test": "wait-on tcp:6018 && test-storybook --url 'http://localhost:6018'",
     "test-ci": "run-p --race test preview-storybook"
@@ -24,7 +24,7 @@
     "@storybook/builder-vite": "portal:../../packages/builder-vite",
     "@storybook/react": "^6.5.9",
     "@storybook/test-runner": "0.1.0",
-    "@vitejs/plugin-react": "^3.0.0",
+    "@vitejs/plugin-react-swc": "^3.1.0",
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
