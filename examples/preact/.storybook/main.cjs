@@ -1,4 +1,4 @@
-const slash = require('slash');
+const path = require('node:path');
 
 module.exports = {
   framework: '@storybook/preact',
@@ -14,8 +14,8 @@ module.exports = {
     config.build.rollupOptions = {
       plugins: {
         resolveId: function (code) {
-          if (code === 'react') return slash(require.resolve('react'));
-          if (code === 'preact/compat') return slash(require.resolve('preact/compat'));
+          if (code === 'react') return path.resolve(require.resolve('react'));
+          if (code === 'preact/compat') return path.resolve(require.resolve('preact/compat'));
         },
       },
     };
