@@ -10,8 +10,15 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
+  async viteFinal(config) {
+    // because rollup does not respect NODE_PATH
+    config.build.rollupOptions = {
+      plugins: {
+        resolveId: function (code, id) {
+          if (code === 'react') return 'node_modules/react/index.js';
+        },
+      },
+    };
     return config;
   },
 };

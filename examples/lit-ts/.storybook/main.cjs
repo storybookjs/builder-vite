@@ -18,6 +18,16 @@ module.exports = {
     return mergeConfig(config, {
       // prettier-ignore
       plugins: [postcssLit({ include: ['**/*.scss', '**/*.scss\?*'] })],
+      // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+      build: {
+        rollupOptions: {
+          plugins: {
+            resolveId: function (code) {
+              if (code === 'react') return require.resolve('react');
+            },
+          },
+        },
+      },
     });
   },
 };

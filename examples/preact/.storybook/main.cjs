@@ -7,4 +7,16 @@ module.exports = {
     // we don't want to muck up the data when we're working on the builder
     disableTelemetry: true,
   },
+  async viteFinal(config) {
+    // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+    config.build.rollupOptions = {
+      plugins: {
+        resolveId: function (code) {
+          if (code === 'react') return require.resolve('react');
+          if (code === 'preact/compat') return require.resolve('preact/compat');
+        },
+      },
+    };
+    return config;
+  },
 };

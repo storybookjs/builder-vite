@@ -19,6 +19,16 @@ module.exports = {
       resolve: {
         alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }],
       },
+      // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+      build: {
+        rollupOptions: {
+          plugins: {
+            resolveId: function (code) {
+              if (code === 'react') return require.resolve('react');
+            },
+          },
+        },
+      },
     });
   },
 };
