@@ -1983,7 +1983,7 @@ __metadata:
     "@storybook/addon-svelte-csf": ^2.0.7
     "@storybook/client-api": ^6.5.12
     "@storybook/core-common": ^6.4.3
-    "@storybook/mdx1-csf": ^1.0.0-next.0
+    "@storybook/mdx1-csf": 1.0.0-next.0
     "@storybook/mdx2-csf": next
     "@storybook/node-logger": ^6.4.3
     "@storybook/semver": ^7.3.2
@@ -2192,7 +2192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/mdx1-csf@npm:^1.0.0-next.0":
+"@storybook/mdx1-csf@npm:1.0.0-next.0":
   version: 1.0.0-next.0
   resolution: "@storybook/mdx1-csf@npm:1.0.0-next.0"
   dependencies:
