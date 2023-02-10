@@ -1,4 +1,4 @@
-const preprocess = require('svelte-preprocess');
+const path = require('node:path');
 
 module.exports = {
   framework: '@storybook/svelte',
@@ -13,8 +13,15 @@ module.exports = {
     // On-demand store does not work for .svelte stories, only CSF.
     storyStoreV7: false,
   },
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
+  async viteFinal(config) {
+    // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+    config.build.rollupOptions = {
+      plugins: {
+        resolveId: function (code) {
+          if (code === 'react') return path.resolve(require.resolve('react'));
+        },
+      },
+    };
     return config;
   },
   // @ts-ignore

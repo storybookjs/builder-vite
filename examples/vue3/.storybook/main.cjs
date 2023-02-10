@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { mergeConfig } = require('vite');
+const path = require('node:path');
 
 module.exports = {
   framework: '@storybook/vue3',
@@ -18,6 +19,16 @@ module.exports = {
     return mergeConfig(config, {
       resolve: {
         alias: [{ find: '@assets', replacement: resolve(__dirname, '..', 'stories', 'assets') }],
+      },
+      // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+      build: {
+        rollupOptions: {
+          plugins: {
+            resolveId: function (code) {
+              if (code === 'react') return path.resolve(require.resolve('react'));
+            },
+          },
+        },
       },
     });
   },

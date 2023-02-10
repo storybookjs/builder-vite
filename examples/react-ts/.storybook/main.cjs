@@ -1,3 +1,5 @@
+const path = require('node:path');
+
 module.exports = {
   framework: '@storybook/react',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -10,8 +12,15 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  async viteFinal(config, { configType }) {
-    // customize the Vite config here
+  async viteFinal(config) {
+    // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+    config.build.rollupOptions = {
+      plugins: {
+        resolveId: function (code) {
+          if (code === 'react') return path.resolve(require.resolve('react'));
+        },
+      },
+    };
     return config;
   },
 };

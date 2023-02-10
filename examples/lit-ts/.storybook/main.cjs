@@ -1,3 +1,4 @@
+const path = require('node:path');
 const { mergeConfig } = require('vite');
 const postcssLit = require('rollup-plugin-postcss-lit');
 
@@ -18,6 +19,16 @@ module.exports = {
     return mergeConfig(config, {
       // prettier-ignore
       plugins: [postcssLit({ include: ['**/*.scss', '**/*.scss\?*'] })],
+      // because rollup does not respect NODE_PATH, and we have a funky example setup that needs it
+      build: {
+        rollupOptions: {
+          plugins: {
+            resolveId: function (code) {
+              if (code === 'react') return path.resolve(require.resolve('react'));
+            },
+          },
+        },
+      },
     });
   },
 };

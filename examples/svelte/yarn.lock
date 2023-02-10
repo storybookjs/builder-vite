@@ -2741,7 +2741,7 @@ __metadata:
   dependencies:
     "@joshwooding/vite-plugin-react-docgen-typescript": 0.2.1
     "@storybook/core-common": ^6.4.3
-    "@storybook/mdx1-csf": ^1.0.0-next.0
+    "@storybook/mdx1-csf": 1.0.0-next.0
     "@storybook/node-logger": ^6.4.3
     "@storybook/semver": ^7.3.2
     "@storybook/source-loader": ^6.4.3
@@ -3229,6 +3229,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/mdx1-csf@npm:1.0.0-next.0":
+  version: 1.0.0-next.0
+  resolution: "@storybook/mdx1-csf@npm:1.0.0-next.0"
+  dependencies:
+    "@mdx-js/mdx": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+  checksum: 4524619df9f412d93e37df05bcdcef40bf3337b8de181a5bcc7ab2051f7afc96e8b9bf4bef8e078d470df81cc4d9d01315cd840e358ca3bfb1102efd595720cd
+  languageName: node
+  linkType: hard
+
 "@storybook/mdx1-csf@npm:^0.0.1":
   version: 0.0.1
   resolution: "@storybook/mdx1-csf@npm:0.0.1"
@@ -3245,16 +3255,6 @@ __metadata:
     prettier: ">=2.2.1 <=2.3.0"
     ts-dedent: ^2.0.0
   checksum: 34f952f4d00d4fbf680aadea53ca0d9b02b10c94ea492a47a6df916474ea1e36d08eece70ffaba760a4cdf6f634a8684360dc49355cf8a1461050b8a470d2666
-  languageName: node
-  linkType: hard
-
-"@storybook/mdx1-csf@npm:^1.0.0-next.0":
-  version: 1.0.0-next.0
-  resolution: "@storybook/mdx1-csf@npm:1.0.0-next.0"
-  dependencies:
-    "@mdx-js/mdx": ^1.6.22
-    "@mdx-js/react": ^1.6.22
-  checksum: 4524619df9f412d93e37df05bcdcef40bf3337b8de181a5bcc7ab2051f7afc96e8b9bf4bef8e078d470df81cc4d9d01315cd840e358ca3bfb1102efd595720cd
   languageName: node
   linkType: hard
 

@@ -27,7 +27,7 @@
   "dependencies": {
     "@joshwooding/vite-plugin-react-docgen-typescript": "0.2.1",
     "@storybook/core-common": "^6.4.3",
-    "@storybook/mdx1-csf": "^1.0.0-next.0",
+    "@storybook/mdx1-csf": "1.0.0-next.0",
     "@storybook/node-logger": "^6.4.3",
     "@storybook/semver": "^7.3.2",
     "@storybook/source-loader": "^6.4.3",
