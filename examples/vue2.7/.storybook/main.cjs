@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { mergeConfig } = require('vite');
+const slash = require('slash');
 
 module.exports = {
   framework: '@storybook/vue',
@@ -35,7 +36,7 @@ module.exports = {
         rollupOptions: {
           plugins: {
             resolveId: function (code) {
-              if (code === 'react') return require.resolve('react');
+              if (code === 'react') return slash(require.resolve('react'));
             },
           },
         },

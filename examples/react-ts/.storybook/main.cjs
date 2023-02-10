@@ -1,3 +1,5 @@
+const slash = require('slash');
+
 module.exports = {
   framework: '@storybook/react',
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -15,7 +17,7 @@ module.exports = {
     config.build.rollupOptions = {
       plugins: {
         resolveId: function (code) {
-          if (code === 'react') return require.resolve('react');
+          if (code === 'react') return slash(require.resolve('react'));
         },
       },
     };

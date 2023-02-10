@@ -1,5 +1,6 @@
 const { mergeConfig } = require('vite');
 const postcssLit = require('rollup-plugin-postcss-lit');
+const slash = require('slash');
 
 module.exports = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -23,7 +24,7 @@ module.exports = {
         rollupOptions: {
           plugins: {
             resolveId: function (code) {
-              if (code === 'react') return require.resolve('react');
+              if (code === 'react') return slash(require.resolve('react'));
             },
           },
         },
