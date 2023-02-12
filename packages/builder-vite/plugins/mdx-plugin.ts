@@ -1,6 +1,7 @@
 import { dirname } from 'node:path';
 import type { Options } from '@storybook/core-common';
 import { Plugin } from 'vite';
+import slash from 'slash';
 
 const isStorybookMdx = (id: string) => id.endsWith('stories.mdx') || id.endsWith('story.mdx');
 
@@ -10,10 +11,12 @@ const isStorybookMdx = (id: string) => id.endsWith('stories.mdx') || id.endsWith
  * Equivilent to https://github.com/storybookjs/mdx1-csf/blob/d58cb032a8902b3f24ad487b6a7aae11ba8b33f6/loader.js#L12-L16
  */
 function injectRenderer(code: string) {
-  const mdxReactPackage = dirname(
-    require.resolve('@mdx-js/react/package.json', {
-      paths: [dirname(require.resolve('@storybook/mdx1-csf/package.json'))],
-    })
+  const mdxReactPackage = slash(
+    dirname(
+      require.resolve('@mdx-js/react/package.json', {
+        paths: [dirname(require.resolve('@storybook/mdx1-csf/package.json'))],
+      })
+    )
   );
 
   return `
