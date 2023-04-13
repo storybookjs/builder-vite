@@ -177,7 +177,7 @@ Docgen is used in Storybook to populate the props table in docs view, the contro
 ```javascript
 module.exports = {
   typescript: {
-    reactDocgen: 'react-docgen`
+    reactDocgen: 'react-docgen'
   }
 }
 ```
